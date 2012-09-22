@@ -1,0 +1,28 @@
+<body onLoad='CreateDungeon("<%= @tinymap.map %>")'>
+
+<p id="notice"><%= notice %></p>
+
+<H1>
+  Name:<%= @tinymap.name %>
+</H1>
+
+<p>
+  <b>Turn:</b>
+  <span id='turn'>1</span>
+</p>
+
+<p id='map'>
+</p>
+
+<p>
+守備兵HP:<span id='guradHP'>10</span> 侵入兵HP:<span id='intruderHP'>10</span> 
+</p>
+
+<p>
+<textarea id="battle" name="battle" cols="40" rows="4" maxlength="20" placeholder="戦闘経過"></textarea>
+</p>
+
+<%= link_to 'Back', tinymaps_path %> | 
+<button onclick='UpdateDungeon()'>Update</button>
+
+</body>

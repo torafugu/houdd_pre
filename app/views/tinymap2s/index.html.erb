@@ -1,0 +1,21 @@
+<body>
+
+<h1>Listing tinymap2s</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+  </tr>
+
+<% @tinymap2s.each do |tinymap2| %>
+  <tr>
+    <td><%= tinymap2.name %></td>
+    <td><%= link_to 'Show', '/tinymap2s/' + tinymap2.id.to_s() %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+</body>
