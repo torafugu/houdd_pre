@@ -1,0 +1,2 @@
+module MoretinymapsHelper
+end

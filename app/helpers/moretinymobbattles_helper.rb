@@ -1,0 +1,2 @@
+module MoretinymobbattlesHelper
+end

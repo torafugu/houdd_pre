@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @moretinymob.name %>
+</p>
+
+<p>
+  <b>Moretinymobinfo:</b>
+  <%= @moretinymob.moretinymobinfo_id %>
+</p>
+
+<p>
+  <b>Moretinymap:</b>
+  <%= @moretinymob.moretinymap_id %>
+</p>
+
+<p>
+  <b>HP:</b>
+  <%= @moretinymob.hp %>
+</p>
+
+<p>
+  <b>Start X:</b>
+  <%= @moretinymob.start_x %>
+</p>
+
+<p>
+  <b>Start Y:</b>
+  <%= @moretinymob.start_y %>
+</p>
+
+<p>
+  <b>is_Guard:</b>
+  <%= @moretinymob.is_guard %>
+</p>
+
+<p>
+  <b>is_Dead:</b>
+  <%= @moretinymob.is_dead %>
+</p>
+
+<%= link_to 'Edit', edit_moretinymob_path(@moretinymob) %> |
+<%= link_to 'Back', moretinymobs_path %>

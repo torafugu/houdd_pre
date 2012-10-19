@@ -1,0 +1,42 @@
+<%= form_for(@moretinymobbattle) do |f| %>
+  <% if @moretinymobbattle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@moretinymobbattle.errors.count, "error") %> prohibited this moretinymobbattle from being saved:</h2>
+
+      <ul>
+      <% @moretinymobbattle.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :moretinymobtrail %><br />
+    <%= f.collection_select(:moretinymobtrail_id, Moretinymobtrail.find(:all), :id, :id) %>
+  </div>
+  <div class="field">
+    <%= f.label :trail_step %><br />
+    <%= f.number_field :trail_step %>
+  </div>
+  <div class="field">
+    <%= f.label :log %><br />
+    <%= f.text_area :log %>
+  </div>
+  <div class="field">
+    <%= f.label :tgt_mob_id %><br />
+    <%= f.collection_select(:tgt_mob_id, Moretinymob.find(:all), :id, :name) %>
+
+  </div>
+  <div class="field">
+    <%= f.label :damage_to_me %><br />
+    <%= f.number_field :damage_to_me %>
+  </div>
+  <div class="field">
+    <%= f.label :damage_to_tgt %><br />
+    <%= f.number_field :damage_to_tgt %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,50 @@
+<%= form_for(@moretinymob) do |f| %>
+  <% if @moretinymob.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@moretinymob.errors.count, "error") %> prohibited this moretinymob from being saved:</h2>
+
+      <ul>
+      <% @moretinymob.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :moretinymobinfo %><br />
+    <%= f.collection_select(:moretinymobinfo_id, Moretinymobinfo.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :moretinymap %><br />
+    <%= f.collection_select(:moretinymap_id, Moretinymap.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :hp %><br />
+    <%= f.number_field :hp %>
+  </div>
+  <div class="field">
+    <%= f.label :start_x %><br />
+    <%= f.number_field :start_x %>
+  </div>
+  <div class="field">
+    <%= f.label :start_y %><br />
+    <%= f.number_field :start_y %>
+  </div>
+  <div class="field">
+    <%= f.label :is_guard %><br />
+    True<%= f.radio_button :is_guard, "true" %>False<%= f.radio_button :is_guard, "false" %>
+  </div>
+  <div class="field">
+    <%= f.label :is_dead %><br />
+    True<%= f.radio_button :is_dead, "true" %>False<%= f.radio_button :is_dead, "false" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

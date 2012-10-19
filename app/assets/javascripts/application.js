@@ -15,6 +15,7 @@
 //= require_tree .
 //= require MochiKit
 //= require SVGKit
+//= processing-1.4.1
 //= require DungeonRender
 //= require DungeonRender2
 

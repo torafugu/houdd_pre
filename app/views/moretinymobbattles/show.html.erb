@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Moretinymobtrail:</b>
+  <%= @moretinymobbattle.moretinymobtrail %>
+</p>
+
+<p>
+  <b>Trail step:</b>
+  <%= @moretinymobbattle.trail_step %>
+</p>
+
+<p>
+  <b>Log:</b>
+  <%= @moretinymobbattle.log %>
+</p>
+
+<p>
+  <b>Tgt mob:</b>
+  <%= @moretinymobbattle.tgt_mob_id %>
+</p>
+
+<p>
+  <b>Damage to me:</b>
+  <%= @moretinymobbattle.damage_to_me %>
+</p>
+
+<p>
+  <b>Damage to target:</b>
+  <%= @moretinymobbattle.damage_to_tgt %>
+</p>
+
+
+<%= link_to 'Edit', edit_moretinymobbattle_path(@moretinymobbattle) %> |
+<%= link_to 'Back', moretinymobbattles_path %>

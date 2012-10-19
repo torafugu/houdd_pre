@@ -1,0 +1,27 @@
+<h1>Listing moretinymaps</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Map</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @moretinymaps.each do |moretinymap| %>
+  <tr>
+    <td><%= moretinymap.name %></td>
+    <td><%= moretinymap.type %></td>
+    <td><%= moretinymap.map %></td>
+    <td><%= link_to 'Show', moretinymap %></td>
+    <td><%= link_to 'Edit', edit_moretinymap_path(moretinymap) %></td>
+    <td><%= link_to 'Destroy', moretinymap, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Moretinymap', new_moretinymap_path %>

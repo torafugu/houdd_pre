@@ -1,0 +1,25 @@
+<%= form_for(@moretinymobtrail) do |f| %>
+  <% if @moretinymobtrail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@moretinymobtrail.errors.count, "error") %> prohibited this moretinymobtrail from being saved:</h2>
+
+      <ul>
+      <% @moretinymobtrail.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :moretinymob_id %><br />
+    <%= f.collection_select(:moretinymob_id, Moretinymob.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :trail %><br />
+    <%= f.text_area :trail %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

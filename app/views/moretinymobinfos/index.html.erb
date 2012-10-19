@@ -1,0 +1,29 @@
+<h1>Listing moretinymobinfos</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Hp</th>
+    <th>Str</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @moretinymobinfos.each do |moretinymobinfo| %>
+  <tr>
+    <td><%= moretinymobinfo.name %></td>
+    <td><%= moretinymobinfo.category %></td>
+    <td><%= moretinymobinfo.hp %></td>
+    <td><%= moretinymobinfo.str %></td>
+    <td><%= link_to 'Show', moretinymobinfo %></td>
+    <td><%= link_to 'Edit', edit_moretinymobinfo_path(moretinymobinfo) %></td>
+    <td><%= link_to 'Destroy', moretinymobinfo, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Moretinymobinfo', new_moretinymobinfo_path %>

@@ -86,3 +86,9 @@ function UpdateDungeon2() {
     jQuery('#battle').append(guardAttackLog)
   }
 }
+
+function UpdateSVG() {
+//  jQuery('#map').text('abcdefg')
+  jQuery('#rectsvg').attr('fill','#000000')
+  alert(jQuery('#rectsvg').attr('fill'))
+}

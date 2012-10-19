@@ -1,4 +1,14 @@
 HouddPre::Application.routes.draw do
+  resources :moretinymobbattles
+
+  resources :moretinymobtrails
+
+  resources :moretinymobs
+
+  resources :moretinymobinfos
+
+  resources :moretinymaps
+
   resources :tinymaps
   resources :tinymap2s
 

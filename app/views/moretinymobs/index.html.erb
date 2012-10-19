@@ -1,0 +1,27 @@
+<h1>Listing moretinymobs</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Moretinymobinfo</th>
+    <th>Moretinymap</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @moretinymobs.each do |moretinymob| %>
+  <tr>
+    <td><%= moretinymob.name %></td>
+    <td><%= moretinymob.moretinymobinfo_id %></td>
+    <td><%= moretinymob.moretinymap_id %></td>
+    <td><%= link_to 'Show', moretinymob %></td>
+    <td><%= link_to 'Edit', edit_moretinymob_path(moretinymob) %></td>
+    <td><%= link_to 'Destroy', moretinymob, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Moretinymob', new_moretinymob_path %>

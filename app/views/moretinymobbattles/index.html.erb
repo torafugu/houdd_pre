@@ -1,0 +1,29 @@
+<h1>Listing moretinymobbattles</h1>
+
+<table>
+  <tr>
+    <th>Moretinymobtrail</th>
+    <th>Trail step</th>
+    <th>Log</th>
+    <th>Tgt mob</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @moretinymobbattles.each do |moretinymobbattle| %>
+  <tr>
+    <td><%= moretinymobbattle.moretinymobtrail %></td>
+    <td><%= moretinymobbattle.trail_step %></td>
+    <td><%= moretinymobbattle.log %></td>
+    <td><%= moretinymobbattle.tgt_mob_id %></td>
+    <td><%= link_to 'Show', moretinymobbattle %></td>
+    <td><%= link_to 'Edit', edit_moretinymobbattle_path(moretinymobbattle) %></td>
+    <td><%= link_to 'Destroy', moretinymobbattle, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Moretinymobbattle', new_moretinymobbattle_path %>

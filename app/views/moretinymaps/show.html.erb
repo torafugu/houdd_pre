@@ -1,0 +1,191 @@
+<body onLoad='CreateMap("<%= @moretinymap.map %>")'>
+
+<script type="text/processing" data-processing-target="canvas1">
+int RECT_SIZE = 30;
+PShape GUARDS_ICON = loadShape("/assets/guardsicon.svg");
+PShape INTRUDER_ICON = loadShape("/assets/intrudericon.svg");
+
+void setup() {
+  size(<%= @moretinymap.xsize %> * RECT_SIZE, <%= @moretinymap.ysize %> * RECT_SIZE);
+  noLoop();
+}
+
+void draw() {
+  background(0);
+  fill(255);
+}
+
+void renderDungeon(int x, int y) {
+  noStroke();
+  fill(200);
+  rect(x, y, RECT_SIZE, RECT_SIZE);
+}
+
+void renderMobs() {
+  
+  <% @guardmobs.each do |guardmob| %>
+  shape(GUARDS_ICON, <%= guardmob.start_x %> * RECT_SIZE, <%= guardmob.start_y %> * RECT_SIZE, RECT_SIZE, RECT_SIZE);
+  <% end %>
+
+  <% @intrudermobs.each do |intrudermob| %>
+  shape(INTRUDER_ICON, <%= intrudermob.start_x %> * RECT_SIZE, <%= intrudermob.start_y %> * RECT_SIZE, RECT_SIZE, RECT_SIZE);
+  <% end %>
+}
+
+void renderTrail() {
+
+  stroke(0, 0, 255);
+  strokeWeight(3);
+  int startX = <%= @intrudermobs[0].start_x %> * RECT_SIZE + (RECT_SIZE / 2);
+  int startY = <%= @intrudermobs[0].start_y %> * RECT_SIZE + (RECT_SIZE / 2);
+  int nextX;
+  int nextY;
+  int endX;
+  int endY;
+
+  <% @intrudermobtrail.trailpoints.each do |trailpoint| %>
+  nextX = <%= trailpoint['x'] %> * RECT_SIZE;
+  nextY = <%= trailpoint['y'] %> * RECT_SIZE;
+  endX = startX + nextX;
+  endY = startY + nextY;
+  line(startX, startY, endX, endY);
+  startX = endX;
+  startY = endY;
+  <% end %>
+
+  // render destination arrow
+  if (nextY < 0) {
+    line(endX, endY, endX - RECT_SIZE / 8, endY + RECT_SIZE / 3.4);
+    line(endX, endY, endX + RECT_SIZE / 8, endY + RECT_SIZE / 3.4);
+  } else if (nextY > 0) {
+    line(endX, endY, endX - RECT_SIZE / 8, endY - RECT_SIZE / 3.4);
+    line(endX, endY, endX + RECT_SIZE / 8, endY - RECT_SIZE / 3.4);
+  } else if (nextX < 0) {
+    line(endX, endY, endX + RECT_SIZE / 8, endY + RECT_SIZE / 3.4);
+    line(endX, endY, endX + RECT_SIZE / 8, endY - RECT_SIZE / 3.4);
+  } else if (nextX > 0) {
+    line(endX, endY, endX - RECT_SIZE / 8, endY + RECT_SIZE / 3.4);
+    line(endX, endY, endX - RECT_SIZE / 8, endY - RECT_SIZE / 3.4);
+  }
+}
+
+void renderDeadMob(int x, int y) {
+  stroke(0);
+  strokeWeight(3);
+  int startX = x * RECT_SIZE;
+  int startY = y * RECT_SIZE;
+  line(startX, startY, startX + RECT_SIZE, startY + RECT_SIZE);
+  line(startX + RECT_SIZE, startY, startX, startY + RECT_SIZE);
+}
+
+</script>
+
+
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Map Name:</b>
+  <%= @moretinymap.name %>
+</p>
+
+<p>
+  <b>Map Size:</b>
+  <%= @moretinymap.xsize %>×<%= @moretinymap.ysize %>
+</p>
+
+<p>
+  <b>Map:</b><br />
+  <span id="map"><%= @moretinymap.map %></span>
+</p>
+
+<p>
+<canvas id="canvas1"></canvas>
+</p>
+
+<p>
+防衛側：<br />
+  <% @guardmobs.each do |guardmob| %>
+    　<%= guardmob.name %> ｜
+    hp: <span id="hp_<%= guardmob.id %>"><%= guardmob.moretinymobinfo.hp %></span> / <%= guardmob.moretinymobinfo.hp %> ｜
+    str: <%= guardmob.moretinymobinfo.str %><br />
+  <% end %>
+</p>
+
+<p>
+攻撃側：<br />
+  <% @intrudermobs.each do |intrudermob| %>
+    　<%= intrudermob.name %> ｜
+    hp: <span id="hp_<%= intrudermob.id %>"><%= intrudermob.moretinymobinfo.hp %></span> / <%= intrudermob.moretinymobinfo.hp %> ｜
+    str: <%= intrudermob.moretinymobinfo.str %><br />
+  <% end %>
+</p>
+
+<p>
+<textarea id="battle" name="battlelog" cols="40" rows="4" maxlength="20" placeholder="戦闘経過">
+<% @mobbattles.each do |mobbattle| %>
+<%= mobbattle.log.chop %>
+<% end %>
+</textarea>
+</p>
+
+<script id="script1" type="text/javascript">
+function CreateMap(maptext) {
+
+  var p = Processing.getInstanceById("canvas1");
+  var dungeonArray = maptext.toString().split('|')
+  var dungeonSizeX = dungeonArray[0].length
+  var dungeonSizeY = dungeonArray.length
+  console.log('dungeonSize=(' + dungeonSizeX + ',' + dungeonSizeY + ')')
+
+  var startX = 0
+  var startY = 0
+  var currentX = 0
+  var currentY = 0
+  var rectSize = 30
+
+  for ( cntY = 0; cntY < dungeonArray.length; cntY++ ) {
+    for ( cntX = 0; cntX < dungeonArray[cntY].length; cntX++ ) {
+
+      if (dungeonArray[cntY].charAt(cntX) == '1' || dungeonArray[cntY].charAt(cntX) == 'S') {
+        currentX = startX + cntX * rectSize
+        currentY = startY + cntY * rectSize
+        p.renderDungeon(currentX, currentY);
+      }
+    }
+  }
+  p.renderMobs();
+}
+
+function UpdaeteMap() {
+
+  var p = Processing.getInstanceById("canvas1");
+
+  // update guards mob's HP
+  <% @guardmobs.each do |guardmob| %>
+  jQuery('#hp_<%= guardmob.id %>').text(<%= guardmob.hp %>)
+  <% if guardmob.is_dead then%>
+  p.renderDeadMob(<%= guardmob.start_x %>, <%= guardmob.start_y %>)
+  <% end %>
+  <% end %>
+
+  // update intruder mob's HP
+  <% @intrudermobs.each do |intrudermob| %>
+  jQuery('#hp_<%= intrudermob.id %>').text(<%= intrudermob.hp %>)
+  <% if intrudermob.is_dead then%>
+  p.renderDeadMob(<%= intrudermob.start_x %>, <%= intrudermob.start_y %>)
+  <% end %>
+  <% end %>
+  p.renderTrail();
+}
+
+</script>
+
+<p>
+<button onclick='UpdaeteMap()'>Update</button>
+</p>
+
+<%= link_to 'Edit', edit_moretinymap_path(@moretinymap) %> |
+<%= link_to 'Back', moretinymaps_path %>
+
+</body>

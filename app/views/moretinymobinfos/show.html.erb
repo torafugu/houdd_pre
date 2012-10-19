@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @moretinymobinfo.name %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @moretinymobinfo.category %>
+</p>
+
+<p>
+  <b>Hp:</b>
+  <%= @moretinymobinfo.hp %>
+</p>
+
+<p>
+  <b>Str:</b>
+  <%= @moretinymobinfo.str %>
+</p>
+
+
+<%= link_to 'Edit', edit_moretinymobinfo_path(@moretinymobinfo) %> |
+<%= link_to 'Back', moretinymobinfos_path %>
