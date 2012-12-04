@@ -1,0 +1,23 @@
+<h1>Listing mosttinyturns</h1>
+
+<table>
+  <tr>
+    <th>Mosttinytrial</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mosttinyturns.each do |mosttinyturn| %>
+  <tr>
+    <td><%= mosttinyturn.mosttinytrial %></td>
+    <td><%= link_to 'Show', mosttinyturn %></td>
+    <td><%= link_to 'Edit', edit_mosttinyturn_path(mosttinyturn) %></td>
+    <td><%= link_to 'Destroy', mosttinyturn, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mosttinyturn', new_mosttinyturn_path %>

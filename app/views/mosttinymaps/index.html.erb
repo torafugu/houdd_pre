@@ -1,0 +1,31 @@
+<h1>Listing mosttinymaps</h1>
+
+<table>
+  <tr>
+    <th>Mosttinyuser</th>
+    <th>Name</th>
+    <th>Prev ID</th>
+    <th>Map</th>
+    <th>Category</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mosttinymaps.each do |mosttinymap| %>
+  <tr>
+    <td><%= mosttinymap.mosttinyuser.name %></td>
+    <td><%= mosttinymap.name %></td>
+    <td><%= mosttinymap.prev_map_id %></td>
+    <td><%= mosttinymap.map %></td>
+    <td><%= mosttinymap.category %></td>
+    <td><%= link_to 'Show', mosttinymap %></td>
+    <td><%= link_to 'Edit', edit_mosttinymap_path(mosttinymap) %></td>
+    <td><%= link_to 'Destroy', mosttinymap, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mosttinymap', new_mosttinymap_path %>

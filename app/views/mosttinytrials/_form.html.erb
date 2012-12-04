@@ -1,0 +1,48 @@
+<%= form_for(@mosttinytrial) do |f| %>
+  <% if @mosttinytrial.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mosttinytrial.errors.count, "error") %> prohibited this mosttinytrial from being saved:</h2>
+
+      <ul>
+      <% @mosttinytrial.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :def_user_id %><br />
+    <%= f.collection_select(:def_user_id, Mosttinyuser.all, :id, :name, :include_blank => true) %>
+  </div>
+  <div class="field">
+    <%= f.label :def_strategy_id %><br />
+    <%= f.collection_select(:def_strategy_id, Mosttinystrategy.all, :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :map_id %><br />
+    <%= render 'select_map', {:f => f} %>
+  </div>
+  <div class="field">
+    <%= render 'select_def_mobs', {:f => f} %>
+  </div>
+  <div class="field">
+    <%= f.label :atk_user_id %><br />
+    <%= f.collection_select(:atk_user_id, Mosttinyuser.all, :id, :name, :include_blank => true) %>
+  </div>
+  <div class="field">
+    <%= f.label :atk_strategy_id %><br />
+    <%= f.collection_select(:atk_strategy_id, Mosttinystrategy.all, :id, :name) %>
+  </div>
+  <div class="field">
+    <%= render 'select_atk_mobs', {:f => f} %>
+  </div>
+  <div class="field">
+    <%= f.label :is_completed %><br />
+    <%= f.check_box :is_completed %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

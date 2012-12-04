@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mosttinyuser: 
+  name: MyString
+  prev_id: 1
+  map: MyText
+  category: 1
+
+two:
+  mosttinyuser: 
+  name: MyString
+  prev_id: 1
+  map: MyText
+  category: 1

@@ -1,0 +1,31 @@
+<h1>Listing mosttinymobs</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Mosttinyuser</th>
+    <th>Mosttinymobinfo</th>
+    <th>Hp</th>
+    <th>Is dead</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mosttinymobs.each do |mosttinymob| %>
+  <tr>
+    <td><%= mosttinymob.name %></td>
+    <td><%= mosttinymob.mosttinyuser.name %></td>
+    <td><%= mosttinymob.mosttinymobinfo.name %></td>
+    <td><%= mosttinymob.hp %></td>
+    <td><%= mosttinymob.is_dead %></td>
+    <td><%= link_to 'Show', mosttinymob %></td>
+    <td><%= link_to 'Edit', edit_mosttinymob_path(mosttinymob) %></td>
+    <td><%= link_to 'Destroy', mosttinymob, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mosttinymob', new_mosttinymob_path %>

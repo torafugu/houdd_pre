@@ -1,0 +1,2 @@
+module MosttinymobsetupsHelper
+end

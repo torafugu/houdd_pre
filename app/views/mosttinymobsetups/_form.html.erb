@@ -1,0 +1,37 @@
+<%= form_for(@mosttinymobsetup) do |f| %>
+  <% if @mosttinymobsetup.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mosttinymobsetup.errors.count, "error") %> prohibited this mosttinymobsetup from being saved:</h2>
+
+      <ul>
+      <% @mosttinymobsetup.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mosttinytrial %><br />
+    <%= f.collection_select(:mosttinytrial_id, Mosttinytrial.find(:all), :id, :id) %>
+  </div>
+  <div class="field">
+    <%= f.label :mosttinymob %><br />
+    <%= f.collection_select(:mosttinymob_id, Mosttinymob.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :start_x %><br />
+    <%= f.number_field :start_x %>
+  </div>
+  <div class="field">
+    <%= f.label :start_y %><br />
+    <%= f.number_field :start_y %>
+  </div>
+  <div class="field">
+    <%= f.label :is_guard %><br />
+    <%= f.check_box :is_guard %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

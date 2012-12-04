@@ -12,10 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
 //= require MochiKit
 //= require SVGKit
 //= processing-1.4.1
 //= require DungeonRender
 //= require DungeonRender2
+//= require_tree .
 

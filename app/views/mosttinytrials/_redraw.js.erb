@@ -1,0 +1,23 @@
+jQuery("#BattleLog").text("");
+jQuery("#BattleLog").text("<%= escape_javascript(@current_turn.log) %>");
+
+p = Processing.getInstanceById("MapCanvas")
+p.draw();
+RenderMap(jQuery('#MapText').val());
+
+<% @current_turn.mosttinymobtrails.each do |mosttinymobtrail| %>
+  p.renderMob(<%= mosttinymobtrail.from_x %>, <%= mosttinymobtrail.from_y %>, <%= mosttinymobtrail.mosttinymobsetup.is_guard %>, "<%= mosttinymobtrail.trail[0] %>");
+<% unless mosttinymobtrail.trail.empty? %>
+<% mosttinymobtrail.trailpoints.each do |trailpoint| %>
+  p.renderTrail(<%= trailpoint["from_x"] %>, <%= trailpoint["from_y"] %>, <%= trailpoint["to_x"] %>, <%= trailpoint["to_y"] %>, <%= trailpoint["is_end"] %>, <%= mosttinymobtrail.mosttinymobsetup.is_guard %>);
+<% end %>
+<% end %>
+<% end %>
+
+<% @current_turn.mosttinybattles.each do |mosttinybattle| %>
+  jQuery("#BattleLog").append("<%= escape_javascript(mosttinybattle.log) %>");
+  jQuery("#hp_<%= mosttinybattle.tgt_mobsetup_id %>").text("<%= mosttinybattle.tgt_mob_current_hp %>");
+<% if mosttinybattle.is_tgt_mob_dead %>
+  p.renderDeadMob(<%= mosttinybattle.tgt_mob_x %>, <%= mosttinybattle.tgt_mob_y %>)
+<% end %>
+<% end %>

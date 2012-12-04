@@ -1,0 +1,2 @@
+module MosttinymobtrailsHelper
+end

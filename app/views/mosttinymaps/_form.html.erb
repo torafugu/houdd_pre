@@ -1,0 +1,37 @@
+<%= form_for(@mosttinymap) do |f| %>
+  <% if @mosttinymap.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mosttinymap.errors.count, "error") %> prohibited this mosttinymap from being saved:</h2>
+
+      <ul>
+      <% @mosttinymap.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mosttinyuser %><br />
+    <%= f.collection_select(:mosttinyuser_id, Mosttinyuser.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :prev_map_id %><br />
+    <%= f.number_field :prev_map_id %>
+  </div>
+  <div class="field">
+    <%= f.label :map %><br />
+    <%= f.text_area :map %>
+  </div>
+  <div class="field">
+    <%= f.label :category %><br />
+    <%= f.number_field :category %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

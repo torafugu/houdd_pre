@@ -1,0 +1,17 @@
+# coding: utf-8
+<div class="field">
+    <table>
+      <tr><td align="center">
+        <%= f.label "Mobs in bench" %><br />
+        <%= f.select(:atk_bench_mob_ids, {}, {}, {:multiple => true, :size => 3}) %>
+      </td><td>
+        <input id="btnMoveRightAtk" type="button" value="->" />  
+        <br />  
+        <input id="btnMoveLeftAtk" type="button" value="<-" />
+      </td><td align="center">
+        <%= f.label "Mobs in Setup" %><br />
+        <%= f.select(:atk_setup_mob_ids, {}, {}, {:multiple => true, :size => 3}) %>
+      </td></tr>
+    </table>
+</div>
+

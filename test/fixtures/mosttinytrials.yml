@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mosttinyuser: 
+  def_user_id: 1
+  map_id: 1
+  atk_user_id: 1
+
+two:
+  mosttinyuser: 
+  def_user_id: 1
+  map_id: 1
+  atk_user_id: 1

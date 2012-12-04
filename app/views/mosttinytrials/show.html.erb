@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Def user:</b>
+  <%= @mosttinytrial.def_user.name %>
+</p>
+
+<p>
+  <b>Def user strategy:</b>
+  <%= @mosttinytrial.def_strategy.name %>
+</p>
+
+<p>
+  <b>Map:</b>
+  <%= @mosttinytrial.map.name %>
+</p>
+
+<p>
+  <b>Atk user:</b>
+  <%= @mosttinytrial.atk_user.name %>
+</p>
+
+<p>
+  <b>Atk user strategy:</b>
+  <%= @mosttinytrial.atk_strategy.name %>
+</p>
+
+<p>
+  <b>is completed:</b>
+  <%= @mosttinytrial.is_completed %>
+</p>
+
+<%= link_to 'Edit', edit_mosttinytrial_path(@mosttinytrial) %> |
+<%= link_to 'Back', mosttinytrials_path %>

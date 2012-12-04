@@ -1,0 +1,25 @@
+<h1>Listing mosttinystrategies</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mosttinystrategies.each do |mosttinystrategy| %>
+  <tr>
+    <td><%= mosttinystrategy.id %></td>
+    <td><%= mosttinystrategy.name %></td>
+    <td><%= link_to 'Show', mosttinystrategy %></td>
+    <td><%= link_to 'Edit', edit_mosttinystrategy_path(mosttinystrategy) %></td>
+    <td><%= link_to 'Destroy', mosttinystrategy, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mosttinystrategy', new_mosttinystrategy_path %>

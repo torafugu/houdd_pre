@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mosttinytrial:</b>
+  <%= @mosttinymobsetup.mosttinytrial.id %>
+</p>
+
+<p>
+  <b>Mosttinymobinfo:</b>
+  <%= @mosttinymobsetup.mosttinymob.mosttinymobinfo.name %>
+</p>
+
+<p>
+  <b>Mosttinymob:</b>
+  <%= @mosttinymobsetup.mosttinymob.name %>
+</p>
+
+<p>
+  <b>Start x:</b>
+  <%= @mosttinymobsetup.start_x %>
+</p>
+
+<p>
+  <b>Start y:</b>
+  <%= @mosttinymobsetup.start_y %>
+</p>
+
+<p>
+  <b>Is guard:</b>
+  <%= @mosttinymobsetup.is_guard %>
+</p>
+
+
+<%= link_to 'Edit', edit_mosttinymobsetup_path(@mosttinymobsetup) %> |
+<%= link_to 'Back', mosttinymobsetups_path %>

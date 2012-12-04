@@ -1,4 +1,32 @@
 HouddPre::Application.routes.draw do
+
+  resources :mosttinymobtrails
+
+  resources :mosttinybattles
+
+  resources :mosttinystrategies
+
+  resources :mosttinymobsetups
+
+  resources :mosttinymobs
+
+  resources :mosttinymobinfos
+
+  resources :mosttinymaps
+
+  resources :mosttinyturns
+
+  match '/mosttinytrials/select_map_and_def_mobs'
+  match '/mosttinytrials/:id/select_map_and_def_mobs' => 'mosttinytrials#select_map_and_def_mobs'
+  match '/mosttinytrials/select_atk_mobs'
+  match '/mosttinytrials/:id/select_atk_mobs' => 'mosttinytrials#select_atk_mobs'
+  match '/mosttinytrials/:id/start' => 'mosttinytrials#start', as: 'start_mosttinytrial', :via => :get
+  match '/mosttinytrials/:id/execute' => 'mosttinytrials#execute'
+  match '/mosttinytrials/:id/check_log' => 'mosttinytrials#check_log'
+  resources :mosttinytrials
+
+  resources :mosttinyusers
+
   resources :moretinymobbattles
 
   resources :moretinymobtrails

@@ -1,0 +1,2 @@
+module MosttinystrategiesHelper
+end

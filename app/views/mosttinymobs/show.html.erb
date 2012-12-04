@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @mosttinymob.name %>
+</p>
+
+<p>
+  <b>Mosttinyuser:</b>
+  <%= @mosttinymob.mosttinyuser.name %>
+</p>
+
+<p>
+  <b>Mosttinymobinfo:</b>
+  <%= @mosttinymob.mosttinymobinfo.name %>
+</p>
+
+<p>
+  <b>Hp:</b>
+  <%= @mosttinymob.hp %>
+</p>
+
+<p>
+  <b>Is dead:</b>
+  <%= @mosttinymob.is_dead %>
+</p>
+
+
+<%= link_to 'Edit', edit_mosttinymob_path(@mosttinymob) %> |
+<%= link_to 'Back', mosttinymobs_path %>

@@ -1,0 +1,33 @@
+<h1>Listing mosttinymobsetups</h1>
+
+<table>
+  <tr>
+    <th>Trial</th>
+    <th>Mobinfo</th>
+    <th>Mob</th>
+    <th>Start x</th>
+    <th>Start y</th>
+    <th>Is guard</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mosttinymobsetups.each do |mosttinymobsetup| %>
+  <tr>
+    <td><%= mosttinymobsetup.mosttinytrial.id %></td>
+    <td><%= mosttinymobsetup.mosttinymob.mosttinymobinfo.name %></td>
+    <td><%= mosttinymobsetup.mosttinymob.name %></td>
+    <td><%= mosttinymobsetup.start_x %></td>
+    <td><%= mosttinymobsetup.start_y %></td>
+    <td><%= mosttinymobsetup.is_guard %></td>
+    <td><%= link_to 'Show', mosttinymobsetup %></td>
+    <td><%= link_to 'Edit', edit_mosttinymobsetup_path(mosttinymobsetup) %></td>
+    <td><%= link_to 'Destroy', mosttinymobsetup, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mosttinymobsetup', new_mosttinymobsetup_path %>

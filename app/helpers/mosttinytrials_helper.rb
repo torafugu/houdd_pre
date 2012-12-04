@@ -1,0 +1,2 @@
+module MosttinytrialsHelper
+end

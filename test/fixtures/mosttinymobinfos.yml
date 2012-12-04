@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  category: 1
+  hp: 1
+  str: 1
+  def: 1
+  agi: 1
+
+two:
+  name: MyString
+  category: 1
+  hp: 1
+  str: 1
+  def: 1
+  agi: 1

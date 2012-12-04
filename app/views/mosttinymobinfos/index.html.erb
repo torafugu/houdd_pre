@@ -1,0 +1,35 @@
+<h1>Listing mosttinymobinfos</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Hp</th>
+    <th>High Atk</th>
+    <th>Low Atk</th>
+    <th>Def</th>
+    <th>Agi</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mosttinymobinfos.each do |mosttinymobinfo| %>
+  <tr>
+    <td><%= mosttinymobinfo.name %></td>
+    <td><%= mosttinymobinfo.category %></td>
+    <td><%= mosttinymobinfo.hp %></td>
+    <td><%= mosttinymobinfo.high_atk %></td>
+    <td><%= mosttinymobinfo.low_atk %></td>
+    <td><%= mosttinymobinfo.def %></td>
+    <td><%= mosttinymobinfo.agi %></td>
+    <td><%= link_to 'Show', mosttinymobinfo %></td>
+    <td><%= link_to 'Edit', edit_mosttinymobinfo_path(mosttinymobinfo) %></td>
+    <td><%= link_to 'Destroy', mosttinymobinfo, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mosttinymobinfo', new_mosttinymobinfo_path %>

@@ -1,0 +1,217 @@
+<script type="text/processing" data-processing-target="MapCanvas">
+
+int RECT_SIZE = 30;
+PShape GUARDS_ICON = loadShape("/assets/guardsicon.svg");
+PShape INTRUDER_ICON = loadShape("/assets/intrudericon.svg");
+
+void setup() {
+  size(<%= @mosttinytrial.map.xsize %> * RECT_SIZE, <%= @mosttinytrial.map.ysize %> * RECT_SIZE);
+  noLoop();
+}
+
+void draw() {
+  background(0);
+  fill(255);
+}
+
+void renderMap(int x, int y) {
+  noStroke();
+  fill(200);
+  rect(x, y, RECT_SIZE, RECT_SIZE);
+}
+
+void renderMob(int x, int y, boolean is_guard, String direction) {
+
+  if (is_guard == true) {
+    GUARDS_ICON.resetMatrix();
+    if (direction.equals("E") == true) {
+      GUARDS_ICON.translate(RECT_SIZE, RECT_SIZE);  
+      GUARDS_ICON.rotate(PI + PI/2);
+    } else if (direction.equals("W") == true) {
+      GUARDS_ICON.translate(RECT_SIZE, 0);  
+      GUARDS_ICON.rotate(PI/2);
+    } else if (direction.equals("N") == true) {
+      GUARDS_ICON.translate(RECT_SIZE, RECT_SIZE);  
+      GUARDS_ICON.rotate(PI);
+    }
+    shape(GUARDS_ICON, x * RECT_SIZE, y * RECT_SIZE, RECT_SIZE, RECT_SIZE);
+  } else {
+    INTRUDER_ICON.resetMatrix();
+    if (direction.equals("E") == true) {
+      INTRUDER_ICON.translate(RECT_SIZE, 0);  
+      INTRUDER_ICON.rotate(PI/2);
+    } else if (direction.equals("W") == true) {
+      INTRUDER_ICON.translate(0, RECT_SIZE);  
+      INTRUDER_ICON.rotate(PI + PI/2);
+    } else if (direction.equals("S") == true) {
+      INTRUDER_ICON.translate(RECT_SIZE, RECT_SIZE * 2);  
+      INTRUDER_ICON.rotate(PI);
+    }
+    shape(INTRUDER_ICON, x * RECT_SIZE, y * RECT_SIZE, RECT_SIZE, RECT_SIZE);
+  }
+}
+
+void renderDeadMob(int x, int y) {
+  stroke(0);
+  strokeWeight(3);
+  int startX = x * RECT_SIZE;
+  int startY = y * RECT_SIZE;
+  line(startX, startY, startX + RECT_SIZE, startY + RECT_SIZE);
+  line(startX + RECT_SIZE, startY, startX, startY + RECT_SIZE);
+}
+
+void renderTrail(int from_x, int from_y, int to_x, int to_y, boolean is_end, boolean is_guard) {
+
+  int start_x = from_x * RECT_SIZE + (RECT_SIZE / 2);
+  int start_y = from_y * RECT_SIZE + (RECT_SIZE / 2);
+  int end_x = to_x * RECT_SIZE + (RECT_SIZE / 2);
+  int end_y = to_y * RECT_SIZE + (RECT_SIZE / 2);
+  if (is_guard == true) {
+    stroke(255, 127, 80);
+    } else {
+    stroke(70, 130, 180);
+  }
+  strokeWeight(3);
+  line(start_x, start_y, end_x, end_y);
+
+  // render end point arrow
+  if (is_end == true) {
+    if (to_y - from_y < 0) {
+      line(end_x, end_y, end_x - RECT_SIZE / 8, end_y + RECT_SIZE / 3.4);
+      line(end_x, end_y, end_x + RECT_SIZE / 8 + 1, end_y + RECT_SIZE / 3.4);
+    } else if (to_y - from_y > 0) {
+      line(end_x, end_y, end_x - RECT_SIZE / 8, end_y - RECT_SIZE / 3.4);
+      line(end_x, end_y, end_x + RECT_SIZE / 8 + 1, end_y - RECT_SIZE / 3.4);
+    } else if (to_x - from_x < 0) {
+      line(end_x, end_y, end_x + RECT_SIZE / 3.4, end_y + RECT_SIZE / 8 + 1);
+      line(end_x, end_y, end_x + RECT_SIZE / 3.4, end_y - RECT_SIZE / 8);
+    } else if (to_x - from_x > 0) {
+      line(end_x, end_y, end_x - RECT_SIZE / 3.4, end_y + RECT_SIZE / 8 + 1);
+      line(end_x, end_y, end_x - RECT_SIZE / 3.4, end_y - RECT_SIZE / 8);
+    }
+  }
+}
+</script>
+<script id="script1" type="text/javascript">
+function RenderMap(maptext) {
+
+  var p = Processing.getInstanceById("MapCanvas");
+  var dungeonArray = maptext.toString().split('|')
+  var dungeonSizeX = dungeonArray[0].length
+  var dungeonSizeY = dungeonArray.length
+
+  var startX = 0
+  var startY = 0
+  var currentX = 0
+  var currentY = 0
+  var rectSize = 30
+
+  for ( cntY = 0; cntY < dungeonArray.length; cntY++ ) {
+    for ( cntX = 0; cntX < dungeonArray[cntY].length; cntX++ ) {
+
+      if (dungeonArray[cntY].charAt(cntX) == '1' || dungeonArray[cntY].charAt(cntX) == 'S') {
+        currentX = startX + cntX * rectSize
+        currentY = startY + cntY * rectSize
+        p.renderMap(currentX, currentY);
+      }
+    }
+  }
+}
+
+function RenderSetupMobs() {
+  p = Processing.getInstanceById("MapCanvas");
+  <%  @mosttinytrial.mosttinymobsetups.each do |mobsetup| %>
+  <% if mobsetup.is_guard %>
+  p.renderMob(<%= mobsetup.start_x %>, <%= mobsetup.start_y %>, true, "");
+  <% else %>
+  p.renderMob(<%= mobsetup.start_x %>, <%= mobsetup.start_y %>, false, "");
+  <% end %>
+  <% end %>
+}
+</script>
+
+    
+<table>
+  <tr>
+    <td>
+      <b>Def user:</b>
+      <%= @mosttinytrial.def_user.name %>
+    </td>
+    <td>
+      <b>Atk user:</b>
+      <%= @mosttinytrial.atk_user.name %>
+    </td>
+    <td>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <b>Turn:</b>
+      <span id="CurrentTurn">0</span>/<span id="LastTurn">0</span>
+    </td>
+    <td>
+      <b>Status:</b>
+        <% if @mosttinytrial.is_completed %>
+          <span id="Status">completed.</span>
+        <% else %>
+          <span id="Status">not started.</span>
+        <% end %>
+    </td>
+    <td>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center" valign="top">
+      <canvas id="MapCanvas"></canvas>
+    </td>
+    <td valign="top">
+      <b>Guards Mobs:</b><br />
+        <% @mosttinytrial.mosttinymobsetups.each do |mobsetup| %>
+        <% if mobsetup.is_guard %>
+          (<%= mobsetup.mosttinymob.mosttinymobinfo.name %>) 
+          <%= mobsetup.mosttinymob.name %> | 
+          hp: <span id="hp_<%= mobsetup.id %>"><%= mobsetup.mosttinymob.mosttinymobinfo.hp %></span>
+          / <%= mobsetup.mosttinymob.mosttinymobinfo.hp %> | 
+          atk: <%= mobsetup.mosttinymob.mosttinymobinfo.high_atk %> - <%= mobsetup.mosttinymob.mosttinymobinfo.low_atk %> | 
+          def: <%= mobsetup.mosttinymob.mosttinymobinfo.def %> | 
+          agi: <%= mobsetup.mosttinymob.mosttinymobinfo.agi %><br />
+        <% end %>
+        <% end %>
+      <br />
+      <b>Intruder Mobs:</b><br />
+        <% @mosttinytrial.mosttinymobsetups.each do |mobsetup| %>
+        <% if not mobsetup.is_guard %>
+          (<%= mobsetup.mosttinymob.mosttinymobinfo.name %>) 
+          <%= mobsetup.mosttinymob.name %> 
+          hp: <span id="hp_<%= mobsetup.id %>"><%= mobsetup.mosttinymob.mosttinymobinfo.hp %></span>
+          / <%= mobsetup.mosttinymob.mosttinymobinfo.hp %> | 
+          atk: <%= mobsetup.mosttinymob.mosttinymobinfo.high_atk %> - <%= mobsetup.mosttinymob.mosttinymobinfo.low_atk %> | 
+          def: <%= mobsetup.mosttinymob.mosttinymobinfo.def %> | 
+          agi: <%= mobsetup.mosttinymob.mosttinymobinfo.agi %><br />
+        <% end %>
+        <% end %>
+        <p>
+        <textarea id="BattleLog" cols="40" rows="4" maxlength="20" placeholder="戦闘経過"></textarea>
+        </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+        <input id="ExecuteTrial" type="button" value="Execute Trial" />  
+        <input id="GoFirstTurn" type="button" value="<<-" />  
+        <input id="GoPreviousTurn" type="button" value="<-" />  
+        <input id="GoNextTurn" type="button" value="->" />  
+        <input id="GoLastTurn" type="button" value="->>" />  
+    </td>
+    <td>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="4">
+    </td>
+  </tr>
+  <table>
+  <input id="MapText" name="MapText" type="hidden" value="<%= @mosttinytrial.map.map %>" />
+  <br />  
+<%= link_to 'Edit', edit_mosttinytrial_path(@mosttinytrial) %> |
+<%= link_to 'Back', mosttinytrials_path %>

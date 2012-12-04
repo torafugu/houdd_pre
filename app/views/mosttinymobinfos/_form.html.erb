@@ -1,0 +1,45 @@
+<%= form_for(@mosttinymobinfo) do |f| %>
+  <% if @mosttinymobinfo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mosttinymobinfo.errors.count, "error") %> prohibited this mosttinymobinfo from being saved:</h2>
+
+      <ul>
+      <% @mosttinymobinfo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :category %><br />
+    <%= f.number_field :category %>
+  </div>
+  <div class="field">
+    <%= f.label :hp %><br />
+    <%= f.number_field :hp %>
+  </div>
+  <div class="field">
+    <%= f.label :high_atk %><br />
+    <%= f.number_field :high_atk %>
+  </div>
+  <div class="field">
+    <%= f.label :low_atk %><br />
+    <%= f.number_field :low_atk %>
+  </div>
+  <div class="field">
+    <%= f.label :def %><br />
+    <%= f.number_field :def %>
+  </div>
+  <div class="field">
+    <%= f.label :agi %><br />
+    <%= f.number_field :agi %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

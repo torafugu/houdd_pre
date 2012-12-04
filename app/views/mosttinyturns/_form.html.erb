@@ -1,0 +1,21 @@
+<%= form_for(@mosttinyturn) do |f| %>
+  <% if @mosttinyturn.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mosttinyturn.errors.count, "error") %> prohibited this mosttinyturn from being saved:</h2>
+
+      <ul>
+      <% @mosttinyturn.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mosttinytrial %><br />
+    <%= f.text_field :mosttinytrial %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

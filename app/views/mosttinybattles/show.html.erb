@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mosttinyturn:</b>
+  <%= @mosttinybattle.mosttinyturn %>
+</p>
+
+<p>
+  <b>Src mob:</b>
+  <%= @mosttinybattle.src_mob_id %>
+</p>
+
+<p>
+  <b>Tgt mob:</b>
+  <%= @mosttinybattle.tgt_mob_id %>
+</p>
+
+<p>
+  <b>Damage to tgt:</b>
+  <%= @mosttinybattle.damage_to_tgt %>
+</p>
+
+<p>
+  <b>Log:</b>
+  <%= @mosttinybattle.log %>
+</p>
+
+
+<%= link_to 'Edit', edit_mosttinybattle_path(@mosttinybattle) %> |
+<%= link_to 'Back', mosttinybattles_path %>

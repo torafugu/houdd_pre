@@ -1,0 +1,29 @@
+<%= form_for(@mosttinymobtrail) do |f| %>
+  <% if @mosttinymobtrail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mosttinymobtrail.errors.count, "error") %> prohibited this mosttinymobtrail from being saved:</h2>
+
+      <ul>
+      <% @mosttinymobtrail.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mosttinyturn %><br />
+    <%= f.text_field :mosttinyturn %>
+  </div>
+  <div class="field">
+    <%= f.label :mosttinymob %><br />
+    <%= f.text_field :mosttinymob %>
+  </div>
+  <div class="field">
+    <%= f.label :trail %><br />
+    <%= f.text_area :trail %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

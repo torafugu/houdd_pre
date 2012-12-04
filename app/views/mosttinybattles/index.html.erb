@@ -1,0 +1,31 @@
+<h1>Listing mosttinybattles</h1>
+
+<table>
+  <tr>
+    <th>Mosttinyturn</th>
+    <th>Src mob</th>
+    <th>Tgt mob</th>
+    <th>Damage to tgt</th>
+    <th>Log</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mosttinybattles.each do |mosttinybattle| %>
+  <tr>
+    <td><%= mosttinybattle.mosttinyturn %></td>
+    <td><%= mosttinybattle.src_mob_id %></td>
+    <td><%= mosttinybattle.tgt_mob_id %></td>
+    <td><%= mosttinybattle.damage_to_tgt %></td>
+    <td><%= mosttinybattle.log %></td>
+    <td><%= link_to 'Show', mosttinybattle %></td>
+    <td><%= link_to 'Edit', edit_mosttinybattle_path(mosttinybattle) %></td>
+    <td><%= link_to 'Destroy', mosttinybattle, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mosttinybattle', new_mosttinybattle_path %>

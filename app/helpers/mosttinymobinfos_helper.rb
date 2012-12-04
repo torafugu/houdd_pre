@@ -1,0 +1,2 @@
+module MosttinymobinfosHelper
+end

@@ -1,0 +1,23 @@
+<h1>Listing mosttinyusers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mosttinyusers.each do |mosttinyuser| %>
+  <tr>
+    <td><%= mosttinyuser.name %></td>
+    <td><%= link_to 'Show', mosttinyuser %></td>
+    <td><%= link_to 'Edit', edit_mosttinyuser_path(mosttinyuser) %></td>
+    <td><%= link_to 'Destroy', mosttinyuser, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mosttinyuser', new_mosttinyuser_path %>

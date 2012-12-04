@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  mosttinyuser: 
+  mosttinymobinfo: 
+  is_guard: false
+  start_x: 1
+  start_y: 1
+  distance: 1
+  hp: 1
+  is_dead: false
+
+two:
+  name: MyString
+  mosttinyuser: 
+  mosttinymobinfo: 
+  is_guard: false
+  start_x: 1
+  start_y: 1
+  distance: 1
+  hp: 1
+  is_dead: false

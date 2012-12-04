@@ -1,0 +1,6 @@
+jQuery("#mosttinytrial_atk_bench_mob_ids").empty();
+jQuery("#mosttinytrial_atk_bench_mob_ids").attr("size", "<%= @atk_mob_size %>");
+jQuery("#mosttinytrial_atk_bench_mob_ids").html("<%= escape_javascript(options_for_select(@atk_bench_mob)) %>");
+jQuery("#mosttinytrial_atk_setup_mob_ids").empty();
+jQuery("#mosttinytrial_atk_setup_mob_ids").attr("size", "<%= @atk_mob_size %>");
+jQuery("#mosttinytrial_atk_setup_mob_ids").html("<%= escape_javascript(options_for_select(@atk_setup_mob)) %>");

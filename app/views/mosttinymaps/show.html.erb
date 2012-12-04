@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mosttinyuser:</b>
+  <%= @mosttinymap.mosttinyuser.name %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @mosttinymap.name %>
+</p>
+
+<p>
+  <b>Prev_map_id:</b>
+  <%= @mosttinymap.prev_map_id %>
+</p>
+
+<p>
+  <b>Map:</b>
+  <%= @mosttinymap.map %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @mosttinymap.category %>
+</p>
+
+
+<%= link_to 'Edit', edit_mosttinymap_path(@mosttinymap) %> |
+<%= link_to 'Back', mosttinymaps_path %>
