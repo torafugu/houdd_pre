@@ -1,0 +1,37 @@
+<h1>Listing smallmobinfos</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Max hp</th>
+    <th>Max mp</th>
+    <th>High atk</th>
+    <th>Low atk</th>
+    <th>Def</th>
+    <th>Agi</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @smallmobinfos.each do |smallmobinfo| %>
+  <tr>
+    <td><%= smallmobinfo.name %></td>
+    <td><%= smallmobinfo.category_id %></td>
+    <td><%= smallmobinfo.max_hp %></td>
+    <td><%= smallmobinfo.max_mp %></td>
+    <td><%= smallmobinfo.high_atk %></td>
+    <td><%= smallmobinfo.low_atk %></td>
+    <td><%= smallmobinfo.def %></td>
+    <td><%= smallmobinfo.agi %></td>
+    <td><%= link_to 'Show', smallmobinfo %></td>
+    <td><%= link_to 'Edit', edit_smallmobinfo_path(smallmobinfo) %></td>
+    <td><%= link_to 'Destroy', smallmobinfo, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Smallmobinfo', new_smallmobinfo_path %>

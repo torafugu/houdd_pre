@@ -1,0 +1,44 @@
+<%= form_for(@smallmobunit) do |f| %>
+  <% if @smallmobunit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@smallmobunit.errors.count, "error") %> prohibited this smallmobunit from being saved:</h2>
+
+      <ul>
+      <% @smallmobunit.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :smalluser %><br />
+    <%= f.collection_select(:smalluser_id, Smalluser.find(:all), :id, :name, :include_blank => true) %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :smallstrategy %><br />
+    <%= f.collection_select(:smallstrategy_id, Smallstrategy.find(:all), :id, :name, :include_blank => true) %>
+  </div>
+  <div class="field">
+    <%= f.label :is_guard %><br />
+    <%= f.check_box :is_guard %>
+  </div>
+  <div class="field">
+    <%= f.label :smallmap %><br />
+    <%= render 'select_map', {:f => f} %>
+  </div>
+  <div class="field">
+    <%= f.label :is_prepared %><br />
+    <%= f.check_box :is_prepared %>
+  </div>
+  <div class="field">
+    <%= render 'select_squads', {:f => f} %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

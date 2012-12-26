@@ -1,0 +1,247 @@
+<script type="text/processing" data-processing-target="trial_map_canvas">
+int RECT_SIZE = 20;
+int SVG_SIZE = 30;
+int map[][] = new int[<%= @smalltrial.smallmap.xsize %>][<%= @smalltrial.smallmap.ysize %>];
+PShape GUARDS_ICON = loadShape("/assets/guardsicon.svg");
+PShape INTRUDER_ICON = loadShape("/assets/intrudericon.svg");
+
+void setup() {
+  size(map[0].length * RECT_SIZE, map.length * RECT_SIZE);
+  noLoop();
+}
+
+void draw() {
+  background(0);20293877
+  fill(255);
+}
+
+void renderMap(int x, int y) {
+  noStroke();
+  fill(200);
+  rect(x, y, RECT_SIZE, RECT_SIZE);
+}
+
+void renderMob(int x, int y, boolean is_guard, String direction) {
+
+  if (is_guard == true) {
+    GUARDS_ICON.resetMatrix();
+    if (direction.equals("E") == true) {
+      GUARDS_ICON.translate(0, SVG_SIZE);  
+      GUARDS_ICON.rotate(PI + PI/2);
+    } else if (direction.equals("W") == true) {
+      GUARDS_ICON.translate(SVG_SIZE, 0);  
+      GUARDS_ICON.rotate(PI/2);
+    } else if (direction.equals("N") == true) {
+      GUARDS_ICON.translate(SVG_SIZE, SVG_SIZE);  
+      GUARDS_ICON.rotate(PI);
+    }
+    shape(GUARDS_ICON, x * RECT_SIZE, y * RECT_SIZE, RECT_SIZE, RECT_SIZE);
+  } else {
+    INTRUDER_ICON.resetMatrix();
+    if (direction.equals("E") == true) {
+      INTRUDER_ICON.translate(SVG_SIZE, 0);  
+      INTRUDER_ICON.rotate(PI/2);
+    } else if (direction.equals("W") == true) {
+      INTRUDER_ICON.translate(0, SVG_SIZE);  
+      INTRUDER_ICON.rotate(PI + PI/2);
+    } else if (direction.equals("S") == true) {
+      INTRUDER_ICON.translate(SVG_SIZE, SVG_SIZE);  
+      INTRUDER_ICON.rotate(PI);
+    }
+    shape(INTRUDER_ICON, x * RECT_SIZE, y * RECT_SIZE, RECT_SIZE, RECT_SIZE);
+  }
+}
+
+void renderDeadMob(int x, int y) {
+  stroke(0);
+  strokeWeight(3);
+  int startX = x * RECT_SIZE;
+  int startY = y * RECT_SIZE;
+  line(startX, startY, startX + RECT_SIZE, startY + RECT_SIZE);
+  line(startX + RECT_SIZE, startY, startX, startY + RECT_SIZE);
+}
+
+void renderTrail(int from_x, int from_y, int to_x, int to_y, boolean is_end, boolean is_guard) {
+  int start_x = from_x * RECT_SIZE + (RECT_SIZE / 2);
+  int start_y = from_y * RECT_SIZE + (RECT_SIZE / 2);
+  int end_x = to_x * RECT_SIZE + (RECT_SIZE / 2);
+  int end_y = to_y * RECT_SIZE + (RECT_SIZE / 2);
+  if (is_guard == true) {
+    stroke(255, 127, 80);
+    } else {
+    stroke(70, 130, 180);
+  }
+  strokeWeight(3);
+  line(start_x, start_y, end_x, end_y);
+
+  // render end point arrow
+  if (is_end == true) {
+    if (to_y - from_y < 0) {
+      line(end_x, end_y, end_x - RECT_SIZE / 8, end_y + RECT_SIZE / 3.4);
+      line(end_x, end_y, end_x + RECT_SIZE / 8 + 0.5, end_y + RECT_SIZE / 3.4);
+    } else if (to_y - from_y > 0) {
+      line(end_x, end_y, end_x - RECT_SIZE / 8, end_y - RECT_SIZE / 3.4);
+      line(end_x, end_y, end_x + RECT_SIZE / 8 + 0.5, end_y - RECT_SIZE / 3.4);
+    } else if (to_x - from_x < 0) {
+      line(end_x, end_y, end_x + RECT_SIZE / 3.4, end_y + RECT_SIZE / 8 + 0.5);
+      line(end_x, end_y, end_x + RECT_SIZE / 3.4, end_y - RECT_SIZE / 8);
+    } else if (to_x - from_x > 0) {
+      line(end_x, end_y, end_x - RECT_SIZE / 3.4, end_y + RECT_SIZE / 8 + 0.5);
+      line(end_x, end_y, end_x - RECT_SIZE / 3.4, end_y - RECT_SIZE / 8);
+    }
+  }
+}
+
+void setMap(mapArray) {
+  map = mapArray;
+  for (int y = 0; y < map.length; y++) {
+    for (int x = 0; x < map[y].length; x++) {
+      if (map[y][x] == 1) {
+        renderMap(RECT_SIZE * x, RECT_SIZE * y);
+      }
+    }
+  }
+}
+</script>
+<script id="script1" type="text/javascript">
+function updateMap(maptext) {
+  var p = Processing.getInstanceById("trial_map_canvas");
+  var dungeonArray = maptext.toString().split('|')
+  var dungeonSizeX = dungeonArray[0].length
+  var dungeonSizeY = dungeonArray.length
+
+  var startX = 0
+  var startY = 0
+  var currentX = 0
+  var currentY = 0
+  var rectSize = 20
+
+  for ( cntY = 0; cntY < dungeonArray.length; cntY++ ) {
+    for ( cntX = 0; cntX < dungeonArray[cntY].length; cntX++ ) {
+
+      if (dungeonArray[cntY].charAt(cntX) == '1' || dungeonArray[cntY].charAt(cntX) == 'S') {
+        currentX = startX + cntX * rectSize
+        currentY = startY + cntY * rectSize
+        p.renderMap(currentX, currentY);
+      }
+    }
+  }
+}
+</script>
+<table>
+  <tr>
+    <td colspan="2">
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top">
+      <canvas id="trial_map_canvas"></canvas>
+    </td>
+    <td valign="top">
+      <input id="small_first_turn" type="button" value="<<-" />
+      <input id="small_previous_turn" type="button" value="<-" />
+      <input id="small_next_turn" type="button" value="->" /> 
+      <input id="small_last_turn" type="button" value="->>" />
+      <input id="small_execute" type="button" value="Execute Trial" /><br />
+      <b>ターン:</b>
+      <span id="small_current_turn"><%= @start_turn %></span>/<span id="small_max_turn"><%= @last_turn %></span><br />
+      <b>状態:</b>
+      <span id="Status"><%= @smalltrial.smalltrialstatus.name %></span><br />
+      <b>マップ:</b>
+      <%= @smalltrial.smallmap.name %></span><br />
+      <b>攻撃ユーザー:</b>
+      <%= @smalltrial.atk_mobunit.smalluser.name %><br />
+      <b>防衛ユーザー:</b>
+      <%= @smalltrial.def_mobunit.smalluser.name %><br />
+      <br />
+      <b>戦闘経過</b><br />
+      <textarea id="BattleLog" cols="40" rows="6" maxlength="20"></textarea>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <hr>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <b>防衛部隊:</b><br />
+      <%= @smalltrial.def_mobunit.name %><br />
+      <% unless @def_squads.blank? %>
+      <% squad_counter = 1 %>
+      <% @def_squads.each do |squad| %>
+        <% if squad_counter == @def_squads.size %>
+          └
+        <% else %>
+          ├
+        <% end %>
+        <%= squad["name"] %><br />
+        <% mob_counter = 1 %>
+        <% mobs = Smalltrialmoblineup.find_all_by_squad_id(squad["id"]) %>
+        <% mobs.each do |mob| %>
+          <% unless squad_counter == @def_squads.size %>
+            │
+          <% else %>
+            　
+          <% end %>
+          <% if mob_counter == mobs.size %>
+            └
+          <% else %>
+            ├
+          <% end %>
+          <%= mob.mob_name %>(<%= mob.info_name %>) | 
+          hp: <span id="hp_<%= mob.id %>"><%= mob.hp %></span> / <%= mob.max_hp %> | 
+          mp: <span id="mp_<%= mob.id %>"><%= mob.mp %></span> / <%= mob.max_mp %> | 
+          atk: <%= mob.high_atk %> ～ <%= mob.low_atk %> | 
+          def: <%= mob.def %> | 
+          agi: <%= mob.agi %><br /><br />
+          <% mob_counter += 1 %>
+        <% end %>
+        <% squad_counter += 1 %>
+      <% end %>
+      <% end %>
+      <b>攻撃部隊:</b><br />
+      <%= @smalltrial.atk_mobunit.name %><br />
+      <% unless @atk_squads.blank? %>
+      <% squad_counter = 1 %>
+      <% @atk_squads.each do |squad| %>
+        <% if squad_counter == @atk_squads.size %>
+          └
+        <% else %>
+          ├
+        <% end %>
+        <%= squad["name"] %><br />
+        <% mob_counter = 1 %>
+        <% mobs = Smalltrialmoblineup.find_all_by_squad_id(squad["id"]) %>
+        <% mobs.each do |mob| %>
+          <% unless squad_counter == @atk_squads.size %>
+            │
+          <% else %>
+            　
+          <% end %>
+          <% if mob_counter == mobs.size %>
+            └
+          <% else %>
+            ├
+          <% end %>
+          <%= mob.mob_name %>(<%= mob.info_name %>) | 
+          hp: <span id="hp_<%= mob.id %>"><%= mob.hp %></span> / <%= mob.max_hp %> | 
+          mp: <span id="mp_<%= mob.id %>"><%= mob.mp %></span> / <%= mob.max_mp %> | 
+          atk: <%= mob.high_atk %> ～ <%= mob.low_atk %> | 
+          def: <%= mob.def %> | 
+          agi: <%= mob.agi %><br />
+          <% mob_counter += 1 %>
+        <% end %>
+        <% squad_counter += 1 %>
+      <% end %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <hr>
+    </td>
+  </tr>
+</table>
+  <input id="trial_map_txt" type="hidden" value="<%= @smalltrial.smallmap.txt %>" />
+<%= link_to 'Back', smalltrials_path %>

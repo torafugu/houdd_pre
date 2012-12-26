@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Smalluser:</b>
+  <%= @smallmobsquad.smalluser.name %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @smallmobsquad.name %>
+</p>
+
+<p>
+  <b>Mobs:</b>
+  <% @smallmobsquad.smallmobs.each do |smallmob| %>
+    <br /><%= smallmob.name %>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_smallmobsquad_path(@smallmobsquad) %> |
+<%= link_to 'Back', smallmobsquads_path %>

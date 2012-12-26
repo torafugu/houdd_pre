@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121203011340) do
+ActiveRecord::Schema.define(:version => 20121226083925) do
 
   create_table "moretinymaps", :force => true do |t|
     t.string   "name"
@@ -187,6 +187,238 @@ ActiveRecord::Schema.define(:version => 20121203011340) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "smallarmorinfos", :force => true do |t|
+    t.string   "name"
+    t.integer  "category_id"
+    t.integer  "def"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "smallarmorinventories", :force => true do |t|
+    t.integer  "smallmob_id"
+    t.integer  "smallarmorinfo_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "smallarmorinventories", ["smallarmorinfo_id"], :name => "index_smallarmorinventories_on_smallarmorinfo_id"
+  add_index "smallarmorinventories", ["smallmob_id"], :name => "index_smallarmorinventories_on_smallmob_id"
+
+  create_table "smallmagicinfos", :force => true do |t|
+    t.string   "name"
+    t.integer  "category_id"
+    t.integer  "high_heal"
+    t.integer  "high_damage"
+    t.integer  "mp_cost"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "low_heal"
+    t.integer  "low_damage"
+  end
+
+  create_table "smallmagicinventories", :force => true do |t|
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.integer  "smallmobinfo_id"
+    t.integer  "smallmagicinfo_id"
+  end
+
+  add_index "smallmagicinventories", ["smallmagicinfo_id"], :name => "index_smallmagicinventories_on_smallmagicinfo_id"
+  add_index "smallmagicinventories", ["smallmobinfo_id"], :name => "index_smallmagicinventories_on_smallmobinfo_id"
+
+  create_table "smallmaps", :force => true do |t|
+    t.integer  "smalluser_id"
+    t.integer  "category_id"
+    t.text     "txt"
+    t.integer  "start_trial_id"
+    t.integer  "end_trial_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "name"
+  end
+
+  add_index "smallmaps", ["smalluser_id"], :name => "index_smallmaps_on_smalluser_id"
+
+  create_table "smallmobinfos", :force => true do |t|
+    t.string   "name"
+    t.integer  "category_id"
+    t.integer  "max_hp"
+    t.integer  "max_mp"
+    t.integer  "high_atk"
+    t.integer  "low_atk"
+    t.integer  "def"
+    t.integer  "agi"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "smallmobs", :force => true do |t|
+    t.integer  "smallmobinfo_id"
+    t.integer  "smalluser_id"
+    t.string   "name"
+    t.integer  "hp"
+    t.integer  "mp"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "smallmobsquad_id"
+  end
+
+  add_index "smallmobs", ["smallmobinfo_id"], :name => "index_smallmobs_on_smallmobinfo_id"
+  add_index "smallmobs", ["smallmobsquad_id"], :name => "index_smallmobs_on_smallmobsquad_id"
+  add_index "smallmobs", ["smalluser_id"], :name => "index_smallmobs_on_smalluser_id"
+
+  create_table "smallmobsquads", :force => true do |t|
+    t.integer  "smalluser_id"
+    t.string   "name"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "smallmobunit_id"
+  end
+
+  add_index "smallmobsquads", ["smalluser_id"], :name => "index_smallmobsquads_on_smalluser_id"
+
+  create_table "smallmobunits", :force => true do |t|
+    t.integer  "smalluser_id"
+    t.string   "name"
+    t.integer  "smallstrategy_id"
+    t.boolean  "is_guard"
+    t.integer  "smallmap_id"
+    t.boolean  "is_prepared"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "smallmobunits", ["smallmap_id"], :name => "index_smallmobunits_on_smallmap_id"
+  add_index "smallmobunits", ["smallstrategy_id"], :name => "index_smallmobunits_on_smallstrategy_id"
+  add_index "smallmobunits", ["smalluser_id"], :name => "index_smallmobunits_on_smalluser_id"
+
+  create_table "smallstrategies", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "smalltops", :force => true do |t|
+    t.integer  "smalluser_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "smalltops", ["smalluser_id"], :name => "index_smalltops_on_smalluser_id"
+
+  create_table "smalltrialmoblineups", :force => true do |t|
+    t.integer  "smalltrial_id"
+    t.integer  "squad_id"
+    t.string   "squad_name"
+    t.integer  "mob_id"
+    t.string   "mob_name"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.boolean  "is_guard"
+  end
+
+  add_index "smalltrialmoblineups", ["smalltrial_id"], :name => "index_smalltrialmoblineups_on_smalltrial_id"
+
+  create_table "smalltrials", :force => true do |t|
+    t.integer  "smallmap_id"
+    t.integer  "def_mobunit_id"
+    t.integer  "atk_mobunit_id"
+    t.integer  "smalltrialstatus_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "def_mobunit_name"
+    t.string   "atk_mobunit_name"
+  end
+
+  add_index "smalltrials", ["smallmap_id"], :name => "index_smalltrials_on_smallmap_id"
+  add_index "smalltrials", ["smalltrialstatus_id"], :name => "index_smalltrials_on_smalltrialstatus_id"
+
+  create_table "smalltrialstatuses", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "smalltrialturns", :force => true do |t|
+    t.string   "log"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "smalltrial_id"
+  end
+
+  add_index "smalltrialturns", ["smalltrial_id"], :name => "index_smalltrialturns_on_smalltrial_id"
+
+  create_table "smallturnbattlelogs", :force => true do |t|
+    t.integer  "smalltrialturn_id"
+    t.integer  "src_mob_id"
+    t.integer  "tgt_mob_id"
+    t.integer  "damage"
+    t.integer  "effect_id"
+    t.text     "log"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.integer  "heal"
+  end
+
+  add_index "smallturnbattlelogs", ["smalltrialturn_id"], :name => "index_smallturnbattlelogs_on_smalltrialturn_id"
+
+  create_table "smallturnmobstatuses", :force => true do |t|
+    t.integer  "smalltrialturn_id"
+    t.integer  "mob_id"
+    t.integer  "start_hp"
+    t.integer  "end_hp"
+    t.integer  "start_mp"
+    t.integer  "end_mp"
+    t.text     "status"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "smallturnmobstatuses", ["smalltrialturn_id"], :name => "index_smallturnmobstatuses_on_smalltrialturn_id"
+
+  create_table "smallturnsquadtrails", :force => true do |t|
+    t.integer  "smalltrialturn_id"
+    t.integer  "squad_id"
+    t.integer  "from_x"
+    t.integer  "from_y"
+    t.integer  "to_x"
+    t.integer  "to_y"
+    t.text     "trail"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.boolean  "is_annihilated"
+  end
+
+  add_index "smallturnsquadtrails", ["smalltrialturn_id"], :name => "index_smallturnsquadtrails_on_smalltrialturn_id"
+
+  create_table "smallusers", :force => true do |t|
+    t.string   "name"
+    t.string   "login_id"
+    t.string   "login_pw"
+    t.datetime "last_login_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "smallweponinfos", :force => true do |t|
+    t.string   "name"
+    t.integer  "category_id"
+    t.integer  "atk"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "smallweponinventories", :force => true do |t|
+    t.integer  "smallmob_id"
+    t.integer  "smallweponinfo_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "smallweponinventories", ["smallmob_id"], :name => "index_smallweponinventories_on_smallmob_id"
+  add_index "smallweponinventories", ["smallweponinfo_id"], :name => "index_smallweponinventories_on_smallweponinfo_id"
 
   create_table "tinymaps", :force => true do |t|
     t.string   "name"

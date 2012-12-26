@@ -1,0 +1,29 @@
+<h1>Listing smallusers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Login</th>
+    <th>Login pw</th>
+    <th>Last login at</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @smallusers.each do |smalluser| %>
+  <tr>
+    <td><%= smalluser.name %></td>
+    <td><%= smalluser.login_id %></td>
+    <td><%= smalluser.login_pw %></td>
+    <td><%= smalluser.last_login_at %></td>
+    <td><%= link_to 'Show', smalluser %></td>
+    <td><%= link_to 'Edit', edit_smalluser_path(smalluser) %></td>
+    <td><%= link_to 'Destroy', smalluser, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Smalluser', new_smalluser_path %>

@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b><%= @smalltop.smalluser.name %>さんのポータル。</b>
+</p>
+<hr>
+<p>
+<b>Map一覧</b></br>
+<table border=1>
+<% @smallmaps.each do |smallmap| %>
+  <tr>
+    <td>
+      <%= smallmap.name %>
+    </td>
+    <td>
+      <%= smallmap.smalltrials.last.def_mobunit.name %>
+    </td>
+    <td>
+      <a href="/smalltrials/<%= smallmap.smalltrials.last.id %>/log">ログ</a>
+    </td>
+  </tr>
+<% end %>
+</table>
+</p>
+<hr>
+<p>
+<b>MobUnit一覧</b></br>
+<table border=1>
+<% @smallmobunits.each do |smallmobunit| %>
+  <tr>
+    <td>
+      <%= smallmobunit.name %>
+    </td>
+    <td>
+      <table border=1>
+        <% smallmobunit.smallmobsquads.each do |smallmobsquad| %>
+        <tr>
+          <td><%= smallmobsquad.name %></td>
+          <td>
+          <% smallmobsquad.smallmobs.each do |smallmob| %>
+            <%= smallmob.name %><br />
+          <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </table>
+    </td>
+    <td>
+      <% if smallmobunit.is_prepared %>
+        <%= "準備完了" %><br />
+        <% if smallmobunit.is_guard %>
+        <%= "防衛：" %><br />
+        <% else %>
+        <%= "侵攻：" %><br />
+        <% end %>
+        <%= smallmobunit.smallmap.name %><br />
+      <% else %>
+      <%= "編成中" %>
+      <% end %>
+    </td>
+    <td>
+      <a href="/smallmobunits/<%= smallmobunit.id %>/edit">編集</a>
+    </td>
+  </tr>
+<% end %>
+</table>
+</p>
+
+
+<%= link_to 'Back', smalltops_path %>

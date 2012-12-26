@@ -1,0 +1,27 @@
+<h1>Listing smallmobsquads</h1>
+
+<table>
+  <tr>
+    <th>Smalluser</th>
+    <th>Unit</th>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @smallmobsquads.each do |smallmobsquad| %>
+  <tr>
+    <td><%= smallmobsquad.smalluser.name %></td>
+    <td><%= smallmobsquad.smallmobunit.name %></td>
+    <td><%= smallmobsquad.name %></td>
+    <td><%= link_to 'Show', smallmobsquad %></td>
+    <td><%= link_to 'Edit', edit_smallmobsquad_path(smallmobsquad) %></td>
+    <td><%= link_to 'Destroy', smallmobsquad, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Smallmobsquad', new_smallmobsquad_path %>

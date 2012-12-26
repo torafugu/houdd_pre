@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Smallmap:</b>
+  <%= @smalltrial.smallmap.name %>
+</p>
+
+<p>
+  <b>Def mobunit:</b>
+  <%= @smalltrial.def_mobunit.name %>
+</p>
+
+<p>
+  <b>Atk mobunit:</b>
+  <%= @smalltrial.atk_mobunit.name %>
+</p>
+
+<p>
+  <b>Smalltrialstatus:</b>
+  <%= @smalltrial.smalltrialstatus.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_smalltrial_path(@smalltrial) %> |
+<%= link_to 'Back', smalltrials_path %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  smalluser: 
+  name: MyString
+  smallstrategy: 
+  is_guard: false
+  smallmap: 
+  is_prepared: false
+
+two:
+  smalluser: 
+  name: MyString
+  smallstrategy: 
+  is_guard: false
+  smallmap: 
+  is_prepared: false

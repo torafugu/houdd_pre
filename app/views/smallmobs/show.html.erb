@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Smallmobinfo:</b>
+  <%= @smallmob.smallmobinfo.name %>
+</p>
+
+<p>
+  <b>Smalluser:</b>
+  <%= @smallmob.smalluser.name %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @smallmob.name %>
+</p>
+
+<p>
+  <b>Hp:</b>
+  <%= @smallmob.hp %>
+</p>
+
+<p>
+  <b>Mp:</b>
+  <%= @smallmob.mp %>
+</p>
+
+<p>
+  <b>Armor:</b>
+  <% @smallmob.smallarmorinfos.each do |smallarmorinfo| %>
+    <%= smallarmorinfo.name %><br />
+  <% end %>
+</p>
+
+<p>
+  <b>Wepon:</b>
+  <% @smallmob.smallweponinfos.each do |smallweponinfo| %>
+    <%= smallweponinfo.name %><br />
+  <% end %>
+</p>
+
+<p>
+  <b>Smallmobsquad:</b>
+  <%= @smallmob.smallmobsquad.name unless @smallmob.smallmobsquad.nil? %>
+</p>
+
+<%= link_to 'Edit', edit_smallmob_path(@smallmob) %> |
+<%= link_to 'Back', smallmobs_path %>

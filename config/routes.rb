@@ -1,5 +1,47 @@
 HouddPre::Application.routes.draw do
 
+  match '/smalltrials/:id/log' => 'smalltrials#log', as: 'log_smalltrial', :via => :get
+  match '/smalltrials/:id/execute' => 'smalltrials#execute'
+  match '/smalltrials/:id/check_log' => 'smalltrials#check_log'
+  match '/smalltrials/select_mobunits'
+  match '/smalltrials/:id/select_mobunits' => 'smalltrials#select_mobunits'
+  resources :smalltrials
+
+  resources :smalltrialstatuses
+
+  match '/smallmobunits/select_map'
+  match '/smallmobunits/:id/select_map' => 'smallmobunits#select_map'
+  match '/smallmobunits/select_squad'
+  match '/smallmobunits/:id/select_squad' => 'smallmobunits#select_squad'
+  resources :smallmobunits
+
+  match '/smallmobsquads/select_mob_and_unit'
+  match '/smallmobsquads/:id/select_mob_and_unit' => 'smallmobsquads#select_mob_and_unit'
+  resources :smallmobsquads
+
+  resources :smallstrategies
+
+  match '/smallmobgroups/select_mob'
+  match '/smallmobgroups/:id/select_mob' => 'smallmobgroups#select_mob'
+  match '/smalltops/:id/portal' => 'smalltops#portal', as: 'portal_smalltops', :via => :get
+  resources :smalltops
+
+  resources :smallweponinfos
+
+  resources :smallarmorinfos
+
+  match '/smallmobs/select_squad'
+  match '/smallmobs/:id/select_squad' => 'smallmobs#select_squad'
+  resources :smallmobs
+
+  resources :smallmagicinfos
+
+  resources :smallmobinfos
+
+  resources :smallmaps
+
+  resources :smallusers
+
   resources :mosttinymobtrails
 
   resources :mosttinybattles

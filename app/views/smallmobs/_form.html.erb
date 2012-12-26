@@ -1,0 +1,55 @@
+<%= form_for(@smallmob) do |f| %>
+  <% if @smallmob.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@smallmob.errors.count, "error") %> prohibited this smallmob from being saved:</h2>
+
+      <ul>
+      <% @smallmob.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :smallmobinfo %><br />
+    <%= f.collection_select(:smallmobinfo_id, Smallmobinfo.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :smalluser %><br />
+    <%= f.collection_select(:smalluser_id, Smalluser.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :hp %><br />
+    <%= f.number_field :hp %>
+  </div>
+  <div class="field">
+    <%= f.label :mp %><br />
+    <%= f.number_field :mp %>
+  </div>
+  <div class="field">
+    <%= f.label :smallmobsquad %><br />
+    <%= render 'select_squad', {:f => f} %>
+  </div>
+  <div class="field">
+    <%= f.label :smallarmorinventories %><br />
+    <%= f.fields_for :smallarmorinventories do |af| %>
+      <%= af.hidden_field :id %>
+      <%= af.select :smallarmorinfo_id, Smallarmorinfo.all.map {|smallarmorinfo| [smallarmorinfo.name, smallarmorinfo.id]}, :include_blank => true %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :smallweponinventories %><br />
+    <%= f.fields_for :smallweponinventories do |wf| %>
+      <%= wf.hidden_field :id %>
+      <%= wf.select :smallweponinfo_id, Smallweponinfo.all.map {|smallweponinfo| [smallweponinfo.name, smallweponinfo.id]}, :include_blank => true %>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

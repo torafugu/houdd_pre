@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @smallarmorinfo.name %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @smallarmorinfo.category_id %>
+</p>
+
+<p>
+  <b>Def:</b>
+  <%= @smallarmorinfo.def %>
+</p>
+
+
+<%= link_to 'Edit', edit_smallarmorinfo_path(@smallarmorinfo) %> |
+<%= link_to 'Back', smallarmorinfos_path %>

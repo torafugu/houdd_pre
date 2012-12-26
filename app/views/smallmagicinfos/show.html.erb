@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @smallmagicinfo.name %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @smallmagicinfo.category_id %>
+</p>
+
+<p>
+  <b>Heal:</b>
+  <%= @smallmagicinfo.high_heal %> / <%= @smallmagicinfo.low_heal %>
+</p>
+
+<p>
+  <b>Damage:</b>
+  <%= @smallmagicinfo.high_damage %> / <%= @smallmagicinfo.low_damage %>
+</p>
+
+<p>
+  <b>Mp cost:</b>
+  <%= @smallmagicinfo.mp_cost %>
+</p>
+
+
+<%= link_to 'Edit', edit_smallmagicinfo_path(@smallmagicinfo) %> |
+<%= link_to 'Back', smallmagicinfos_path %>

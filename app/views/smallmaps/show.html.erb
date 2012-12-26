@@ -1,0 +1,63 @@
+<script type="text/processing" data-processing-target="map_canvas">
+int RECT_SIZE = 20;
+int map[][] = new int[12][12];
+
+void setup() {
+  size(map.length * RECT_SIZE + 1, map[0].length * RECT_SIZE + 1);
+  noLoop();
+}
+
+void draw() {
+  background(0);
+  fill(0);
+  noLoop();
+}
+
+void setMap(mapArray) {
+  map = mapArray;
+  for (int y = 0; y < map.length; y++) {
+    for (int x = 0; x < map[y].length; x++) {
+      if (map[y][x] == 0) {
+        fill(0);
+      } else {
+        fill(200);
+      }
+      rect(RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+    }
+  }
+}
+</script>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Smalluser:</b>
+  <%= @smallmap.smalluser.name %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @smallmap.category_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @smallmap.name %>
+</p>
+
+<p>
+  <b>Txt:</b><br />
+  <canvas id="map_canvas"></canvas>
+</p>
+
+<p>
+  <b>Start trial:</b>
+  <%= @smallmap.start_trial_id %>
+</p>
+
+<p>
+  <b>End trial:</b>
+  <%= @smallmap.end_trial_id %>
+</p>
+<input id="smallmap_txt" type="hidden" value="<%= @smallmap.txt %>" />
+<%= link_to 'Edit', edit_smallmap_path(@smallmap) %> |
+<%= link_to 'Back', smallmaps_path %>

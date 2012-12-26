@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  smallmobinfo: 
+  smalluser: 
+  name: MyString
+  hp: 1
+  mp: 1
+  is_dead: false
+  is_assigned: false
+
+two:
+  smallmobinfo: 
+  smalluser: 
+  name: MyString
+  hp: 1
+  mp: 1
+  is_dead: false
+  is_assigned: false

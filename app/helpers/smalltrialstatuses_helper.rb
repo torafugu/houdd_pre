@@ -1,0 +1,2 @@
+module SmalltrialstatusesHelper
+end

@@ -1,0 +1,29 @@
+<%= form_for(@smallweponinfo) do |f| %>
+  <% if @smallweponinfo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@smallweponinfo.errors.count, "error") %> prohibited this smallweponinfo from being saved:</h2>
+
+      <ul>
+      <% @smallweponinfo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :category_id %><br />
+    <%= f.number_field :category_id %>
+  </div>
+  <div class="field">
+    <%= f.label :atk %><br />
+    <%= f.number_field :atk %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

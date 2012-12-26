@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @smallmobinfo.name %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @smallmobinfo.category_id %>
+</p>
+
+<p>
+  <b>Max hp:</b>
+  <%= @smallmobinfo.max_hp %>
+</p>
+
+<p>
+  <b>Max mp:</b>
+  <%= @smallmobinfo.max_mp %>
+</p>
+
+<p>
+  <b>High atk:</b>
+  <%= @smallmobinfo.high_atk %>
+</p>
+
+<p>
+  <b>Low atk:</b>
+  <%= @smallmobinfo.low_atk %>
+</p>
+
+<p>
+  <b>Def:</b>
+  <%= @smallmobinfo.def %>
+</p>
+
+<p>
+  <b>Agi:</b>
+  <%= @smallmobinfo.agi %>
+</p>
+
+
+<%= link_to 'Edit', edit_smallmobinfo_path(@smallmobinfo) %> |
+<%= link_to 'Back', smallmobinfos_path %>

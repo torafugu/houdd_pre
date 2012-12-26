@@ -1,0 +1,102 @@
+<script type="text/processing" data-processing-target="map_canvas">
+int RECT_SIZE = 20;
+int[][] map = new int[12][12];
+
+void setup() {
+  size(map.length * RECT_SIZE + 1, map[0].length * RECT_SIZE + 1);
+}
+
+void draw() {
+  background(0);
+  fill(0);
+  noLoop();
+}
+void mousePressed() {
+  turnTileColor()
+}
+
+void turnTileColor() {
+
+  int mapX = int(mouseX / RECT_SIZE);
+  int mapY = int(mouseY / RECT_SIZE);
+
+  if (map[mapY][mapX] == 0) {
+    fill(200);
+    map[mapY][mapX] = 1;
+  } else {
+    fill(0);
+    map[mapY][mapX] = 0;
+  }
+  rect(RECT_SIZE * mapX, RECT_SIZE * mapY, RECT_SIZE, RECT_SIZE);
+}
+
+void getMap() {
+   return map;
+}
+
+void setMap(mapArray) {
+  if (mapArray.length == map.length) {
+    map = mapArray;
+    for (int y = 0; y < map.length; y++) {
+      for (int x = 0; x < map[y].length; x++) {
+        if (map[y][x] == 0) {
+          fill(0);
+          } else {
+          fill(200);
+        }
+        rect(RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      }
+    }
+  }
+}
+</script>
+<%= form_for(@smallmap) do |f| %>
+  <% if @smallmap.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@smallmap.errors.count, "error") %> prohibited this smallmap from being saved:</h2>
+
+      <ul>
+      <% @smallmap.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :smalluser %><br />
+    <%= f.collection_select(:smalluser_id, Smalluser.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :category_id %><br />
+    <%= f.number_field :category_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :txt %><br />
+  </div>
+  <div class="field">
+    <canvas id="map_canvas"></canvas>
+  </div>
+  <div>
+    <button id="to_canvas" type="button">to canvas</ button>
+    <button id="to_txt" type="button">to txt</ button>
+  </div>
+  <div class="field">
+    <%= f.text_field :txt %>
+  </div>
+  <div class="field">
+    <%= f.label :start_trial_id %><br />
+    <%= f.number_field :start_trial_id %>
+  </div>
+  <div class="field">
+    <%= f.label :end_trial_id %><br />
+    <%= f.number_field :end_trial_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

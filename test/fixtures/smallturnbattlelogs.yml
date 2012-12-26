@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  smalltrialturn: 
+  src_mob_id: 1
+  tgt_mob_id: 1
+  damage: 1
+  effect_id: 1
+  log: MyText
+
+two:
+  smalltrialturn: 
+  src_mob_id: 1
+  tgt_mob_id: 1
+  damage: 1
+  effect_id: 1
+  log: MyText

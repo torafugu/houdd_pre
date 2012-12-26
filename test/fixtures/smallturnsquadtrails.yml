@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  smalltrialturn: 
+  squad_id: 1
+  from_x: 1
+  from_y: 1
+  to_x: 1
+  to_y: 1
+  trail: MyText
+
+two:
+  smalltrialturn: 
+  squad_id: 1
+  from_x: 1
+  from_y: 1
+  to_x: 1
+  to_y: 1
+  trail: MyText

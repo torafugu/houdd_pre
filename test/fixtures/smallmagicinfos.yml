@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  category_id: 1
+  heal: 1
+  damage: 1
+  mp_cost: 1
+
+two:
+  name: MyString
+  category_id: 1
+  heal: 1
+  damage: 1
+  mp_cost: 1

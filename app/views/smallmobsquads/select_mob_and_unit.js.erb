@@ -1,0 +1,5 @@
+jQuery("#smallmobsquad_smallmobunit_id").html("<%= escape_javascript(options_for_select(@unit_data)) %>");
+
+jQuery("#smallmobsquad_mob_ids").empty();
+jQuery("#smallmobsquad_mob_ids").html("<%= escape_javascript(options_for_select(@mob_data, @selected_mob_data)) %>");
+ 

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @smalluser.name %>
+</p>
+
+<p>
+  <b>Login:</b>
+  <%= @smalluser.login_id %>
+</p>
+
+<p>
+  <b>Login pw:</b>
+  <%= @smalluser.login_pw %>
+</p>
+
+<p>
+  <b>Last login at:</b>
+  <%= @smalluser.last_login_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_smalluser_path(@smalluser) %> |
+<%= link_to 'Back', smallusers_path %>

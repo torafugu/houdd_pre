@@ -1,0 +1,35 @@
+<h1>Listing smallmagicinfos</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th>High Heal</th>
+    <th>Low Heal</th>
+    <th>High Damage</th>
+    <th>Low Damage</th>
+    <th>Mp cost</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @smallmagicinfos.each do |smallmagicinfo| %>
+  <tr>
+    <td><%= smallmagicinfo.name %></td>
+    <td><%= smallmagicinfo.category_id %></td>
+    <td><%= smallmagicinfo.high_heal %></td>
+    <td><%= smallmagicinfo.low_heal %></td>
+    <td><%= smallmagicinfo.high_damage %></td>
+    <td><%= smallmagicinfo.low_damage %></td>
+    <td><%= smallmagicinfo.mp_cost %></td>
+    <td><%= link_to 'Show', smallmagicinfo %></td>
+    <td><%= link_to 'Edit', edit_smallmagicinfo_path(smallmagicinfo) %></td>
+    <td><%= link_to 'Destroy', smallmagicinfo, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Smallmagicinfo', new_smallmagicinfo_path %>

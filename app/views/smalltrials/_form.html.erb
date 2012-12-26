@@ -1,0 +1,35 @@
+<%= form_for(@smalltrial) do |f| %>
+  <% if @smalltrial.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@smalltrial.errors.count, "error") %> prohibited this smalltrial from being saved:</h2>
+
+      <ul>
+      <% @smalltrial.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :smallmap %><br />
+    <%= f.collection_select(:smallmap_id, @smallmaps, :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :def_mobunit_id %><br />
+    <%= render 'select_def_mobunit', {:f => f} %>
+  </div>
+  <div class="field">
+    <%= f.label :atk_mobunit_id %><br />
+    <%= render 'select_atk_mobunit', {:f => f} %>
+  </div>
+  <div class="field">
+    <%= f.label :smalltrialstatus %><br />
+    <%= f.collection_select(:smalltrialstatus_id, Smalltrialstatus.find(:all), :id, :name) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <%= f.hidden_field :atk_mobunit_name, :value => @atk_mobunit_name %>
+  <%= f.hidden_field :def_mobunit_name, :value => @def_mobunit_name %>
+<% end %>

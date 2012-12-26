@@ -1,0 +1,2 @@
+module SmallmobsquadsHelper
+end

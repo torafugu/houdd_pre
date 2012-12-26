@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Smalluser:</b>
+  <%= @smallmobunit.smalluser.name %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @smallmobunit.name %>
+</p>
+
+<p>
+  <b>Smallstrategy:</b>
+  <%= @smallmobunit.smallstrategy.name %>
+</p>
+
+<p>
+  <b>Is guard:</b>
+  <%= @smallmobunit.is_guard %>
+</p>
+
+<p>
+  <b>Smallmap:</b>
+  <%= @smallmobunit.smallmap.name %>
+</p>
+
+<p>
+  <b>Is prepared:</b>
+  <%= @smallmobunit.is_prepared %>
+</p>
+
+<p>
+  <b>Squads:</b>
+  <% @smallmobunit.smallmobsquads.each do |smallmobsquad| %>
+    <br /><%= smallmobsquad.name %>
+  <% end %>
+</p>
+
+
+<%= link_to 'Edit', edit_smallmobunit_path(@smallmobunit) %> |
+<%= link_to 'Back', smallmobunits_path %>

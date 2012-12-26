@@ -1,0 +1,31 @@
+<h1>Listing smallmaps</h1>
+
+<table>
+  <tr>
+    <th>Smalluser</th>
+    <th>Category</th>
+    <th>Name</th>
+    <th>Start trial</th>
+    <th>End trial</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @smallmaps.each do |smallmap| %>
+  <tr>
+    <td><%= smallmap.smalluser.name %></td>
+    <td><%= smallmap.category_id %></td>
+    <td><%= smallmap.name %></td>
+    <td><%= smallmap.start_trial_id %></td>
+    <td><%= smallmap.end_trial_id %></td>
+    <td><%= link_to 'Show', smallmap %></td>
+    <td><%= link_to 'Edit', edit_smallmap_path(smallmap) %></td>
+    <td><%= link_to 'Destroy', smallmap, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Smallmap', new_smallmap_path %>

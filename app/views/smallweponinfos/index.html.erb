@@ -1,0 +1,27 @@
+<h1>Listing smallweponinfos</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Atk</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @smallweponinfos.each do |smallweponinfo| %>
+  <tr>
+    <td><%= smallweponinfo.name %></td>
+    <td><%= smallweponinfo.category_id %></td>
+    <td><%= smallweponinfo.atk %></td>
+    <td><%= link_to 'Show', smallweponinfo %></td>
+    <td><%= link_to 'Edit', edit_smallweponinfo_path(smallweponinfo) %></td>
+    <td><%= link_to 'Destroy', smallweponinfo, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Smallweponinfo', new_smallweponinfo_path %>
