@@ -1,0 +1,88 @@
+<script type="text/processing" data-processing-target="more_small_map_canvas">
+// Parameteres of screen size.
+int RECT_SIZE = 20;
+int[][] map = new int[24][24];
+int MAP_WIDTH = map[0].length * RECT_SIZE + 1;
+int MAP_HEIGHT = map.length * RECT_SIZE + 1;
+PImage concreteImg = loadImage("/assets/concrete.png");
+PImage waterImg = loadImage("/assets/water.png");
+
+int CONCRETE = 1;
+int WATER = 2;
+
+void setup() {
+  size(MAP_WIDTH, MAP_HEIGHT);
+  for (int y = 0; y < map.length; y++) {
+    for (int x = 0; x < map[y].length; x++) {
+      map[y][x] = 0
+    }
+  }
+}
+
+void draw() {
+  background(0);
+  fill(0);
+
+  // Draw map
+  stroke(0);
+  strokeWeight(1);
+  for (int y = 0; y < map.length; y++) {
+    for (int x = 0; x < map[y].length; x++) {
+      if (map[y][x] == 0) {
+        fill(0);
+        rect(RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      } else if (map[y][x] == CONCRETE) {
+        image(concreteImg, RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      } else if (map[y][x] == WATER) {
+        image(waterImg, RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      }
+    }
+  }
+}
+
+void setMap(mapArray) {
+  if (mapArray.length == map.length) {
+    map = mapArray;
+  }
+}
+</script>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Smalluser:</b>
+  <%= @moresmallmap.moresmalluser.name %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @moresmallmap.category_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @moresmallmap.name %>
+</p>
+
+<p>
+  <b>Txt:</b><br />
+  <canvas id="more_small_map_canvas"></canvas><br />
+  <% shapedTexts = @moresmallmap.txt.split("|") %>
+  <% shapedTexts.each do |text| %>
+    <%= text %><br />
+  <% end %>
+</p>
+
+<p>
+  <b>Start trial:</b>
+  <%= @moresmallmap.start_trial_id %>
+</p>
+
+<p>
+  <b>End trial:</b>
+  <%= @moresmallmap.end_trial_id %>
+</p>
+<input id="moresmallmap_txt" type="hidden" value="<%= @moresmallmap.txt %>" />
+
+<%= link_to 'Edit', edit_moresmallmap_path(@moresmallmap) %> |
+<%= link_to 'Back', moresmallmaps_path %>

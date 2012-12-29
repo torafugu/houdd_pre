@@ -1,0 +1,31 @@
+<h1>Listing moresmallmaps</h1>
+
+<table>
+  <tr>
+    <th>Smalluser</th>
+    <th>Category</th>
+    <th>Name</th>
+    <th>Start trial</th>
+    <th>End trial</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @moresmallmaps.each do |moresmallmap| %>
+  <tr>
+    <td><%= moresmallmap.moresmalluser.name %></td>
+    <td><%= moresmallmap.category_id %></td>
+    <td><%= moresmallmap.name %></td>
+    <td><%= moresmallmap.start_trial_id %></td>
+    <td><%= moresmallmap.end_trial_id %></td>
+    <td><%= link_to 'Show', moresmallmap %></td>
+    <td><%= link_to 'Edit', edit_moresmallmap_path(moresmallmap) %></td>
+    <td><%= link_to 'Destroy', moresmallmap, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Moresmallmap', new_moresmallmap_path %>

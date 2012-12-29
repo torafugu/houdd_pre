@@ -1,5 +1,9 @@
 HouddPre::Application.routes.draw do
 
+  resources :moresmallmaps
+
+  resources :moresmallusers
+
   match '/smalltrials/:id/log' => 'smalltrials#log', as: 'log_smalltrial', :via => :get
   match '/smalltrials/:id/execute' => 'smalltrials#execute'
   match '/smalltrials/:id/check_log' => 'smalltrials#check_log'

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  smalluser: 
+  category_id: 1
+  name: MyString
+  txt: MyText
+  start_trial_id: 1
+  end_trial_id: 1
+
+two:
+  smalluser: 
+  category_id: 1
+  name: MyString
+  txt: MyText
+  start_trial_id: 1
+  end_trial_id: 1

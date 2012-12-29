@@ -1,0 +1,29 @@
+<h1>Listing moresmallusers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Login</th>
+    <th>Login pw</th>
+    <th>Is Admin</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @moresmallusers.each do |moresmalluser| %>
+  <tr>
+    <td><%= moresmalluser.name %></td>
+    <td><%= moresmalluser.login_id %></td>
+    <td><%= moresmalluser.login_pw %></td>
+    <td><%= moresmalluser.is_admin %></td>
+    <td><%= link_to 'Show', moresmalluser %></td>
+    <td><%= link_to 'Edit', edit_moresmalluser_path(moresmalluser) %></td>
+    <td><%= link_to 'Destroy', moresmalluser, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Moresmalluser', new_moresmalluser_path %>

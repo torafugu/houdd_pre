@@ -11,7 +11,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121226083925) do
+ActiveRecord::Schema.define(:version => 20121228051051) do
+
+  create_table "moresmallmaps", :force => true do |t|
+    t.integer  "category_id"
+    t.string   "name"
+    t.text     "txt"
+    t.integer  "start_trial_id"
+    t.integer  "end_trial_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "moresmalluser_id"
+  end
+
+  add_index "moresmallmaps", ["moresmalluser_id"], :name => "index_moresmallmaps_on_moresmalluser_id"
+
+  create_table "moresmallusers", :force => true do |t|
+    t.string   "name"
+    t.string   "login_id"
+    t.string   "login_pw"
+    t.datetime "first_login_at"
+    t.datetime "last_login_at"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.boolean  "is_admin"
+  end
 
   create_table "moretinymaps", :force => true do |t|
     t.string   "name"
