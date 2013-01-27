@@ -1,7 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
-one:
-  name: 1st More Tiny Map
-  category: 1
-  map: 00000000|01111110|01111110|01111110|01111110|00S00000
-

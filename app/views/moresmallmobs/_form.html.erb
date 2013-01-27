@@ -1,0 +1,55 @@
+<%= form_for(@moresmallmob) do |f| %>
+  <% if @moresmallmob.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@moresmallmob.errors.count, "error") %> prohibited this moresmallmob from being saved:</h2>
+
+      <ul>
+      <% @moresmallmob.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :moresmallmobinfo %><br />
+    <%= f.collection_select(:moresmallmobinfo_id, Moresmallmobinfo.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :moresmalluser %><br />
+    <%= f.collection_select(:moresmalluser_id, Moresmalluser.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :hp %><br />
+    <%= f.number_field :hp %>
+  </div>
+  <div class="field">
+    <%= f.label :mp %><br />
+    <%= f.number_field :mp %>
+  </div>
+  <div class="field">
+    <%= f.label :moresmallmobsquad %><br />
+    <%= render 'select_squad', {:f => f} %>
+  </div>
+  <div class="field">
+    <%= f.label :moresmallarmorinventories %><br />
+    <%= f.fields_for :moresmallarmorinventories do |af| %>
+      <%= af.hidden_field :id %>
+      <%= af.select :moresmallarmorinfo_id, Moresmallarmorinfo.all.map {|armorinfo| [armorinfo.name, armorinfo.id]}, :include_blank => true %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :moresmallweponinventories %><br />
+    <%= f.fields_for :moresmallweponinventories do |wf| %>
+      <%= wf.hidden_field :id %>
+      <%= wf.select :moresmallweponinfo_id, Moresmallweponinfo.all.map {|weponinfo| [weponinfo.name, weponinfo.id]}, :include_blank => true %>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

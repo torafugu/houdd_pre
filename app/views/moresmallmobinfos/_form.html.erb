@@ -1,0 +1,56 @@
+<%= form_for(@moresmallmobinfo) do |f| %>
+  <% if @moresmallmobinfo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@moresmallmobinfo.errors.count, "error") %> prohibited this moresmallmobinfo from being saved:</h2>
+
+      <ul>
+      <% @moresmallmobinfo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :category_id %><br />
+    <%= f.number_field :category_id %>
+  </div>
+  <div class="field">
+    <%= f.label :max_hp %><br />
+    <%= f.number_field :max_hp %>
+  </div>
+  <div class="field">
+    <%= f.label :max_mp %><br />
+    <%= f.number_field :max_mp %>
+  </div>
+  <div class="field">
+    <%= f.label :str %><br />
+    <%= f.number_field :str %>
+  </div>
+  <div class="field">
+    <%= f.label :dex %><br />
+    <%= f.number_field :dex %>
+  </div>
+  <div class="field">
+    <%= f.label :int %><br />
+    <%= f.number_field :int %>
+  </div>
+  <div class="field">
+    <%= f.label :wis %><br />
+    <%= f.number_field :wis %>
+  </div>
+  <div class="field">
+    <%= f.label :moresmallmagicinventories %><br />
+    <%= f.fields_for :moresmallmagicinventories do |mf| %>
+      <%= mf.hidden_field :id %>
+      <%= mf.select :moresmallmagicinfo_id, Moresmallmagicinfo.all.map {|magicinfo| [magicinfo.name, magicinfo.id]}, :include_blank => true %>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

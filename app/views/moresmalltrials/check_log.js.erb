@@ -1,0 +1,36 @@
+var p = Processing.getInstanceById("moresmalltrial_map_canvas");
+p.resetSquads();
+
+<% @current_turn.moresmallturnsquadtrails.each do |trail| %>
+
+var trailpoints;
+<% unless trail.trail.empty? %>
+trailpoints = new Array(<%= trail.trailpoints.size %>);
+<% trail_counter = 0 %>
+<% trail.trailpoints.each do |trailpoint| %>
+trailpoints[<%= trail_counter %>] = [<%= trailpoint["from_x"] %>, <%= trailpoint["from_y"] %>, <%= trailpoint["to_x"] %>, <%= trailpoint["to_y"] %>, <%= trailpoint["is_end"] %>]
+<% trail_counter += 1 %>
+<% end %>
+<% end %>
+p.addSquad(<%= trail.from_x %>, <%= trail.from_y %>, <%= trail.guard? %>, "<%= trail.trail[0] %>", trailpoints, <%= trail.is_annihilated %>);
+<% end %>
+
+<% @current_turn.moresmallturnmobstatuses.each do |status| %>
+  jQuery("#hp_<%= status.mob_id %>").text("<%= status.end_hp %>");
+  jQuery("#mp_<%= status.mob_id %>").text("<%= status.end_mp %>");
+  jQuery("#status_<%= status.mob_id %>").text("<%= status.status %>");
+<% end %>
+
+jQuery('#moresmall_battle_turn').text(<%= @start_battle_turn %>);
+jQuery('#moresmall_max_battle_turn').text(<%= @last_battle_turn %>);
+
+var p2 = Processing.getInstanceById("moresmalltrial_tactical_canvas");
+p2.resetMobs();
+jQuery("#BattleLog").text("");
+<% unless @current_battleturn.nil? %>
+<% @current_battleturn.moresmallbattlelogs.each do |battle| %>
+  jQuery("#BattleLog").append("<%= escape_javascript(battle.log) %>");
+  p2.addMob(<%= battle.src_mob_id %>, <%= battle.src_mob_vpos %>, <%= battle.src_guard? %>);
+<% end %>
+<% end %>
+

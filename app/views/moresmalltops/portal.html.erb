@@ -1,0 +1,94 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b><%= @moresmalltop.moresmalluser.name %>さんの情報。</b>
+</p>
+<hr>
+<p>
+<b>保有マップ一覧</b></br>
+<table  cellspacing="1" border="0" class="style_table">
+  <thead>
+    <tr>
+      <td class="style_td" style="text-align:center;">マップ名</td>
+      <td class="style_td" style="text-align:center;">守備隊</td>
+      <td class="style_td" style="text-align:center;">状況</td>
+    </tr>
+  </thead>
+<% @maps.each do |map| %>
+  <tr>
+    <td class="style_td"><%= map.name %></td>
+    <td class="style_td">
+      <%= Moresmallmobunit.find_by_cur_map_id_and_tgt_map_id(map.id, map.id).name unless Moresmallmobunit.find_by_cur_map_id_and_tgt_map_id(map.id, map.id).nil? %>
+    </td>
+    <td class="style_td">
+    </td>
+  </tr>
+<% end %>
+</table>
+</p>
+<hr>
+<p>
+<b>保有部隊一覧</b></br>
+<table  cellspacing="1" border="0" class="style_table">
+  <thead>
+      <td class="style_td" style="text-align:center;">部隊</td>
+      <td class="style_td" style="text-align:center;">現在地</td>
+      <td class="style_td" style="text-align:center;">目標</td>
+      <td class="style_td" style="text-align:center;">状況</td>
+      <td class="style_td" style="text-align:center;">操作</td>
+    </tr>
+  </thead>
+  <% @units.each do |unit| %>
+  <tr>
+    <td class="style_td">
+      <%= unit.name %><br />
+      <% unless unit.moresmallmobsquads.blank? %>
+      <% squad_counter = 1 %>
+      <% unit.moresmallmobsquads.each do |squad| %>
+        <% if squad_counter == unit.moresmallmobsquads.size %>
+          └
+        <% else %>
+          ├
+        <% end %>
+        <%= squad.name %><br />
+        <% mob_counter = 1 %>
+        <% squad.moresmallmobs.each do |mob| %>
+          <% unless squad_counter == unit.moresmallmobsquads.size %>
+            │
+          <% else %>
+            　
+          <% end %>
+          <% if mob_counter == squad.moresmallmobs.size %>
+            └
+          <% else %>
+            ├
+          <% end %>
+          <%= mob.name %>(<%= mob.info_name %>)<br />
+          <% mob_counter += 1 %>
+        <% end %>
+      <% squad_counter += 1 %>
+      <% end %>
+    </td>
+    <td class="style_td">
+      <%= unit.cur_map.name %><br />
+    </td>
+    <td class="style_td">
+      <%= unit.tgt_map.name %><br />
+    </td>
+    <td class="style_td">
+      <% if unit.is_prepared %>
+        <%= "準備完了" %><br />
+      <% else %>
+        <%= "編成中" %>
+      <% end %>
+    </td>
+    <td class="style_td">
+      <a href="/moresmallmobunits/<%= unit.id %>/edit">編集</a>
+    </td>
+  </tr>
+<% end %>
+<% end %>
+</table>
+</p>
+
+<%= link_to 'Back', moresmalltops_path %>

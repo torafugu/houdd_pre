@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  moresmalltrial: 
+  mobunit_id: 1
+  squad_id: 1
+  squad_name: MyString
+
+two:
+  moresmalltrial: 
+  mobunit_id: 1
+  squad_id: 1
+  squad_name: MyString

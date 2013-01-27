@@ -1,0 +1,41 @@
+<h1>Listing moresmallmagicinfos</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Inst dmg</th>
+    <th>Amt dmg</th>
+    <th>Inst heal</th>
+    <th>Amt heal</th>
+    <th>Duration</th>
+    <th>Accuracy</th>
+    <th>Range</th>
+    <th>Mp cost</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @moresmallmagicinfos.each do |moresmallmagicinfo| %>
+  <tr>
+    <td><%= moresmallmagicinfo.name %></td>
+    <td><%= moresmallmagicinfo.category_id %></td>
+    <td><%= moresmallmagicinfo.inst_dmg %></td>
+    <td><%= moresmallmagicinfo.amt_dmg %></td>
+    <td><%= moresmallmagicinfo.inst_heal %></td>
+    <td><%= moresmallmagicinfo.amt_heal %></td>
+    <td><%= moresmallmagicinfo.duration %></td>
+    <td><%= moresmallmagicinfo.accuracy %></td>
+    <td><%= moresmallmagicinfo.range %></td>
+    <td><%= moresmallmagicinfo.mp_cost %></td>
+    <td><%= link_to 'Show', moresmallmagicinfo %></td>
+    <td><%= link_to 'Edit', edit_moresmallmagicinfo_path(moresmallmagicinfo) %></td>
+    <td><%= link_to 'Destroy', moresmallmagicinfo, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Moresmallmagicinfo', new_moresmallmagicinfo_path %>

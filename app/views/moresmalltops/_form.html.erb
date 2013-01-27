@@ -1,0 +1,21 @@
+<%= form_for(@moresmalltop) do |f| %>
+  <% if @moresmalltop.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@moresmalltop.errors.count, "error") %> prohibited this moresmalltop from being saved:</h2>
+
+      <ul>
+      <% @moresmalltop.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :moresmalluser %><br />
+    <%= f.collection_select(:moresmalluser_id, Moresmalluser.find(:all), :id, :name, :include_blank => true) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

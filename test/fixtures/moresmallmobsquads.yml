@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  moresmalluser: 
+  moresmallmobunit: 
+  name: MyString
+
+two:
+  moresmalluser: 
+  moresmallmobunit: 
+  name: MyString

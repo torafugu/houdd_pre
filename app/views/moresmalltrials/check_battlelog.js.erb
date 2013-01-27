@@ -1,0 +1,23 @@
+var p2 = Processing.getInstanceById("moresmalltrial_tactical_canvas");
+jQuery("#BattleLog").text("");
+<% unless @current_battleturn.nil? %>
+<% if @is_start_battle_turn %>
+  p2.resetMobs();
+<% end %>
+<% @current_battleturn.moresmallbattlelogs.each do |battle| %>
+  jQuery("#BattleLog").append("<%= escape_javascript(battle.log) %>");
+  <% if @is_start_battle_turn %>
+    p2.addMob(<%= battle.src_mob_id %>, <%= battle.src_mob_vpos %>, <%= battle.src_guard? %>);
+  <% else %>
+    <% unless battle.src_mob_vpos.nil? %>
+      p2.updateMobY(<%= battle.src_mob_id %>, <%= battle.src_mob_vpos %>);
+    <% end %>
+    <% unless battle.tgt_mob_vpos.nil? %>
+      p2.updateMobY(<%= battle.tgt_mob_id %>, <%= battle.tgt_mob_vpos %>);
+    <% end %>
+    <% if battle.tgt_mob_dead %>
+      p2.updateMobDead(<%= battle.tgt_mob_id %>, <%= battle.tgt_mob_dead %>);
+    <% end %>
+  <% end %>
+<% end %>
+<% end %>

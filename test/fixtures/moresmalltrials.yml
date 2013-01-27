@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  moresmallmap: 
+  def_mobunit_id: 1
+  def_mobunit_name: MyString
+  atk_mobunit_id: 1
+  atk_mobunit_name: MyString
+  moresmalltrialstatus: 
+
+two:
+  moresmallmap: 
+  def_mobunit_id: 1
+  def_mobunit_name: MyString
+  atk_mobunit_id: 1
+  atk_mobunit_name: MyString
+  moresmalltrialstatus: 

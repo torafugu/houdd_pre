@@ -1,0 +1,29 @@
+<h1>Listing moresmallmobsquads</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Moresmalluser</th>
+    <th>Moresmallmobunit</th>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @moresmallmobsquads.each do |moresmallmobsquad| %>
+  <tr>
+    <td><%= moresmallmobsquad.id %></td>
+    <td><%= moresmallmobsquad.moresmalluser.name %></td>
+    <td><%= moresmallmobsquad.moresmallmobunit.name unless moresmallmobsquad.moresmallmobunit.nil? %></td>
+    <td><%= moresmallmobsquad.name %></td>
+    <td><%= link_to 'Show', moresmallmobsquad %></td>
+    <td><%= link_to 'Edit', edit_moresmallmobsquad_path(moresmallmobsquad) %></td>
+    <td><%= link_to 'Destroy', moresmallmobsquad, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Moresmallmobsquad', new_moresmallmobsquad_path %>

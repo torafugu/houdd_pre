@@ -1,0 +1,33 @@
+<h1>Listing moresmallmobunits</h1>
+
+<table>
+  <tr>
+    <th>Moresmalluser</th>
+    <th>Name</th>
+    <th>Moresmallstrategy</th>
+    <th>Cur map</th>
+    <th>Tgt map</th>
+    <th>Is prepared</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @moresmallmobunits.each do |moresmallmobunit| %>
+  <tr>
+    <td><%= moresmallmobunit.moresmalluser.name %></td>
+    <td><%= moresmallmobunit.name %></td>
+    <td><%= moresmallmobunit.moresmallstrategy.name %></td>
+    <td><%= moresmallmobunit.cur_map.name %></td>
+    <td><%= moresmallmobunit.tgt_map.name %></td>
+    <td><%= moresmallmobunit.is_prepared %></td>
+    <td><%= link_to 'Show', moresmallmobunit %></td>
+    <td><%= link_to 'Edit', edit_moresmallmobunit_path(moresmallmobunit) %></td>
+    <td><%= link_to 'Destroy', moresmallmobunit, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Moresmallmobunit', new_moresmallmobunit_path %>

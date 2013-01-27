@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @moresmallarmorinfo.name %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @moresmallarmorinfo.category_id %>
+</p>
+
+<p>
+  <b>Def:</b>
+  <%= @moresmallarmorinfo.def %>
+</p>
+
+
+<%= link_to 'Edit', edit_moresmallarmorinfo_path(@moresmallarmorinfo) %> |
+<%= link_to 'Back', moresmallarmorinfos_path %>

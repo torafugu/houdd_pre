@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  category_id: 1
+  max_hp: 1
+  max_mp: 1
+  str: 1
+  dex: 1
+  int: 1
+  wis: 1
+
+two:
+  name: MyString
+  category_id: 1
+  max_hp: 1
+  max_mp: 1
+  str: 1
+  dex: 1
+  int: 1
+  wis: 1

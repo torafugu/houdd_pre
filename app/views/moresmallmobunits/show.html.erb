@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Moresmalluser:</b>
+  <%= @moresmallmobunit.moresmalluser.name %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @moresmallmobunit.name %>
+</p>
+
+<p>
+  <b>Moresmallstrategy:</b>
+  <%= @moresmallmobunit.moresmallstrategy.name %>
+</p>
+
+<p>
+  <b>Cur map:</b>
+  <%= @moresmallmobunit.cur_map.name %>
+</p>
+
+<p>
+  <b>Tgt map:</b>
+  <%= @moresmallmobunit.tgt_map.name %>
+</p>
+
+<p>
+  <b>Is prepared:</b>
+  <%= @moresmallmobunit.is_prepared %>
+</p>
+
+<p>
+  <b>Squads:</b>
+  <% @moresmallmobunit.moresmallmobsquads.each do |squad| %>
+    <br /><%= squad.name %>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_moresmallmobunit_path(@moresmallmobunit) %> |
+<%= link_to 'Back', moresmallmobunits_path %>

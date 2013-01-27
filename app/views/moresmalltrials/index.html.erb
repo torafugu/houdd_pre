@@ -1,0 +1,33 @@
+<h1>Listing moresmalltrials</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Moresmallmap</th>
+    <th>Def mobunit</th>
+    <th>Atk mobunit</th>
+    <th>Moresmalltrialstatus</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @moresmalltrials.each do |moresmalltrial| %>
+  <tr>
+    <td><%= moresmalltrial.id %></td>
+    <td><%= moresmalltrial.moresmallmap.name %></td>
+    <td><%= moresmalltrial.def_mobunit_name %></td>
+    <td><%= moresmalltrial.atk_mobunit_name %></td>
+    <td><%= moresmalltrial.moresmalltrialstatus.name %></td>
+    <td><%= link_to 'Show', moresmalltrial %></td>
+    <td><%= link_to 'Edit', edit_moresmalltrial_path(moresmalltrial) %></td>
+    <td><%= link_to 'Destroy', moresmalltrial, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Log', log_moresmalltrial_path(moresmalltrial) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Moresmalltrial', new_moresmalltrial_path %>

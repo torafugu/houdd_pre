@@ -1,0 +1,27 @@
+<h1>Listing moresmallarmorinfos</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Def</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @moresmallarmorinfos.each do |moresmallarmorinfo| %>
+  <tr>
+    <td><%= moresmallarmorinfo.name %></td>
+    <td><%= moresmallarmorinfo.category_id %></td>
+    <td><%= moresmallarmorinfo.def %></td>
+    <td><%= link_to 'Show', moresmallarmorinfo %></td>
+    <td><%= link_to 'Edit', edit_moresmallarmorinfo_path(moresmallarmorinfo) %></td>
+    <td><%= link_to 'Destroy', moresmallarmorinfo, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Moresmallarmorinfo', new_moresmallarmorinfo_path %>

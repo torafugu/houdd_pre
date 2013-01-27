@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  moresmalltrial: 
+  log: MyString
+
+two:
+  moresmalltrial: 
+  log: MyString

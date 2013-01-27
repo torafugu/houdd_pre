@@ -1,0 +1,33 @@
+<h1>Listing moresmallmobs</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Moresmallmobinfo</th>
+    <th>Moresmalluser</th>
+    <th>Name</th>
+    <th>Hp</th>
+    <th>Mp</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @moresmallmobs.each do |moresmallmob| %>
+  <tr>
+    <td><%= moresmallmob.id %></td>
+    <td><%= moresmallmob.moresmallmobinfo.name %></td>
+    <td><%= moresmallmob.moresmalluser.name %></td>
+    <td><%= moresmallmob.name %></td>
+    <td><%= moresmallmob.hp %></td>
+    <td><%= moresmallmob.mp %></td>
+    <td><%= link_to 'Show', moresmallmob %></td>
+    <td><%= link_to 'Edit', edit_moresmallmob_path(moresmallmob) %></td>
+    <td><%= link_to 'Destroy', moresmallmob, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Moresmallmob', new_moresmallmob_path %>

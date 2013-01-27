@@ -1,0 +1,25 @@
+<h1>Listing moresmalltops</h1>
+
+<table>
+  <tr>
+    <th>Moresmalluser</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @moresmalltops.each do |moresmalltop| %>
+  <tr>
+    <td><%= moresmalltop.moresmalluser.name %></td>
+    <td><%= link_to 'Show', moresmalltop %></td>
+    <td><%= link_to 'Edit', edit_moresmalltop_path(moresmalltop) %></td>
+    <td><%= link_to 'Destroy', moresmalltop, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Portal', portal_moresmalltops_path(moresmalltop) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Moresmalltop', new_moresmalltop_path %>

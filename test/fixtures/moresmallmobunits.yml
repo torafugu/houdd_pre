@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  moresmalluser: 
+  name: MyString
+  moresmallstrategy: 
+  cur_map_id: 1
+  tgt_map_id: 1
+  is_prepared: false
+
+two:
+  moresmalluser: 
+  name: MyString
+  moresmallstrategy: 
+  cur_map_id: 1
+  tgt_map_id: 1
+  is_prepared: false

@@ -1,0 +1,32 @@
+<%= form_for(@moresmallmobsquad) do |f| %>
+  <% if @moresmallmobsquad.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@moresmallmobsquad.errors.count, "error") %> prohibited this moresmallmobsquad from being saved:</h2>
+
+      <ul>
+      <% @moresmallmobsquad.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :moresmalluser %><br />
+    <%= f.collection_select(:moresmalluser_id, Moresmalluser.find(:all), :id, :name, :include_blank => true) %>
+  </div>
+  <div class="field">
+    <%= f.label :moresmallmobunit %><br />
+    <%= render 'select_unit', {:f => f} %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= render 'select_mobs', {:f => f} %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

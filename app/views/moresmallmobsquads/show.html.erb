@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Moresmalluser:</b>
+  <%= @moresmallmobsquad.moresmalluser.name %>
+</p>
+
+<p>
+  <b>Moresmallmobunit:</b>
+  <%= @moresmallmobsquad.moresmallmobunit.name unless @moresmallmobsquad.moresmallmobunit.nil? %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @moresmallmobsquad.name %>
+</p>
+
+<p>
+  <b>Mobs:</b>
+  <% @moresmallmobsquad.moresmallmobs.each do |mob| %>
+    <br /><%= mob.name %>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_moresmallmobsquad_path(@moresmallmobsquad) %> |
+<%= link_to 'Back', moresmallmobsquads_path %>

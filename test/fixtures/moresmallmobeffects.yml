@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  moresmallmob: 
+  moresmallmagicinfo: 
+  duration: 1
+
+two:
+  moresmallmob: 
+  moresmallmagicinfo: 
+  duration: 1

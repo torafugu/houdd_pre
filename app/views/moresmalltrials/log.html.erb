@@ -1,0 +1,442 @@
+<script type="text/processing" data-processing-target="moresmalltrial_map_canvas">
+int RECT_SIZE = 20;
+int[][] map = new int[<%= @trial.moresmallmap.xsize %>][<%= @trial.moresmallmap.ysize %>];
+PImage concreteImg = loadImage("/assets/concrete.png");
+PImage waterImg = loadImage("/assets/water.png");
+int CONCRETE = 1;
+int WATER = 2;
+PShape GUARDS_ICON_E = loadShape("/assets/guardsicon_e.svg");
+PShape GUARDS_ICON_W = loadShape("/assets/guardsicon_w.svg");
+PShape GUARDS_ICON_S = loadShape("/assets/guardsicon_s.svg");
+PShape GUARDS_ICON_N = loadShape("/assets/guardsicon_n.svg");
+PShape INTRUDER_ICON_E = loadShape("/assets/intrudericon_e.svg");
+PShape INTRUDER_ICON_W = loadShape("/assets/intrudericon_w.svg");
+PShape INTRUDER_ICON_S = loadShape("/assets/intrudericon_s.svg");
+PShape INTRUDER_ICON_N = loadShape("/assets/intrudericon_n.svg");
+
+class Squad {
+  int currentX, currentY;
+  boolean isGuard, isAnnihilated;
+  String direction;
+  int[][] trails;
+
+  Squad(int x, int y, boolean grd, String direc, int[][] tps, boolean annihilated) {
+    currentX = x;
+    currentY = y;
+    isGuard = grd;
+    direction = direc;
+    trails = tps;
+    isAnnihilated = annihilated;
+  }
+
+  void display() {
+    int posX = currentX * RECT_SIZE;
+    int posY = currentY * RECT_SIZE;
+    if (isGuard == true) {
+      if (direction.equals("E") == true) {
+        shape(GUARDS_ICON_E, posX, posY, RECT_SIZE, RECT_SIZE);
+      } else if (direction.equals("W") == true) {
+        shape(GUARDS_ICON_W, posX, posY, RECT_SIZE, RECT_SIZE);
+      } else if (direction.equals("N") == true) {
+        shape(GUARDS_ICON_N, posX, posY, RECT_SIZE, RECT_SIZE);
+      } else {
+        shape(GUARDS_ICON_S, posX, posY, RECT_SIZE, RECT_SIZE);
+      }
+    } else {
+      if (direction.equals("E") == true) {
+        shape(INTRUDER_ICON_E, posX, posY, RECT_SIZE, RECT_SIZE);
+      } else if (direction.equals("W") == true) {
+        shape(INTRUDER_ICON_W, posX, posY, RECT_SIZE, RECT_SIZE);
+      } else if (direction.equals("S") == true) {
+        shape(INTRUDER_ICON_S, posX, posY, RECT_SIZE, RECT_SIZE);
+      } else {
+        shape(INTRUDER_ICON_N, posX, posY, RECT_SIZE, RECT_SIZE);
+      }
+    }
+    if (trails != null) {
+      for (int i = 0; i < trails.length; i++) {
+        renderTrail(trails[i][0], trails[i][1], trails[i][2], trails[i][3], trails[i][4]);
+      }
+    }
+    if (isAnnihilated == true) {
+      stroke(0);
+      strokeWeight(3);
+      line(posX, posY, posX + RECT_SIZE, posY + RECT_SIZE);
+      line(posX + RECT_SIZE, posY, posX, posY + RECT_SIZE);
+    }
+  }
+  
+  void renderTrail(int fromX, int fromY, int toX, int toY, boolean isEnd) {
+    int startX = fromX * RECT_SIZE + (RECT_SIZE / 2);
+    int startY = fromY * RECT_SIZE + (RECT_SIZE / 2);
+    int endX = toX * RECT_SIZE + (RECT_SIZE / 2);
+    int endY = toY * RECT_SIZE + (RECT_SIZE / 2);
+    int arrowWidth = RECT_SIZE / 8;
+    int arrowHeight = RECT_SIZE / 3.4;
+
+    if (isGuard == true) {
+      stroke(255, 127, 80);
+    } else {
+      stroke(70, 130, 180);
+    }
+    strokeWeight(3);
+    line(startX, startY, endX, endY);
+
+    // render end point arrow
+    if (isEnd == 1) {
+      if (toY - fromY < 0) {
+        line(endX, endY, endX - arrowWidth, endY + arrowHeight);
+        line(endX, endY, endX + arrowWidth + 0.5, endY + arrowHeight);
+      } else if (toY - fromY > 0) {
+        line(endX, endY, endX - arrowWidth, endY - arrowHeight);
+        line(endX, endY, endX + arrowWidth + 0.5, endY - arrowHeight);
+      } else if (toX - fromX < 0) {
+        line(endX, endY, endX + arrowHeight, endY + arrowWidth + 0.5);
+        line(endX, endY, endX + arrowHeight, endY - arrowWidth);
+      } else if (toX - fromX > 0) {
+        line(endX, endY, endX - arrowHeight, endY + arrowWidth + 0.5);
+        line(endX, endY, endX - arrowHeight, endY - arrowWidth);
+      }
+    }
+  }
+}
+
+ArrayList squads = null;
+
+void setup() {
+  size(map[0].length * RECT_SIZE, map.length * RECT_SIZE);
+  for (int y = 0; y < map.length; y++) {
+    for (int x = 0; x < map[y].length; x++) {
+      map[y][x] = 0
+    }
+  }
+  squads = new ArrayList();
+}
+
+void draw() {
+  background(0);
+  fill(0);
+
+  // Draw map
+  stroke(0);
+  strokeWeight(1);
+  for (int y = 0; y < map.length; y++) {
+    for (int x = 0; x < map[y].length; x++) {
+      if (map[y][x] == 0) {
+        fill(0);
+        rect(RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      } else if (map[y][x] == CONCRETE) {
+        image(concreteImg, RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      } else if (map[y][x] == WATER) {
+        image(waterImg, RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      }
+    }
+  }
+
+  if (squads != null) {
+    for (int i = 0; i < squads.size(); i = i + 1) {
+      (Squad)(squads.get(i)).display();
+    }
+  }
+}
+
+void resetSquads() {
+  squads = new ArrayList();
+}
+
+void addSquad(int startX, int startY, boolean isGuard, String direction, int[][] tps, boolean isAnnihilated) {
+  squads.add(new Squad(startX, startY, isGuard, direction, tps, isAnnihilated));
+}
+
+
+void setMap(int[][] mapArray) {
+  if (mapArray.length == map.length) {
+    map = mapArray;
+  }
+}
+</script>
+<script type="text/processing" data-processing-target="moresmalltrial_tactical_canvas">
+int RECT_SIZE = 20;
+int MARGIN_SIZE = 25;
+int LEVEL_SIZE = 40;
+int LEVEL_MAX = 5;
+PImage TACTICALMAP = loadImage("/assets/tacticalmap.png");
+PShape GUARDS_ICON_S = loadShape("/assets/guardsicon_s.svg");
+PShape GUARDS_ICON_N = loadShape("/assets/guardsicon_n.svg");
+PShape INTRUDER_ICON_S = loadShape("/assets/intrudericon_s.svg");
+PShape INTRUDER_ICON_N = loadShape("/assets/intrudericon_n.svg");
+
+class Mob {
+  int mobID, currentX, currentY;
+  boolean isGuard, isAttacker, isDead;
+
+  Mob(int id, int x,int y, boolean grd, boolean dead) {
+    mobID = id;
+    currentX = x;
+    currentY = y;
+    isGuard = grd;
+    isDead = dead;
+    if (currentY == 4 || currentY == 5) {
+      isAttacker = false;
+    } else {
+      isAttacker = true;
+    }
+  }
+
+  void display() {
+    int posX = currentX;
+    int posY = LEVEL_SIZE * (LEVEL_MAX - currentY) + LEVEL_SIZE / 2 - RECT_SIZE / 2;
+    if (isGuard == true) {
+      if (isAttacker == true) {
+        shape(GUARDS_ICON_N, posX, posY, RECT_SIZE, RECT_SIZE);
+      } else {
+        shape(GUARDS_ICON_S, posX, posY, RECT_SIZE, RECT_SIZE);
+      }
+    } else {
+      if (isAttacker == true) {
+        shape(INTRUDER_ICON_N, posX, posY, RECT_SIZE, RECT_SIZE);
+      } else {
+        shape(INTRUDER_ICON_S, posX, posY, RECT_SIZE, RECT_SIZE);
+      }
+    }
+    if (isDead == true) {
+      stroke(0);
+      strokeWeight(2);
+      line(posX, posY, posX + RECT_SIZE, posY + RECT_SIZE);
+      line(posX + RECT_SIZE, posY, posX, posY + RECT_SIZE);
+    }
+  }
+
+  void setXPos(int x) {
+    currentX = x;
+  }
+
+  void setYPos(int y) {
+    currentY = y;
+  }
+
+  void setDead(boolean dead) {
+    isDead = dead;
+  }
+
+  boolean getGuard() {
+    return isGuard;
+  }
+
+  int getMobID() {
+    return mobID;
+  }
+}
+
+
+ArrayList mobs = null;
+
+void resetMobs() {
+  mobs = new ArrayList();
+}
+
+void addMob(int mobID, int startY, boolean isGuard) {
+  ArrayList friendmobs = new ArrayList();
+  for (int i = 0; i < mobs.size(); i = i + 1) {
+    if ((Mob)(mobs.get(i)).getGuard() == isGuard) {
+      friendmobs.add(mobs.get(i));
+    }
+  }
+
+  int modifiedX = 0;
+  switch (friendmobs.size()) {
+    case 0:
+      modifiedX = 150 / 2 - RECT_SIZE / 2;
+      break;
+    case 1:
+      modifiedX = 150 / 2 + MARGIN_SIZE - RECT_SIZE / 2;
+      break;
+    case 2:
+      modifiedX = 150 / 2 - MARGIN_SIZE - RECT_SIZE / 2;
+      break;
+    case 3:
+      modifiedX = 150 / 2 + MARGIN_SIZE * 2 - RECT_SIZE / 2;
+      break;
+    case 4:
+      modifiedX = 150 / 2 - MARGIN_SIZE * 2 - RECT_SIZE / 2;
+      break;
+    default:
+      break;
+  } 
+  mobs.add(new Mob(mobID, modifiedX, startY, isGuard, false));
+}
+
+void updateMobY(int mobID, int currentY) {
+  for (int i = 0; i < mobs.size(); i = i + 1) {
+    if ((Mob)(mobs.get(i)).getMobID() == mobID) {
+      (Mob)(mobs.get(i)).setYPos(currentY);
+    }
+  }
+}
+
+void updateMobDead(int mobID, boolean isDead) {
+  for (int i = 0; i < mobs.size(); i = i + 1) {
+    if ((Mob)(mobs.get(i)).getMobID() == mobID) {
+      (Mob)(mobs.get(i)).setDead(isDead);
+    }
+  }
+}
+
+void setup() {
+  size(201, 201);
+  mobs = new ArrayList();
+}
+
+void draw() {
+  background(255);
+  image(TACTICALMAP, 0, 0, 200, 200);
+
+  if (mobs != null) {
+    for (int i = 0; i < mobs.size(); i = i + 1) {
+      (Mob)(mobs.get(i)).display();
+    }
+  }
+}
+</script>
+<table>
+  <tr>
+    <td colspan="2">
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top">
+      <canvas id="moresmalltrial_map_canvas"></canvas><br />
+    </td>
+    <td valign="top">
+      <b>マップ:</b>
+      <%= @trial.moresmallmap.name %></span><br />
+      <b>攻撃ユーザー:</b>
+      <%= @trial.atk_mobunit.moresmalluser.name %><br />
+      <b>防衛ユーザー:</b>
+      <%= @trial.def_mobunit.moresmalluser.name %><br />
+      <b>トライアルターン:</b>
+      <span id="moresmall_current_turn"><%= @start_turn %></span>/<span id="moresmall_max_turn"><%= @last_turn %></span>　
+      <b>状態:</b>
+      <span id="Status"><%= @trial.moresmalltrialstatus.name %></span><br />
+      <input id="moresmall_first_turn" type="button" value="<<" />
+      <input id="moresmall_previous_turn" type="button" value="<" />
+      <input id="moresmall_next_turn" type="button" value=">" /> 
+      <input id="moresmall_last_turn" type="button" value=">>" />
+      <input id="moresmall_execute" type="button" value="トライアル実行" /><br />
+      <hr>
+      <div align="left">
+      <b>防衛部隊:</b><br />
+      <%= @trial.def_mobunit.name %><br />
+      <% unless @def_squads.blank? %>
+      <% squad_counter = 1 %>
+      <% @def_squads.each do |squad| %>
+        <% if squad_counter == @def_squads.size %>
+          └
+        <% else %>
+          ├
+        <% end %>
+        <%= squad.squad_name %><br />
+        <% mob_counter = 1 %>
+        <% squad.moresmalltrialmobperss.each do |mob| %>
+          <% unless squad_counter == @def_squads.size %>
+            │
+          <% else %>
+            　
+          <% end %>
+          <% if mob_counter == squad.moresmalltrialmobperss.size %>
+            └
+          <% else %>
+            ├
+          <% end %>
+          <%= mob.mob_name %>(<%= mob.mob_info_name %>) | 
+          hp: <span id="hp_<%= mob.mob_id %>"><%= mob.max_hp %></span> / <%= mob.max_hp %> | 
+          mp: <span id="mp_<%= mob.mob_id %>"><%= mob.max_mp %></span> / <%= mob.max_mp %> | 
+          <br />
+          <% mob_counter += 1 %>
+        <% end %>
+        <% squad_counter += 1 %>
+      <% end %>
+      <% end %>
+      <b>攻撃部隊:</b><br />
+      <%= @trial.atk_mobunit.name %><br />
+      <% unless @def_squads.blank? %>
+      <% squad_counter = 1 %>
+      <% @atk_squads.each do |squad| %>
+        <% if squad_counter == @atk_squads.size %>
+          └
+        <% else %>
+          ├
+        <% end %>
+        <%= squad.squad_name %><br />
+        <% mob_counter = 1 %>
+        <% squad.moresmalltrialmobperss.each do |mob| %>
+          <% unless squad_counter == @atk_squads.size %>
+            │
+          <% else %>
+            　
+          <% end %>
+          <% if mob_counter == squad.moresmalltrialmobperss.size %>
+            └
+          <% else %>
+            ├
+          <% end %>
+          <%= mob.mob_name %>(<%= mob.mob_info_name %>) | 
+          hp: <span id="hp_<%= mob.mob_id %>"><%= mob.max_hp %></span> / <%= mob.max_hp %> | 
+          mp: <span id="mp_<%= mob.mob_id %>"><%= mob.max_mp %></span> / <%= mob.max_mp %> | 
+          <span id="status_<%= mob.mob_id %>"></span>
+          <br />
+          <% mob_counter += 1 %>
+        <% end %>
+        <% squad_counter += 1 %>
+      <% end %>
+      <% end %>
+      </div>
+      <br />
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <hr>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <table>
+        <tr>
+          <td valign="top">
+            <b>攻撃中の小隊:</b>
+            <br />
+            <b>防衛中の小隊:</b>
+            <br />
+            <b>戦闘ターン:</b>
+            <span id="moresmall_battle_turn"><%= @start_battle_turn %></span>
+            /<span id="moresmall_max_battle_turn"><%= @last_battle_turn %></span><br />
+            <input id="moresmall_battle_first_turn" type="button" value="<<" />
+            <input id="moresmall_battle_previous_turn" type="button" value="<" />
+            <input id="moresmall_battle_next_turn" type="button" value=">" /> 
+            <input id="moresmall_battle_last_turn" type="button" value=">>" />
+            <br />
+          </td>
+          <td valign="top">
+            <div style="margin-left : 10px">
+            <b>戦術マップ：</b><br />
+            <div style="margin-left : 30px">
+              <canvas id="moresmalltrial_tactical_canvas"></canvas><br clear="both" />
+            </div>
+            </div>
+          </td>
+          <td valign="top">
+            <div style="margin-left : 10px">
+            <b>戦闘ログ：</b><br />
+            <div style="margin-left : 30px">
+              <textarea id="BattleLog" cols="40" rows="13" maxlength="20"></textarea>
+            </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+  <input id="trial_map_txt" type="hidden" value="<%= @trial.moresmallmap.txt %>" />
+<%= link_to 'Back', smalltrials_path %>

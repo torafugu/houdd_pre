@@ -1,0 +1,2 @@
+module MoresmallarmorinfosHelper
+end

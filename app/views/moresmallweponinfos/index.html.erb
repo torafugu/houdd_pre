@@ -1,0 +1,31 @@
+<h1>Listing moresmallweponinfos</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Atk</th>
+    <th>Accuracy</th>
+    <th>Range</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @moresmallweponinfos.each do |moresmallweponinfo| %>
+  <tr>
+    <td><%= moresmallweponinfo.name %></td>
+    <td><%= moresmallweponinfo.category_id %></td>
+    <td><%= moresmallweponinfo.atk %></td>
+    <td><%= moresmallweponinfo.accuracy %></td>
+    <td><%= moresmallweponinfo.range %></td>
+    <td><%= link_to 'Show', moresmallweponinfo %></td>
+    <td><%= link_to 'Edit', edit_moresmallweponinfo_path(moresmallweponinfo) %></td>
+    <td><%= link_to 'Destroy', moresmallweponinfo, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Moresmallweponinfo', new_moresmallweponinfo_path %>

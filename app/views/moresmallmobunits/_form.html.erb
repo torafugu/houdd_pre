@@ -1,0 +1,44 @@
+<%= form_for(@moresmallmobunit) do |f| %>
+  <% if @moresmallmobunit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@moresmallmobunit.errors.count, "error") %> prohibited this moresmallmobunit from being saved:</h2>
+
+      <ul>
+      <% @moresmallmobunit.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :moresmalluser %><br />
+    <%= f.collection_select(:moresmalluser_id, Moresmalluser.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :moresmallstrategy %><br />
+    <%= f.collection_select(:moresmallstrategy_id, Moresmallstrategy.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :cur_map_id %><br />
+    <%= render 'select_cur_map', {:f => f} %>
+  </div>
+  <div class="field">
+    <%= f.label :tgt_map_id %><br />
+    <%= f.collection_select(:tgt_map_id, Moresmallmap.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :is_prepared %><br />
+    <%= f.check_box :is_prepared %>
+  </div>
+  <div class="field">
+    <%= render 'select_squads', {:f => f} %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

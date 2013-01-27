@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  moresmalltrialturn: 
+  mob_id: 1
+  start_hp: 1
+  end_hp: 1
+  start_mp: 1
+  end_mp: 1
+  status: MyText
+
+two:
+  moresmalltrialturn: 
+  mob_id: 1
+  start_hp: 1
+  end_hp: 1
+  start_mp: 1
+  end_mp: 1
+  status: MyText

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @moresmallweponinfo.name %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @moresmallweponinfo.category_id %>
+</p>
+
+<p>
+  <b>Atk:</b>
+  <%= @moresmallweponinfo.atk %>
+</p>
+
+<p>
+  <b>Accuracy:</b>
+  <%= @moresmallweponinfo.accuracy %>
+</p>
+
+<p>
+  <b>Range:</b>
+  <%= @moresmallweponinfo.range %>
+</p>
+
+
+<%= link_to 'Edit', edit_moresmallweponinfo_path(@moresmallweponinfo) %> |
+<%= link_to 'Back', moresmallweponinfos_path %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  moresmallmobinfo: 
+  moresmalluser: 
+  name: MyString
+  hp: 1
+  mp: 1
+
+two:
+  moresmallmobinfo: 
+  moresmalluser: 
+  name: MyString
+  hp: 1
+  mp: 1

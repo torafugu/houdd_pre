@@ -1,0 +1,57 @@
+<%= form_for(@moresmallmagicinfo) do |f| %>
+  <% if @moresmallmagicinfo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@moresmallmagicinfo.errors.count, "error") %> prohibited this moresmallmagicinfo from being saved:</h2>
+
+      <ul>
+      <% @moresmallmagicinfo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :category_id %><br />
+    <%= f.number_field :category_id %>
+  </div>
+  <div class="field">
+    <%= f.label :inst_dmg %><br />
+    <%= f.number_field :inst_dmg %>
+  </div>
+  <div class="field">
+    <%= f.label :amt_dmg %><br />
+    <%= f.number_field :amt_dmg %>
+  </div>
+  <div class="field">
+    <%= f.label :inst_heal %><br />
+    <%= f.number_field :inst_heal %>
+  </div>
+  <div class="field">
+    <%= f.label :amt_heal %><br />
+    <%= f.number_field :amt_heal %>
+  </div>
+  <div class="field">
+    <%= f.label :duration %><br />
+    <%= f.number_field :duration %>
+  </div>
+  <div class="field">
+    <%= f.label :accuracy %><br />
+    <%= f.number_field :accuracy %>
+  </div>
+  <div class="field">
+    <%= f.label :range %><br />
+    <%= f.number_field :range %>
+  </div>
+  <div class="field">
+    <%= f.label :mp_cost %><br />
+    <%= f.number_field :mp_cost %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

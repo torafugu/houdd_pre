@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Moresmallmobinfo:</b>
+  <%= @moresmallmob.moresmallmobinfo.name %>
+</p>
+
+<p>
+  <b>Moresmalluser:</b>
+  <%= @moresmallmob.moresmalluser.name %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @moresmallmob.name %>
+</p>
+
+<p>
+  <b>Hp:</b>
+  <%= @moresmallmob.hp %>
+</p>
+
+<p>
+  <b>Mp:</b>
+  <%= @moresmallmob.mp %>
+</p>
+
+<p>
+  <b>Armor:</b>
+  <% @moresmallmob.moresmallarmorinfos.each do |armorinfo| %>
+    <%= armorinfo.name %><br />
+  <% end %>
+</p>
+
+<p>
+  <b>Wepon:</b>
+  <% @moresmallmob.moresmallweponinfos.each do |weponinfo| %>
+    <%= weponinfo.name %><br />
+  <% end %>
+</p>
+
+<p>
+  <b>Squad:</b>
+  <%= @moresmallmob.moresmallmobsquad.name unless @moresmallmob.moresmallmobsquad.nil? %>
+</p>
+
+<%= link_to 'Edit', edit_moresmallmob_path(@moresmallmob) %> |
+<%= link_to 'Back', moresmallmobs_path %>
