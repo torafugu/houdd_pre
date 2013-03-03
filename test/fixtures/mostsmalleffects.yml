@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  damage: 1
+  ac: 1
+  sp_mod: 1
+  str_mod: 1
+  dex_mod: 1
+  con_mod: 1
+  int_mod: 1
+  wis_mod: 1
+  cha_mod: 1
+  duration: 1
+
+two:
+  name: MyString
+  damage: 1
+  ac: 1
+  sp_mod: 1
+  str_mod: 1
+  dex_mod: 1
+  con_mod: 1
+  int_mod: 1
+  wis_mod: 1
+  cha_mod: 1
+  duration: 1

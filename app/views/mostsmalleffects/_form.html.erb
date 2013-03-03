@@ -1,0 +1,61 @@
+<%= form_for(@mostsmalleffect) do |f| %>
+  <% if @mostsmalleffect.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mostsmalleffect.errors.count, "error") %> prohibited this mostsmalleffect from being saved:</h2>
+
+      <ul>
+      <% @mostsmalleffect.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :damage %><br />
+    <%= f.number_field :damage %>
+  </div>
+  <div class="field">
+    <%= f.label :ac %><br />
+    <%= f.number_field :ac %>
+  </div>
+  <div class="field">
+    <%= f.label :sp_mod %><br />
+    <%= f.number_field :sp_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :str_mod %><br />
+    <%= f.number_field :str_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :dex_mod %><br />
+    <%= f.number_field :dex_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :con_mod %><br />
+    <%= f.number_field :con_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :int_mod %><br />
+    <%= f.number_field :int_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :wis_mod %><br />
+    <%= f.number_field :wis_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :cha_mod %><br />
+    <%= f.number_field :cha_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :duration %><br />
+    <%= f.number_field :duration %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mostsmalltrapinfo: 
+  level: 1
+  max_dp: 1
+  disarm_diff: 1
+  num_of_tgt: 1
+  damage: 1
+
+two:
+  mostsmalltrapinfo: 
+  level: 1
+  max_dp: 1
+  disarm_diff: 1
+  num_of_tgt: 1
+  damage: 1

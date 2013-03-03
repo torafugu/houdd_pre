@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mostsmallterrain: 
+  mostsmallresource: 
+  amount: 1
+  cycle: 1
+
+two:
+  mostsmallterrain: 
+  mostsmallresource: 
+  amount: 1
+  cycle: 1

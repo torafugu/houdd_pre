@@ -1,0 +1,28 @@
+<h1>Listing mostsmallterritories</h1>
+
+<table>
+  <tr>
+    <th>Mostsmalluser</th>
+    <th>Name</th>
+    <th>Is exclusive</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mostsmallterritories.each do |mostsmallterritory| %>
+  <tr>
+    <td><%= mostsmallterritory.mostsmalluser.name %></td>
+    <td><%= mostsmallterritory.name %></td>
+    <td><%= mostsmallterritory.is_exclusive %></td>
+    <td><%= link_to 'Show', mostsmallterritory %></td>
+    <td><%= link_to 'Edit', edit_mostsmallterritory_path(mostsmallterritory) %></td>
+    <td><%= link_to 'DungeonEdit', dungeon_edit_mostsmallterritories_path(mostsmallterritory) %></td>
+    <td><%= link_to 'Destroy', mostsmallterritory, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mostsmallterritory', new_mostsmallterritory_path %>

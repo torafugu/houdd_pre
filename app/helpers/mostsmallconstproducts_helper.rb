@@ -1,0 +1,2 @@
+module MostsmallconstproductsHelper
+end

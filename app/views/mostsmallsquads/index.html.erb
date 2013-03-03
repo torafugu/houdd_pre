@@ -1,0 +1,27 @@
+<h1>Listing mostsmallsquads</h1>
+
+<table>
+  <tr>
+    <th>Mostsmalluser</th>
+    <th>Mostsmallterritory</th>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mostsmallsquads.each do |mostsmallsquad| %>
+  <tr>
+    <td><%= mostsmallsquad.mostsmalluser %></td>
+    <td><%= mostsmallsquad.mostsmallterritory %></td>
+    <td><%= mostsmallsquad.name %></td>
+    <td><%= link_to 'Show', mostsmallsquad %></td>
+    <td><%= link_to 'Edit', edit_mostsmallsquad_path(mostsmallsquad) %></td>
+    <td><%= link_to 'Destroy', mostsmallsquad, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mostsmallsquad', new_mostsmallsquad_path %>

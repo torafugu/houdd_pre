@@ -1,0 +1,157 @@
+<script type="text/processing" data-processing-target="mostsmall_map_canvas">
+// Parameteres of screen size.
+int RECT_SIZE = 40;
+int[][] map = new int[10][10];
+int MAP_WIDTH = map[0].length * RECT_SIZE + 1;
+int MAP_HEIGHT = map.length * RECT_SIZE + 1;
+
+PImage grassImg = loadImage("/assets/map_grass.png");
+PImage mountainImg = loadImage("/assets/map_mountain.png");
+PImage seaImg = loadImage("/assets/map_sea.png");
+
+int GRASS = 1;
+int MOUNTAIN = 2;
+int SEA = 3;
+int currentTexture = GRASS;
+
+void setup() {
+  size(MAP_WIDTH, MAP_HEIGHT);
+  for (int y = 0; y < map.length; y++) {
+    for (int x = 0; x < map[y].length; x++) {
+      map[y][x] = 0
+    }
+  }
+}
+
+void draw() {
+  background(0);
+  fill(0);
+
+  // Draw map
+  stroke(0);
+  strokeWeight(1);
+  for (int y = 0; y < map.length; y++) {
+    for (int x = 0; x < map[y].length; x++) {
+      if (map[y][x] == 0) {
+        fill(0);
+        rect(RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      } else if (map[y][x] == GRASS) {
+        image(grassImg, RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      } else if (map[y][x] == MOUNTAIN) {
+        image(mountainImg, RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      } else if (map[y][x] == SEA) {
+        image(seaImg, RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      }
+    }
+  }
+}
+
+void setMap(mapArray) {
+  if (mapArray.length == map.length) {
+    map = mapArray;
+  }
+}
+</script>
+<script type="text/processing" data-processing-target="mostsmall_dungeon_canvas">
+// Parameteres of screen size.
+int RECT_SIZE = 20;
+int[][] map = new int[24][24];
+int MAP_WIDTH = map[0].length * RECT_SIZE + 1;
+int MAP_HEIGHT = map.length * RECT_SIZE + 1;
+PImage concreteImg = loadImage("/assets/concrete.png");
+PImage waterImg = loadImage("/assets/water.png");
+
+int CONCRETE = 1;
+int WATER = 2;
+
+void setup() {
+  size(MAP_WIDTH, MAP_HEIGHT);
+  for (int y = 0; y < map.length; y++) {
+    for (int x = 0; x < map[y].length; x++) {
+      map[y][x] = 0
+    }
+  }
+}
+
+void draw() {
+  background(0);
+  fill(0);
+
+  // Draw map
+  stroke(0);
+  strokeWeight(1);
+  for (int y = 0; y < map.length; y++) {
+    for (int x = 0; x < map[y].length; x++) {
+      if (map[y][x] == 0) {
+        fill(0);
+        rect(RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      } else if (map[y][x] == CONCRETE) {
+        image(concreteImg, RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      } else if (map[y][x] == WATER) {
+        image(waterImg, RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      }
+    }
+  }
+}
+
+void setMap(mapArray) {
+  if (mapArray.length == map.length) {
+    map = mapArray;
+  }
+}
+</script>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mostsmalluser:</b>
+  <%= @mostsmallterritory.mostsmalluser.name %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @mostsmallterritory.name %>
+</p>
+
+<p>
+  <b>Is exclusive:</b>
+  <%= @mostsmallterritory.is_exclusive %>
+</p>
+
+<p>
+  <b>Map txt:</b><br />
+  <table>
+  <tr><td>
+  <canvas id="mostsmall_map_canvas"></canvas>
+  </td>
+  <td valign="top" >
+  <% shapedTexts = @mostsmallterritory.map_txt.split("|") %>
+  <% shapedTexts.each do |text| %>
+    <%= text %><br />
+  <% end %>
+  </td></tr>
+  </table>
+</p>
+<input id="mostsmallterritory_map_txt" type="hidden" value="<%= @mostsmallterritory.map_txt %>" />
+
+<p>
+  <b>Dungeon txt:</b>
+  <table>
+  <tr><td>
+  <canvas id="mostsmall_dungeon_canvas"></canvas>
+  </td>
+  <td valign="top" >
+  <% unless @mostsmallterritory.dungeon_txt.blank? %>
+  <% shapedTexts2 = @mostsmallterritory.dungeon_txt.split("|") %>
+  <% shapedTexts2.each do |text| %>
+    <%= text %><br />
+  <% end %>
+  <% end %>
+  </td></tr>
+  </table>
+</p>
+<input id="mostsmallterritory_dungeon_txt" type="hidden" value="<%= @mostsmallterritory.dungeon_txt %>" />
+
+
+<%= link_to 'Edit', edit_mostsmallterritory_path(@mostsmallterritory) %> |
+<%= link_to 'Back', mostsmallterritories_path %>

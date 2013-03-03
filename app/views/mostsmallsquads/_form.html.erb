@@ -1,0 +1,29 @@
+<%= form_for(@mostsmallsquad) do |f| %>
+  <% if @mostsmallsquad.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mostsmallsquad.errors.count, "error") %> prohibited this mostsmallsquad from being saved:</h2>
+
+      <ul>
+      <% @mostsmallsquad.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mostsmalluser %><br />
+    <%= f.text_field :mostsmalluser %>
+  </div>
+  <div class="field">
+    <%= f.label :mostsmallterritory %><br />
+    <%= f.text_field :mostsmallterritory %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,2 @@
+module MostsmallskillcategoriesHelper
+end

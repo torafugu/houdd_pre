@@ -1,0 +1,27 @@
+<h1>Listing mostsmallterrainproducts</h1>
+
+<table>
+  <tr>
+    <th>Mostsmallterrain</th>
+    <th>Mostsmallresource</th>
+    <th>Amount</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mostsmallterrainproducts.each do |mostsmallterrainproduct| %>
+  <tr>
+    <td><%= mostsmallterrainproduct.mostsmallterrain.name %></td>
+    <td><%= mostsmallterrainproduct.mostsmallresource.name %></td>
+    <td><%= mostsmallterrainproduct.amount %></td>
+    <td><%= link_to 'Show', mostsmallterrainproduct %></td>
+    <td><%= link_to 'Edit', edit_mostsmallterrainproduct_path(mostsmallterrainproduct) %></td>
+    <td><%= link_to 'Destroy', mostsmallterrainproduct, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mostsmallterrainproduct', new_mostsmallterrainproduct_path %>

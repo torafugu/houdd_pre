@@ -1,0 +1,29 @@
+<h1>Listing mostsmallconstructioninfos</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Mostsmallconstructionfamily</th>
+    <th>Name</th>
+    <th>Const period</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mostsmallconstructioninfos.each do |mostsmallconstructioninfo| %>
+  <tr>
+    <td><%= mostsmallconstructioninfo.id %></td>
+    <td><%= mostsmallconstructioninfo.mostsmallconstructionfamily.name %></td>
+    <td><%= mostsmallconstructioninfo.name %></td>
+    <td><%= mostsmallconstructioninfo.const_period %></td>
+    <td><%= link_to 'Show', mostsmallconstructioninfo %></td>
+    <td><%= link_to 'Edit', edit_mostsmallconstructioninfo_path(mostsmallconstructioninfo) %></td>
+    <td><%= link_to 'Destroy', mostsmallconstructioninfo, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mostsmallconstructioninfo', new_mostsmallconstructioninfo_path %>

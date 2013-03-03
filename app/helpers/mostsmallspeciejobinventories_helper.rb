@@ -1,0 +1,2 @@
+module MostsmallspeciejobinventoriesHelper
+end

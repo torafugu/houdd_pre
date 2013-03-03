@@ -1,0 +1,37 @@
+<%= form_for(@mostsmallroad) do |f| %>
+  <% if @mostsmallroad.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mostsmallroad.errors.count, "error") %> prohibited this mostsmallroad from being saved:</h2>
+
+      <ul>
+      <% @mostsmallroad.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :start_territory_id %><br />
+    <%= f.collection_select(:start_territory_id, Mostsmallterritory.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :dest_territory_id %><br />
+    <%= f.collection_select(:dest_territory_id, Mostsmallterritory.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :distance %><br />
+    <%= f.number_field :distance %>
+  </div>
+  <div class="field">
+    <%= f.label :level %><br />
+    <%= f.number_field :level %>
+  </div>
+  <div class="field">
+    <%= f.label :remaining_period %><br />
+    <%= f.number_field :remaining_period %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

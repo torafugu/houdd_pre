@@ -1,0 +1,34 @@
+<h1>Listing mostsmallmobspecies</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Prolificacy</th>
+    <th>Longevity</th>
+    <th>Cost</th>
+    <th>Damage</th>
+    <th>AC</th>
+
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mostsmallmobspecies.each do |mostsmallmobspecie| %>
+  <tr>
+    <td><%= mostsmallmobspecie.name %></td>
+    <td><%= mostsmallmobspecie.prolificacy %></td>
+    <td><%= mostsmallmobspecie.longevity %></td>
+    <td><%= mostsmallmobspecie.cost %></td>
+    <td><%= mostsmallmobspecie.damage %></td>
+    <td><%= mostsmallmobspecie.ac %></td>
+    <td><%= link_to 'Show', mostsmallmobspecie %></td>
+    <td><%= link_to 'Edit', edit_mostsmallmobspecy_path(mostsmallmobspecie) %></td>
+    <td><%= link_to 'Destroy', mostsmallmobspecie, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mostsmallmobspecie', new_mostsmallmobspecy_path %>

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mostsmallconstructioninfo:</b>
+  <%= @mostsmallconstproduct.mostsmallconstructioninfo.name %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%= @mostsmallconstproduct.level %>
+</p>
+
+<p>
+  <b>Mostsmallresource:</b>
+  <%= @mostsmallconstproduct.mostsmallresource.name %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @mostsmallconstproduct.amount %>
+</p>
+
+
+<%= link_to 'Edit', edit_mostsmallconstproduct_path(@mostsmallconstproduct) %> |
+<%= link_to 'Back', mostsmallconstproducts_path %>

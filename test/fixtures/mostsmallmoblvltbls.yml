@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mostsmallmobspecie: 
+  level: 1
+  exp: 1
+  max_hp: 1
+  max_sp: 1
+  str: 1
+  dex: 1
+  con: 1
+  int: 1
+  wis: 1
+  cha: 1
+
+two:
+  mostsmallmobspecie: 
+  level: 1
+  exp: 1
+  max_hp: 1
+  max_sp: 1
+  str: 1
+  dex: 1
+  con: 1
+  int: 1
+  wis: 1
+  cha: 1

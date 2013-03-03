@@ -1,0 +1,37 @@
+<%= form_for(@mostsmallitem) do |f| %>
+  <% if @mostsmallitem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mostsmallitem.errors.count, "error") %> prohibited this mostsmallitem from being saved:</h2>
+
+      <ul>
+      <% @mostsmallitem.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mostsmalliteminfo %><br />
+    <%= f.collection_select(:mostsmalliteminfo_id, Mostsmalliteminfo.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :mostsmalluser %><br />
+    <%= f.collection_select(:mostsmalluser_id, Mostsmalluser.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :dp %><br />
+    <%= f.number_field :dp %>
+  </div>
+  <div class="field">
+    <%= f.label :quality %><br />
+    <%= f.number_field :quality %>
+  </div>
+  <div class="field">
+    <%= f.label :remaining_period %><br />
+    <%= f.number_field :remaining_period %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

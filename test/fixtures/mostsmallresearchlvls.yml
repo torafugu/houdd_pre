@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mostsmalluser: 
+  mostsmallresearch: 
+  level: 1
+  rp: 1
+
+two:
+  mostsmalluser: 
+  mostsmallresearch: 
+  level: 1
+  rp: 1

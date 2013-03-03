@@ -1,0 +1,29 @@
+<h1>Listing mostsmalltrapinfos</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Element</th>
+    <th>Name</th>
+    <th>Const period</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mostsmalltrapinfos.each do |mostsmalltrapinfo| %>
+  <tr>
+    <td><%= mostsmalltrapinfo.id %></td>
+    <td><%= mostsmalltrapinfo.mostsmallelement.name %></td>
+    <td><%= mostsmalltrapinfo.name %></td>
+    <td><%= mostsmalltrapinfo.const_period %></td>
+    <td><%= link_to 'Show', mostsmalltrapinfo %></td>
+    <td><%= link_to 'Edit', edit_mostsmalltrapinfo_path(mostsmalltrapinfo) %></td>
+    <td><%= link_to 'Destroy', mostsmalltrapinfo, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mostsmalltrapinfo', new_mostsmalltrapinfo_path %>

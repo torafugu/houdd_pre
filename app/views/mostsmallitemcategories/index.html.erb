@@ -1,0 +1,31 @@
+<h1>Listing mostsmallitemcategories</h1>
+
+<table>
+  <tr>
+    <th>Mostsmallequipslot</th>
+    <th>Name</th>
+    <th>Wepon level</th>
+    <th>Armor level</th>
+    <th>Is_two_hand</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mostsmallitemcategories.each do |mostsmallitemcategory| %>
+  <tr>
+    <td><%= mostsmallitemcategory.mostsmallequipslot.name %></td>
+    <td><%= mostsmallitemcategory.name %></td>
+    <td><%= mostsmallitemcategory.wepon_level %></td>
+    <td><%= mostsmallitemcategory.armor_level %></td>
+    <td><%= mostsmallitemcategory.is_two_hand %></td>
+    <td><%= link_to 'Show', mostsmallitemcategory %></td>
+    <td><%= link_to 'Edit', edit_mostsmallitemcategory_path(mostsmallitemcategory) %></td>
+    <td><%= link_to 'Destroy', mostsmallitemcategory, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mostsmallitemcategory', new_mostsmallitemcategory_path %>

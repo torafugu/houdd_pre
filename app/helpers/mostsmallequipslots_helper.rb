@@ -1,0 +1,2 @@
+module MostsmallequipslotsHelper
+end

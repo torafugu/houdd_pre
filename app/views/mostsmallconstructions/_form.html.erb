@@ -1,0 +1,117 @@
+<script type="text/processing" data-processing-target="mostsmall_construction_canvas">
+// Parameteres of screen size.
+int RECT_SIZE = 30;
+int[][] map = new int[10][10];
+int MAP_WIDTH = map[0].length * RECT_SIZE + 1;
+int MAP_HEIGHT = map.length * RECT_SIZE + 1;
+int selectedX = null;
+int selectedY = null;
+
+PImage grassImg = loadImage("/assets/map_grass.png");
+PImage mountainImg = loadImage("/assets/map_mountain.png");
+PImage seaImg = loadImage("/assets/map_sea.png");
+
+int GRASS = 1;
+int MOUNTAIN = 2;
+int SEA = 3;
+int currentTexture = GRASS;
+
+void setup() {
+  size(MAP_WIDTH, MAP_HEIGHT);
+  for (int y = 0; y < map.length; y++) {
+    for (int x = 0; x < map[y].length; x++) {
+      map[y][x] = 0
+    }
+  }
+}
+
+void draw() {
+  background(0);
+  fill(0);
+
+  // Draw map
+  stroke(0);
+  strokeWeight(1);
+  for (int y = 0; y < map.length; y++) {
+    for (int x = 0; x < map[y].length; x++) {
+      if (map[y][x] == 0) {
+        fill(0);
+        rect(RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      } else if (map[y][x] == GRASS) {
+        image(grassImg, RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      } else if (map[y][x] == MOUNTAIN) {
+        image(mountainImg, RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      } else if (map[y][x] == SEA) {
+        image(seaImg, RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      }
+    }
+  }
+
+  // Draw selection
+  if (selectedX != null && selectedY != null) {
+    noFill();
+    stroke(255, 99, 71); // tomato
+    strokeWeight(2);
+    rect(selectedX, selectedY, RECT_SIZE, RECT_SIZE);
+  }
+}
+
+void mousePressed() {
+  int mapX = int(mouseX / RECT_SIZE);
+  int mapY = int(mouseY / RECT_SIZE);
+  jQuery("#mostsmallconstruction_x").val(mapX);
+  jQuery("#mostsmallconstruction_y").val(mapY);
+  selectedX = mapX * RECT_SIZE;
+  selectedY = mapY * RECT_SIZE;
+}
+
+void setMap(mapArray) {
+  if (mapArray.length == map.length) {
+    map = mapArray;
+  }
+}
+</script>
+
+<%= form_for(@mostsmallconstruction) do |f| %>
+  <% if @mostsmallconstruction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mostsmallconstruction.errors.count, "error") %> prohibited this mostsmallconstruction from being saved:</h2>
+
+      <ul>
+      <% @mostsmallconstruction.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mostsmallterritory %><br />
+    <%= f.collection_select(:mostsmallterritory_id, Mostsmallterritory.find(:all), :id, :name, :include_blank => true) %><br />
+    <input id="mostsmallterritory_map_txt" type="hidden" value="" />
+    <canvas id="mostsmall_construction_canvas"></canvas>
+  </div>
+  <div class="field">
+    <%= f.label :mostsmallconstructioninfo %><br />
+    <%= f.collection_select(:mostsmallconstructioninfo_id, Mostsmallconstructioninfo.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :x %><br />
+    <%= f.number_field :x %>
+  </div>
+  <div class="field">
+    <%= f.label :y %><br />
+    <%= f.number_field :y %>
+  </div>
+  <div class="field">
+    <%= f.label :level %><br />
+    <%= f.number_field :level %>
+  </div>
+  <div class="field">
+    <%= f.label :remaining_period %><br />
+    <%= f.number_field :remaining_period %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

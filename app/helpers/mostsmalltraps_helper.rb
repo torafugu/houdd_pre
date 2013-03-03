@@ -1,0 +1,2 @@
+module MostsmalltrapsHelper
+end

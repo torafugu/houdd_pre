@@ -1,0 +1,57 @@
+<%= form_for(@mostsmallmobgene) do |f| %>
+  <% if @mostsmallmobgene.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mostsmallmobgene.errors.count, "error") %> prohibited this mostsmallmobgene from being saved:</h2>
+
+      <ul>
+      <% @mostsmallmobgene.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mostsmallmobspecie %><br />
+    <%= f.collection_select(:mostsmallmobspecie_id, Mostsmallmobspecie.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :mothermobgene_id %><br />
+    <%= f.collection_select(:mothermobgene_id, Mostsmallmobgene.find(:all), :id, :name, :include_blank => true) %>
+  </div>
+  <div class="field">
+    <%= f.label :fathermobgene_id %><br />
+    <%= f.collection_select(:fathermobgene_id, Mostsmallmobgene.find(:all), :id, :name, :include_blank => true) %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :phys_mod %><br />
+    <%= f.text_field :phys_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :int_mod %><br />
+    <%= f.text_field :int_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :prolificacy_mod %><br />
+    <%= f.text_field :prolificacy_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :longevity_mod %><br />
+    <%= f.text_field :longevity_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :cost_mod %><br />
+    <%= f.text_field :cost_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :growth_mod %><br />
+    <%= f.text_field :growth_mod %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

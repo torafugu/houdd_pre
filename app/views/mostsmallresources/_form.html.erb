@@ -1,0 +1,21 @@
+<%= form_for(@mostsmallresource) do |f| %>
+  <% if @mostsmallresource.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mostsmallresource.errors.count, "error") %> prohibited this mostsmallresource from being saved:</h2>
+
+      <ul>
+      <% @mostsmallresource.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

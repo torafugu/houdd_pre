@@ -1,0 +1,9 @@
+class CreateMostsmallresources < ActiveRecord::Migration
+  def change
+    create_table :mostsmallresources do |t|
+      t.string :name
+
+      t.timestamps
+    end
+  end
+end

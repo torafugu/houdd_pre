@@ -1,0 +1,31 @@
+<h1>Listing mostsmallitems</h1>
+
+<table>
+  <tr>
+    <th>Mostsmalliteminfo</th>
+    <th>Mostsmalluser</th>
+    <th>Dp</th>
+    <th>Quality</th>
+    <th>Remaining period</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mostsmallitems.each do |mostsmallitem| %>
+  <tr>
+    <td><%= mostsmallitem.mostsmalliteminfo.name %></td>
+    <td><%= mostsmallitem.mostsmalluser.name %></td>
+    <td><%= mostsmallitem.dp %></td>
+    <td><%= mostsmallitem.quality %></td>
+    <td><%= mostsmallitem.remaining_period %></td>
+    <td><%= link_to 'Show', mostsmallitem %></td>
+    <td><%= link_to 'Edit', edit_mostsmallitem_path(mostsmallitem) %></td>
+    <td><%= link_to 'Destroy', mostsmallitem, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mostsmallitem', new_mostsmallitem_path %>

@@ -1,0 +1,145 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b><%= @mostsmalluser.name %>さん(ID:<%= @mostsmalluser.id %>)の情報。</b>
+</p>
+<hr>
+<p>
+<b>領土</b></br>
+<table  cellspacing="1" border="0" class="style_table">
+  <thead>
+    <tr>
+      <td class="style_td" style="text-align:center;">小マップ名</td>
+      <td class="style_td" style="text-align:center;"><%= Mostsmallterrain.find(1).name %></td>
+      <td class="style_td" style="text-align:center;"><%= Mostsmallterrain.find(2).name %></td>
+      <td class="style_td" style="text-align:center;"><%= Mostsmallterrain.find(2).name %></td>
+    </tr>
+  </thead>
+<% @mostsmalluser.mostsmallterritories.each do |territory| %>
+  <tr>
+    <td class="style_td"><%= territory.name %></td>
+    <td class="style_td_number"><%= territory.num_of_terrain(1) %></td>
+    <td class="style_td_number"><%= territory.num_of_terrain(2) %></td>
+    <td class="style_td_number"><%= territory.num_of_terrain(3) %></td>
+  </tr>
+<% end %>
+</table>
+</p>
+<hr>
+<p>
+<b>施設</b></br>
+<table  cellspacing="1" border="0" class="style_table">
+  <thead>
+    <tr>
+      <td class="style_td" style="text-align:center;">小マップ名</td>
+      <td class="style_td" style="text-align:center;">
+        <%= Mostsmallconstructioninfo.find(1).name %>
+      </td>
+      <td class="style_td" style="text-align:center;">
+        <%= Mostsmallconstructioninfo.find(2).name %>
+      </td>
+    </tr>
+  </thead>
+  <% @mostsmalluser.mostsmallterritories.each do |territory| %>
+    <tr>
+      <td class="style_td"><%= territory.name %></td>
+      <td class="style_td_number">
+        <%= territory.num_of_const(1, true) %>(<%= territory.num_of_const(1, false) %>)
+      </td>
+      <td class="style_td_number">
+        <%= territory.num_of_const(2, true) %>(<%= territory.num_of_const(2, false) %>)
+      </td>
+    </tr>
+  <% end %>
+</table>
+※()内は建設中の施設数です。
+</p>
+<hr>
+<p>
+<b>トラップ</b></br>
+<table  cellspacing="1" border="0" class="style_table">
+  <thead>
+    <tr>
+      <td class="style_td" style="text-align:center;">小マップ名</td>
+      <td class="style_td" style="text-align:center;">
+        <%= Mostsmalltrapinfo.find(1).name %>
+      </td>
+      <td class="style_td" style="text-align:center;">
+        <%= Mostsmalltrapinfo.find(2).name %>
+      </td>
+      <td class="style_td" style="text-align:center;">
+        <%= Mostsmalltrapinfo.find(3).name %>
+      </td>
+      <td class="style_td" style="text-align:center;">
+        <%= Mostsmalltrapinfo.find(4).name %>
+      </td>
+    </tr>
+  </thead>
+  <% @mostsmalluser.mostsmallterritories.each do |territory| %>
+    <tr>
+      <td class="style_td"><%= territory.name %></td>
+      <td class="style_td_number">
+        <%= territory.num_of_trap(1, true) %>(<%= territory.num_of_trap(1, false) %>)
+      </td>
+      <td class="style_td_number">
+        <%= territory.num_of_trap(2, true) %>(<%= territory.num_of_trap(2, false) %>)
+      </td>
+      <td class="style_td_number">
+        <%= territory.num_of_trap(3, true) %>(<%= territory.num_of_trap(3, false) %>)
+      </td>
+      <td class="style_td_number">
+        <%= territory.num_of_trap(4, true) %>(<%= territory.num_of_trap(4, false) %>)
+      </td>
+    </tr>
+  <% end %>
+</table>
+※()内は作成中のトラップ数です。
+</p>
+<hr>
+<p>
+<b>資源</b></br>
+<table  cellspacing="1" border="0" class="style_table">
+  <thead>
+    <tr>
+      <td class="style_td" style="text-align:center;">資源名</td>
+      <td class="style_td" style="text-align:center;">地形からの獲得量</td>
+      <td class="style_td" style="text-align:center;">施設からの獲得量</td>
+      <td class="style_td" style="text-align:center;">在庫</td>
+    </tr>
+  </thead>
+<% @mostsmalluser.mostsmallresstocks.each do |stock| %>
+  <tr>
+    <td class="style_td"><%= stock.mostsmallresource.name %></td>
+    <td class="style_td_number"><%= stock.prod_resource_terrain %></td>
+    <td class="style_td_number"><%= stock.prod_resource_construction %></td>
+    <td class="style_td_number"><%= stock.amount %></td>
+  </tr>
+<% end %>
+</table>
+</p>
+<hr>
+<p>
+<b>研究</b></br>
+<table  cellspacing="1" border="0" class="style_table">
+  <thead>
+    <tr>
+      <td class="style_td" style="text-align:center;">資源名</td>
+      <td class="style_td" style="text-align:center;">レベル</td>
+      <td class="style_td" style="text-align:center;">ポイント獲得量</td>
+      <td class="style_td" style="text-align:center;">ポイント</td>
+    </tr>
+  </thead>
+<% @mostsmalluser.mostsmallresearchlvls.each do |research| %>
+  <tr>
+    <td class="style_td"><%= research.mostsmallresearch.name %></td>
+    <td class="style_td_number"><%= research.level %></td>
+    <td class="style_td_number">0</td>
+    <td class="style_td_number"><%= research.rp %></td>
+  </tr>
+<% end %>
+</table>
+</p>
+<p>
+<b>保有部隊一覧</b></br>
+
+<%= link_to 'Back', moresmalltops_path %>

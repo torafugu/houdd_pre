@@ -1,0 +1,2 @@
+module MostsmallresourcesHelper
+end

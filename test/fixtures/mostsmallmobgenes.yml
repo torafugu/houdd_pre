@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mostsmallmobspecie: 
+  mothermobgene_id: 1
+  fathermobgene_id: 1
+  name: MyString
+  phys_mod: 1.5
+  int_mod: 1.5
+  prolificacy_mod: 1.5
+  longevity_mod: 1.5
+  cost_mod: 1.5
+  growth_mod: 1.5
+
+two:
+  mostsmallmobspecie: 
+  mothermobgene_id: 1
+  fathermobgene_id: 1
+  name: MyString
+  phys_mod: 1.5
+  int_mod: 1.5
+  prolificacy_mod: 1.5
+  longevity_mod: 1.5
+  cost_mod: 1.5
+  growth_mod: 1.5

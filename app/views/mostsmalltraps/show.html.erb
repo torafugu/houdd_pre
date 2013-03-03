@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mostsmallterritory:</b>
+  <%= @mostsmalltrap.mostsmallterritory.name %>
+</p>
+
+<p>
+  <b>Mostsmalltrapinfo:</b>
+  <%= @mostsmalltrap.mostsmalltrapinfo.name %>
+</p>
+
+<p>
+  <b>Dungeon x:</b>
+  <%= @mostsmalltrap.dungeon_x %>
+</p>
+
+<p>
+  <b>Dungeon y:</b>
+  <%= @mostsmalltrap.dungeon_y %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%= @mostsmalltrap.level %>
+</p>
+
+<p>
+  <b>Dp:</b>
+  <%= @mostsmalltrap.dp %>
+</p>
+
+<p>
+  <b>Remaining_period:</b>
+  <%= @mostsmalltrap.remaining_period %>
+</p>
+
+
+<%= link_to 'Edit', edit_mostsmalltrap_path(@mostsmalltrap) %> |
+<%= link_to 'Back', mostsmalltraps_path %>

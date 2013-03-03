@@ -1,0 +1,2 @@
+module MostsmallmobspeciesHelper
+end

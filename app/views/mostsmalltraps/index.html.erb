@@ -1,0 +1,35 @@
+<h1>Listing mostsmalltraps</h1>
+
+<table>
+  <tr>
+    <th>Territory</th>
+    <th>Trapinfo</th>
+    <th>Dungeon x</th>
+    <th>Dungeon y</th>
+    <th>Level</th>
+    <th>Dp</th>
+    <th>Remaining_period</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mostsmalltraps.each do |mostsmalltrap| %>
+  <tr>
+    <td><%= mostsmalltrap.mostsmallterritory.name %></td>
+    <td><%= mostsmalltrap.mostsmalltrapinfo.name %></td>
+    <td><%= mostsmalltrap.dungeon_x %></td>
+    <td><%= mostsmalltrap.dungeon_y %></td>
+    <td><%= mostsmalltrap.level %></td>
+    <td><%= mostsmalltrap.dp %></td>
+    <td><%= mostsmalltrap.remaining_period %></td>
+    <td><%= link_to 'Show', mostsmalltrap %></td>
+    <td><%= link_to 'Edit', edit_mostsmalltrap_path(mostsmalltrap) %></td>
+    <td><%= link_to 'Destroy', mostsmalltrap, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mostsmalltrap', new_mostsmalltrap_path %>

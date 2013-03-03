@@ -1,0 +1,43 @@
+<h1>Listing mostsmallmoblvltbls</h1>
+
+<table>
+  <tr>
+    <th>Mostsmallmobspecie</th>
+    <th>Level</th>
+    <th>Exp</th>
+    <th>Max hp</th>
+    <th>Max sp</th>
+    <th>Str</th>
+    <th>Dex</th>
+    <th>Con</th>
+    <th>Int</th>
+    <th>Wis</th>
+    <th>Cha</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mostsmallmoblvltbls.each do |mostsmallmoblvltbl| %>
+  <tr>
+    <td><%= mostsmallmoblvltbl.mostsmallmobspecie.name %></td>
+    <td><%= mostsmallmoblvltbl.level %></td>
+    <td><%= mostsmallmoblvltbl.exp %></td>
+    <td><%= mostsmallmoblvltbl.max_hp %></td>
+    <td><%= mostsmallmoblvltbl.max_sp %></td>
+    <td><%= mostsmallmoblvltbl.str %></td>
+    <td><%= mostsmallmoblvltbl.dex %></td>
+    <td><%= mostsmallmoblvltbl.con %></td>
+    <td><%= mostsmallmoblvltbl.int %></td>
+    <td><%= mostsmallmoblvltbl.wis %></td>
+    <td><%= mostsmallmoblvltbl.cha %></td>
+    <td><%= link_to 'Show', mostsmallmoblvltbl %></td>
+    <td><%= link_to 'Edit', edit_mostsmallmoblvltbl_path(mostsmallmoblvltbl) %></td>
+    <td><%= link_to 'Destroy', mostsmallmoblvltbl, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mostsmallmoblvltbl', new_mostsmallmoblvltbl_path %>

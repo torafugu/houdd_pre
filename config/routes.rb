@@ -1,5 +1,84 @@
 HouddPre::Application.routes.draw do
 
+  resources :mostsmallitemequipinventories
+
+  resources :mostsmallmobs
+
+  resources :mostsmallsquads
+
+  resources :mostsmallmobgenes
+
+  resources :mostsmallitems
+
+  resources :mostsmallitemeffectinventories
+
+  resources :mostsmalliteminfos
+
+  resources :mostsmallitemcategories
+
+  resources :mostsmallskilleffectinventories
+
+  resources :mostsmallskilllvltbls
+
+  resources :mostsmallskills
+
+  resources :mostsmallskillcategories
+
+  resources :mostsmallspeciejobinventories
+
+  resources :mostsmalljobs
+
+  resources :mostsmalleffects
+
+  resources :mostsmallmoblvltbls
+
+  resources :mostsmallequipslotinventories
+
+  resources :mostsmallequipslots
+
+  resources :mostsmallmobspecies
+
+  resources :mostsmallresearchlvltbls
+
+  resources :mostsmallresearches
+
+  resources :mostsmalltrapeffectinventories
+
+  resources :mostsmalltraplvltbls
+
+  resources :mostsmallroads
+
+  resources :mostsmallconstproducts
+
+  resources :mostsmallterrainproducts
+
+  resources :mostsmallterrains
+
+  resources :mostsmallresources
+
+  resources :mostsmallelements
+
+  match '/mostsmalltraps/select_dungeontxt'
+  match '/mostsmalltraps/:id/select_dungeontxt' => 'mostsmalltraps#select_dungeontxt'
+  resources :mostsmalltraps
+
+  resources :mostsmalltrapinfos
+
+  match '/mostsmallconstructions/select_maptxt'
+  match '/mostsmallconstructions/:id/select_maptxt' => 'mostsmallconstructions#select_maptxt'
+  resources :mostsmallconstructions
+
+  resources :mostsmallconstructioninfos
+
+  resources :mostsmallconstructionfamilies
+
+  match '/mostsmallterritories/random_map_txt'
+  match '/mostsmallterritories/:id/dungeon_edit' => 'mostsmallterritories#dungeon_edit', as: 'dungeon_edit_mostsmallterritories', :via => :get
+  resources :mostsmallterritories
+
+  match '/mostsmallusers/:id/mypage' => 'mostsmallusers#mypage', as: 'mypage_mostsmalluser', :via => :get
+  resources :mostsmallusers
+
   match '/moresmalltrials/:id/log' => 'moresmalltrials#log', as: 'log_moresmalltrial', :via => :get
   match '/moresmalltrials/:id/execute' => 'moresmalltrials#execute'
   match '/moresmalltrials/:id/check_battlelog' => 'moresmalltrials#check_battlelog'

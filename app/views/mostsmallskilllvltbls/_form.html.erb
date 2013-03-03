@@ -1,0 +1,45 @@
+<%= form_for(@mostsmallskilllvltbl) do |f| %>
+  <% if @mostsmallskilllvltbl.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mostsmallskilllvltbl.errors.count, "error") %> prohibited this mostsmallskilllvltbl from being saved:</h2>
+
+      <ul>
+      <% @mostsmallskilllvltbl.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mostsmallskill %><br />
+    <%= f.collection_select(:mostsmallskill_id, Mostsmallskill.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :level %><br />
+    <%= f.number_field :level %>
+  </div>
+  <div class="field">
+    <%= f.label :sp_cost %><br />
+    <%= f.number_field :sp_cost %>
+  </div>
+  <div class="field">
+    <%= f.label :num_of_tgt %><br />
+    <%= f.number_field :num_of_tgt %>
+  </div>
+  <div class="field">
+    <%= f.label :accuracy %><br />
+    <%= f.number_field :accuracy %>
+  </div>
+  <div class="field">
+    <%= f.label :range %><br />
+    <%= f.number_field :range %>
+  </div>
+  <div class="field">
+    <%= f.label :damage %><br />
+    <%= f.number_field :damage %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

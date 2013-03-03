@@ -1,0 +1,35 @@
+<h1>Listing mostsmallconstructions</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>territory</th>
+    <th>Mconstructioninfo</th>
+    <th>X</th>
+    <th>Y</th>
+    <th>Level</th>
+    <th>Remaining_period</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mostsmallconstructions.each do |mostsmallconstruction| %>
+  <tr>
+    <td><%= mostsmallconstruction.id %></td>
+    <td><%= mostsmallconstruction.mostsmallterritory.name %></td>
+    <td><%= mostsmallconstruction.mostsmallconstructioninfo.name %></td>
+    <td><%= mostsmallconstruction.x %></td>
+    <td><%= mostsmallconstruction.y %></td>
+    <td><%= mostsmallconstruction.level %></td>
+    <td><%= mostsmallconstruction.remaining_period %></td>
+    <td><%= link_to 'Show', mostsmallconstruction %></td>
+    <td><%= link_to 'Edit', edit_mostsmallconstruction_path(mostsmallconstruction) %></td>
+    <td><%= link_to 'Destroy', mostsmallconstruction, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mostsmallconstruction', new_mostsmallconstruction_path %>

@@ -1,0 +1,190 @@
+<script type="text/processing" data-processing-target="mostsmall_map_canvas">
+int RECT_SIZE = 40;
+int[][] map = new int[10][10];
+int PARTS_WIDTH = RECT_SIZE * 3;
+int MAP_WIDTH = map[0].length * RECT_SIZE + 1 + PARTS_WIDTH;
+int MAP_HEIGHT = map.length * RECT_SIZE + 1;
+int PARTS_START_X = MAP_WIDTH - PARTS_WIDTH - 1;
+
+PImage grassImg = loadImage("/assets/map_grass.png");
+PImage mountainImg = loadImage("/assets/map_mountain.png");
+PImage seaImg = loadImage("/assets/map_sea.png");
+
+int GRASS = 1;
+int MOUNTAIN = 2;
+int SEA = 3;
+int currentTexture = GRASS;
+
+void setup() {
+  size(MAP_WIDTH, MAP_HEIGHT);
+  for (int y = 0; y < map.length; y++) {
+    for (int x = 0; x < map[y].length; x++) {
+      map[y][x] = 0
+    }
+  }
+}
+
+void draw() {
+  background(0);
+  fill(0);
+
+  // Draw map
+  stroke(0);
+  strokeWeight(1);
+  for (int y = 0; y < map.length; y++) {
+    for (int x = 0; x < map[y].length; x++) {
+      if (map[y][x] == 0) {
+        fill(0);
+        rect(RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      } else if (map[y][x] == GRASS) {
+        image(grassImg, RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      } else if (map[y][x] == MOUNTAIN) {
+        image(mountainImg, RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      } else if (map[y][x] == SEA) {
+        image(seaImg, RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      }
+    }
+  }
+
+  // Draw workbench.
+  stroke(0);
+  strokeWeight(1);
+  fill(222, 184, 135); // burlywood
+  rect(PARTS_START_X, 0, PARTS_WIDTH, MAP_HEIGHT - 1);
+
+  // Draw terrain.
+  fill(0);
+  textSize(20);
+  text("地形", PARTS_START_X + RECT_SIZE, 25)
+  image(grassImg, PARTS_START_X + RECT_SIZE, RECT_SIZE, RECT_SIZE, RECT_SIZE);
+  if (currentTexture == GRASS) {
+    noFill();
+    stroke(255, 99, 71); // tomato
+    strokeWeight(2);
+    rect(PARTS_START_X + RECT_SIZE * 0.75, RECT_SIZE * 0.75, RECT_SIZE * 1.5, RECT_SIZE * 1.5);
+  }
+  image(mountainImg, PARTS_START_X + RECT_SIZE, RECT_SIZE * 2.5, RECT_SIZE, RECT_SIZE);
+  if (currentTexture == MOUNTAIN) {
+    noFill();
+    stroke(255, 99, 71); // tomato
+    strokeWeight(2);
+    rect(PARTS_START_X + RECT_SIZE * 0.75, RECT_SIZE * 2.25, RECT_SIZE * 1.5, RECT_SIZE * 1.5);
+  }
+  image(seaImg, PARTS_START_X + RECT_SIZE, RECT_SIZE * 4, RECT_SIZE, RECT_SIZE);
+  if (currentTexture == SEA) {
+    noFill();
+    stroke(255, 99, 71); // tomato
+    strokeWeight(2);
+    rect(PARTS_START_X + RECT_SIZE * 0.75, RECT_SIZE * 3.75, RECT_SIZE * 1.5, RECT_SIZE * 1.5);
+  }
+}
+
+void mousePressed() {
+  if (mouseX < PARTS_START_X) {
+      turnTileColor();
+  } else {
+    if (isGrassClicked(mouseX, mouseY)) {
+      currentTexture = GRASS;
+    }
+    if (isMountainClicked(mouseX, mouseY)) {
+      currentTexture = MOUNTAIN;
+    }
+    if (isSeaClicked(mouseX, mouseY)) {
+      currentTexture = SEA;
+    }
+  }
+}
+
+void turnTileColor() {
+  int mapX = int(mouseX / RECT_SIZE);
+  int mapY = int(mouseY / RECT_SIZE);
+  map[mapY][mapX] = currentTexture;
+}
+
+boolean isGrassClicked(int x, int y) {
+  int x1 = PARTS_START_X + RECT_SIZE;
+  int x2 = x1 + RECT_SIZE;
+  int y1 = RECT_SIZE;
+  int y2 = y1 + RECT_SIZE;
+  if ((x1 <= x) && (x <= x2) && (y1 <= y) && (y <= y2)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+boolean isMountainClicked(int x, int y) {
+  int x1 = PARTS_START_X + RECT_SIZE;
+  int x2 = x1 + RECT_SIZE;
+  int y1 = RECT_SIZE * 2.5;
+  int y2 = y1 + RECT_SIZE;
+  if ((x1 <= x) && (x <= x2) && (y1 <= y) && (y <= y2)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+boolean isSeaClicked(int x, int y) {
+  int x1 = PARTS_START_X + RECT_SIZE;
+  int x2 = x1 + RECT_SIZE;
+  int y1 = RECT_SIZE * 4;
+  int y2 = y1 + RECT_SIZE;
+  if ((x1 <= x) && (x <= x2) && (y1 <= y) && (y <= y2)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+void getMap() {
+   return map;
+}
+
+void setMap(mapArray) {
+  if (mapArray.length == map.length) {
+    map = mapArray;
+  }
+}
+</script>
+<%= form_for(@mostsmallterritory) do |f| %>
+  <% if @mostsmallterritory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mostsmallterritory.errors.count, "error") %> prohibited this mostsmallterritory from being saved:</h2>
+
+      <ul>
+      <% @mostsmallterritory.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mostsmalluser %><br />
+    <%= f.collection_select(:mostsmalluser_id, Mostsmalluser.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :is_exclusive %><br />
+    <%= f.check_box :is_exclusive %>
+  </div>
+  <div class="field">
+    <%= f.label :map_txt %><br />
+  </div>
+  <div class="field">
+    <canvas id="mostsmall_map_canvas"></canvas>
+  </div>
+  <div class="field">
+    <%= f.text_field :map_txt %>
+    <button id="mostsmall_to_canvas" type="button">↑</ button>
+    <button id="mostsmall_to_txt" type="button">↓</ button>
+    <button id="mostsmall_random_map_txt" type="button">random</ button>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

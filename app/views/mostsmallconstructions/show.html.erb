@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mostsmallterritory:</b>
+  <%= @mostsmallconstruction.mostsmallterritory.name %>
+</p>
+
+<p>
+  <b>Mostsmallconstructioninfo:</b>
+  <%= @mostsmallconstruction.mostsmallconstructioninfo.name %>
+</p>
+
+<p>
+  <b>X:</b>
+  <%= @mostsmallconstruction.x %>
+</p>
+
+<p>
+  <b>Y:</b>
+  <%= @mostsmallconstruction.y %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%= @mostsmallconstruction.level %>
+</p>
+
+<p>
+  <b>Remaining_period:</b>
+  <%= @mostsmallconstruction.remaining_period %>
+</p>
+
+
+<%= link_to 'Edit', edit_mostsmallconstruction_path(@mostsmallconstruction) %> |
+<%= link_to 'Back', mostsmallconstructions_path %>

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @mostsmalljob.name %>
+</p>
+
+<p>
+  <b>Growth mod:</b>
+  <%= @mostsmalljob.growth_mod %>
+</p>
+
+<p>
+  <b>Wepon lvl:</b>
+  <%= @mostsmalljob.wepon_lvl %>
+</p>
+
+<p>
+  <b>Armor lvl:</b>
+  <%= @mostsmalljob.armor_lvl %>
+</p>
+
+
+<%= link_to 'Edit', edit_mostsmalljob_path(@mostsmalljob) %> |
+<%= link_to 'Back', mostsmalljobs_path %>

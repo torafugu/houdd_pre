@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mostsmallterrain:</b>
+  <%= @mostsmallterrainproduct.mostsmallterrain.name %>
+</p>
+
+<p>
+  <b>Mostsmallresource:</b>
+  <%= @mostsmallterrainproduct.mostsmallresource.name %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @mostsmallterrainproduct.amount %>
+</p>
+
+<%= link_to 'Edit', edit_mostsmallterrainproduct_path(@mostsmallterrainproduct) %> |
+<%= link_to 'Back', mostsmallterrainproducts_path %>

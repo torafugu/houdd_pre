@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Start territory:</b>
+  <%= @mostsmallroad.start_territory.name %>
+</p>
+
+<p>
+  <b>Dest territory:</b>
+  <%= @mostsmallroad.dest_territory.name %>
+</p>
+
+<p>
+  <b>Distance:</b>
+  <%= @mostsmallroad.distance %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%= @mostsmallroad.level %>
+</p>
+
+<p>
+  <b>Remaining_period:</b>
+  <%= @mostsmallroad.remaining_period %>
+</p>
+
+
+<%= link_to 'Edit', edit_mostsmallroad_path(@mostsmallroad) %> |
+<%= link_to 'Back', mostsmallroads_path %>

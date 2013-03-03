@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mostsmalluser: 
+  mostsmallresource: 
+  amount: 1
+
+two:
+  mostsmalluser: 
+  mostsmallresource: 
+  amount: 1

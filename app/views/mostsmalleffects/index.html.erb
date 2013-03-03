@@ -1,0 +1,43 @@
+<h1>Listing mostsmalleffects</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Damage</th>
+    <th>Ac</th>
+    <th>Sp mod</th>
+    <th>Str mod</th>
+    <th>Dex mod</th>
+    <th>Con mod</th>
+    <th>Int mod</th>
+    <th>Wis mod</th>
+    <th>Cha mod</th>
+    <th>Duration</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mostsmalleffects.each do |mostsmalleffect| %>
+  <tr>
+    <td><%= mostsmalleffect.name %></td>
+    <td><%= mostsmalleffect.damage %></td>
+    <td><%= mostsmalleffect.ac %></td>
+    <td><%= mostsmalleffect.sp_mod %></td>
+    <td><%= mostsmalleffect.str_mod %></td>
+    <td><%= mostsmalleffect.dex_mod %></td>
+    <td><%= mostsmalleffect.con_mod %></td>
+    <td><%= mostsmalleffect.int_mod %></td>
+    <td><%= mostsmalleffect.wis_mod %></td>
+    <td><%= mostsmalleffect.cha_mod %></td>
+    <td><%= mostsmalleffect.duration %></td>
+    <td><%= link_to 'Show', mostsmalleffect %></td>
+    <td><%= link_to 'Edit', edit_mostsmalleffect_path(mostsmalleffect) %></td>
+    <td><%= link_to 'Destroy', mostsmalleffect, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mostsmalleffect', new_mostsmalleffect_path %>

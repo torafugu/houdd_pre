@@ -1,0 +1,29 @@
+<h1>Listing mostsmallconstproducts</h1>
+
+<table>
+  <tr>
+    <th>Mostsmallconstructioninfo</th>
+    <th>Level</th>
+    <th>Mostsmallresource</th>
+    <th>Amount</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mostsmallconstproducts.each do |mostsmallconstproduct| %>
+  <tr>
+    <td><%= mostsmallconstproduct.mostsmallconstructioninfo.name %></td>
+    <td><%= mostsmallconstproduct.level %></td>
+    <td><%= mostsmallconstproduct.mostsmallresource.name %></td>
+    <td><%= mostsmallconstproduct.amount %></td>
+    <td><%= link_to 'Show', mostsmallconstproduct %></td>
+    <td><%= link_to 'Edit', edit_mostsmallconstproduct_path(mostsmallconstproduct) %></td>
+    <td><%= link_to 'Destroy', mostsmallconstproduct, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mostsmallconstproduct', new_mostsmallconstproduct_path %>

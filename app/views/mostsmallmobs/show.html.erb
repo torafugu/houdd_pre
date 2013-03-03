@@ -1,0 +1,110 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mostsmallmobgene:</b>
+  <%= @mostsmallmob.mostsmallmobgene.name %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%= @mostsmallmob.level %>
+</p>
+
+<p>
+  <b>Mostsmalljob:</b>
+  <%= @mostsmallmob.mostsmalljob.name %>
+</p>
+
+<p>
+  <b>Job level:</b>
+  <%= @mostsmallmob.job_level %>
+</p>
+
+<p>
+  <b>Mostsmalluser:</b>
+  <%= @mostsmallmob.mostsmalluser.name %>
+</p>
+
+<p>
+  <b>Mostsmallsquad:</b>
+  <%= @mostsmallmob.mostsmallsquad.name unless @mostsmallmob.mostsmallsquad.nil? %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @mostsmallmob.name %>
+</p>
+
+<p>
+  <b>Gender:</b>
+  <%= @mostsmallmob.gender %>
+</p>
+
+<p>
+  <b>Age:</b>
+  <%= @mostsmallmob.age %>
+</p>
+
+<p>
+  <b>Max hp:</b>
+  <%= @mostsmallmob.max_hp %>
+</p>
+
+<p>
+  <b>Max sp:</b>
+  <%= @mostsmallmob.max_sp %>
+</p>
+
+<p>
+  <b>Hp:</b>
+  <%= @mostsmallmob.hp %>
+</p>
+
+<p>
+  <b>Sp:</b>
+  <%= @mostsmallmob.sp %>
+</p>
+
+<p>
+  <b>Str:</b>
+  <%= @mostsmallmob.str %>
+</p>
+
+<p>
+  <b>Dex:</b>
+  <%= @mostsmallmob.dex %>
+</p>
+
+<p>
+  <b>Con:</b>
+  <%= @mostsmallmob.con %>
+</p>
+
+<p>
+  <b>Int:</b>
+  <%= @mostsmallmob.int %>
+</p>
+
+<p>
+  <b>Wis:</b>
+  <%= @mostsmallmob.wis %>
+</p>
+
+<p>
+  <b>Cha:</b>
+  <%= @mostsmallmob.cha %>
+</p>
+
+<p>
+  <b>Battle exp:</b>
+  <%= @mostsmallmob.battle_exp %>
+</p>
+
+<p>
+  <b>Job exp:</b>
+  <%= @mostsmallmob.job_exp %>
+</p>
+
+
+<%= link_to 'Edit', edit_mostsmallmob_path(@mostsmallmob) %> |
+<%= link_to 'Back', mostsmallmobs_path %>

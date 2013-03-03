@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mostsmallskillcategory: 
+  mostsmalljob: 
+  job_level: 1
+  mostsmallelement: 
+  name: MyString
+  recast: 1
+
+two:
+  mostsmallskillcategory: 
+  mostsmalljob: 
+  job_level: 1
+  mostsmallelement: 
+  name: MyString
+  recast: 1

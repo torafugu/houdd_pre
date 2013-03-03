@@ -1,0 +1,544 @@
+<script type="text/processing" data-processing-target="mostsmall_dungeon_canvas">
+// Parameteres of screen size.
+int RECT_SIZE = 20;
+int[][] map = new int[24][24];
+int PARTS_WIDTH = RECT_SIZE * 5;
+int MAP_WIDTH = map[0].length * RECT_SIZE + 1 + PARTS_WIDTH;
+int MAP_HEIGHT = map.length * RECT_SIZE + 1;
+int PARTS_START_X = MAP_WIDTH - PARTS_WIDTH - 1;
+PImage rotateImg = loadImage("/assets/rotate.png");
+PImage concreteImg = loadImage("/assets/concrete.png");
+PImage waterImg = loadImage("/assets/water.png");
+
+int CONCRETE = 1;
+int WATER = 2;
+int currentTexture = CONCRETE;
+
+// Parameters of selection of screen parts.
+boolean isSelectedSmallRoom = false;
+boolean isSelectedPassage = false;
+double partsAngle = 0;
+
+SmallRoom roomTemplate = new SmallRoom(PARTS_START_X + RECT_SIZE * 2, RECT_SIZE * 2, false);
+SmallRoom roomSelection = new SmallRoom(0, 0, true);
+Passage passageTemplate = new Passage(PARTS_START_X + RECT_SIZE * 2, RECT_SIZE * 7, false);
+Passage passageSelection = new Passage(0, 0, true);
+
+void setup() {
+  size(MAP_WIDTH, MAP_HEIGHT);
+  for (int y = 0; y < map.length; y++) {
+    for (int x = 0; x < map[y].length; x++) {
+      map[y][x] = 0
+    }
+  }
+}
+
+void draw() {
+  background(0);
+  fill(0);
+
+  // Draw map
+  stroke(0);
+  strokeWeight(1);
+  for (int y = 0; y < map.length; y++) {
+    for (int x = 0; x < map[y].length; x++) {
+      if (map[y][x] == 0) {
+        fill(0);
+        rect(RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      } else if (map[y][x] == CONCRETE) {
+        image(concreteImg, RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      } else if (map[y][x] == WATER) {
+        image(waterImg, RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      }
+    }
+  }
+
+  // Draw workbench.
+  stroke(0);
+  strokeWeight(1);
+  fill(222, 184, 135); // burlywood
+  rect(PARTS_START_X, 0, PARTS_WIDTH, MAP_HEIGHT - 1);
+  fill(0);
+  textSize(20);
+  text("Parts", PARTS_START_X + 25, 25)
+
+  // Draw room parts.
+  roomTemplate.draw();
+  if (isSelectedSmallRoom) {
+    noFill();
+    stroke(255, 99, 71); // tomato
+    strokeWeight(2);
+    rect((PARTS_START_X + RECT_SIZE / 2), RECT_SIZE * 1.5, RECT_SIZE * 4, RECT_SIZE * 5);
+    roomSelection.draw(mouseX + RECT_SIZE, mouseY);
+  }
+  // Draw passage parts.
+  passageTemplate.draw();
+  if (isSelectedPassage) {
+    noFill();
+    stroke(255, 99, 71); // tomato
+    strokeWeight(2);
+    rect(PARTS_START_X + RECT_SIZE * 1.5, RECT_SIZE * 6.5, RECT_SIZE * 2, RECT_SIZE * 4);
+    passageSelection.draw(mouseX, mouseY);
+  }
+
+  // Draw texture.
+  fill(0);
+  textSize(20);
+  text("Texture", PARTS_START_X + 18, RECT_SIZE * 12);
+  image(concreteImg, PARTS_START_X + RECT_SIZE * 1.5, RECT_SIZE * 13, RECT_SIZE * 2, RECT_SIZE * 2);
+  if (currentTexture == CONCRETE) {
+    noFill();
+    stroke(255, 99, 71); // tomato
+    strokeWeight(2);
+    rect(PARTS_START_X + RECT_SIZE, RECT_SIZE * 12.5, RECT_SIZE * 3, RECT_SIZE * 3);
+  }
+  image(waterImg, PARTS_START_X + RECT_SIZE * 1.5, RECT_SIZE * 16, RECT_SIZE * 2, RECT_SIZE * 2);
+  if (currentTexture == WATER) {
+    noFill();
+    stroke(255, 99, 71); // tomato
+    strokeWeight(2);
+    rect(PARTS_START_X + RECT_SIZE, RECT_SIZE * 15.5, RECT_SIZE * 3, RECT_SIZE * 3);
+  }
+
+  // Draw rotation parts.
+  fill(0);
+  textSize(20);
+  text("Rotate",PARTS_START_X + 20, RECT_SIZE * 20.5);
+  image(rotateImg, PARTS_START_X + 25, RECT_SIZE * 21, 48, 48);
+
+}
+
+void mousePressed() {
+  if (mouseX < PARTS_START_X) {
+    if (isSelectedSmallRoom) {
+      isSelectedSmallRoom = false;
+      roomSelection.deployToMap(mouseX, mouseY);
+    } else if (isSelectedPassage) {
+      isSelectedPassage = false;
+      passageSelection.deployToMap(mouseX, mouseY);
+    } else {
+      turnTileColor()
+    }
+  } else {
+    if (roomTemplate.containPoint(mouseX, mouseY)) {
+      isSelectedSmallRoom = true;
+    } else {
+      if (!isRotateClicked(mouseX, mouseY) && !isConcreteClicked(mouseX, mouseY) && !isWaterClicked(mouseX, mouseY)) {
+        isSelectedSmallRoom = false;
+      }
+    }
+
+    if (passageTemplate.containPoint(mouseX, mouseY)) {
+      isSelectedPassage = true;
+    } else {
+      if (!isRotateClicked(mouseX, mouseY) && !isConcreteClicked(mouseX, mouseY) && !isWaterClicked(mouseX, mouseY)) {
+        isSelectedPassage = false;
+      }
+    }
+
+    if (isConcreteClicked(mouseX, mouseY)) {
+      currentTexture = CONCRETE;
+    }
+
+    if (isWaterClicked(mouseX, mouseY)) {
+      currentTexture = WATER;
+    }
+
+    if (isRotateClicked(mouseX, mouseY)) {
+      partsAngle += HALF_PI;
+      if (partsAngle == HALF_PI * 4) {
+        partsAngle = 0;
+      }
+    }
+  }
+}
+
+void turnTileColor() {
+  int mapX = int(mouseX / RECT_SIZE);
+  int mapY = int(mouseY / RECT_SIZE);
+
+  if (map[mapY][mapX] == 0) {
+    map[mapY][mapX] = currentTexture;
+  } else {
+    map[mapY][mapX] = 0;
+  }
+}
+
+void getMap() {
+   return map;
+}
+
+void setMap(mapArray) {
+  if (mapArray.length == map.length) {
+    map = mapArray;
+  }
+}
+
+boolean isRotateClicked(int x, int y) {
+  int x1 = PARTS_START_X + 25;
+  int x2 = x1 + 48;
+  int y1 = RECT_SIZE * 21;
+  int y2 = y1 + 48;
+  if ((x1 <= x) && (x <= x2) && (y1 <= y) && (y <= y2)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+boolean isConcreteClicked(int x, int y) {
+  int x1 = PARTS_START_X + RECT_SIZE * 1.5;
+  int x2 = x1 + RECT_SIZE * 2;
+  int y1 = RECT_SIZE * 13;
+  int y2 = y1 + RECT_SIZE * 2;
+  if ((x1 <= x) && (x <= x2) && (y1 <= y) && (y <= y2)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+boolean isWaterClicked(int x, int y) {
+  int x1 = PARTS_START_X + RECT_SIZE * 1.5;
+  int x2 = x1 + RECT_SIZE * 2;
+  int y1 = RECT_SIZE * 16;
+  int y2 = y1 + RECT_SIZE * 2;
+  if ((x1 <= x) && (x <= x2) && (y1 <= y) && (y <= y2)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+class SmallRoom {
+  int startX;
+  int startY;
+  boolean canRotate;
+
+  SmallRoom(int x, int y, boolean rotateFlag) {
+    startX = x;
+    startY = y;
+    canRotate = rotateFlag;
+  }
+
+  void draw() {
+    draw(startX, startY)
+  }
+
+  void draw(int x, int y) {
+    int xCursor = x;
+    int yCursor = y;
+    stroke(0);
+    strokeWeight(1);
+    fill(200);
+    beginShape();
+    if (partsAngle == HALF_PI && canRotate) {
+      xCursor -= RECT_SIZE;
+      vertex(xCursor, yCursor);
+      xCursor += RECT_SIZE * 3;
+      vertex(xCursor, yCursor);
+      yCursor += RECT_SIZE
+      vertex(xCursor, yCursor);
+      xCursor += RECT_SIZE
+      vertex(xCursor, yCursor);
+      yCursor += RECT_SIZE
+      vertex(xCursor, yCursor);
+      xCursor -= RECT_SIZE;
+      vertex(xCursor, yCursor);
+      yCursor += RECT_SIZE
+      vertex(xCursor, yCursor);
+      xCursor -= RECT_SIZE * 3;
+      vertex(xCursor, yCursor);
+      yCursor -= RECT_SIZE * 3;
+      vertex(xCursor, yCursor);
+    } else if (partsAngle == HALF_PI * 2 && canRotate) {
+      xCursor -= RECT_SIZE;
+      vertex(xCursor, yCursor);
+      xCursor += RECT_SIZE * 3;
+      vertex(xCursor, yCursor);
+      yCursor += RECT_SIZE * 3;
+      vertex(xCursor, yCursor);
+      xCursor -= RECT_SIZE;
+      vertex(xCursor, yCursor);
+      yCursor += RECT_SIZE;
+      vertex(xCursor, yCursor);
+      xCursor -= RECT_SIZE;
+      vertex(xCursor, yCursor);
+      yCursor -= RECT_SIZE;
+      vertex(xCursor, yCursor);
+      xCursor -= RECT_SIZE;
+      vertex(xCursor, yCursor);
+      yCursor -= RECT_SIZE * 3;
+      vertex(xCursor, yCursor);
+    } else if (partsAngle == HALF_PI * 3 && canRotate) {
+      xCursor -= RECT_SIZE;
+      vertex(xCursor, yCursor);
+      xCursor += RECT_SIZE * 3;
+      vertex(xCursor, yCursor);
+      yCursor += RECT_SIZE * 3;
+      vertex(xCursor, yCursor);
+      xCursor -= RECT_SIZE * 3;
+      vertex(xCursor, yCursor);
+      yCursor -= RECT_SIZE;
+      vertex(xCursor, yCursor);
+      xCursor -= RECT_SIZE;
+      vertex(xCursor, yCursor);
+      yCursor -= RECT_SIZE;
+      vertex(xCursor, yCursor);
+      xCursor += RECT_SIZE;
+      vertex(xCursor, yCursor);
+      yCursor -= RECT_SIZE;
+      vertex(xCursor, yCursor);
+    } else {
+      vertex(xCursor, yCursor);
+      xCursor += RECT_SIZE
+      vertex(xCursor, yCursor);
+      yCursor += RECT_SIZE
+      vertex(xCursor, yCursor);
+      xCursor += RECT_SIZE
+      vertex(xCursor, yCursor);
+      yCursor += RECT_SIZE * 3
+      vertex(xCursor, yCursor);
+      xCursor -= RECT_SIZE * 3
+      vertex(xCursor, yCursor);
+      yCursor -= RECT_SIZE * 3
+      vertex(xCursor, yCursor);
+      xCursor += RECT_SIZE
+      vertex(xCursor, yCursor);
+      yCursor -= RECT_SIZE
+      vertex(xCursor, yCursor);
+    }
+    endShape();
+  }
+
+  boolean containPoint(int x, int y) {
+    int x1 = startX - RECT_SIZE;
+    int x2 = x1 + RECT_SIZE * 3;
+    int y1 = startY;
+    int y2 = y1 + RECT_SIZE * 4;
+    if ((x1 <= x) && (x <= x2) && (y1 <= y) && (y <= y2)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  void deployToMap(int x, int y) {
+    int xCursor = round(x / RECT_SIZE);
+    int yCursor = round(y / RECT_SIZE);
+    if (partsAngle == HALF_PI) {
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor -= 2;
+      yCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor -= 3;
+      yCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+    } else if (partsAngle == HALF_PI * 2) {
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor -= 2;
+      yCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor -= 2;
+      yCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor -= 1;
+      yCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+    } else if (partsAngle == HALF_PI * 3) {
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor -= 3;
+      yCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor -= 2;
+      yCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+    } else {
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor -= 1;
+      yCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor -= 2;
+      yCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor -= 2;
+      yCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+    }
+  }
+}
+
+class Passage {
+  int startX;
+  int startY;
+  boolean canRotate;
+
+  Passage(int x, int y, boolean rotateFlag) {
+    startX = x;
+    startY = y;
+    canRotate = rotateFlag;
+  }
+
+  void draw() {
+    draw(startX, startY)
+  }
+
+  void draw(int x, int y) {
+    int xCursor = x;
+    int yCursor = y;
+    stroke(90);
+    strokeWeight(2);
+    fill(200);
+    if (partsAngle == HALF_PI && canRotate) {
+      rect(x, y, RECT_SIZE * 3, RECT_SIZE);
+    } else if (partsAngle == HALF_PI * 2 && canRotate) {
+      rect(x, y - RECT_SIZE * 3, RECT_SIZE, RECT_SIZE * 3);
+    } else if (partsAngle == HALF_PI * 3 && canRotate) {
+      rect(x - RECT_SIZE * 3, y, RECT_SIZE * 3, RECT_SIZE);
+    } else {
+      rect(x, y, RECT_SIZE, RECT_SIZE * 3);
+    }
+  }
+
+  boolean containPoint(int x, int y) {
+    int x1 = startX;
+    int x2 = x1 + RECT_SIZE;
+    int y1 = startY;
+    int y2 = y1 + RECT_SIZE * 3;
+    if ((x1 <= x) && (x <= x2) && (y1 <= y) && (y <= y2)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  void deployToMap(int x, int y) {
+    int xCursor = round(x / RECT_SIZE);
+    int yCursor = round(y / RECT_SIZE);
+    if (partsAngle == HALF_PI) {
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+    } else if (partsAngle == HALF_PI * 2) {
+      yCursor -= 1;
+      map[yCursor][xCursor] = currentTexture;
+      yCursor -= 1;
+      map[yCursor][xCursor] = currentTexture;
+      yCursor -= 1;
+      map[yCursor][xCursor] = currentTexture;
+    } else if (partsAngle == HALF_PI * 3) {
+      xCursor -= 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor -= 1;
+      map[yCursor][xCursor] = currentTexture;
+      xCursor -= 1;
+      map[yCursor][xCursor] = currentTexture;
+    } else {
+      map[yCursor][xCursor] = currentTexture;
+      yCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+      yCursor += 1;
+      map[yCursor][xCursor] = currentTexture;
+    }
+  }
+}
+</script>
+<%= form_for(@mostsmallterritory) do |f| %>
+  <% if @mostsmallterritory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mostsmallterritory.errors.count, "error") %> prohibited this mostsmallterritory from being saved:</h2>
+
+      <ul>
+      <% @mostsmallterritory.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <b>Mostsmalluser:</b>
+    <%= @mostsmallterritory.mostsmalluser.name %>
+  </p>
+
+  <p>
+    <b>Name:</b>
+    <%= @mostsmallterritory.name %>
+  </p>
+
+  <p>
+    <b>Is exclusive:</b>
+    <%= @mostsmallterritory.is_exclusive %>
+  </p>
+
+  <div class="field">
+    <b><%= f.label :dungeon_txt %></b><br />
+  </div>
+  <div class="field">
+    <canvas id="mostsmall_dungeon_canvas"></canvas>
+  </div>
+  <div class="field">
+    <%= f.text_field :dungeon_txt %>
+    <button id="mostsmall_to_dungeon_canvas" type="button">↑</ button>
+    <button id="mostsmall_to_dungeon_txt" type="button">↓</ button>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,41 @@
+<%= form_for(@mostsmallmobspecie) do |f| %>
+  <% if @mostsmallmobspecie.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mostsmallmobspecie.errors.count, "error") %> prohibited this mostsmallmobspecie from being saved:</h2>
+
+      <ul>
+      <% @mostsmallmobspecie.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :prolificacy %><br />
+    <%= f.number_field :prolificacy %>
+  </div>
+  <div class="field">
+    <%= f.label :longevity %><br />
+    <%= f.number_field :longevity %>
+  </div>
+  <div class="field">
+    <%= f.label :cost %><br />
+    <%= f.text_field :cost %>
+  </div>
+  <div class="field">
+    <%= f.label :damage %><br />
+    <%= f.number_field :damage %>
+  </div>
+  <div class="field">
+    <%= f.label :ac %><br />
+    <%= f.number_field :ac %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

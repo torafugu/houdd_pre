@@ -1,0 +1,23 @@
+<h1>Listing mostsmallskillcategories</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mostsmallskillcategories.each do |mostsmallskillcategory| %>
+  <tr>
+    <td><%= mostsmallskillcategory.name %></td>
+    <td><%= link_to 'Show', mostsmallskillcategory %></td>
+    <td><%= link_to 'Edit', edit_mostsmallskillcategory_path(mostsmallskillcategory) %></td>
+    <td><%= link_to 'Destroy', mostsmallskillcategory, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mostsmallskillcategory', new_mostsmallskillcategory_path %>

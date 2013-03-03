@@ -1,0 +1,33 @@
+<h1>Listing mostsmalltraplvltbls</h1>
+
+<table>
+  <tr>
+    <th>Mostsmalltrapinfo</th>
+    <th>Level</th>
+    <th>Max dp</th>
+    <th>Disarm diff</th>
+    <th>Num of tgt</th>
+    <th>Damage</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mostsmalltraplvltbls.each do |mostsmalltraplvltbl| %>
+  <tr>
+    <td><%= mostsmalltraplvltbl.mostsmalltrapinfo.name %></td>
+    <td><%= mostsmalltraplvltbl.level %></td>
+    <td><%= mostsmalltraplvltbl.max_dp %></td>
+    <td><%= mostsmalltraplvltbl.disarm_diff %></td>
+    <td><%= mostsmalltraplvltbl.num_of_tgt %></td>
+    <td><%= mostsmalltraplvltbl.damage %></td>
+    <td><%= link_to 'Show', mostsmalltraplvltbl %></td>
+    <td><%= link_to 'Edit', edit_mostsmalltraplvltbl_path(mostsmalltraplvltbl) %></td>
+    <td><%= link_to 'Destroy', mostsmalltraplvltbl, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mostsmalltraplvltbl', new_mostsmalltraplvltbl_path %>

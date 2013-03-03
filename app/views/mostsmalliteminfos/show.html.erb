@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mostsmallitemcategory:</b>
+  <%= @mostsmalliteminfo.mostsmallitemcategory.name %>
+</p>
+
+<p>
+  <b>Mostsmallelement:</b>
+  <%= @mostsmalliteminfo.mostsmallelement.name %>
+</p>
+
+<p>
+  <b>Mostsmallmobspecie:</b>
+  <%= @mostsmalliteminfo.mostsmallmobspecie.name unless @mostsmalliteminfo.mostsmallmobspecie.nil? %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @mostsmalliteminfo.name %>
+</p>
+
+<p>
+  <b>Num of tgt:</b>
+  <%= @mostsmalliteminfo.num_of_tgt %>
+</p>
+
+<p>
+  <b>Accuracy:</b>
+  <%= @mostsmalliteminfo.accuracy %>
+</p>
+
+<p>
+  <b>Range:</b>
+  <%= @mostsmalliteminfo.range %>
+</p>
+
+<p>
+  <b>Damage:</b>
+  <%= @mostsmalliteminfo.damage %>
+</p>
+
+<p>
+  <b>Ac:</b>
+  <%= @mostsmalliteminfo.ac %>
+</p>
+
+<p>
+  <b>Max dp:</b>
+  <%= @mostsmalliteminfo.max_dp %>
+</p>
+
+<p>
+  <b>Const period:</b>
+  <%= @mostsmalliteminfo.const_period %>
+</p>
+
+
+<%= link_to 'Edit', edit_mostsmalliteminfo_path(@mostsmalliteminfo) %> |
+<%= link_to 'Back', mostsmalliteminfos_path %>

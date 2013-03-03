@@ -1,0 +1,25 @@
+<h1>Listing mostsmallitemeffectinventories</h1>
+
+<table>
+  <tr>
+    <th>Mostsmalliteminfo</th>
+    <th>Mostsmalleffect</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mostsmallitemeffectinventories.each do |mostsmallitemeffectinventory| %>
+  <tr>
+    <td><%= mostsmallitemeffectinventory.mostsmalliteminfo.name %></td>
+    <td><%= mostsmallitemeffectinventory.mostsmalleffect.name %></td>
+    <td><%= link_to 'Show', mostsmallitemeffectinventory %></td>
+    <td><%= link_to 'Edit', edit_mostsmallitemeffectinventory_path(mostsmallitemeffectinventory) %></td>
+    <td><%= link_to 'Destroy', mostsmallitemeffectinventory, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mostsmallitemeffectinventory', new_mostsmallitemeffectinventory_path %>

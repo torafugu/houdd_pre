@@ -1,0 +1,29 @@
+<%= form_for(@mostsmallterrainproduct) do |f| %>
+  <% if @mostsmallterrainproduct.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mostsmallterrainproduct.errors.count, "error") %> prohibited this mostsmallterrainproduct from being saved:</h2>
+
+      <ul>
+      <% @mostsmallterrainproduct.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mostsmallterrain %><br />
+    <%= f.collection_select(:mostsmallterrain_id, Mostsmallterrain.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :mostsmallresource %><br />
+    <%= f.collection_select(:mostsmallresource_id, Mostsmallresource.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br />
+    <%= f.number_field :amount %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

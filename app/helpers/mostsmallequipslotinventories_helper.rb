@@ -1,0 +1,2 @@
+module MostsmallequipslotinventoriesHelper
+end

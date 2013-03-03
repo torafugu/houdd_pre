@@ -1,0 +1,29 @@
+<%= form_for(@mostsmallitemequipinventory) do |f| %>
+  <% if @mostsmallitemequipinventory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mostsmallitemequipinventory.errors.count, "error") %> prohibited this mostsmallitemequipinventory from being saved:</h2>
+
+      <ul>
+      <% @mostsmallitemequipinventory.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mostsmallitem %><br />
+    <%= f.collection_select(:mostsmallitem_id, Mostsmallitem.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :mostsmallmob %><br />
+    <%= f.collection_select(:mostsmallmob_id, Mostsmallmob.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :mostsmallequipslot %><br />
+    <%= f.collection_select(:mostsmallequipslot_id, Mostsmallequipslot.find(:all), :id, :name) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

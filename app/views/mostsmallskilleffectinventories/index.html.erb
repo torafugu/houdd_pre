@@ -1,0 +1,25 @@
+<h1>Listing mostsmallskilleffectinventories</h1>
+
+<table>
+  <tr>
+    <th>Mostsmallskilllvltbl</th>
+    <th>Mostsmalleffect</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mostsmallskilleffectinventories.each do |mostsmallskilleffectinventory| %>
+  <tr>
+    <td><%= mostsmallskilleffectinventory.mostsmallskilllvltbl.name %></td>
+    <td><%= mostsmallskilleffectinventory.mostsmalleffect.name %></td>
+    <td><%= link_to 'Show', mostsmallskilleffectinventory %></td>
+    <td><%= link_to 'Edit', edit_mostsmallskilleffectinventory_path(mostsmallskilleffectinventory) %></td>
+    <td><%= link_to 'Destroy', mostsmallskilleffectinventory, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mostsmallskilleffectinventory', new_mostsmallskilleffectinventory_path %>

@@ -1,0 +1,37 @@
+<%= form_for(@mostsmallskill) do |f| %>
+  <% if @mostsmallskill.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mostsmallskill.errors.count, "error") %> prohibited this mostsmallskill from being saved:</h2>
+
+      <ul>
+      <% @mostsmallskill.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mostsmallskillcategory %><br />
+    <%= f.collection_select(:mostsmallskillcategory_id, Mostsmallskillcategory.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :mostsmalljob %><br />
+    <%= f.collection_select(:mostsmalljob_id, Mostsmalljob.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :job_level %><br />
+    <%= f.number_field :job_level %>
+  </div>
+  <div class="field">
+    <%= f.label :mostsmallelement %><br />
+    <%= f.collection_select(:mostsmallelement_id, Mostsmallelement.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

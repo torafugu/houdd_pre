@@ -1,0 +1,25 @@
+<%= form_for(@mostsmallspeciejobinventory) do |f| %>
+  <% if @mostsmallspeciejobinventory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mostsmallspeciejobinventory.errors.count, "error") %> prohibited this mostsmallspeciejobinventory from being saved:</h2>
+
+      <ul>
+      <% @mostsmallspeciejobinventory.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mostsmallmobspecie %><br />
+    <%= f.collection_select(:mostsmallmobspecie_id, Mostsmallmobspecie.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :mostsmalljob %><br />
+    <%= f.collection_select(:mostsmalljob_id, Mostsmalljob.find(:all), :id, :name) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

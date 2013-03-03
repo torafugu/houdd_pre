@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mostsmallitem:</b>
+  <%= @mostsmallitemequipinventory.mostsmallitem.name %>
+</p>
+
+<p>
+  <b>Mostsmallmob:</b>
+  <%= @mostsmallitemequipinventory.mostsmallmob.name %>
+</p>
+
+<p>
+  <b>Mostsmallequipslot:</b>
+  <%= @mostsmallitemequipinventory.mostsmallequipslot.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_mostsmallitemequipinventory_path(@mostsmallitemequipinventory) %> |
+<%= link_to 'Back', mostsmallitemequipinventories_path %>

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mostsmallskillcategory:</b>
+  <%= @mostsmallskill.mostsmallskillcategory.name %>
+</p>
+
+<p>
+  <b>Mostsmalljob:</b>
+  <%= @mostsmallskill.mostsmalljob.name %>
+</p>
+
+<p>
+  <b>Job level:</b>
+  <%= @mostsmallskill.job_level %>
+</p>
+
+<p>
+  <b>Mostsmallelement:</b>
+  <%= @mostsmallskill.mostsmallelement.name %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @mostsmallskill.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_mostsmallskill_path(@mostsmallskill) %> |
+<%= link_to 'Back', mostsmallskills_path %>

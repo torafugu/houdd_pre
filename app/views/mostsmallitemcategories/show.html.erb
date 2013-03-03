@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mostsmallequipslot:</b>
+  <%= @mostsmallitemcategory.mostsmallequipslot.name %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @mostsmallitemcategory.name %>
+</p>
+
+<p>
+  <b>Wepon level:</b>
+  <%= @mostsmallitemcategory.wepon_level %>
+</p>
+
+<p>
+  <b>Armor level:</b>
+  <%= @mostsmallitemcategory.armor_level %>
+</p>
+
+<p>
+  <b>Is_two_hand:</b>
+  <%= @mostsmallitemcategory.is_two_hand %>
+</p>
+
+
+<%= link_to 'Edit', edit_mostsmallitemcategory_path(@mostsmallitemcategory) %> |
+<%= link_to 'Back', mostsmallitemcategories_path %>

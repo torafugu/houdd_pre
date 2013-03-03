@@ -1,0 +1,35 @@
+<h1>Listing mostsmallskilllvltbls</h1>
+
+<table>
+  <tr>
+    <th>Mostsmallskill</th>
+    <th>Level</th>
+    <th>Sp cost</th>
+    <th>Num of tgt</th>
+    <th>Accuracy</th>
+    <th>Range</th>
+    <th>Damage</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mostsmallskilllvltbls.each do |mostsmallskilllvltbl| %>
+  <tr>
+    <td><%= mostsmallskilllvltbl.mostsmallskill.name %></td>
+    <td><%= mostsmallskilllvltbl.level %></td>
+    <td><%= mostsmallskilllvltbl.sp_cost %></td>
+    <td><%= mostsmallskilllvltbl.num_of_tgt %></td>
+    <td><%= mostsmallskilllvltbl.accuracy %></td>
+    <td><%= mostsmallskilllvltbl.range %></td>
+    <td><%= mostsmallskilllvltbl.damage %></td>
+    <td><%= link_to 'Show', mostsmallskilllvltbl %></td>
+    <td><%= link_to 'Edit', edit_mostsmallskilllvltbl_path(mostsmallskilllvltbl) %></td>
+    <td><%= link_to 'Destroy', mostsmallskilllvltbl, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mostsmallskilllvltbl', new_mostsmallskilllvltbl_path %>

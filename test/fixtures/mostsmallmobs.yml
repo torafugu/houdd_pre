@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mostsmallmobgene: 
+  level: 1
+  mostsmalljob: 
+  job_level: 1
+  mostsmalluser: 
+  mostsmallsquad: 
+  name: MyString
+  gender: false
+  age: 1
+  max_hp: 1
+  max_sp: 1
+  hp: 1
+  sp: 1
+  str: 1
+  dex: 1
+  con: 1
+  int: 1
+  wis: 1
+  cha: 1
+  battle_exp: 1.5
+  job_exp: 1.5
+
+two:
+  mostsmallmobgene: 
+  level: 1
+  mostsmalljob: 
+  job_level: 1
+  mostsmalluser: 
+  mostsmallsquad: 
+  name: MyString
+  gender: false
+  age: 1
+  max_hp: 1
+  max_sp: 1
+  hp: 1
+  sp: 1
+  str: 1
+  dex: 1
+  con: 1
+  int: 1
+  wis: 1
+  cha: 1
+  battle_exp: 1.5
+  job_exp: 1.5

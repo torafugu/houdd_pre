@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mostsmallmobspecie:</b>
+  <%= @mostsmallmobgene.mostsmallmobspecie.name %>
+</p>
+
+<p>
+  <b>Mothermobgene:</b>
+  <%= @mostsmallmobgene.mothermobgene.name unless @mostsmallmobgene.mothermobgene.nil? %>
+</p>
+
+<p>
+  <b>Fathermobgene:</b>
+  <%= @mostsmallmobgene.fathermobgene.name unless @mostsmallmobgene.fathermobgene.nil? %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @mostsmallmobgene.name %>
+</p>
+
+<p>
+  <b>Phys mod:</b>
+  <%= @mostsmallmobgene.phys_mod %>
+</p>
+
+<p>
+  <b>Int mod:</b>
+  <%= @mostsmallmobgene.int_mod %>
+</p>
+
+<p>
+  <b>Prolificacy mod:</b>
+  <%= @mostsmallmobgene.prolificacy_mod %>
+</p>
+
+<p>
+  <b>Longevity mod:</b>
+  <%= @mostsmallmobgene.longevity_mod %>
+</p>
+
+<p>
+  <b>Cost mod:</b>
+  <%= @mostsmallmobgene.cost_mod %>
+</p>
+
+<p>
+  <b>Growth mod:</b>
+  <%= @mostsmallmobgene.growth_mod %>
+</p>
+
+
+<%= link_to 'Edit', edit_mostsmallmobgene_path(@mostsmallmobgene) %> |
+<%= link_to 'Back', mostsmallmobgenes_path %>

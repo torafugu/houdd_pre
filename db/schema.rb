@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130127072622) do
+ActiveRecord::Schema.define(:version => 20130303061756) do
 
   create_table "moresmallarmorinfos", :force => true do |t|
     t.string   "name"
@@ -344,6 +344,476 @@ ActiveRecord::Schema.define(:version => 20130127072622) do
   create_table "moretinymobtrails", :force => true do |t|
     t.integer  "moretinymob_id"
     t.text     "trail"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "mostsmallconstlvltbls", :force => true do |t|
+    t.integer  "mostsmallconstructioninfo_id"
+    t.integer  "level"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
+  add_index "mostsmallconstlvltbls", ["mostsmallconstructioninfo_id"], :name => "index_mostsmallconstlvltbls_on_mostsmallconstructioninfo_id"
+
+  create_table "mostsmallconstproducts", :force => true do |t|
+    t.integer  "mostsmallconstructioninfo_id"
+    t.integer  "level"
+    t.integer  "mostsmallresource_id"
+    t.integer  "amount"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.integer  "remaining_period"
+  end
+
+  add_index "mostsmallconstproducts", ["mostsmallconstructioninfo_id"], :name => "index_mostsmallconstproducts_on_mostsmallconstructioninfo_id"
+  add_index "mostsmallconstproducts", ["mostsmallresource_id"], :name => "index_mostsmallconstproducts_on_mostsmallresource_id"
+
+  create_table "mostsmallconstructionfamilies", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "mostsmallconstructioninfos", :force => true do |t|
+    t.integer  "mostsmallconstructionfamily_id"
+    t.string   "name"
+    t.integer  "const_period"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  add_index "mostsmallconstructioninfos", ["mostsmallconstructionfamily_id"], :name => "index_constructionfamilies_on_mostsmallconstructioninfo"
+
+  create_table "mostsmallconstructions", :force => true do |t|
+    t.integer  "mostsmallterritory_id"
+    t.integer  "mostsmallconstructioninfo_id"
+    t.integer  "x"
+    t.integer  "y"
+    t.integer  "level"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.integer  "remaining_period"
+  end
+
+  add_index "mostsmallconstructions", ["mostsmallconstructioninfo_id"], :name => "index_mostsmallconstructions_on_mostsmallconstructioninfo_id"
+  add_index "mostsmallconstructions", ["mostsmallterritory_id"], :name => "index_mostsmallconstructions_on_mostsmallterritory_id"
+
+  create_table "mostsmalldayturns", :force => true do |t|
+    t.integer  "turn"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "mostsmalleffects", :force => true do |t|
+    t.string   "name"
+    t.integer  "damage"
+    t.integer  "ac"
+    t.integer  "sp_mod"
+    t.integer  "str_mod"
+    t.integer  "dex_mod"
+    t.integer  "con_mod"
+    t.integer  "int_mod"
+    t.integer  "wis_mod"
+    t.integer  "cha_mod"
+    t.integer  "duration"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "mostsmallelements", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "mostsmallequipslotinventories", :force => true do |t|
+    t.integer  "mostsmallequipslot_id"
+    t.integer  "mostsmallmobspecie_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "mostsmallequipslotinventories", ["mostsmallequipslot_id"], :name => "index_mostsmallequipslotinventories_on_mostsmallequipslot_id"
+  add_index "mostsmallequipslotinventories", ["mostsmallmobspecie_id"], :name => "index_mostsmallequipslotinventories_on_mostsmallmobspecie_id"
+
+  create_table "mostsmallequipslots", :force => true do |t|
+    t.string   "name"
+    t.boolean  "is_hand"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "mostsmallitemcategories", :force => true do |t|
+    t.integer  "mostsmallequipslot_id"
+    t.string   "name"
+    t.integer  "wepon_level"
+    t.integer  "armor_level"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.boolean  "is_two_hand"
+  end
+
+  add_index "mostsmallitemcategories", ["mostsmallequipslot_id"], :name => "index_mostsmallitemcategories_on_mostsmallequipslot_id"
+
+  create_table "mostsmallitemeffectinventories", :force => true do |t|
+    t.integer  "mostsmalliteminfo_id"
+    t.integer  "mostsmalleffect_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "mostsmallitemeffectinventories", ["mostsmalleffect_id"], :name => "index_mostsmallitemeffectinventories_on_mostsmalleffect_id"
+  add_index "mostsmallitemeffectinventories", ["mostsmalliteminfo_id"], :name => "index_mostsmallitemeffectinventories_on_mostsmalliteminfo_id"
+
+  create_table "mostsmallitemequipinventories", :force => true do |t|
+    t.integer  "mostsmallitem_id"
+    t.integer  "mostsmallmob_id"
+    t.integer  "mostsmallequipslot_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "mostsmallitemequipinventories", ["mostsmallequipslot_id"], :name => "index_mostsmallitemequipinventories_on_mostsmallequipslot_id"
+  add_index "mostsmallitemequipinventories", ["mostsmallitem_id"], :name => "index_mostsmallitemequipinventories_on_mostsmallitem_id"
+  add_index "mostsmallitemequipinventories", ["mostsmallmob_id"], :name => "index_mostsmallitemequipinventories_on_mostsmallmob_id"
+
+  create_table "mostsmalliteminfos", :force => true do |t|
+    t.integer  "mostsmallitemcategory_id"
+    t.integer  "mostsmallelement_id"
+    t.integer  "mostsmallmobspecie_id"
+    t.string   "name"
+    t.integer  "num_of_tgt"
+    t.integer  "accuracy"
+    t.integer  "range"
+    t.integer  "damage"
+    t.integer  "ac"
+    t.integer  "max_dp"
+    t.integer  "const_period"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
+  add_index "mostsmalliteminfos", ["mostsmallelement_id"], :name => "index_mostsmalliteminfos_on_mostsmallelement_id"
+  add_index "mostsmalliteminfos", ["mostsmallitemcategory_id"], :name => "index_mostsmalliteminfos_on_mostsmallitemcategory_id"
+  add_index "mostsmalliteminfos", ["mostsmallmobspecie_id"], :name => "index_mostsmalliteminfos_on_mostsmallmobspecie_id"
+
+  create_table "mostsmallitems", :force => true do |t|
+    t.integer  "mostsmalliteminfo_id"
+    t.integer  "mostsmalluser_id"
+    t.integer  "dp"
+    t.integer  "quality"
+    t.integer  "remaining_period"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "mostsmallitems", ["mostsmalliteminfo_id"], :name => "index_mostsmallitems_on_mostsmalliteminfo_id"
+  add_index "mostsmallitems", ["mostsmalluser_id"], :name => "index_mostsmallitems_on_mostsmalluser_id"
+
+  create_table "mostsmalljobs", :force => true do |t|
+    t.string   "name"
+    t.float    "growth_mod"
+    t.integer  "wepon_lvl"
+    t.integer  "armor_lvl"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "mostsmallmobgenes", :force => true do |t|
+    t.integer  "mostsmallmobspecie_id"
+    t.integer  "mothermobgene_id"
+    t.integer  "fathermobgene_id"
+    t.string   "name"
+    t.float    "phys_mod"
+    t.float    "int_mod"
+    t.float    "prolificacy_mod"
+    t.float    "longevity_mod"
+    t.float    "cost_mod"
+    t.float    "growth_mod"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "mostsmallmobgenes", ["mostsmallmobspecie_id"], :name => "index_mostsmallmobgenes_on_mostsmallmobspecie_id"
+
+  create_table "mostsmallmoblvltbls", :force => true do |t|
+    t.integer  "mostsmallmobspecie_id"
+    t.integer  "level"
+    t.integer  "exp"
+    t.integer  "max_hp"
+    t.integer  "max_sp"
+    t.integer  "str"
+    t.integer  "dex"
+    t.integer  "con"
+    t.integer  "int"
+    t.integer  "wis"
+    t.integer  "cha"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "mostsmallmoblvltbls", ["mostsmallmobspecie_id"], :name => "index_mostsmallmoblvltbls_on_mostsmallmobspecie_id"
+
+  create_table "mostsmallmobs", :force => true do |t|
+    t.integer  "mostsmallmobgene_id"
+    t.integer  "level"
+    t.integer  "mostsmalljob_id"
+    t.integer  "job_level"
+    t.integer  "mostsmalluser_id"
+    t.integer  "mostsmallsquad_id"
+    t.string   "name"
+    t.boolean  "gender"
+    t.integer  "age"
+    t.integer  "max_hp"
+    t.integer  "max_sp"
+    t.integer  "hp"
+    t.integer  "sp"
+    t.integer  "str"
+    t.integer  "dex"
+    t.integer  "con"
+    t.integer  "int"
+    t.integer  "wis"
+    t.integer  "cha"
+    t.float    "battle_exp"
+    t.float    "job_exp"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "mostsmallmobs", ["mostsmalljob_id"], :name => "index_mostsmallmobs_on_mostsmalljob_id"
+  add_index "mostsmallmobs", ["mostsmallmobgene_id"], :name => "index_mostsmallmobs_on_mostsmallmobgene_id"
+  add_index "mostsmallmobs", ["mostsmallsquad_id"], :name => "index_mostsmallmobs_on_mostsmallsquad_id"
+  add_index "mostsmallmobs", ["mostsmalluser_id"], :name => "index_mostsmallmobs_on_mostsmalluser_id"
+
+  create_table "mostsmallmobspecies", :force => true do |t|
+    t.string   "name"
+    t.integer  "prolificacy"
+    t.integer  "longevity"
+    t.float    "cost"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "damage"
+    t.integer  "ac"
+  end
+
+  create_table "mostsmallresearches", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "mostsmallresearchlvls", :force => true do |t|
+    t.integer  "mostsmalluser_id"
+    t.integer  "mostsmallresearch_id"
+    t.integer  "level"
+    t.integer  "rp"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "mostsmallresearchlvls", ["mostsmallresearch_id"], :name => "index_mostsmallresearchlvls_on_mostsmallresearch_id"
+  add_index "mostsmallresearchlvls", ["mostsmalluser_id"], :name => "index_mostsmallresearchlvls_on_mostsmalluser_id"
+
+  create_table "mostsmallresearchlvltbls", :force => true do |t|
+    t.integer  "mostsmallresearch_id"
+    t.integer  "level"
+    t.integer  "rp"
+    t.integer  "keep_rp"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "mostsmallresearchlvltbls", ["mostsmallresearch_id"], :name => "index_mostsmallresearchlvltbls_on_mostsmallresearch_id"
+
+  create_table "mostsmallresources", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "mostsmallresstocks", :force => true do |t|
+    t.integer  "mostsmalluser_id"
+    t.integer  "mostsmallresource_id"
+    t.integer  "amount"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "mostsmallresstocks", ["mostsmallresource_id"], :name => "index_mostsmallresstocks_on_mostsmallresource_id"
+  add_index "mostsmallresstocks", ["mostsmalluser_id"], :name => "index_mostsmallresstocks_on_mostsmalluser_id"
+
+  create_table "mostsmallroads", :force => true do |t|
+    t.integer  "start_territory_id"
+    t.integer  "dest_territory_id"
+    t.integer  "distance"
+    t.integer  "level"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.integer  "remaining_period"
+  end
+
+  create_table "mostsmallskillcategories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "mostsmallskilleffectinventories", :force => true do |t|
+    t.integer  "mostsmallskilllvltbl_id"
+    t.integer  "mostsmalleffect_id"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "mostsmallskilleffectinventories", ["mostsmalleffect_id"], :name => "index_mostsmallskilleffectinventories_on_mostsmalleffect_id"
+  add_index "mostsmallskilleffectinventories", ["mostsmallskilllvltbl_id"], :name => "index_mostsmallskilleffectinventories_on_mostsmallskilllvltbl_id"
+
+  create_table "mostsmallskilllvltbls", :force => true do |t|
+    t.integer  "mostsmallskill_id"
+    t.integer  "level"
+    t.integer  "sp_cost"
+    t.integer  "num_of_tgt"
+    t.integer  "accuracy"
+    t.integer  "range"
+    t.integer  "damage"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "mostsmallskilllvltbls", ["mostsmallskill_id"], :name => "index_mostsmallskilllvltbls_on_mostsmallskill_id"
+
+  create_table "mostsmallskills", :force => true do |t|
+    t.integer  "mostsmallskillcategory_id"
+    t.integer  "mostsmalljob_id"
+    t.integer  "job_level"
+    t.integer  "mostsmallelement_id"
+    t.string   "name"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "mostsmallskills", ["mostsmallelement_id"], :name => "index_mostsmallskills_on_mostsmallelement_id"
+  add_index "mostsmallskills", ["mostsmalljob_id"], :name => "index_mostsmallskills_on_mostsmalljob_id"
+  add_index "mostsmallskills", ["mostsmallskillcategory_id"], :name => "index_mostsmallskills_on_mostsmallskillcategory_id"
+
+  create_table "mostsmallspeciejobinventories", :force => true do |t|
+    t.integer  "mostsmallmobspecie_id"
+    t.integer  "mostsmalljob_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "mostsmallspeciejobinventories", ["mostsmalljob_id"], :name => "index_mostsmallspeciejobinventories_on_mostsmalljob_id"
+  add_index "mostsmallspeciejobinventories", ["mostsmallmobspecie_id"], :name => "index_mostsmallspeciejobinventories_on_mostsmallmobspecie_id"
+
+  create_table "mostsmallsquads", :force => true do |t|
+    t.integer  "mostsmalluser_id"
+    t.integer  "mostsmallterritory_id"
+    t.string   "name"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "mostsmallsquads", ["mostsmallterritory_id"], :name => "index_mostsmallsquads_on_mostsmallterritory_id"
+  add_index "mostsmallsquads", ["mostsmalluser_id"], :name => "index_mostsmallsquads_on_mostsmalluser_id"
+
+  create_table "mostsmallterrainproducts", :force => true do |t|
+    t.integer  "mostsmallterrain_id"
+    t.integer  "mostsmallresource_id"
+    t.integer  "amount"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "mostsmallterrainproducts", ["mostsmallresource_id"], :name => "index_mostsmallterrainproducts_on_mostsmallresource_id"
+  add_index "mostsmallterrainproducts", ["mostsmallterrain_id"], :name => "index_mostsmallterrainproducts_on_mostsmallterrain_id"
+
+  create_table "mostsmallterrains", :force => true do |t|
+    t.string   "symbol"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "mostsmallterritories", :force => true do |t|
+    t.integer  "mostsmalluser_id"
+    t.string   "name"
+    t.text     "map_txt"
+    t.text     "dungeon_txt"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.boolean  "is_exclusive"
+  end
+
+  add_index "mostsmallterritories", ["mostsmalluser_id"], :name => "index_mostsmallterritories_on_mostsmalluser_id"
+
+  create_table "mostsmalltrapeffectinventories", :force => true do |t|
+    t.integer  "mostsmalltraplvltbl_id"
+    t.integer  "mostsmalleffect_id"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
+
+  add_index "mostsmalltrapeffectinventories", ["mostsmalleffect_id"], :name => "index_mostsmalltrapeffectinventories_on_mostsmalleffect_id"
+  add_index "mostsmalltrapeffectinventories", ["mostsmalltraplvltbl_id"], :name => "index_mostsmalltrapeffectinventories_on_mostsmalltraplvltbl_id"
+
+  create_table "mostsmalltrapeffects", :force => true do |t|
+    t.integer  "mostsmalltrapleveltable_id"
+    t.integer  "mostsmalleffect_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  add_index "mostsmalltrapeffects", ["mostsmalleffect_id"], :name => "index_mostsmalltrapeffects_on_mostsmalleffect_id"
+  add_index "mostsmalltrapeffects", ["mostsmalltrapleveltable_id"], :name => "index_mostsmalltrapeffects_on_mostsmalltrapleveltable_id"
+
+  create_table "mostsmalltrapinfos", :force => true do |t|
+    t.string   "name"
+    t.integer  "const_period"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "mostsmallelement_id"
+  end
+
+  add_index "mostsmalltrapinfos", ["mostsmallelement_id"], :name => "index_mostsmalltrapinfos_on_mostsmallelement_id"
+
+  create_table "mostsmalltraplvltbls", :force => true do |t|
+    t.integer  "mostsmalltrapinfo_id"
+    t.integer  "level"
+    t.integer  "max_dp"
+    t.integer  "disarm_diff"
+    t.integer  "num_of_tgt"
+    t.integer  "damage"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "mostsmalltraplvltbls", ["mostsmalltrapinfo_id"], :name => "index_mostsmalltraplvltbls_on_mostsmalltrapinfo_id"
+
+  create_table "mostsmalltraps", :force => true do |t|
+    t.integer  "mostsmalltrapinfo_id"
+    t.integer  "mostsmallterritory_id"
+    t.integer  "dungeon_x"
+    t.integer  "dungeon_y"
+    t.integer  "level"
+    t.integer  "dp"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.integer  "remaining_period"
+  end
+
+  add_index "mostsmalltraps", ["mostsmallterritory_id"], :name => "index_mostsmalltraps_on_mostsmallterritory_id"
+  add_index "mostsmalltraps", ["mostsmalltrapinfo_id"], :name => "index_mostsmalltraps_on_mostsmalltrapinfo_id"
+
+  create_table "mostsmallusers", :force => true do |t|
+    t.string   "name"
+    t.boolean  "is_admin"
+    t.string   "login_id"
+    t.string   "login_pw"
+    t.datetime "first_login_at"
+    t.datetime "last_login_at"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end

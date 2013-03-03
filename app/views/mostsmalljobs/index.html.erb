@@ -1,0 +1,29 @@
+<h1>Listing mostsmalljobs</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Growth mod</th>
+    <th>Wepon lvl</th>
+    <th>Armor lvl</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mostsmalljobs.each do |mostsmalljob| %>
+  <tr>
+    <td><%= mostsmalljob.name %></td>
+    <td><%= mostsmalljob.growth_mod %></td>
+    <td><%= mostsmalljob.wepon_lvl %></td>
+    <td><%= mostsmalljob.armor_lvl %></td>
+    <td><%= link_to 'Show', mostsmalljob %></td>
+    <td><%= link_to 'Edit', edit_mostsmalljob_path(mostsmalljob) %></td>
+    <td><%= link_to 'Destroy', mostsmalljob, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mostsmalljob', new_mostsmalljob_path %>

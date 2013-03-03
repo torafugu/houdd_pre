@@ -1,0 +1,2 @@
+module MostsmallitemeffectinventoriesHelper
+end

@@ -1,0 +1,25 @@
+<%= form_for(@mostsmallskilleffectinventory) do |f| %>
+  <% if @mostsmallskilleffectinventory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mostsmallskilleffectinventory.errors.count, "error") %> prohibited this mostsmallskilleffectinventory from being saved:</h2>
+
+      <ul>
+      <% @mostsmallskilleffectinventory.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mostsmallskilllvltbl %><br />
+    <%= f.collection_select(:mostsmallskilllvltbl_id, Mostsmallskilllvltbl.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :mostsmalleffect %><br />
+    <%= f.collection_select(:mostsmalleffect_id, Mostsmalleffect.find(:all), :id, :name) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

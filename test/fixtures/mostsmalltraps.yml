@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mostsmalltrapinfo: 
+  mostsmallterritory: 
+  dungeon_x: 1
+  dungeon_y: 1
+  level: 1
+  dp: 1
+
+two:
+  mostsmalltrapinfo: 
+  mostsmallterritory: 
+  dungeon_x: 1
+  dungeon_y: 1
+  level: 1
+  dp: 1

@@ -1,0 +1,25 @@
+<h1>Listing mostsmallequipslotinventories</h1>
+
+<table>
+  <tr>
+    <th>Mostsmallequipslot</th>
+    <th>Mostsmallmobspecie</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mostsmallequipslotinventories.each do |mostsmallequipslotinventory| %>
+  <tr>
+    <td><%= mostsmallequipslotinventory.mostsmallequipslot.name %></td>
+    <td><%= mostsmallequipslotinventory.mostsmallmobspecie.name %></td>
+    <td><%= link_to 'Show', mostsmallequipslotinventory %></td>
+    <td><%= link_to 'Edit', edit_mostsmallequipslotinventory_path(mostsmallequipslotinventory) %></td>
+    <td><%= link_to 'Destroy', mostsmallequipslotinventory, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mostsmallequipslotinventory', new_mostsmallequipslotinventory_path %>

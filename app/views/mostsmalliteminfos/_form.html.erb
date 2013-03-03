@@ -1,0 +1,61 @@
+<%= form_for(@mostsmalliteminfo) do |f| %>
+  <% if @mostsmalliteminfo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mostsmalliteminfo.errors.count, "error") %> prohibited this mostsmalliteminfo from being saved:</h2>
+
+      <ul>
+      <% @mostsmalliteminfo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mostsmallitemcategory %><br />
+    <%= f.collection_select(:mostsmallitemcategory_id, Mostsmallitemcategory.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :mostsmallelement %><br />
+    <%= f.collection_select(:mostsmallelement_id, Mostsmallelement.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :mostsmallmobspecie %><br />
+    <%= f.collection_select(:mostsmallmobspecie_id, Mostsmallmobspecie.find(:all), :id, :name, :include_blank => true) %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :num_of_tgt %><br />
+    <%= f.number_field :num_of_tgt %>
+  </div>
+  <div class="field">
+    <%= f.label :accuracy %><br />
+    <%= f.number_field :accuracy %>
+  </div>
+  <div class="field">
+    <%= f.label :range %><br />
+    <%= f.number_field :range %>
+  </div>
+  <div class="field">
+    <%= f.label :damage %><br />
+    <%= f.number_field :damage %>
+  </div>
+  <div class="field">
+    <%= f.label :ac %><br />
+    <%= f.number_field :ac %>
+  </div>
+  <div class="field">
+    <%= f.label :max_dp %><br />
+    <%= f.number_field :max_dp %>
+  </div>
+  <div class="field">
+    <%= f.label :const_period %><br />
+    <%= f.number_field :const_period %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

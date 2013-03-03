@@ -1,0 +1,29 @@
+<%= form_for(@mostsmalltrapinfo) do |f| %>
+  <% if @mostsmalltrapinfo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mostsmalltrapinfo.errors.count, "error") %> prohibited this mostsmalltrapinfo from being saved:</h2>
+
+      <ul>
+      <% @mostsmalltrapinfo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mostsmallelement %><br />
+    <%= f.collection_select(:mostsmallelement_id, Mostsmallelement.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :const_period %><br />
+    <%= f.number_field :const_period %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

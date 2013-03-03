@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mostsmallterritory: 
+  mostsmallconstructioninfo: 
+  x: 1
+  y: 1
+  level: 1
+
+two:
+  mostsmallterritory: 
+  mostsmallconstructioninfo: 
+  x: 1
+  y: 1
+  level: 1

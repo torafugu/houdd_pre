@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mostsmalluser: 
+  name: MyString
+  map_txt: MyText
+  dungeon_txt: MyText
+
+two:
+  mostsmalluser: 
+  name: MyString
+  map_txt: MyText
+  dungeon_txt: MyText

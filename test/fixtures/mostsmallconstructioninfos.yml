@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mostsmallconstructionfamily_id: 1
+  name: MyString
+  const_period: 1
+
+two:
+  mostsmallconstructionfamily_id: 1
+  name: MyString
+  const_period: 1

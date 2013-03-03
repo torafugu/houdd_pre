@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mostsmallitemcategory: 
+  mostsmallelement: 
+  mostsmallmobspecie: 
+  name: MyString
+  num_of_tgt: 1
+  accuracy: 1
+  range: 1
+  damage: 1
+  ac: 1
+  max_dp: 1
+  const_period: 1
+
+two:
+  mostsmallitemcategory: 
+  mostsmallelement: 
+  mostsmallmobspecie: 
+  name: MyString
+  num_of_tgt: 1
+  accuracy: 1
+  range: 1
+  damage: 1
+  ac: 1
+  max_dp: 1
+  const_period: 1

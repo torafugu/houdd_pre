@@ -1,0 +1,25 @@
+<%= form_for(@mostsmalltrapeffectinventory) do |f| %>
+  <% if @mostsmalltrapeffectinventory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mostsmalltrapeffectinventory.errors.count, "error") %> prohibited this mostsmalltrapeffectinventory from being saved:</h2>
+
+      <ul>
+      <% @mostsmalltrapeffectinventory.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mostsmalltraplvltbl %><br />
+    <%= f.collection_select(:mostsmalltraplvltbl_id, Mostsmalltraplvltbl.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :mostsmalleffect %><br />
+    <%= f.collection_select(:mostsmalleffect_id, Mostsmalleffect.find(:all), :id, :name) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

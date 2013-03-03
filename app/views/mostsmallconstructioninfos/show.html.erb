@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mostsmallconstructionfamily:</b>
+  <%= @mostsmallconstructioninfo.mostsmallconstructionfamily.name %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @mostsmallconstructioninfo.name %>
+</p>
+
+<p>
+  <b>Const period:</b>
+  <%= @mostsmallconstructioninfo.const_period %>
+</p>
+
+
+<%= link_to 'Edit', edit_mostsmallconstructioninfo_path(@mostsmallconstructioninfo) %> |
+<%= link_to 'Back', mostsmallconstructioninfos_path %>

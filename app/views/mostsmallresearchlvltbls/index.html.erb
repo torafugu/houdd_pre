@@ -1,0 +1,29 @@
+<h1>Listing mostsmallresearchlvltbls</h1>
+
+<table>
+  <tr>
+    <th>Mostsmallresearch</th>
+    <th>Level</th>
+    <th>Rp</th>
+    <th>Keep rp</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mostsmallresearchlvltbls.each do |mostsmallresearchlvltbl| %>
+  <tr>
+    <td><%= mostsmallresearchlvltbl.mostsmallresearch.name %></td>
+    <td><%= mostsmallresearchlvltbl.level %></td>
+    <td><%= mostsmallresearchlvltbl.rp %></td>
+    <td><%= mostsmallresearchlvltbl.keep_rp %></td>
+    <td><%= link_to 'Show', mostsmallresearchlvltbl %></td>
+    <td><%= link_to 'Edit', edit_mostsmallresearchlvltbl_path(mostsmallresearchlvltbl) %></td>
+    <td><%= link_to 'Destroy', mostsmallresearchlvltbl, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mostsmallresearchlvltbl', new_mostsmallresearchlvltbl_path %>

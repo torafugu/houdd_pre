@@ -1,0 +1,37 @@
+<%= form_for(@mostsmallitemcategory) do |f| %>
+  <% if @mostsmallitemcategory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mostsmallitemcategory.errors.count, "error") %> prohibited this mostsmallitemcategory from being saved:</h2>
+
+      <ul>
+      <% @mostsmallitemcategory.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mostsmallequipslot %><br />
+    <%= f.collection_select(:mostsmallequipslot_id, Mostsmallequipslot.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :wepon_level %><br />
+    <%= f.number_field :wepon_level %>
+  </div>
+  <div class="field">
+    <%= f.label :armor_level %><br />
+    <%= f.number_field :armor_level %>
+  </div>
+  <div class="field">
+    <%= f.label :is_two_hand %><br />
+    <%= f.check_box :is_two_hand %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

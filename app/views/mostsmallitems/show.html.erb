@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mostsmalliteminfo:</b>
+  <%= @mostsmallitem.mostsmalliteminfo.name %>
+</p>
+
+<p>
+  <b>Mostsmalluser:</b>
+  <%= @mostsmallitem.mostsmalluser.name %>
+</p>
+
+<p>
+  <b>Dp:</b>
+  <%= @mostsmallitem.dp %>
+</p>
+
+<p>
+  <b>Quality:</b>
+  <%= @mostsmallitem.quality %>
+</p>
+
+<p>
+  <b>Remaining period:</b>
+  <%= @mostsmallitem.remaining_period %>
+</p>
+
+
+<%= link_to 'Edit', edit_mostsmallitem_path(@mostsmallitem) %> |
+<%= link_to 'Back', mostsmallitems_path %>

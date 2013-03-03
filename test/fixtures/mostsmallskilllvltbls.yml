@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mostsmallskill: 
+  level: 1
+  sp_cost: 1
+  num_of_tgt: 1
+  accuracy: 1
+  range: 1
+  damage: 1
+
+two:
+  mostsmallskill: 
+  level: 1
+  sp_cost: 1
+  num_of_tgt: 1
+  accuracy: 1
+  range: 1
+  damage: 1

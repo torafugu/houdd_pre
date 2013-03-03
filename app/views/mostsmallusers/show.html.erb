@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @mostsmalluser.name %>
+</p>
+
+<p>
+  <b>Is admin:</b>
+  <%= @mostsmalluser.is_admin %>
+</p>
+
+<p>
+  <b>Login:</b>
+  <%= @mostsmalluser.login_id %>
+</p>
+
+<p>
+  <b>Login pw:</b>
+  <%= @mostsmalluser.login_pw %>
+</p>
+
+<p>
+  <b>First login at:</b>
+  <%= @mostsmalluser.first_login_at %>
+</p>
+
+<p>
+  <b>Last login at:</b>
+  <%= @mostsmalluser.last_login_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_mostsmalluser_path(@mostsmalluser) %> |
+<%= link_to 'Back', mostsmallusers_path %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mostsmalliteminfo: 
+  mostsmalluser: 
+  dp: 1
+  quality: 1
+  remaining_period: 1
+
+two:
+  mostsmalliteminfo: 
+  mostsmalluser: 
+  dp: 1
+  quality: 1
+  remaining_period: 1

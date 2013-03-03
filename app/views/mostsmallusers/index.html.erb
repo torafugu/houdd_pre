@@ -1,0 +1,30 @@
+<h1>Listing mostsmallusers</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Is admin</th>
+    <th>Login</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mostsmallusers.each do |mostsmalluser| %>
+  <tr>
+    <td><%= mostsmalluser.id %></td>
+    <td><%= mostsmalluser.name %></td>
+    <td><%= mostsmalluser.is_admin %></td>
+    <td><%= mostsmalluser.login_id %></td>
+    <td><%= link_to 'Show', mostsmalluser %></td>
+    <td><%= link_to 'Edit', edit_mostsmalluser_path(mostsmalluser) %></td>
+    <td><%= link_to 'Destroy', mostsmalluser, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'MyPage', mypage_mostsmalluser_path(mostsmalluser) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mostsmalluser', new_mostsmalluser_path %>

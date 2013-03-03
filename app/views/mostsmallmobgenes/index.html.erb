@@ -1,0 +1,41 @@
+<h1>Listing mostsmallmobgenes</h1>
+
+<table>
+  <tr>
+    <th>Mobspecie</th>
+    <th>Mother</th>
+    <th>Father</th>
+    <th>Name</th>
+    <th>Phys mod</th>
+    <th>Int mod</th>
+    <th>Prolificacy mod</th>
+    <th>Longevity mod</th>
+    <th>Cost mod</th>
+    <th>Growth mod</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mostsmallmobgenes.each do |mostsmallmobgene| %>
+  <tr>
+    <td><%= mostsmallmobgene.mostsmallmobspecie.name %></td>
+    <td><%= mostsmallmobgene.mothermobgene.name unless mostsmallmobgene.mothermobgene.nil? %></td>
+    <td><%= mostsmallmobgene.fathermobgene.name unless mostsmallmobgene.fathermobgene.nil? %></td>
+    <td><%= mostsmallmobgene.name %></td>
+    <td><%= mostsmallmobgene.phys_mod %></td>
+    <td><%= mostsmallmobgene.int_mod %></td>
+    <td><%= mostsmallmobgene.prolificacy_mod %></td>
+    <td><%= mostsmallmobgene.longevity_mod %></td>
+    <td><%= mostsmallmobgene.cost_mod %></td>
+    <td><%= mostsmallmobgene.growth_mod %></td>
+    <td><%= link_to 'Show', mostsmallmobgene %></td>
+    <td><%= link_to 'Edit', edit_mostsmallmobgene_path(mostsmallmobgene) %></td>
+    <td><%= link_to 'Destroy', mostsmallmobgene, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mostsmallmobgene', new_mostsmallmobgene_path %>
