@@ -1,3 +1,5 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+
+jQuery ->
+  jQuery('#mostsmall_default_item_value').click ->
+    iteminfo_id = jQuery("#mostsmallitem_mostsmalliteminfo_id").val()
+    jQuery.get("set_default_value.js?iteminfo_id=" + iteminfo_id)

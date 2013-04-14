@@ -12,16 +12,32 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :mostsmallelement %><br />
-    <%= f.collection_select(:mostsmallelement_id, Mostsmallelement.find(:all), :id, :name) %>
-  </div>
-  <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
     <%= f.label :const_period %><br />
     <%= f.number_field :const_period %>
+  </div>
+  <div class="field">
+    <%= f.label :mostsmallelement %><br />
+    <%= f.collection_select(:mostsmallelement_id, Mostsmallelement.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :max_dp %><br />
+    <%= f.number_field :max_dp %>
+  </div>
+  <div class="field">
+    <%= f.label :disarm_diff %><br />
+    <%= f.number_field :disarm_diff %>
+  </div>
+  <div class="field">
+    <%= f.label :num_of_tgt %><br />
+    <%= f.number_field :num_of_tgt %>
+  </div>
+  <div class="field">
+    <%= f.label :damage %><br />
+    <%= f.number_field :damage %>
   </div>
   <div class="actions">
     <%= f.submit %>

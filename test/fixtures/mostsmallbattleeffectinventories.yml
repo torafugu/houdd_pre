@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mostsmallmob: 
+  mostsmalleffect: 
+  src_mob_id: 1
+  remaining_duration: 1
+
+two:
+  mostsmallmob: 
+  mostsmalleffect: 
+  src_mob_id: 1
+  remaining_duration: 1

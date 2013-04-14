@@ -2,8 +2,9 @@
 
 <table>
   <tr>
-    <th>Mostsmalluser</th>
-    <th>Mostsmallterritory</th>
+    <th>ID</th>
+    <th>User</th>
+    <th>Territory</th>
     <th>Name</th>
     <th></th>
     <th></th>
@@ -12,8 +13,9 @@
 
 <% @mostsmallsquads.each do |mostsmallsquad| %>
   <tr>
-    <td><%= mostsmallsquad.mostsmalluser %></td>
-    <td><%= mostsmallsquad.mostsmallterritory %></td>
+    <td><%= mostsmallsquad.id %></td>
+    <td><%= mostsmallsquad.mostsmalluser.name %></td>
+    <td><%= mostsmallsquad.mostsmallterritory.name %></td>
     <td><%= mostsmallsquad.name %></td>
     <td><%= link_to 'Show', mostsmallsquad %></td>
     <td><%= link_to 'Edit', edit_mostsmallsquad_path(mostsmallsquad) %></td>

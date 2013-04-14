@@ -1,0 +1,25 @@
+<%= form_for(@mostsmallmissioninventory) do |f| %>
+  <% if @mostsmallmissioninventory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mostsmallmissioninventory.errors.count, "error") %> prohibited this mostsmallmissioninventory from being saved:</h2>
+
+      <ul>
+      <% @mostsmallmissioninventory.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mostsmallmission %><br />
+    <%= f.collection_select(:mostsmallmission_id, Mostsmallmission.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :mostsmallsquad %><br />
+    <%= f.collection_select(:mostsmallsquad_id, Mostsmallsquad.find(:all), :id, :name) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

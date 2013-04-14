@@ -4,6 +4,11 @@
   <tr>
     <th>Name</th>
     <th>Is hand</th>
+    <th>Num of tgt</th>
+    <th>Accuracy</th>
+    <th>Range</th>
+    <th>Damage</th>
+    <th>Ac</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +18,11 @@
   <tr>
     <td><%= mostsmallequipslot.name %></td>
     <td><%= mostsmallequipslot.is_hand %></td>
+    <td><%= mostsmallequipslot.num_of_tgt %></td>
+    <td><%= mostsmallequipslot.accuracy %></td>
+    <td><%= mostsmallequipslot.range %></td>
+    <td><%= mostsmallequipslot.damage %></td>
+    <td><%= mostsmallequipslot.ac %></td>
     <td><%= link_to 'Show', mostsmallequipslot %></td>
     <td><%= link_to 'Edit', edit_mostsmallequipslot_path(mostsmallequipslot) %></td>
     <td><%= link_to 'Destroy', mostsmallequipslot, confirm: 'Are you sure?', method: :delete %></td>

@@ -1,0 +1,27 @@
+<h1>Listing mostsmalltreasureitems</h1>
+
+<table>
+  <tr>
+    <th>Treasurechest</th>
+    <th>Item</th>
+    <th>Is identified</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mostsmalltreasureitems.each do |mostsmalltreasureitem| %>
+  <tr>
+    <td><%= mostsmalltreasureitem.mostsmalltreasurechest.name %></td>
+    <td><%= mostsmalltreasureitem.mostsmallitem.name %></td>
+    <td><%= mostsmalltreasureitem.is_identified %></td>
+    <td><%= link_to 'Show', mostsmalltreasureitem %></td>
+    <td><%= link_to 'Edit', edit_mostsmalltreasureitem_path(mostsmalltreasureitem) %></td>
+    <td><%= link_to 'Destroy', mostsmalltreasureitem, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mostsmalltreasureitem', new_mostsmalltreasureitem_path %>

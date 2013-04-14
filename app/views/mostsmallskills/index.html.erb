@@ -2,11 +2,16 @@
 
 <table>
   <tr>
-    <th>Mostsmallskillcategory</th>
-    <th>Mostsmalljob</th>
+    <th>Skillcategory</th>
+    <th>Job</th>
     <th>Job level</th>
-    <th>Mostsmallelement</th>
+    <th>Element</th>
     <th>Name</th>
+    <th>Sp cost</th>
+    <th>Num of tgt</th>
+    <th>Accuracy</th>
+    <th>Range</th>
+    <th>Damage</th>
     <th></th>
     <th></th>
     <th></th>
@@ -19,6 +24,11 @@
     <td><%= mostsmallskill.job_level %></td>
     <td><%= mostsmallskill.mostsmallelement.name %></td>
     <td><%= mostsmallskill.name %></td>
+    <td><%= mostsmallskill.sp_cost %></td>
+    <td><%= mostsmallskill.num_of_tgt %></td>
+    <td><%= mostsmallskill.accuracy %></td>
+    <td><%= mostsmallskill.range %></td>
+    <td><%= mostsmallskill.damage %></td>
     <td><%= link_to 'Show', mostsmallskill %></td>
     <td><%= link_to 'Edit', edit_mostsmallskill_path(mostsmallskill) %></td>
     <td><%= link_to 'Destroy', mostsmallskill, confirm: 'Are you sure?', method: :delete %></td>

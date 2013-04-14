@@ -1,0 +1,41 @@
+var p = Processing.getInstanceById("mostsmalltrial_map_canvas");
+p.resetSquads();
+
+<% @current_turn.mostsmallsquadtrails.each do |squadtrail| %>
+var trailpoints = null;
+<% unless squadtrail.trail.empty? %>
+trailpoints = new Array(<%= squadtrail.trailpoints.size %>);
+<% trail_counter = 0 %>
+<% squadtrail.trailpoints.each do |trailpoint| %>
+trailpoints[<%= trail_counter %>] = [<%= trailpoint["from_x"] %>, <%= trailpoint["from_y"] %>, <%= trailpoint["to_x"] %>, <%= trailpoint["to_y"] %>, <%= trailpoint["is_end"] %>]
+<% trail_counter += 1 %>
+<% end %>
+<% end %>
+p.addSquad(<%= squadtrail.from_x %>, <%= squadtrail.from_y %>, <%= squadtrail.defender? %>, "<%= squadtrail.direction %>", trailpoints, <%= squadtrail.is_annihilated %>);
+<% end %>
+
+<% @current_turn.mostsmallmobstatuses.each do |status| %>
+  jQuery("#hp_<%= status.mob_id %>").text("<%= status.end_hp %>");
+  jQuery("#sp_<%= status.mob_id %>").text("<%= status.end_sp %>");
+  jQuery("#status_<%= status.mob_id %>").text("<%= status.end_status %>");
+<% end %>
+
+jQuery('#mostsmall_battle_turn').text(<%= @start_battle_turn %>);
+jQuery('#mostsmall_max_battle_turn').text(<%= @last_battle_turn %>);
+
+jQuery('#mostsmall_battleset_turn').text(<%= @start_battleset_turn %>);
+jQuery('#mostsmall_max_battleset_turn').text(<%= @last_battleset_turn %>);
+jQuery('#mostsmall_battle_atk_squad').text("<%= @current_battleset.atk_squad_name unless @current_battleset.nil? %>");
+jQuery('#mostsmall_battle_def_squad').text("<%= @current_battleset.def_squad_name unless @current_battleset.nil? %>");
+
+var p2 = Processing.getInstanceById("mostsmalltrial_tactical_canvas");
+p2.resetMobs();
+jQuery("#BattleLog").text("");
+<% unless @current_battleturn.nil? %>
+<% @current_battleturn.mostsmallbattlelogs.each do |battle| %>
+  jQuery("#BattleLog").append("<%= escape_javascript(battle.jpn_log) %>");
+  <% if battle.def_mob_id.nil? %>
+  p2.addMob(<%= battle.atk_mob_id %>, <%= battle.atk_mob_vpos %>, <%= battle.defender? %>);
+  <% end %>
+<% end %>
+<% end %>

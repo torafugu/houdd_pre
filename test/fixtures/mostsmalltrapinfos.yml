@@ -3,7 +3,17 @@
 one:
   name: MyString
   const_period: 1
+  mostsmallelement: 
+  max_dp: 1
+  disarm_diff: 1
+  num_of_tgt: 1
+  damage: 1
 
 two:
   name: MyString
   const_period: 1
+  mostsmallelement: 
+  max_dp: 1
+  disarm_diff: 1
+  num_of_tgt: 1
+  damage: 1

@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>ID</th>
     <th>Name</th>
     <th></th>
     <th></th>
@@ -10,6 +11,7 @@
 
 <% @mostsmallskillcategories.each do |mostsmallskillcategory| %>
   <tr>
+    <td><%= mostsmallskillcategory.id %></td>
     <td><%= mostsmallskillcategory.name %></td>
     <td><%= link_to 'Show', mostsmallskillcategory %></td>
     <td><%= link_to 'Edit', edit_mostsmallskillcategory_path(mostsmallskillcategory) %></td>

@@ -1,0 +1,6 @@
+jQuery("#mostsmalltrial_territory_name").val("<%= @mostsmallterritory.name %>");
+jQuery("#mostsmalltrial_dungeon_txt").val("<%= @mostsmallterritory.dungeon_txt %>");
+jQuery("#mostsmalltrial_def_mission_id").empty();
+jQuery("#mostsmalltrial_def_mission_id").html("<%= escape_javascript(options_for_select(@def_missions)) %>");
+jQuery("#mostsmalltrial_atk_mission_id").empty();
+jQuery("#mostsmalltrial_atk_mission_id").html("<%= escape_javascript(options_for_select(@atk_missions)) %>");

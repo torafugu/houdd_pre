@@ -1,0 +1,41 @@
+<%= form_for(@mostsmallmission) do |f| %>
+  <% if @mostsmallmission.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mostsmallmission.errors.count, "error") %> prohibited this mostsmallmission from being saved:</h2>
+
+      <ul>
+      <% @mostsmallmission.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mostsmalluser %><br />
+    <%= f.collection_select(:mostsmalluser_id, Mostsmalluser.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :mostsmallterritory %><br />
+    <%= f.collection_select(:mostsmallterritory_id, Mostsmallterritory.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :mostsmallmissioncategory %><br />
+    <%= f.collection_select(:mostsmallmissioncategory_id, Mostsmallmissioncategory.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :mostsmallstrategy %><br />
+    <%= f.collection_select(:mostsmallstrategy_id, Mostsmallstrategy.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :priority %><br />
+    <%= f.number_field :priority %>
+  </div>
+  <div class="field">
+    <%= f.label :remaining_period %><br />
+    <%= f.number_field :remaining_period %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

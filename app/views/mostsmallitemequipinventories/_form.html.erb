@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :mostsmallmob %><br />
-    <%= f.collection_select(:mostsmallmob_id, Mostsmallmob.find(:all), :id, :name) %>
+    <%= f.collection_select(:mostsmallmob_id, Mostsmallmob.find(:all), :id, :uname) %>
   </div>
   <div class="field">
     <%= f.label :mostsmallequipslot %><br />

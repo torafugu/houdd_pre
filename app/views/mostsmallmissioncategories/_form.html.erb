@@ -1,0 +1,21 @@
+<%= form_for(@mostsmallmissioncategory) do |f| %>
+  <% if @mostsmallmissioncategory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mostsmallmissioncategory.errors.count, "error") %> prohibited this mostsmallmissioncategory from being saved:</h2>
+
+      <ul>
+      <% @mostsmallmissioncategory.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

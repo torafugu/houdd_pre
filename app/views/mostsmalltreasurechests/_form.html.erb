@@ -1,0 +1,103 @@
+<script type="text/processing" data-processing-target="mostsmall_dungeon_canvas">
+// Parameteres of screen size.
+int RECT_SIZE = 20;
+int[][] map = new int[24][24];
+int MAP_WIDTH = map[0].length * RECT_SIZE + 1;
+int MAP_HEIGHT = map.length * RECT_SIZE + 1;
+int selectedX = null;
+int selectedY = null;
+
+PImage concreteImg = loadImage("/assets/concrete.png");
+PImage waterImg = loadImage("/assets/water.png");
+
+int CONCRETE = 1;
+int WATER = 2;
+
+void setup() {
+  size(MAP_WIDTH, MAP_HEIGHT);
+  for (int y = 0; y < map.length; y++) {
+    for (int x = 0; x < map[y].length; x++) {
+      map[y][x] = 0
+    }
+  }
+}
+
+void draw() {
+  background(0);
+  fill(0);
+
+  // Draw map
+  stroke(0);
+  strokeWeight(1);
+  for (int y = 0; y < map.length; y++) {
+    for (int x = 0; x < map[y].length; x++) {
+      if (map[y][x] == 0) {
+        fill(0);
+        rect(RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      } else if (map[y][x] == CONCRETE) {
+        image(concreteImg, RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      } else if (map[y][x] == WATER) {
+        image(waterImg, RECT_SIZE * x, RECT_SIZE * y, RECT_SIZE, RECT_SIZE);
+      }
+    }
+  }
+
+  // Draw selection
+  if (selectedX != null && selectedY != null) {
+    noFill();
+    stroke(255, 99, 71); // tomato
+    strokeWeight(2);
+    rect(selectedX, selectedY, RECT_SIZE, RECT_SIZE);
+  }
+}
+
+void mousePressed() {
+  int mapX = int(mouseX / RECT_SIZE);
+  int mapY = int(mouseY / RECT_SIZE);
+  jQuery("#mostsmalltreasurechest_dungeon_x").val(mapX);
+  jQuery("#mostsmalltreasurechest_dungeon_y").val(mapY);
+  selectedX = mapX * RECT_SIZE;
+  selectedY = mapY * RECT_SIZE;
+}
+
+void setMap(mapArray) {
+  if (mapArray.length == map.length) {
+    map = mapArray;
+  }
+}
+</script>
+<%= form_for(@mostsmalltreasurechest) do |f| %>
+  <% if @mostsmalltreasurechest.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mostsmalltreasurechest.errors.count, "error") %> prohibited this mostsmalltreasurechest from being saved:</h2>
+
+      <ul>
+      <% @mostsmalltreasurechest.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mostsmallterritory %><br />
+    <%= f.collection_select(:mostsmallterritory_id, Mostsmallterritory.find(:all), :id, :name, :include_blank => true) %><br />
+    <input id="mostsmallterritory_dungeon_txt" type="hidden" value="" />
+    <canvas id="mostsmall_dungeon_canvas"></canvas>
+  </div>
+  <div class="field">
+    <%= f.label :dungeon_x %><br />
+    <%= f.number_field :dungeon_x %>
+  </div>
+  <div class="field">
+    <%= f.label :dungeon_y %><br />
+    <%= f.number_field :dungeon_y %>
+  </div>
+  <div class="field">
+    <%= f.label :is_opened %><br />
+    <%= f.check_box :is_opened %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

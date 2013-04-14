@@ -1,0 +1,2 @@
+module MostsmallmissioncategoriesHelper
+end

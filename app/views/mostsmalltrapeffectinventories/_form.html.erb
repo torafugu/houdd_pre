@@ -12,8 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :mostsmalltraplvltbl %><br />
-    <%= f.collection_select(:mostsmalltraplvltbl_id, Mostsmalltraplvltbl.find(:all), :id, :name) %>
+    <%= f.label :mostsmalltrapinfo %><br />
+    <%= f.collection_select(:mostsmalltrapinfo_id, Mostsmalltrapinfo.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :level %><br />
+    <%= f.number_field :level %>
   </div>
   <div class="field">
     <%= f.label :mostsmalleffect %><br />

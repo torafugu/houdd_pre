@@ -2,12 +2,34 @@
 
 one:
   name: MyString
-  prolificacy: 1
-  longevity: 1
+  prolificacy: 1.5
+  longevity: 1.5
+  growth_mod: 1.5
   cost: 1.5
+  atk: 1
+  ac: 1
+  max_hp: 1
+  max_sp: 1
+  str: 1
+  dex: 1
+  con: 1
+  int: 1
+  wis: 1
+  cha: 1
 
 two:
   name: MyString
-  prolificacy: 1
-  longevity: 1
+  prolificacy: 1.5
+  longevity: 1.5
+  growth_mod: 1.5
   cost: 1.5
+  atk: 1
+  ac: 1
+  max_hp: 1
+  max_sp: 1
+  str: 1
+  dex: 1
+  con: 1
+  int: 1
+  wis: 1
+  cha: 1

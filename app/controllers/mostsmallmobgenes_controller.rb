@@ -80,4 +80,9 @@ class MostsmallmobgenesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # GET /mostsmallmobgenes/set_default_value
+  def set_default_value
+    @mostsmallmobgene = Mostsmallmobgenecreator.create(params[:mobspecie_id], params[:mothergene_id], params[:fathergene_id])
+  end
 end

@@ -2,13 +2,18 @@
 
 <table>
   <tr>
+    <th>ID</th>
     <th>Name</th>
     <th>Prolificacy</th>
     <th>Longevity</th>
+    <th>Growth mod</th>
     <th>Cost</th>
-    <th>Damage</th>
-    <th>AC</th>
-
+    <th>Str</th>
+    <th>Dex</th>
+    <th>Con</th>
+    <th>Int</th>
+    <th>Wis</th>
+    <th>Cha</th>
     <th></th>
     <th></th>
     <th></th>
@@ -16,12 +21,18 @@
 
 <% @mostsmallmobspecies.each do |mostsmallmobspecie| %>
   <tr>
+    <td><%= mostsmallmobspecie.id %></td>
     <td><%= mostsmallmobspecie.name %></td>
     <td><%= mostsmallmobspecie.prolificacy %></td>
     <td><%= mostsmallmobspecie.longevity %></td>
+    <td><%= mostsmallmobspecie.growth_mod %></td>
     <td><%= mostsmallmobspecie.cost %></td>
-    <td><%= mostsmallmobspecie.damage %></td>
-    <td><%= mostsmallmobspecie.ac %></td>
+    <td><%= mostsmallmobspecie.str %></td>
+    <td><%= mostsmallmobspecie.dex %></td>
+    <td><%= mostsmallmobspecie.con %></td>
+    <td><%= mostsmallmobspecie.int %></td>
+    <td><%= mostsmallmobspecie.wis %></td>
+    <td><%= mostsmallmobspecie.cha %></td>
     <td><%= link_to 'Show', mostsmallmobspecie %></td>
     <td><%= link_to 'Edit', edit_mostsmallmobspecy_path(mostsmallmobspecie) %></td>
     <td><%= link_to 'Destroy', mostsmallmobspecie, confirm: 'Are you sure?', method: :delete %></td>

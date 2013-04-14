@@ -1,0 +1,29 @@
+<%= form_for(@mostsmalltreasureitem) do |f| %>
+  <% if @mostsmalltreasureitem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mostsmalltreasureitem.errors.count, "error") %> prohibited this mostsmalltreasureitem from being saved:</h2>
+
+      <ul>
+      <% @mostsmalltreasureitem.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mostsmalltreasurechest %><br />
+    <%= f.collection_select(:mostsmalltreasurechest_id, Mostsmalltreasurechest.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :mostsmallitem %><br />
+    <%= f.collection_select(:mostsmallitem_id, Mostsmallitem.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :is_identified %><br />
+    <%= f.check_box :is_identified %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

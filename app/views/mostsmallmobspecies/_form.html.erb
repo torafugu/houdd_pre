@@ -1,7 +1,7 @@
 <%= form_for(@mostsmallmobspecie) do |f| %>
   <% if @mostsmallmobspecie.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@mostsmallmobspecie.errors.count, "error") %> prohibited this mostsmallmobspecie from being saved:</h2>
+      <h2><%= pluralize(@mostsmallmobspecie.errors.count, "error") %> prohibited this mostsmallmobspecy from being saved:</h2>
 
       <ul>
       <% @mostsmallmobspecie.errors.full_messages.each do |msg| %>
@@ -17,23 +17,43 @@
   </div>
   <div class="field">
     <%= f.label :prolificacy %><br />
-    <%= f.number_field :prolificacy %>
+    <%= f.text_field :prolificacy %>
   </div>
   <div class="field">
     <%= f.label :longevity %><br />
-    <%= f.number_field :longevity %>
+    <%= f.text_field :longevity %>
+  </div>
+  <div class="field">
+    <%= f.label :growth_mod %><br />
+    <%= f.text_field :growth_mod %>
   </div>
   <div class="field">
     <%= f.label :cost %><br />
     <%= f.text_field :cost %>
   </div>
   <div class="field">
-    <%= f.label :damage %><br />
-    <%= f.number_field :damage %>
+    <%= f.label :str %><br />
+    <%= f.number_field :str %>
   </div>
   <div class="field">
-    <%= f.label :ac %><br />
-    <%= f.number_field :ac %>
+    <%= f.label :dex %><br />
+    <%= f.number_field :dex %>
+  </div>
+  <div class="field">
+    <%= f.label :con %><br />
+    <%= f.number_field :con %>
+  </div>
+  <div class="field">
+    <%= f.label :int %><br />
+    <%= f.number_field :int %>
+  </div>
+  <div class="field">
+    <%= f.label :wis %><br />
+    <%= f.number_field :wis %>
+  </div>
+  <div class="field">
+    <%= f.label :cha %><br />
+    <%= f.number_field :cha %>
   </div>
   <div class="actions">
     <%= f.submit %>

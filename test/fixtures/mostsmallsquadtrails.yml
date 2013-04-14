@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mostsmalltrialturn: 
+  squad_id: 1
+  from_x: 1
+  from_y: 1
+  to_x: 1
+  to_y: 1
+  trail: MyText
+  is_annihilated: false
+
+two:
+  mostsmalltrialturn: 
+  squad_id: 1
+  from_x: 1
+  from_y: 1
+  to_x: 1
+  to_y: 1
+  trail: MyText
+  is_annihilated: false

@@ -2,17 +2,16 @@
 
 <table>
   <tr>
+    <th>ID</th>
     <th>Mobgene</th>
     <th>Level</th>
     <th>Job</th>
-    <th>Job level</th>
+    <th>J-level</th>
     <th>User</th>
     <th>Squad</th>
     <th>Name</th>
     <th>Gender</th>
     <th>Age</th>
-    <th>Max hp</th>
-    <th>Max sp</th>
     <th>Hp</th>
     <th>Sp</th>
     <th>Str</th>
@@ -21,8 +20,8 @@
     <th>Int</th>
     <th>Wis</th>
     <th>Cha</th>
-    <th>Battle exp</th>
-    <th>Job exp</th>
+    <th>B-exp</th>
+    <th>J-exp</th>
     <th></th>
     <th></th>
     <th></th>
@@ -30,6 +29,7 @@
 
 <% @mostsmallmobs.each do |mostsmallmob| %>
   <tr>
+    <td><%= mostsmallmob.id %></td>
     <td><%= mostsmallmob.mostsmallmobgene.name %></td>
     <td><%= mostsmallmob.level %></td>
     <td><%= mostsmallmob.mostsmalljob.name %></td>
@@ -39,8 +39,6 @@
     <td><%= mostsmallmob.name %></td>
     <td><%= mostsmallmob.gender %></td>
     <td><%= mostsmallmob.age %></td>
-    <td><%= mostsmallmob.max_hp %></td>
-    <td><%= mostsmallmob.max_sp %></td>
     <td><%= mostsmallmob.hp %></td>
     <td><%= mostsmallmob.sp %></td>
     <td><%= mostsmallmob.str %></td>
@@ -49,8 +47,8 @@
     <td><%= mostsmallmob.int %></td>
     <td><%= mostsmallmob.wis %></td>
     <td><%= mostsmallmob.cha %></td>
-    <td><%= mostsmallmob.battle_exp %></td>
-    <td><%= mostsmallmob.job_exp %></td>
+    <td><%= mostsmallmob.battle_exp.round(2) %></td>
+    <td><%= mostsmallmob.job_exp.round(2) %></td>
     <td><%= link_to 'Show', mostsmallmob %></td>
     <td><%= link_to 'Edit', edit_mostsmallmob_path(mostsmallmob) %></td>
     <td><%= link_to 'Destroy', mostsmallmob, confirm: 'Are you sure?', method: :delete %></td>

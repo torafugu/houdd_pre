@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mostsmallterritory:</b>
+  <%= @mostsmalltrial.mostsmallterritory %>
+</p>
+
+<p>
+  <b>Territory name:</b>
+  <%= @mostsmalltrial.territory_name %>
+</p>
+
+<p>
+  <b>Dungeon txt:</b>
+  <%= @mostsmalltrial.dungeon_txt %>
+</p>
+
+<p>
+  <b>Def mission:</b>
+  <%= @mostsmalltrial.def_mission.name %>
+</p>
+
+<p>
+  <b>Atk mission:</b>
+  <%= @mostsmalltrial.atk_mission.name %>
+</p>
+
+<p>
+  <b>Occured at:</b>
+  <%= @mostsmalltrial.occured_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_mostsmalltrial_path(@mostsmalltrial) %> |
+<%= link_to 'Back', mostsmalltrials_path %>

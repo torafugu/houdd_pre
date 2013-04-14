@@ -1,0 +1,34 @@
+<%= form_for(@mostsmalltrial) do |f| %>
+  <% if @mostsmalltrial.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mostsmalltrial.errors.count, "error") %> prohibited this mostsmalltrial from being saved:</h2>
+
+      <ul>
+      <% @mostsmalltrial.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mostsmallterritory %><br />
+    <%= f.collection_select(:mostsmallterritory_id, Mostsmallterritory.find(:all), :id, :name, :include_blank => true) %>
+  </div>
+  <div class="field">
+    <%= f.label :territory_name %><br />
+    <%= f.text_field :territory_name %>
+  </div>
+  <div class="field">
+    <%= f.label :dungeon_txt %><br />
+    <%= f.text_area :dungeon_txt %>
+  </div>
+  <%= render 'select_missions', {:f => f} %>
+  <div class="field">
+    <%= f.label :occured_at %><br />
+    <%= f.number_field :occured_at %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130303061756) do
+ActiveRecord::Schema.define(:version => 20130331075233) do
 
   create_table "moresmallarmorinfos", :force => true do |t|
     t.string   "name"
@@ -348,6 +348,54 @@ ActiveRecord::Schema.define(:version => 20130303061756) do
     t.datetime "updated_at",     :null => false
   end
 
+  create_table "mostsmallbattleeffectinventories", :force => true do |t|
+    t.integer  "mostsmallmob_id"
+    t.integer  "mostsmalleffect_id"
+    t.integer  "src_mob_id"
+    t.integer  "remaining_duration"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "mostsmallbattleeffectinventories", ["mostsmalleffect_id"], :name => "index_mostsmallbattleeffectinventories_on_mostsmalleffect_id"
+  add_index "mostsmallbattleeffectinventories", ["mostsmallmob_id"], :name => "index_mostsmallbattleeffectinventories_on_mostsmallmob_id"
+
+  create_table "mostsmallbattlelogs", :force => true do |t|
+    t.integer  "mostsmallbattleturn_id"
+    t.integer  "atk_mob_id"
+    t.integer  "atk_mob_vpos"
+    t.integer  "def_mob_id"
+    t.integer  "def_mob_vpos"
+    t.boolean  "is_def_mob_dead"
+    t.string   "damage_cause"
+    t.integer  "damage"
+    t.integer  "effect_id"
+    t.text     "log"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
+
+  add_index "mostsmallbattlelogs", ["mostsmallbattleturn_id"], :name => "index_mostsmallbattlelogs_on_mostsmallbattleturn_id"
+
+  create_table "mostsmallbattlesets", :force => true do |t|
+    t.integer  "mostsmalltrialturn_id"
+    t.integer  "atk_squad_id"
+    t.integer  "def_squad_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "mostsmallbattlesets", ["mostsmalltrialturn_id"], :name => "index_mostsmallbattlesets_on_mostsmalltrialturn_id"
+
+  create_table "mostsmallbattleturns", :force => true do |t|
+    t.integer  "mostsmallbattleset_id"
+    t.text     "log"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "mostsmallbattleturns", ["mostsmallbattleset_id"], :name => "index_mostsmallbattleturns_on_mostsmallbattleset_id"
+
   create_table "mostsmallconstlvltbls", :force => true do |t|
     t.integer  "mostsmallconstructioninfo_id"
     t.integer  "level"
@@ -410,7 +458,6 @@ ActiveRecord::Schema.define(:version => 20130303061756) do
     t.string   "name"
     t.integer  "damage"
     t.integer  "ac"
-    t.integer  "sp_mod"
     t.integer  "str_mod"
     t.integer  "dex_mod"
     t.integer  "con_mod"
@@ -441,6 +488,17 @@ ActiveRecord::Schema.define(:version => 20130303061756) do
   create_table "mostsmallequipslots", :force => true do |t|
     t.string   "name"
     t.boolean  "is_hand"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "num_of_tgt"
+    t.integer  "accuracy"
+    t.integer  "range"
+    t.integer  "damage"
+    t.integer  "ac"
+  end
+
+  create_table "mostsmallhistories", :force => true do |t|
+    t.integer  "days"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -521,6 +579,38 @@ ActiveRecord::Schema.define(:version => 20130303061756) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "mostsmallmissioncategories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "mostsmallmissioninventories", :force => true do |t|
+    t.integer  "mostsmallmission_id"
+    t.integer  "mostsmallsquad_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "mostsmallmissioninventories", ["mostsmallmission_id"], :name => "index_mostsmallmissioninventories_on_mostsmallmission_id"
+  add_index "mostsmallmissioninventories", ["mostsmallsquad_id"], :name => "index_mostsmallmissioninventories_on_mostsmallsquad_id"
+
+  create_table "mostsmallmissions", :force => true do |t|
+    t.integer  "mostsmalluser_id"
+    t.integer  "mostsmallterritory_id"
+    t.integer  "mostsmallmissioncategory_id"
+    t.integer  "mostsmallstrategy_id"
+    t.integer  "priority"
+    t.integer  "remaining_period"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  add_index "mostsmallmissions", ["mostsmallmissioncategory_id"], :name => "index_mostsmallmissions_on_mostsmallmissioncategory_id"
+  add_index "mostsmallmissions", ["mostsmallstrategy_id"], :name => "index_mostsmallmissions_on_mostsmallstrategy_id"
+  add_index "mostsmallmissions", ["mostsmallterritory_id"], :name => "index_mostsmallmissions_on_mostsmallterritory_id"
+  add_index "mostsmallmissions", ["mostsmalluser_id"], :name => "index_mostsmallmissions_on_mostsmalluser_id"
+
   create_table "mostsmallmobgenes", :force => true do |t|
     t.integer  "mostsmallmobspecie_id"
     t.integer  "mothermobgene_id"
@@ -538,24 +628,6 @@ ActiveRecord::Schema.define(:version => 20130303061756) do
 
   add_index "mostsmallmobgenes", ["mostsmallmobspecie_id"], :name => "index_mostsmallmobgenes_on_mostsmallmobspecie_id"
 
-  create_table "mostsmallmoblvltbls", :force => true do |t|
-    t.integer  "mostsmallmobspecie_id"
-    t.integer  "level"
-    t.integer  "exp"
-    t.integer  "max_hp"
-    t.integer  "max_sp"
-    t.integer  "str"
-    t.integer  "dex"
-    t.integer  "con"
-    t.integer  "int"
-    t.integer  "wis"
-    t.integer  "cha"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
-  end
-
-  add_index "mostsmallmoblvltbls", ["mostsmallmobspecie_id"], :name => "index_mostsmallmoblvltbls_on_mostsmallmobspecie_id"
-
   create_table "mostsmallmobs", :force => true do |t|
     t.integer  "mostsmallmobgene_id"
     t.integer  "level"
@@ -566,8 +638,6 @@ ActiveRecord::Schema.define(:version => 20130303061756) do
     t.string   "name"
     t.boolean  "gender"
     t.integer  "age"
-    t.integer  "max_hp"
-    t.integer  "max_sp"
     t.integer  "hp"
     t.integer  "sp"
     t.integer  "str"
@@ -589,14 +659,35 @@ ActiveRecord::Schema.define(:version => 20130303061756) do
 
   create_table "mostsmallmobspecies", :force => true do |t|
     t.string   "name"
-    t.integer  "prolificacy"
-    t.integer  "longevity"
+    t.float    "prolificacy"
+    t.float    "longevity"
+    t.float    "growth_mod"
     t.float    "cost"
+    t.integer  "atk"
+    t.integer  "str"
+    t.integer  "dex"
+    t.integer  "con"
+    t.integer  "int"
+    t.integer  "wis"
+    t.integer  "cha"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "damage"
-    t.integer  "ac"
   end
+
+  create_table "mostsmallmobstatuses", :force => true do |t|
+    t.integer  "mostsmalltrialturn_id"
+    t.integer  "mob_id"
+    t.integer  "start_hp"
+    t.integer  "end_hp"
+    t.integer  "start_sp"
+    t.integer  "end_sp"
+    t.string   "start_status"
+    t.string   "end_status"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "mostsmallmobstatuses", ["mostsmalltrialturn_id"], :name => "index_mostsmallmobstatuses_on_mostsmalltrialturn_id"
 
   create_table "mostsmallresearches", :force => true do |t|
     t.string   "name"
@@ -615,17 +706,6 @@ ActiveRecord::Schema.define(:version => 20130303061756) do
 
   add_index "mostsmallresearchlvls", ["mostsmallresearch_id"], :name => "index_mostsmallresearchlvls_on_mostsmallresearch_id"
   add_index "mostsmallresearchlvls", ["mostsmalluser_id"], :name => "index_mostsmallresearchlvls_on_mostsmalluser_id"
-
-  create_table "mostsmallresearchlvltbls", :force => true do |t|
-    t.integer  "mostsmallresearch_id"
-    t.integer  "level"
-    t.integer  "rp"
-    t.integer  "keep_rp"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
-  end
-
-  add_index "mostsmallresearchlvltbls", ["mostsmallresearch_id"], :name => "index_mostsmallresearchlvltbls_on_mostsmallresearch_id"
 
   create_table "mostsmallresources", :force => true do |t|
     t.string   "name"
@@ -661,28 +741,14 @@ ActiveRecord::Schema.define(:version => 20130303061756) do
   end
 
   create_table "mostsmallskilleffectinventories", :force => true do |t|
-    t.integer  "mostsmallskilllvltbl_id"
+    t.integer  "mostsmallskill_id"
     t.integer  "mostsmalleffect_id"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   add_index "mostsmallskilleffectinventories", ["mostsmalleffect_id"], :name => "index_mostsmallskilleffectinventories_on_mostsmalleffect_id"
-  add_index "mostsmallskilleffectinventories", ["mostsmallskilllvltbl_id"], :name => "index_mostsmallskilleffectinventories_on_mostsmallskilllvltbl_id"
-
-  create_table "mostsmallskilllvltbls", :force => true do |t|
-    t.integer  "mostsmallskill_id"
-    t.integer  "level"
-    t.integer  "sp_cost"
-    t.integer  "num_of_tgt"
-    t.integer  "accuracy"
-    t.integer  "range"
-    t.integer  "damage"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
-  end
-
-  add_index "mostsmallskilllvltbls", ["mostsmallskill_id"], :name => "index_mostsmallskilllvltbls_on_mostsmallskill_id"
+  add_index "mostsmallskilleffectinventories", ["mostsmallskill_id"], :name => "index_mostsmallskilleffectinventories_on_mostsmallskill_id"
 
   create_table "mostsmallskills", :force => true do |t|
     t.integer  "mostsmallskillcategory_id"
@@ -690,6 +756,11 @@ ActiveRecord::Schema.define(:version => 20130303061756) do
     t.integer  "job_level"
     t.integer  "mostsmallelement_id"
     t.string   "name"
+    t.integer  "sp_cost"
+    t.integer  "num_of_tgt"
+    t.integer  "accuracy"
+    t.integer  "range"
+    t.integer  "damage"
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end
@@ -718,6 +789,27 @@ ActiveRecord::Schema.define(:version => 20130303061756) do
 
   add_index "mostsmallsquads", ["mostsmallterritory_id"], :name => "index_mostsmallsquads_on_mostsmallterritory_id"
   add_index "mostsmallsquads", ["mostsmalluser_id"], :name => "index_mostsmallsquads_on_mostsmalluser_id"
+
+  create_table "mostsmallsquadtrails", :force => true do |t|
+    t.integer  "mostsmalltrialturn_id"
+    t.integer  "squad_id"
+    t.integer  "from_x"
+    t.integer  "from_y"
+    t.integer  "to_x"
+    t.integer  "to_y"
+    t.text     "trail"
+    t.boolean  "is_annihilated"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "mostsmallsquadtrails", ["mostsmalltrialturn_id"], :name => "index_mostsmallsquadtrails_on_mostsmalltrialturn_id"
+
+  create_table "mostsmallstrategies", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "mostsmallterrainproducts", :force => true do |t|
     t.integer  "mostsmallterrain_id"
@@ -750,14 +842,15 @@ ActiveRecord::Schema.define(:version => 20130303061756) do
   add_index "mostsmallterritories", ["mostsmalluser_id"], :name => "index_mostsmallterritories_on_mostsmalluser_id"
 
   create_table "mostsmalltrapeffectinventories", :force => true do |t|
-    t.integer  "mostsmalltraplvltbl_id"
+    t.integer  "mostsmalltrapinfo_id"
+    t.integer  "level"
     t.integer  "mostsmalleffect_id"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
   add_index "mostsmalltrapeffectinventories", ["mostsmalleffect_id"], :name => "index_mostsmalltrapeffectinventories_on_mostsmalleffect_id"
-  add_index "mostsmalltrapeffectinventories", ["mostsmalltraplvltbl_id"], :name => "index_mostsmalltrapeffectinventories_on_mostsmalltraplvltbl_id"
+  add_index "mostsmalltrapeffectinventories", ["mostsmalltrapinfo_id"], :name => "index_mostsmalltrapeffectinventories_on_mostsmalltrapinfo_id"
 
   create_table "mostsmalltrapeffects", :force => true do |t|
     t.integer  "mostsmalltrapleveltable_id"
@@ -772,25 +865,16 @@ ActiveRecord::Schema.define(:version => 20130303061756) do
   create_table "mostsmalltrapinfos", :force => true do |t|
     t.string   "name"
     t.integer  "const_period"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
     t.integer  "mostsmallelement_id"
-  end
-
-  add_index "mostsmalltrapinfos", ["mostsmallelement_id"], :name => "index_mostsmalltrapinfos_on_mostsmallelement_id"
-
-  create_table "mostsmalltraplvltbls", :force => true do |t|
-    t.integer  "mostsmalltrapinfo_id"
-    t.integer  "level"
     t.integer  "max_dp"
     t.integer  "disarm_diff"
     t.integer  "num_of_tgt"
     t.integer  "damage"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
-  add_index "mostsmalltraplvltbls", ["mostsmalltrapinfo_id"], :name => "index_mostsmalltraplvltbls_on_mostsmalltrapinfo_id"
+  add_index "mostsmalltrapinfos", ["mostsmallelement_id"], :name => "index_mostsmalltrapinfos_on_mostsmallelement_id"
 
   create_table "mostsmalltraps", :force => true do |t|
     t.integer  "mostsmalltrapinfo_id"
@@ -806,6 +890,73 @@ ActiveRecord::Schema.define(:version => 20130303061756) do
 
   add_index "mostsmalltraps", ["mostsmallterritory_id"], :name => "index_mostsmalltraps_on_mostsmallterritory_id"
   add_index "mostsmalltraps", ["mostsmalltrapinfo_id"], :name => "index_mostsmalltraps_on_mostsmalltrapinfo_id"
+
+  create_table "mostsmalltreasurechests", :force => true do |t|
+    t.integer  "mostsmallterritory_id"
+    t.integer  "dungeon_x"
+    t.integer  "dungeon_y"
+    t.boolean  "is_opened"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "mostsmalltreasurechests", ["mostsmallterritory_id"], :name => "index_mostsmalltreasurechests_on_mostsmallterritory_id"
+
+  create_table "mostsmalltreasureitems", :force => true do |t|
+    t.integer  "mostsmalltreasurechest_id"
+    t.integer  "mostsmallitem_id"
+    t.boolean  "is_identified"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "mostsmalltreasureitems", ["mostsmallitem_id"], :name => "index_mostsmalltreasureitems_on_mostsmallitem_id"
+  add_index "mostsmalltreasureitems", ["mostsmalltreasurechest_id"], :name => "index_mostsmalltreasureitems_on_mostsmalltreasurechest_id"
+
+  create_table "mostsmalltrialmobs", :force => true do |t|
+    t.integer  "mostsmalltrialsquad_id"
+    t.integer  "mob_id"
+    t.string   "specie_name"
+    t.string   "mob_name"
+    t.integer  "max_hp"
+    t.integer  "max_sp"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
+
+  add_index "mostsmalltrialmobs", ["mostsmalltrialsquad_id"], :name => "index_mostsmalltrialmobs_on_mostsmalltrialsquad_id"
+
+  create_table "mostsmalltrials", :force => true do |t|
+    t.integer  "mostsmallterritory_id"
+    t.string   "territory_name"
+    t.text     "dungeon_txt"
+    t.integer  "def_mission_id"
+    t.integer  "atk_mission_id"
+    t.integer  "occured_at"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "mostsmalltrials", ["mostsmallterritory_id"], :name => "index_mostsmalltrials_on_mostsmallterritory_id"
+
+  create_table "mostsmalltrialsquads", :force => true do |t|
+    t.integer  "mostsmalltrial_id"
+    t.integer  "squad_id"
+    t.string   "squad_name"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "mostsmalltrialsquads", ["mostsmalltrial_id"], :name => "index_mostsmalltrialsquads_on_mostsmalltrial_id"
+
+  create_table "mostsmalltrialturns", :force => true do |t|
+    t.integer  "mostsmalltrial_id"
+    t.text     "log"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "mostsmalltrialturns", ["mostsmalltrial_id"], :name => "index_mostsmalltrialturns_on_mostsmalltrial_id"
 
   create_table "mostsmallusers", :force => true do |t|
     t.string   "name"

@@ -14,6 +14,7 @@
   <div class="field">
     <%= f.label :mostsmallmobspecie %><br />
     <%= f.collection_select(:mostsmallmobspecie_id, Mostsmallmobspecie.find(:all), :id, :name) %>
+    <input id="mostsmall_default_mobgene_value" type="button" value="デフォルト値" />
   </div>
   <div class="field">
     <%= f.label :mothermobgene_id %><br />

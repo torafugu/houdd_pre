@@ -1,13 +1,51 @@
 HouddPre::Application.routes.draw do
 
+  match '/mostsmalltrials/:id/log' => 'mostsmalltrials#log', as: 'log_mostsmalltrial', :via => :get
+  match '/mostsmalltrials/:id/check_battlelog' => 'mostsmalltrials#check_battlelog'
+  match '/mostsmalltrials/:id/check_battleset' => 'mostsmalltrials#check_battleset'
+  match '/mostsmalltrials/:id/check_log' => 'mostsmalltrials#check_log'
+  match '/mostsmalltrials/select_missions'
+  match '/mostsmalltrials/:id/select_missions' => 'mostsmalltrials#select_missions'
+  resources :mostsmalltrials
+
+  resources :mostsmallmissioninventories
+
+  resources :mostsmallmissions
+
+  resources :mostsmallstrategies
+
+  resources :mostsmallmissioncategories
+
+  resources :mostsmalltreasureitems
+
+  resources :mostsmalltrapeffectinventories
+
+  resources :mostsmalltrapinfos
+
+  resources :mostsmallskilleffectinventories
+
+  resources :mostsmallskills
+
+  match '/mostsmalltreasurechests/select_dungeontxt'
+  match '/mostsmalltreasurechests/:id/select_dungeontxt' => 'mostsmalltreasurechests#select_dungeontxt'
+  resources :mostsmalltreasurechests
+
+  resources :mostsmallmobspecies
+
   resources :mostsmallitemequipinventories
 
+  match '/mostsmallmobs/set_default_value'
+  match '/mostsmallmobs/:id/set_default_value' => 'mostsmallmobs#set_default_value'
   resources :mostsmallmobs
 
   resources :mostsmallsquads
 
+  match '/mostsmallmobgenes/set_default_value'
+  match '/mostsmallmobgenes/:id/set_default_value' => 'mostsmallmobgenes#set_default_value'
   resources :mostsmallmobgenes
-
+  
+  match '/mostsmallitems/set_default_value'
+  match '/mostsmallitems/:id/set_default_value' => 'mostsmallitems#set_default_value'
   resources :mostsmallitems
 
   resources :mostsmallitemeffectinventories
@@ -15,12 +53,6 @@ HouddPre::Application.routes.draw do
   resources :mostsmalliteminfos
 
   resources :mostsmallitemcategories
-
-  resources :mostsmallskilleffectinventories
-
-  resources :mostsmallskilllvltbls
-
-  resources :mostsmallskills
 
   resources :mostsmallskillcategories
 
@@ -30,21 +62,11 @@ HouddPre::Application.routes.draw do
 
   resources :mostsmalleffects
 
-  resources :mostsmallmoblvltbls
-
   resources :mostsmallequipslotinventories
 
   resources :mostsmallequipslots
 
-  resources :mostsmallmobspecies
-
-  resources :mostsmallresearchlvltbls
-
   resources :mostsmallresearches
-
-  resources :mostsmalltrapeffectinventories
-
-  resources :mostsmalltraplvltbls
 
   resources :mostsmallroads
 
@@ -61,8 +83,6 @@ HouddPre::Application.routes.draw do
   match '/mostsmalltraps/select_dungeontxt'
   match '/mostsmalltraps/:id/select_dungeontxt' => 'mostsmalltraps#select_dungeontxt'
   resources :mostsmalltraps
-
-  resources :mostsmalltrapinfos
 
   match '/mostsmallconstructions/select_maptxt'
   match '/mostsmallconstructions/:id/select_maptxt' => 'mostsmallconstructions#select_maptxt'

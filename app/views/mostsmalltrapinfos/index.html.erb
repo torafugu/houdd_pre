@@ -2,10 +2,13 @@
 
 <table>
   <tr>
-    <th>ID</th>
-    <th>Element</th>
     <th>Name</th>
     <th>Const period</th>
+    <th>Element</th>
+    <th>Max dp</th>
+    <th>Disarm diff</th>
+    <th>Num of tgt</th>
+    <th>Damage</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,10 +16,13 @@
 
 <% @mostsmalltrapinfos.each do |mostsmalltrapinfo| %>
   <tr>
-    <td><%= mostsmalltrapinfo.id %></td>
-    <td><%= mostsmalltrapinfo.mostsmallelement.name %></td>
     <td><%= mostsmalltrapinfo.name %></td>
     <td><%= mostsmalltrapinfo.const_period %></td>
+    <td><%= mostsmalltrapinfo.mostsmallelement.name %></td>
+    <td><%= mostsmalltrapinfo.max_dp %></td>
+    <td><%= mostsmalltrapinfo.disarm_diff %></td>
+    <td><%= mostsmalltrapinfo.num_of_tgt %></td>
+    <td><%= mostsmalltrapinfo.damage %></td>
     <td><%= link_to 'Show', mostsmalltrapinfo %></td>
     <td><%= link_to 'Edit', edit_mostsmalltrapinfo_path(mostsmalltrapinfo) %></td>
     <td><%= link_to 'Destroy', mostsmalltrapinfo, confirm: 'Are you sure?', method: :delete %></td>

@@ -80,4 +80,9 @@ class MostsmallitemsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # GET /mostsmallitems/set_default_value
+  def set_default_value
+    @mostsmallitem = Mostsmallitemcreator.create(params[:iteminfo_id])
+  end
 end

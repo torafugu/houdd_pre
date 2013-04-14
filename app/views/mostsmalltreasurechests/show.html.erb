@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mostsmallterritory:</b>
+  <%= @mostsmalltreasurechest.mostsmallterritory.name %>
+</p>
+
+<p>
+  <b>Dungeon x:</b>
+  <%= @mostsmalltreasurechest.dungeon_x %>
+</p>
+
+<p>
+  <b>Dungeon y:</b>
+  <%= @mostsmalltreasurechest.dungeon_y %>
+</p>
+
+<p>
+  <b>Is opened:</b>
+  <%= @mostsmalltreasurechest.is_opened %>
+</p>
+
+
+<%= link_to 'Edit', edit_mostsmalltreasurechest_path(@mostsmalltreasurechest) %> |
+<%= link_to 'Back', mostsmalltreasurechests_path %>

@@ -12,9 +12,9 @@
 
 <% @mostsmallitemequipinventories.each do |mostsmallitemequipinventory| %>
   <tr>
-    <td><%= mostsmallitemequipinventory.mostsmallitem.name %></td>
-    <td><%= mostsmallitemequipinventory.mostsmallmob.name %></td>
-    <td><%= mostsmallitemequipinventory.mostsmallequipslot.name %></td>
+    <td><%= mostsmallitemequipinventory.mostsmallitem.name unless mostsmallitemequipinventory.mostsmallitem.nil? %></td>
+    <td><%= mostsmallitemequipinventory.mostsmallmob.uname unless mostsmallitemequipinventory.mostsmallmob.nil? %></td>
+    <td><%= mostsmallitemequipinventory.mostsmallequipslot.name unless mostsmallitemequipinventory.mostsmallequipslot.nil? %></td>
     <td><%= link_to 'Show', mostsmallitemequipinventory %></td>
     <td><%= link_to 'Edit', edit_mostsmallitemequipinventory_path(mostsmallitemequipinventory) %></td>
     <td><%= link_to 'Destroy', mostsmallitemequipinventory, confirm: 'Are you sure?', method: :delete %></td>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mostsmalltreasurechest: 
+  mostsmallitem: 
+  is_identified: false
+
+two:
+  mostsmalltreasurechest: 
+  mostsmallitem: 
+  is_identified: false

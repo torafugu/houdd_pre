@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mostsmalltrialturn: 
+  atk_squad_id: 1
+  def_squad_id: 1
+
+two:
+  mostsmalltrialturn: 
+  atk_squad_id: 1
+  def_squad_id: 1

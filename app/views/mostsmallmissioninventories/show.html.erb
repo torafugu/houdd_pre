@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mostsmallmission:</b>
+  <%= @mostsmallmissioninventory.mostsmallmission.name %>
+</p>
+
+<p>
+  <b>Mostsmallsquad:</b>
+  <%= @mostsmallmissioninventory.mostsmallsquad.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_mostsmallmissioninventory_path(@mostsmallmissioninventory) %> |
+<%= link_to 'Back', mostsmallmissioninventories_path %>

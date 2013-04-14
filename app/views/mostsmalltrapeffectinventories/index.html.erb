@@ -2,7 +2,8 @@
 
 <table>
   <tr>
-    <th>Mostsmalltraplvltbl</th>
+    <th>Mostsmalltrapinfo</th>
+    <th>Level</th>
     <th>Mostsmalleffect</th>
     <th></th>
     <th></th>
@@ -11,7 +12,8 @@
 
 <% @mostsmalltrapeffectinventories.each do |mostsmalltrapeffectinventory| %>
   <tr>
-    <td><%= mostsmalltrapeffectinventory.mostsmalltraplvltbl.name %></td>
+    <td><%= mostsmalltrapeffectinventory.mostsmalltrapinfo.name %></td>
+    <td><%= mostsmalltrapeffectinventory.level %></td>
     <td><%= mostsmalltrapeffectinventory.mostsmalleffect.name %></td>
     <td><%= link_to 'Show', mostsmalltrapeffectinventory %></td>
     <td><%= link_to 'Edit', edit_mostsmalltrapeffectinventory_path(mostsmalltrapeffectinventory) %></td>

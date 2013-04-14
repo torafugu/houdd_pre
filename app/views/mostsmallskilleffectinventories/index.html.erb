@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th>Mostsmallskilllvltbl</th>
+    <th>Mostsmallskill</th>
     <th>Mostsmalleffect</th>
     <th></th>
     <th></th>
@@ -11,7 +11,7 @@
 
 <% @mostsmallskilleffectinventories.each do |mostsmallskilleffectinventory| %>
   <tr>
-    <td><%= mostsmallskilleffectinventory.mostsmallskilllvltbl.name %></td>
+    <td><%= mostsmallskilleffectinventory.mostsmallskill.name %></td>
     <td><%= mostsmallskilleffectinventory.mostsmalleffect.name %></td>
     <td><%= link_to 'Show', mostsmallskilleffectinventory %></td>
     <td><%= link_to 'Edit', edit_mostsmallskilleffectinventory_path(mostsmallskilleffectinventory) %></td>

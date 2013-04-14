@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mostsmallterritory: 
+  territory_name: MyString
+  dungeon_txt: MyText
+  def_mission_id: 1
+  atk_mission_id: 1
+  occured_at: 1
+
+two:
+  mostsmallterritory: 
+  territory_name: MyString
+  dungeon_txt: MyText
+  def_mission_id: 1
+  atk_mission_id: 1
+  occured_at: 1

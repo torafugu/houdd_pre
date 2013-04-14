@@ -1,0 +1,12 @@
+var p2 = Processing.getInstanceById("mostsmalltrial_tactical_canvas");
+jQuery("#BattleLog").text("");
+<% unless @current_battleset.nil? %>
+<% if @is_start_battle_turn %>
+  p2.resetMobs();
+<% end %>
+<% @current_battleturn.mostsmallbattlelogs.each do |battle| %>
+  jQuery("#BattleLog").append("<%= escape_javascript(battle.jpn_log) %>");
+  <% if battle.def_mob_id.nil? %>
+  p2.addMob(<%= battle.atk_mob_id %>, <%= battle.atk_mob_vpos %>, <%= battle.defender? %>);
+  <% end %>
+<% end %>

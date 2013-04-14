@@ -14,6 +14,7 @@
   <div class="field">
     <%= f.label :mostsmallmobgene %><br />
     <%= f.collection_select(:mostsmallmobgene_id, Mostsmallmobgene.find(:all), :id, :name) %>
+    <input id="mostsmall_default_mob_value" type="button" value="デフォルト値" />
   </div>
   <div class="field">
     <%= f.label :level %><br />
@@ -46,14 +47,6 @@
   <div class="field">
     <%= f.label :age %><br />
     <%= f.number_field :age %>
-  </div>
-  <div class="field">
-    <%= f.label :max_hp %><br />
-    <%= f.number_field :max_hp %>
-  </div>
-  <div class="field">
-    <%= f.label :max_sp %><br />
-    <%= f.number_field :max_sp %>
   </div>
   <div class="field">
     <%= f.label :hp %><br />

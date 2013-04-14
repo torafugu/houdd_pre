@@ -12,7 +12,7 @@ class Mostsmallconstruction < ActiveRecord::Base
     return prod_resource
   end
 
-  def is_completed
+  def completed?
     if read_attribute(:remaining_period) == 0
       return true
     else

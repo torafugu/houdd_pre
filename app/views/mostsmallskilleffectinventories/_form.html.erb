@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :mostsmallskilllvltbl %><br />
-    <%= f.collection_select(:mostsmallskilllvltbl_id, Mostsmallskilllvltbl.find(:all), :id, :name) %>
+    <%= f.label :mostsmallskill %><br />
+    <%= f.collection_select(:mostsmallskill_id, Mostsmallskill.find(:all), :id, :name) %>
   </div>
   <div class="field">
     <%= f.label :mostsmalleffect %><br />

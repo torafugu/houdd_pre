@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mostsmallbattleturn: 
+  atk_mob_id: 1
+  atk_mob_vpos: 1
+  def_mob_id: 1
+  def_mob_vpos: 1
+  is_def_mob_dead: false
+  damage_cause: MyString
+  damage: 1
+  effect_id: 1
+  log: MyText
+
+two:
+  mostsmallbattleturn: 
+  atk_mob_id: 1
+  atk_mob_vpos: 1
+  def_mob_id: 1
+  def_mob_vpos: 1
+  is_def_mob_dead: false
+  damage_cause: MyString
+  damage: 1
+  effect_id: 1
+  log: MyText

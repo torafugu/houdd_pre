@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mostsmalltrialsquad: 
+  mob_id: 1
+  specie_name: MyString
+  mob_name: MyString
+  max_hp: 1
+  max_sp: 1
+
+two:
+  mostsmalltrialsquad: 
+  mob_id: 1
+  specie_name: MyString
+  mob_name: MyString
+  max_hp: 1
+  max_sp: 1

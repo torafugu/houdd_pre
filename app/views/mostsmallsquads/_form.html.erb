@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= f.label :mostsmalluser %><br />
-    <%= f.text_field :mostsmalluser %>
+    <%= f.collection_select(:mostsmalluser_id, Mostsmalluser.find(:all), :id, :name) %>
   </div>
   <div class="field">
     <%= f.label :mostsmallterritory %><br />
-    <%= f.text_field :mostsmallterritory %>
+    <%= f.collection_select(:mostsmallterritory_id, Mostsmallterritory.find(:all), :id, :name) %>
   </div>
   <div class="field">
     <%= f.label :name %><br />

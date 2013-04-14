@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mostsmalluser:</b>
+  <%= @mostsmallmission.mostsmalluser.name %>
+</p>
+
+<p>
+  <b>Mostsmallterritory:</b>
+  <%= @mostsmallmission.mostsmallterritory.name %>
+</p>
+
+<p>
+  <b>Mostsmallmissioncategory:</b>
+  <%= @mostsmallmission.mostsmallmissioncategory.name %>
+</p>
+
+<p>
+  <b>Mostsmallstrategy:</b>
+  <%= @mostsmallmission.mostsmallstrategy.name %>
+</p>
+
+<p>
+  <b>Priority:</b>
+  <%= @mostsmallmission.priority %>
+</p>
+
+<p>
+  <b>Remaining period:</b>
+  <%= @mostsmallmission.remaining_period %>
+</p>
+
+
+<%= link_to 'Edit', edit_mostsmallmission_path(@mostsmallmission) %> |
+<%= link_to 'Back', mostsmallmissions_path %>

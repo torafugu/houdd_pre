@@ -11,8 +11,8 @@
 
 <% @mostsmallequipslotinventories.each do |mostsmallequipslotinventory| %>
   <tr>
-    <td><%= mostsmallequipslotinventory.mostsmallequipslot.name %></td>
-    <td><%= mostsmallequipslotinventory.mostsmallmobspecie.name %></td>
+    <td><%= mostsmallequipslotinventory.mostsmallequipslot.name unless mostsmallequipslotinventory.mostsmallequipslot.nil? %></td>
+    <td><%= mostsmallequipslotinventory.mostsmallmobspecie.name unless mostsmallequipslotinventory.mostsmallmobspecie.nil? %></td>
     <td><%= link_to 'Show', mostsmallequipslotinventory %></td>
     <td><%= link_to 'Edit', edit_mostsmallequipslotinventory_path(mostsmallequipslotinventory) %></td>
     <td><%= link_to 'Destroy', mostsmallequipslotinventory, confirm: 'Are you sure?', method: :delete %></td>

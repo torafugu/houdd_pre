@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mostsmalltreasurechest:</b>
+  <%= @mostsmalltreasureitem.mostsmalltreasurechest.name %>
+</p>
+
+<p>
+  <b>Mostsmallitem:</b>
+  <%= @mostsmalltreasureitem.mostsmallitem.name %>
+</p>
+
+<p>
+  <b>Is identified:</b>
+  <%= @mostsmalltreasureitem.is_identified %>
+</p>
+
+
+<%= link_to 'Edit', edit_mostsmalltreasureitem_path(@mostsmalltreasureitem) %> |
+<%= link_to 'Back', mostsmalltreasureitems_path %>

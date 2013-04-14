@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  mostsmalltraplvltbl: 
+  mostsmalltrapinfo: 
+  level: 1
   mostsmalleffect: 
 
 two:
-  mostsmalltraplvltbl: 
+  mostsmalltrapinfo: 
+  level: 1
   mostsmalleffect: 
