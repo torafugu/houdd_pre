@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  medium_dungeon: 
+  symbol: MyString
+  x: 1
+  y: 1
+  trap_id: 1
+  tc_disarm_rate: 1
+  medium_squad: 
+
+two:
+  medium_dungeon: 
+  symbol: MyString
+  x: 1
+  y: 1
+  trap_id: 1
+  tc_disarm_rate: 1
+  medium_squad: 

@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Symbol:</b>
+  <%= @medium_construction.symbol %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @medium_construction.name %>
+</p>
+
+<p>
+  <b>Medium terrain:</b>
+  <%= @medium_construction.medium_terrain.name %>
+</p>
+
+<p>
+  <b>Food:</b>
+  <%= @medium_construction.food %>
+</p>
+
+<p>
+  <b>Production:</b>
+  <%= @medium_construction.production %>
+</p>
+
+<p>
+  <b>Money:</b>
+  <%= @medium_construction.money %>
+</p>
+
+<p>
+  <b>Prod point:</b>
+  <%= @medium_construction.prod_point %>
+</p>
+
+
+<%= link_to 'Edit', edit_medium_construction_path(@medium_construction) %> |
+<%= link_to 'Back', medium_constructions_path %>

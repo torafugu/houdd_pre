@@ -11,7 +11,175 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130331075233) do
+ActiveRecord::Schema.define(:version => 20130430070149) do
+
+  create_table "medium_const_nec_res_invs", :force => true do |t|
+    t.integer  "medium_construction_id"
+    t.integer  "medium_resource_id"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
+
+  add_index "medium_const_nec_res_invs", ["medium_construction_id"], :name => "index_medium_const_nec_res_invs_on_medium_construction_id"
+  add_index "medium_const_nec_res_invs", ["medium_resource_id"], :name => "index_medium_const_nec_res_invs_on_medium_resource_id"
+
+  create_table "medium_construction_ques", :force => true do |t|
+    t.integer  "medium_construction_id"
+    t.integer  "medium_map_cell_id"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
+
+  add_index "medium_construction_ques", ["medium_construction_id"], :name => "index_medium_construction_ques_on_medium_construction_id"
+  add_index "medium_construction_ques", ["medium_map_cell_id"], :name => "index_medium_construction_ques_on_medium_map_cell_id"
+
+  create_table "medium_constructions", :force => true do |t|
+    t.string   "symbol"
+    t.string   "name"
+    t.integer  "food"
+    t.integer  "production"
+    t.integer  "money"
+    t.integer  "prod_point"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.integer  "medium_terrain_id"
+  end
+
+  add_index "medium_constructions", ["medium_terrain_id"], :name => "index_medium_constructions_on_medium_terrain_id"
+
+  create_table "medium_dungeon_cells", :force => true do |t|
+    t.integer  "medium_dungeon_id"
+    t.string   "symbol"
+    t.integer  "x"
+    t.integer  "y"
+    t.integer  "trap_id"
+    t.integer  "tc_disarm_rate"
+    t.integer  "medium_squad_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "medium_dungeon_cells", ["medium_dungeon_id"], :name => "index_medium_dungeon_cells_on_medium_dungeon_id"
+  add_index "medium_dungeon_cells", ["medium_squad_id"], :name => "index_medium_dungeon_cells_on_medium_squad_id"
+
+  create_table "medium_dungeons", :force => true do |t|
+    t.integer  "medium_map_cell_id"
+    t.string   "type_sym"
+    t.string   "name"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "medium_dungeons", ["medium_map_cell_id"], :name => "index_medium_dungeons_on_medium_map_cell_id"
+
+  create_table "medium_houdd_histories", :force => true do |t|
+    t.integer  "days"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "medium_houdd_users", :force => true do |t|
+    t.string   "name"
+    t.boolean  "admin_flg"
+    t.string   "login_id"
+    t.string   "login_pw"
+    t.datetime "first_login_at"
+    t.datetime "last_login_at"
+    t.integer  "wepon_lvl"
+    t.integer  "armor_lvl"
+    t.integer  "potion_lvl"
+    t.integer  "trap_lvl"
+    t.integer  "skill_lvl"
+    t.integer  "next_item_id"
+    t.integer  "prod_for_item"
+    t.integer  "next_const_id"
+    t.integer  "prod_for_const"
+    t.string   "next_research_sym"
+    t.integer  "prod_for_research"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.integer  "allot_for_item"
+    t.integer  "allot_for_const"
+    t.integer  "allot_for_research"
+  end
+
+  create_table "medium_map_cells", :force => true do |t|
+    t.integer  "medium_map_id"
+    t.integer  "x"
+    t.integer  "y"
+    t.integer  "medium_terrain_id"
+    t.integer  "medium_resource_id"
+    t.integer  "medium_construction_id"
+    t.integer  "medium_dungeon_id"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
+
+  add_index "medium_map_cells", ["medium_construction_id"], :name => "index_medium_map_cells_on_medium_construction_id"
+  add_index "medium_map_cells", ["medium_dungeon_id"], :name => "index_medium_map_cells_on_medium_dungeon_id"
+  add_index "medium_map_cells", ["medium_map_id"], :name => "index_medium_map_cells_on_medium_map_id"
+  add_index "medium_map_cells", ["medium_resource_id"], :name => "index_medium_map_cells_on_medium_resource_id"
+  add_index "medium_map_cells", ["medium_terrain_id"], :name => "index_medium_map_cells_on_medium_terrain_id"
+
+  create_table "medium_maps", :force => true do |t|
+    t.integer  "medium_houdd_user_id"
+    t.string   "name"
+    t.boolean  "exclusive_flg"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "medium_maps", ["medium_houdd_user_id"], :name => "index_medium_maps_on_medium_houdd_user_id"
+
+  create_table "medium_resources", :force => true do |t|
+    t.string   "symbol"
+    t.string   "name"
+    t.integer  "medium_terrain_id"
+    t.integer  "freq_rate"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "medium_resources", ["medium_terrain_id"], :name => "index_medium_resources_on_medium_terrain_id"
+
+  create_table "medium_roads", :force => true do |t|
+    t.integer  "start_map_id"
+    t.integer  "end_map_id"
+    t.integer  "distance"
+    t.integer  "level"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "medium_symbol_lists", :force => true do |t|
+    t.string   "category_sym"
+    t.string   "symbol"
+    t.string   "description"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "medium_tc_item_invs", :force => true do |t|
+    t.integer  "medium_dungeon_cell_id"
+    t.integer  "medium_item_id"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
+
+  add_index "medium_tc_item_invs", ["medium_dungeon_cell_id"], :name => "index_medium_tc_item_invs_on_medium_dungeon_cell_id"
+  add_index "medium_tc_item_invs", ["medium_item_id"], :name => "index_medium_tc_item_invs_on_medium_item_id"
+
+  create_table "medium_terrains", :force => true do |t|
+    t.string   "symbol"
+    t.string   "name"
+    t.integer  "food"
+    t.integer  "production"
+    t.integer  "money"
+    t.integer  "freq_rate"
+    t.integer  "continuity_mod"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
 
   create_table "moresmallarmorinfos", :force => true do |t|
     t.string   "name"

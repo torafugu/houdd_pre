@@ -1,0 +1,158 @@
+<script type="text/processing" data-processing-target="mypage_map_canvas">
+int RECT_SIZE = 40;
+int MAP_WIDTH = <%= Consts::NORMAL_MAP_X_SIZE %> * RECT_SIZE;
+int MAP_HEIGHT = <%= Consts::NORMAL_MAP_Y_SIZE %> * RECT_SIZE;
+int selectedX = null;
+int selectedY = null;
+ArrayList mapCells = new ArrayList();
+
+PImage plainImg = loadImage("/assets/map_grass.png");
+PImage mountainImg = loadImage("/assets/map_mountain.png");
+PImage seaImg = loadImage("/assets/map_sea.png");
+PImage ironImg = loadImage("/assets/resource_iron.png");
+PImage goldImg = loadImage("/assets/resource_gold.png");
+PImage animalImg = loadImage("/assets/resource_animal.png");
+PImage cottonImg = loadImage("/assets/resource_cotton.png");
+PImage fishImg = loadImage("/assets/resource_fish.png");
+PImage farmImg = loadImage("/assets/const_farm.png");
+PImage mineImg = loadImage("/assets/const_mine.png");
+PImage weponStudioImg = loadImage("/assets/const_wepon_studio.png");
+PImage armorStudioImg = loadImage("/assets/const_armor_studio.png");
+PImage potionStudioImg = loadImage("/assets/const_potion_studio.png");
+PImage trapStudioImg = loadImage("/assets/const_trap_studio.png");
+PImage tradingPostImg = loadImage("/assets/const_trading_post.png");
+PImage portImg = loadImage("/assets/const_port.png");
+
+String PLAIN = "<%= Consts::MAP_PLAIN_SYMBOL %>";
+String MOUNTAIN = "<%= Consts::MAP_MOUNTAIN_SYMBOL %>";
+String SEA = "<%= Consts::MAP_SEA_SYMBOL %>";
+String IRON = "<%= Consts::RES_IRON_SYMBOL %>";
+String GOLD = "<%= Consts::RES_GOLD_SYMBOL %>";
+String ANIMAL = "<%= Consts::RES_ANIMAL_SYMBOL %>";
+String COTTON = "<%= Consts::RES_COTTON_SYMBOL %>";
+String FISH = "<%= Consts::RES_FISH_SYMBOL %>";
+String FARM = "<%= Consts::CONST_FARM_SYMBOL %>";
+String MINE = "<%= Consts::CONST_MINE_SYMBOL %>";
+String WEPON_STUDIO = "<%= Consts::CONST_WEPON_STUDIO_SYMBOL %>";
+String ARMOR_STUDIO = "<%= Consts::CONST_ARMOR_STUDIO_SYMBOL %>";
+String POTION_STUDIO = "<%= Consts::CONST_POTION_STUDIO_SYMBOL %>";
+String TRAP_STUDIO = "<%= Consts::CONST_TRAP_STUDIO_SYMBOL %>";
+String TRADING_POST = "<%= Consts::CONST_TRADING_POST_SYMBOL %>";
+String PORT = "<%= Consts::CONST_PORT_SYMBOL %>";
+
+void setup() {
+  frameRate(4);
+  size(MAP_WIDTH, MAP_HEIGHT);
+}
+
+void draw() {
+  background(0);
+  fill(0);
+
+  // Draw map
+  stroke(0);
+  strokeWeight(1);
+  for (int n = 0; n < mapCells.size(); n++) {
+    (MapCell)mapCells.get(n).draw();
+  }
+
+  // Draw map selection
+  if (selectedX != null && selectedY != null) {
+    noFill();
+    stroke(255, 99, 71); // tomato
+    strokeWeight(2);
+    rect(selectedX, selectedY, RECT_SIZE, RECT_SIZE);
+  }
+}
+
+void clearMapCells() {
+  mapCells = new ArrayList();
+}
+
+void setMapCell(int x, int y, String terrain, String resource, String construction) {
+  mapCells.add(new MapCell(x, y, terrain, resource, construction));
+}
+
+class MapCell {
+  int mapX;
+  int mapY;
+  String terrain;
+  String resource;
+  String construction;
+  MapCell(int x, int y, String t, String r, String c) {
+    mapX = x;
+    mapY = y;
+    terrain = t;
+    resource = r;
+    construction = c;
+  }
+  void draw() {
+    if (terrain.equals(PLAIN) == true) {
+      image(plainImg, RECT_SIZE * mapX, RECT_SIZE * mapY, RECT_SIZE, RECT_SIZE);
+    } else if (terrain.equals(MOUNTAIN)) {
+      image(mountainImg, RECT_SIZE * mapX, RECT_SIZE * mapY, RECT_SIZE, RECT_SIZE);
+    } else if (terrain.equals(SEA)) {
+      image(seaImg, RECT_SIZE * mapX, RECT_SIZE * mapY, RECT_SIZE, RECT_SIZE);
+    }
+    if (resource.equals(IRON)) {
+      image(ironImg, RECT_SIZE * mapX, RECT_SIZE * mapY, RECT_SIZE / 2, RECT_SIZE / 2);
+    } else if (resource.equals(GOLD)) {
+      image(goldImg, RECT_SIZE * mapX, RECT_SIZE * mapY, RECT_SIZE / 2, RECT_SIZE / 2);
+    } else if (resource.equals(ANIMAL)) {
+      image(animalImg, RECT_SIZE * mapX, RECT_SIZE * mapY, RECT_SIZE / 2, RECT_SIZE / 2);
+    } else if (resource.equals(COTTON)) {
+      image(cottonImg, RECT_SIZE * mapX, RECT_SIZE * mapY, RECT_SIZE / 2, RECT_SIZE / 2);
+    } else if (resource.equals(FISH)) {
+      image(fishImg, RECT_SIZE * mapX, RECT_SIZE * mapY, RECT_SIZE / 2, RECT_SIZE / 2);
+    }
+    if (construction.equals(FARM)) {
+      image(farmImg, RECT_SIZE * mapX + RECT_SIZE / 2, RECT_SIZE * mapY + RECT_SIZE / 2, RECT_SIZE / 2, RECT_SIZE / 2);
+    } else if (construction.equals(MINE)) {
+      image(mineImg, RECT_SIZE * mapX + RECT_SIZE / 2, RECT_SIZE * mapY + RECT_SIZE / 2, RECT_SIZE / 2, RECT_SIZE / 2);
+    } else if (construction.equals(WEPON_STUDIO)) {
+      image(weponStudioImg, RECT_SIZE * mapX + RECT_SIZE / 2, RECT_SIZE * mapY + RECT_SIZE / 2, RECT_SIZE / 2, RECT_SIZE / 2);
+    } else if (construction.equals(ARMOR_STUDIO)) {
+      image(armorStudioImg, RECT_SIZE * mapX + RECT_SIZE / 2, RECT_SIZE * mapY + RECT_SIZE / 2, RECT_SIZE / 2, RECT_SIZE / 2);
+    } else if (construction.equals(POTION_STUDIO)) {
+      image(potionStudioImg, RECT_SIZE * mapX + RECT_SIZE / 2, RECT_SIZE * mapY + RECT_SIZE / 2, RECT_SIZE / 2, RECT_SIZE / 2);
+    } else if (construction.equals(TRAP_STUDIO)) {
+      image(trapStudioImg, RECT_SIZE * mapX + RECT_SIZE / 2, RECT_SIZE * mapY + RECT_SIZE / 2, RECT_SIZE / 2, RECT_SIZE / 2);
+    } else if (construction.equals(TRADING_POST)) {
+      image(tradingPostImg, RECT_SIZE * mapX + RECT_SIZE / 2, RECT_SIZE * mapY + RECT_SIZE / 2, RECT_SIZE / 2, RECT_SIZE / 2);
+    } else if (construction.equals(PORT)) {
+      image(portImg, RECT_SIZE * mapX + RECT_SIZE / 2, RECT_SIZE * mapY + RECT_SIZE / 2, RECT_SIZE / 2, RECT_SIZE / 2);
+    }
+  }
+}
+
+void mousePressed() {
+  int mapX = int(mouseX / RECT_SIZE);
+  int mapY = int(mouseY / RECT_SIZE);
+  selectedX = mapX * RECT_SIZE;
+  selectedY = mapY * RECT_SIZE;
+  jQuery.get("select_mapcell_id.js?map_id=" + jQuery("#mypage_map_id").val() + "&x=" + mapX + "&y=" + mapY);
+}
+</script>
+
+  <%= render 'mypage_menu' %>
+  <div id="contents">
+    
+    <div>
+      領土選択<%= collection_select(:mypage_map, :id, MediumMap.find_all_by_medium_houdd_user_id(@medium_houdd_user.id), :id, :name,:selected => @medium_map_id, :include_blank => true) %>
+    </div>
+    <div class="canvas">
+    <canvas id="mypage_map_canvas"></canvas>
+    </div>
+    <div class="mapcell">
+      <h3>区画の情報</h3>
+      <%= hidden_field :mapcell, :id %>
+      <p>X:<span id="mapcell_x"></span> Y:<span id="mapcell_y"></span></p>
+      <p>地形:<span id="mapcell_terrain"></span></p>
+      <p>資源:<span id="mapcell_resource"></span></p>
+      <p>建築物:<span id="mapcell_construction"></span><br />
+      　=>  <%= collection_select(:mapcell, :construction_id, MediumConstruction.all, :id, :name, :include_blank => true) %> を建設<br />
+      　　　<input id="build_construction" type="button" value="建設実行" /></p>
+      <p>ダンジョン:<span id="mapcell_dungeon"></span></p>
+    </div>
+    
+  </div>

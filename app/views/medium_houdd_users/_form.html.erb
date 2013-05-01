@@ -1,0 +1,53 @@
+<%= form_for(@medium_houdd_user) do |f| %>
+  <% if @medium_houdd_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medium_houdd_user.errors.count, "error") %> prohibited this medium_houdd_user from being saved:</h2>
+
+      <ul>
+      <% @medium_houdd_user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :admin_flg %><br />
+    <%= f.check_box :admin_flg %>
+  </div>
+  <div class="field">
+    <%= f.label :login_id %><br />
+    <%= f.text_field :login_id %>
+  </div>
+  <div class="field">
+    <%= f.label :login_pw %><br />
+    <%= f.text_field :login_pw %>
+  </div>
+  <div class="field">
+    <%= f.label :wepon_lvl %><br />
+    <%= f.number_field :wepon_lvl %>
+  </div>
+  <div class="field">
+    <%= f.label :armor_lvl %><br />
+    <%= f.number_field :armor_lvl %>
+  </div>
+  <div class="field">
+    <%= f.label :potion_lvl %><br />
+    <%= f.number_field :potion_lvl %>
+  </div>
+  <div class="field">
+    <%= f.label :trap_lvl %><br />
+    <%= f.number_field :trap_lvl %>
+  </div>
+  <div class="field">
+    <%= f.label :skill_lvl %><br />
+    <%= f.number_field :skill_lvl %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

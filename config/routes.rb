@@ -1,5 +1,37 @@
 HouddPre::Application.routes.draw do
 
+  match '/medium_dungeon_cells/:id/select_id' => 'medium_dungeon_cells#select_id'
+  resources :medium_dungeon_cells
+
+  resources :medium_resources
+
+  resources :medium_terrains
+
+  match '/medium_map_cells/:id/select_id' => 'medium_map_cells#select_id'
+  resources :medium_map_cells
+
+  resources :medium_tc_item_invs
+
+  resources :medium_const_nec_res_invs
+
+  resources :medium_constructions
+
+  resources :medium_dungeons
+
+  resources :medium_maps
+
+  resources :medium_symbol_lists
+
+  resources :medium_roads
+
+  match '/medium_houdd_users/:id/select_mapcell_id' => 'medium_houdd_users#select_mapcell_id'
+  match '/medium_houdd_users/:id/select_map_id' => 'medium_houdd_users#select_map_id'
+  match '/medium_houdd_users/:id/update_construction' => 'medium_houdd_users#update_construction'
+  match '/medium_houdd_users/:id/update_allotments' => 'medium_houdd_users#update_allotments', as: 'update_allotments_medium_houdd_user', :via => :put
+  match '/medium_houdd_users/:id/mypage_territory' => 'medium_houdd_users#mypage_territory', as: 'mypage_territory_medium_houdd_user', :via => :get
+  match '/medium_houdd_users/:id/mypage_top' => 'medium_houdd_users#mypage_top', as: 'mypage_top_medium_houdd_user', :via => :get
+  resources :medium_houdd_users
+
   match '/mostsmalltrials/:id/log' => 'mostsmalltrials#log', as: 'log_mostsmalltrial', :via => :get
   match '/mostsmalltrials/:id/check_battlelog' => 'mostsmalltrials#check_battlelog'
   match '/mostsmalltrials/:id/check_battleset' => 'mostsmalltrials#check_battleset'

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  symbol: MyString
+  name: MyString
+  food: 1
+  production: 1
+  money: 1
+  freq_rate: 1
+  continuity_mod: 1
+
+two:
+  symbol: MyString
+  name: MyString
+  food: 1
+  production: 1
+  money: 1
+  freq_rate: 1
+  continuity_mod: 1

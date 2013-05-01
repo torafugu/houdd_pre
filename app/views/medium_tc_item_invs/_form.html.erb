@@ -1,0 +1,25 @@
+<%= form_for(@medium_tc_item_inv) do |f| %>
+  <% if @medium_tc_item_inv.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medium_tc_item_inv.errors.count, "error") %> prohibited this medium_tc_item_inv from being saved:</h2>
+
+      <ul>
+      <% @medium_tc_item_inv.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :medium_dungeon_cell %><br />
+    <%= f.text_field :medium_dungeon_cell %>
+  </div>
+  <div class="field">
+    <%= f.label :medium_item %><br />
+    <%= f.text_field :medium_item %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

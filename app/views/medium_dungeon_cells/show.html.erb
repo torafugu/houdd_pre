@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Medium dungeon:</b>
+  <%= @medium_dungeon_cell.medium_dungeon %>
+</p>
+
+<p>
+  <b>Symbol:</b>
+  <%= @medium_dungeon_cell.symbol %>
+</p>
+
+<p>
+  <b>X:</b>
+  <%= @medium_dungeon_cell.x %>
+</p>
+
+<p>
+  <b>Y:</b>
+  <%= @medium_dungeon_cell.y %>
+</p>
+
+<p>
+  <b>Trap:</b>
+  <%= @medium_dungeon_cell.trap_id %>
+</p>
+
+<p>
+  <b>Tc disarm rate:</b>
+  <%= @medium_dungeon_cell.tc_disarm_rate %>
+</p>
+
+<p>
+  <b>Medium squad:</b>
+  <%= @medium_dungeon_cell.medium_squad %>
+</p>
+
+
+<%= link_to 'Edit', edit_medium_dungeon_cell_path(@medium_dungeon_cell) %> |
+<%= link_to 'Back', medium_dungeon_cells_path %>

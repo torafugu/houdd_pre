@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Symbol:</b>
+  <%= @medium_terrain.symbol %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @medium_terrain.name %>
+</p>
+
+<p>
+  <b>Food:</b>
+  <%= @medium_terrain.food %>
+</p>
+
+<p>
+  <b>Production:</b>
+  <%= @medium_terrain.production %>
+</p>
+
+<p>
+  <b>Money:</b>
+  <%= @medium_terrain.money %>
+</p>
+
+<p>
+  <b>Freq rate:</b>
+  <%= @medium_terrain.freq_rate %>
+</p>
+
+<p>
+  <b>Continuity mod:</b>
+  <%= @medium_terrain.continuity_mod %>
+</p>
+
+
+<%= link_to 'Edit', edit_medium_terrain_path(@medium_terrain) %> |
+<%= link_to 'Back', medium_terrains_path %>

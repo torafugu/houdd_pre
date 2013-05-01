@@ -1,0 +1,33 @@
+<%= form_for(@medium_road) do |f| %>
+  <% if @medium_road.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medium_road.errors.count, "error") %> prohibited this medium_road from being saved:</h2>
+
+      <ul>
+      <% @medium_road.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :start_map_id %><br />
+    <%= f.number_field :start_map_id %>
+  </div>
+  <div class="field">
+    <%= f.label :end_map_id %><br />
+    <%= f.number_field :end_map_id %>
+  </div>
+  <div class="field">
+    <%= f.label :distance %><br />
+    <%= f.number_field :distance %>
+  </div>
+  <div class="field">
+    <%= f.label :level %><br />
+    <%= f.number_field :level %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

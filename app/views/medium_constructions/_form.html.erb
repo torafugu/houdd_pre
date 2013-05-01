@@ -1,0 +1,45 @@
+<%= form_for(@medium_construction) do |f| %>
+  <% if @medium_construction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medium_construction.errors.count, "error") %> prohibited this medium_construction from being saved:</h2>
+
+      <ul>
+      <% @medium_construction.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :symbol %><br />
+    <%= f.text_field :symbol %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :medium_terrain %><br />
+    <%= f.collection_select(:medium_terrain_id, MediumTerrain.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :food %><br />
+    <%= f.number_field :food %>
+  </div>
+  <div class="field">
+    <%= f.label :production %><br />
+    <%= f.number_field :production %>
+  </div>
+  <div class="field">
+    <%= f.label :money %><br />
+    <%= f.number_field :money %>
+  </div>
+  <div class="field">
+    <%= f.label :prod_point %><br />
+    <%= f.number_field :prod_point %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

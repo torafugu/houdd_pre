@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  medium_map: 
+  x: 1
+  y: 1
+  medium_terrain: 
+  medium_resource: 
+  medium_construction: 
+  medium_dungeon: 
+
+two:
+  medium_map: 
+  x: 1
+  y: 1
+  medium_terrain: 
+  medium_resource: 
+  medium_construction: 
+  medium_dungeon: 

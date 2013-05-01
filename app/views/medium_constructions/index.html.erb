@@ -1,0 +1,35 @@
+<h1>Listing medium_constructions</h1>
+
+<table>
+  <tr>
+    <th>Symbol</th>
+    <th>Name</th>
+    <th>Medium terrain</th>
+    <th>Food</th>
+    <th>Production</th>
+    <th>Money</th>
+    <th>Prod point</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medium_constructions.each do |medium_construction| %>
+  <tr>
+    <td><%= medium_construction.symbol %></td>
+    <td><%= medium_construction.name %></td>
+    <td><%= medium_construction.medium_terrain.name unless medium_construction.medium_terrain.blank? %></td>
+    <td><%= medium_construction.food %></td>
+    <td><%= medium_construction.production %></td>
+    <td><%= medium_construction.money %></td>
+    <td><%= medium_construction.prod_point %></td>
+    <td><%= link_to 'Show', medium_construction %></td>
+    <td><%= link_to 'Edit', edit_medium_construction_path(medium_construction) %></td>
+    <td><%= link_to 'Destroy', medium_construction, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medium construction', new_medium_construction_path %>

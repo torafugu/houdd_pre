@@ -1,0 +1,1 @@
+PImage plainImg = loadImage("/assets/map_grass.png");

@@ -1,0 +1,2 @@
+module MediumMapsHelper
+end

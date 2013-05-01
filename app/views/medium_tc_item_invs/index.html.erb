@@ -1,0 +1,25 @@
+<h1>Listing medium_tc_item_invs</h1>
+
+<table>
+  <tr>
+    <th>Medium dungeon cell</th>
+    <th>Medium item</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medium_tc_item_invs.each do |medium_tc_item_inv| %>
+  <tr>
+    <td><%= medium_tc_item_inv.medium_dungeon_cell %></td>
+    <td><%= medium_tc_item_inv.medium_item %></td>
+    <td><%= link_to 'Show', medium_tc_item_inv %></td>
+    <td><%= link_to 'Edit', edit_medium_tc_item_inv_path(medium_tc_item_inv) %></td>
+    <td><%= link_to 'Destroy', medium_tc_item_inv, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medium tc item inv', new_medium_tc_item_inv_path %>

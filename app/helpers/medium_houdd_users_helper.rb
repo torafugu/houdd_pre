@@ -1,0 +1,2 @@
+module MediumHouddUsersHelper
+end

@@ -1,0 +1,54 @@
+<%= form_for @medium_houdd_user, :url => {:action => 'update_allotments'} do |f| %>
+  <%= render 'mypage_menu' %>
+  <div id="contents">
+    <p><%= notice %></p>
+    <h3>資源収支</h3>
+    <div class="resources">
+      <div class="resource">
+        <img class="resource" src="/assets/bread.png" />
+        <p class="resource"><%= @medium_houdd_user.food_total %></p>
+      </div>
+      <div class="resource">
+        <img class="resource" src="/assets/hammer.png" />
+        <p class="resource"><%= @medium_houdd_user.hammer_total %></p>
+      </div>
+      <div class="resource">
+        <img class="resource" src="/assets/gold.png" />
+        <p class="resource"><%= @medium_houdd_user.gold_total %></p>
+      </div>
+    </div>
+    <h3>研究レベル</h3>
+    <div class="researches">
+      <div class="research">
+        <img class="research" src="/assets/sword.png" />
+        <p class="research"><%= @medium_houdd_user.wepon_lvl %></p>
+      </div>
+      <div class="research">
+        <img class="research" src="/assets/shield.png" />
+        <p class="research"><%= @medium_houdd_user.armor_lvl %></p>
+      </div>
+      <div class="research">
+        <img class="research" src="/assets/potion.png" />
+        <p class="research"><%= @medium_houdd_user.potion_lvl %></p>
+      </div>
+      <div class="research">
+        <img class="research" src="/assets/trap.png" />
+        <p class="research"><%= @medium_houdd_user.trap_lvl %></p>
+      </div>
+    </div>
+    <h3>生産力配分</h3>
+    <div class="allotments">
+      <p class="allotment">建築物：<%= f.number_field :allot_for_const, :class=>'percent' %>％　アイテム：<%= f.number_field :allot_for_item, :class=>'percent' %>％　研究：<%= f.number_field :allot_for_research, :class=>'percent' %>％　<%= f.submit "割り当て変更" %></p>
+    </div>
+    <h3>生産状況</h3>
+    <div class="allotments">
+      <p class="allotment">建築中： <br />
+        <% @medium_houdd_user.under_constructions.each do |under_const| %>
+        　　<%= under_const %><br />
+        <% end %>
+      </p>
+      <p class="allotment">製造中：<%= @medium_houdd_user.next_const_id %></p>
+      <p class="allotment">研究中：<%= @medium_houdd_user.next_research_sym %></p>
+    </div>
+  </div>
+<% end %>

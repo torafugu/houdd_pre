@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  start_map_id: 1
+  end_map_id: 1
+  distance: 1
+  level: 1
+
+two:
+  start_map_id: 1
+  end_map_id: 1
+  distance: 1
+  level: 1

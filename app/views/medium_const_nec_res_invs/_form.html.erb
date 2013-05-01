@@ -1,0 +1,25 @@
+<%= form_for(@medium_const_nec_res_inv) do |f| %>
+  <% if @medium_const_nec_res_inv.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medium_const_nec_res_inv.errors.count, "error") %> prohibited this medium_const_nec_res_inv from being saved:</h2>
+
+      <ul>
+      <% @medium_const_nec_res_inv.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :medium_construction %><br />
+    <%= f.text_field :medium_construction %>
+  </div>
+  <div class="field">
+    <%= f.label :medium_resource %><br />
+    <%= f.text_field :medium_resource %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

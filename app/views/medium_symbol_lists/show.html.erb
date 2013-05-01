@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Category sym:</b>
+  <%= @medium_symbol_list.category_sym %>
+</p>
+
+<p>
+  <b>Symbol:</b>
+  <%= @medium_symbol_list.symbol %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @medium_symbol_list.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_medium_symbol_list_path(@medium_symbol_list) %> |
+<%= link_to 'Back', medium_symbol_lists_path %>

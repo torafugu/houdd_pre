@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Symbol:</b>
+  <%= @medium_resource.symbol %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @medium_resource.name %>
+</p>
+
+<p>
+  <b>Medium terrain:</b>
+  <%= @medium_resource.medium_terrain.name %>
+</p>
+
+<p>
+  <b>Freq rate:</b>
+  <%= @medium_resource.freq_rate %>
+</p>
+
+
+<%= link_to 'Edit', edit_medium_resource_path(@medium_resource) %> |
+<%= link_to 'Back', medium_resources_path %>

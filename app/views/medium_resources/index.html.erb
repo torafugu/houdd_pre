@@ -1,0 +1,31 @@
+<h1>Listing medium_resources</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Symbol</th>
+    <th>Name</th>
+    <th>Medium terrain</th>
+    <th>Freq rate</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medium_resources.each do |medium_resource| %>
+  <tr>
+    <td><%= medium_resource.id %></td>
+    <td><%= medium_resource.symbol %></td>
+    <td><%= medium_resource.name %></td>
+    <td><%= medium_resource.medium_terrain.name %></td>
+    <td><%= medium_resource.freq_rate %></td>
+    <td><%= link_to 'Show', medium_resource %></td>
+    <td><%= link_to 'Edit', edit_medium_resource_path(medium_resource) %></td>
+    <td><%= link_to 'Destroy', medium_resource, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medium resource', new_medium_resource_path %>

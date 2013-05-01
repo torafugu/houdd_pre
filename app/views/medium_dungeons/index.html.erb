@@ -1,0 +1,27 @@
+<h1>Listing medium_dungeons</h1>
+
+<table>
+  <tr>
+    <th>Medium map cell</th>
+    <th>Type sym</th>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medium_dungeons.each do |medium_dungeon| %>
+  <tr>
+    <td><%= medium_dungeon.medium_map_cell %></td>
+    <td><%= medium_dungeon.type_sym %></td>
+    <td><%= medium_dungeon.name %></td>
+    <td><%= link_to 'Show', medium_dungeon %></td>
+    <td><%= link_to 'Edit', edit_medium_dungeon_path(medium_dungeon) %></td>
+    <td><%= link_to 'Destroy', medium_dungeon, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medium dungeon', new_medium_dungeon_path %>

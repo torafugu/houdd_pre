@@ -1,0 +1,33 @@
+<h1>Listing medium_map_cells</h1>
+
+<%= collection_select(:map, :id, MediumMap.find(:all), :id, :name, :selected => @medium_map_id, :include_blank => true) %>
+<table>
+  <tr>
+    <th>Map</th>
+    <th>X</th>
+    <th>Y</th>
+    <th>Terrain</th>
+    <th>Resource</th>
+    <th>Construction</th>
+    <th>Dungeon</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medium_map_cells.each do |medium_map_cell| %>
+  <tr>
+    <td><%= medium_map_cell.medium_map.name %></td>
+    <td><%= medium_map_cell.x %></td>
+    <td><%= medium_map_cell.y %></td>
+    <td><%= medium_map_cell.medium_terrain.name %></td>
+    <td><%= medium_map_cell.medium_resource.name unless medium_map_cell.medium_resource.nil? %></td>
+    <td><%= medium_map_cell.medium_construction.name unless medium_map_cell.medium_construction.nil? %></td>
+    <td><%= medium_map_cell.medium_dungeon %></td>
+    <td><%= link_to 'Show', medium_map_cell %></td>
+    <td><%= link_to 'Edit', edit_medium_map_cell_path(medium_map_cell) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

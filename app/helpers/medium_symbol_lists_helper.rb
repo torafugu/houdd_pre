@@ -1,0 +1,2 @@
+module MediumSymbolListsHelper
+end

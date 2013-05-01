@@ -1,0 +1,25 @@
+<h1>Listing medium_const_nec_res_invs</h1>
+
+<table>
+  <tr>
+    <th>Medium construction</th>
+    <th>Medium resource</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medium_const_nec_res_invs.each do |medium_const_nec_res_inv| %>
+  <tr>
+    <td><%= medium_const_nec_res_inv.medium_construction %></td>
+    <td><%= medium_const_nec_res_inv.medium_resource %></td>
+    <td><%= link_to 'Show', medium_const_nec_res_inv %></td>
+    <td><%= link_to 'Edit', edit_medium_const_nec_res_inv_path(medium_const_nec_res_inv) %></td>
+    <td><%= link_to 'Destroy', medium_const_nec_res_inv, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medium const nec res inv', new_medium_const_nec_res_inv_path %>

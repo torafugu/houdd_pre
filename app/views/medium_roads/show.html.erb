@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Start map:</b>
+  <%= @medium_road.start_map_id %>
+</p>
+
+<p>
+  <b>End map:</b>
+  <%= @medium_road.end_map_id %>
+</p>
+
+<p>
+  <b>Distance:</b>
+  <%= @medium_road.distance %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%= @medium_road.level %>
+</p>
+
+
+<%= link_to 'Edit', edit_medium_road_path(@medium_road) %> |
+<%= link_to 'Back', medium_roads_path %>

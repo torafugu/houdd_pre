@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  category_sym: MyString
+  symbol: MyString
+  description: MyString
+
+two:
+  category_sym: MyString
+  symbol: MyString
+  description: MyString

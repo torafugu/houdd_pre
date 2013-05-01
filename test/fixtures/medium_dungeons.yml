@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  medium_map_cell: 
+  type_sym: MyString
+  name: MyString
+
+two:
+  medium_map_cell: 
+  type_sym: MyString
+  name: MyString

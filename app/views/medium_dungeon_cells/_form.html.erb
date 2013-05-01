@@ -1,0 +1,106 @@
+<script type="text/processing" data-processing-target="medium_dungeon_canvas">
+// Parameteres of screen size.
+int RECT_SIZE = 20;
+int MAP_WIDTH = <%= Consts::NORMAL_DUNGEON_X_SIZE %> * RECT_SIZE + 1;
+int MAP_HEIGHT =<%= Consts::NORMAL_DUNGEON_Y_SIZE %> * RECT_SIZE + 1;
+int selectedX = <%= @medium_dungeon_cell.x %> * RECT_SIZE;
+int selectedY = <%= @medium_dungeon_cell.y %> * RECT_SIZE;
+ArrayList dungeonCells = new ArrayList();
+
+PImage concreteImg = loadImage("/assets/concrete.png");
+PImage waterImg = loadImage("/assets/water.png");
+
+char BLANK = '<%= Consts::DUNGEON_BLANK_SYMBOL %>';
+char CONCRETE = '<%= Consts::DUNGEON_COCRETE_SYMBOL %>';
+
+void setup() {
+  size(MAP_WIDTH, MAP_HEIGHT);
+  <% @medium_dungeon_cell.medium_dungeon.medium_dungeon_cells.each do |cell| %>
+    dungeonCells.add(new DungeonCell(<%= cell.x %>, <%= cell.y %>, '<%= cell.symbol %>'))
+  <% end %>
+}
+
+void draw() {
+  background(0);
+  fill(0);
+
+  // Draw map
+  stroke(0);
+  strokeWeight(1);
+  for (int n = 0; n < dungeonCells.size(); n++) {
+    (DungeonCell)dungeonCells.get(n).draw();
+  }
+
+  // Draw map selection
+  if (selectedX != null && selectedY != null) {
+    noFill();
+    stroke(255, 99, 71); // tomato
+    strokeWeight(2);
+    rect(selectedX, selectedY, RECT_SIZE, RECT_SIZE);
+  }
+}
+
+class DungeonCell {
+  int dungeonX;
+  int dungeonY;
+  char material;
+  DungeonCell(int x, int y, char m) {
+    dungeonX = x;
+    dungeonY = y;
+    material = m;
+  }
+  void draw() {
+    if (material == CONCRETE) {
+      image(concreteImg, RECT_SIZE * dungeonX, RECT_SIZE * dungeonY, RECT_SIZE, RECT_SIZE);
+    }
+  }
+}
+
+void mousePressed() {
+  int dungeonX = int(mouseX / RECT_SIZE);
+  int dungeonY = int(mouseY / RECT_SIZE);
+  int nextId = jQuery.get("select_id.js?x=" + dungeonX + "&y=" + dungeonY, function(data){
+    window.location = "../" + data + "/edit";
+  });
+}
+</script>
+<%= form_for(@medium_dungeon_cell) do |f| %>
+  <% if @medium_dungeon_cell.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medium_dungeon_cell.errors.count, "error") %> prohibited this medium_dungeon_cell from being saved:</h2>
+
+      <ul>
+      <% @medium_dungeon_cell.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :medium_dungeon %> : <%= @medium_dungeon_cell.medium_dungeon.name %><br />
+    <canvas id="medium_dungeon_canvas"></canvas>
+  </div>
+  <div class="field">
+    <%= f.label :x %> : <%= @medium_dungeon_cell.x %> <%= f.label :y %> : <%= @medium_dungeon_cell.y %>
+  </div>
+  <div class="field">
+    <%= f.label :symbol %><br />
+    <%= f.text_field :symbol %>
+  </div>
+  <div class="field">
+    <%= f.label :trap_id %><br />
+    <%= f.number_field :trap_id %>
+  </div>
+  <div class="field">
+    <%= f.label :tc_disarm_rate %><br />
+    <%= f.number_field :tc_disarm_rate %>
+  </div>
+  <div class="field">
+    <%= f.label :medium_squad %><br />
+    <%= f.text_field :medium_squad %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

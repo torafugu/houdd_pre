@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Medium map:</b>
+  <%= @medium_map_cell.medium_map.name %>
+</p>
+
+<p>
+  <b>X:</b>
+  <%= @medium_map_cell.x %>
+</p>
+
+<p>
+  <b>Y:</b>
+  <%= @medium_map_cell.y %>
+</p>
+
+<p>
+  <b>Medium terrain:</b>
+  <%= @medium_map_cell.medium_terrain.name %>
+</p>
+
+<p>
+  <b>Medium resource:</b>
+  <%= @medium_map_cell.medium_resource.name unless @medium_map_cell.medium_resource.nil? %>
+</p>
+
+<p>
+  <b>Medium construction:</b>
+  <%= @medium_map_cell.medium_construction.name unless @medium_map_cell.medium_construction.nil? %>
+</p>
+
+<p>
+  <b>Medium dungeon:</b>
+  <%= @medium_map_cell.medium_dungeon.name unless @medium_map_cell.medium_dungeon.nil? %>
+</p>
+
+
+<%= link_to 'Edit', edit_medium_map_cell_path(@medium_map_cell) %> |
+<%= link_to 'Back', medium_map_cells_path %>

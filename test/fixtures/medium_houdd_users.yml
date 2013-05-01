@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  admin_flg: false
+  login_id: MyString
+  login_pw: MyString
+  first_login_at: 2013-04-15 13:43:44
+  last_login_at: 2013-04-15 13:43:44
+  wepon_lvl: 1
+  armor_lvl: 1
+  potion_lvl: 1
+  trap_lvl: 1
+  skill_lvl: 1
+  next_item_id: 1
+  prod_for_item: 1
+  next_const_id: 1
+  prod_for_const: 1
+  next_research_sym: MyString
+  prod_for_research: 1
+
+two:
+  name: MyString
+  admin_flg: false
+  login_id: MyString
+  login_pw: MyString
+  first_login_at: 2013-04-15 13:43:44
+  last_login_at: 2013-04-15 13:43:44
+  wepon_lvl: 1
+  armor_lvl: 1
+  potion_lvl: 1
+  trap_lvl: 1
+  skill_lvl: 1
+  next_item_id: 1
+  prod_for_item: 1
+  next_const_id: 1
+  prod_for_const: 1
+  next_research_sym: MyString
+  prod_for_research: 1

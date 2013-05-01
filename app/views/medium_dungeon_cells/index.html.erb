@@ -1,0 +1,33 @@
+<h1>Listing medium_dungeon_cells</h1>
+
+<%= collection_select(:dungeon, :id, MediumDungeon.find(:all), :id, :name, :selected => @medium_dungeon_id, :include_blank => true) %>
+<table>
+  <tr>
+    <th>Dungeon</th>
+    <th>Symbol</th>
+    <th>X</th>
+    <th>Y</th>
+    <th>Trap</th>
+    <th>Tc disarmx</th>
+    <th>Squad</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medium_dungeon_cells.each do |medium_dungeon_cell| %>
+  <tr>
+    <td><%= medium_dungeon_cell.medium_dungeon.name %></td>
+    <td><%= medium_dungeon_cell.symbol %></td>
+    <td><%= medium_dungeon_cell.x %></td>
+    <td><%= medium_dungeon_cell.y %></td>
+    <td><%= medium_dungeon_cell.trap_id %></td>
+    <td><%= medium_dungeon_cell.tc_disarm_rate %></td>
+    <td><%= medium_dungeon_cell.medium_squad %></td>
+    <td><%= link_to 'Show', medium_dungeon_cell %></td>
+    <td><%= link_to 'Edit', edit_medium_dungeon_cell_path(medium_dungeon_cell) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

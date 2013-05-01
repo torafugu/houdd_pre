@@ -1,0 +1,171 @@
+<script type="text/processing" data-processing-target="medium_map_canvas">
+int RECT_SIZE = 40;
+int MAP_WIDTH = <%= Consts::NORMAL_MAP_X_SIZE %> * RECT_SIZE + 1;
+int MAP_HEIGHT = <%= Consts::NORMAL_MAP_Y_SIZE %> * RECT_SIZE + 1;
+int selectedX = <%= @medium_map_cell.x %> * RECT_SIZE;
+int selectedY = <%= @medium_map_cell.y %> * RECT_SIZE;
+ArrayList mapCells = new ArrayList();
+
+PImage plainImg = loadImage("/assets/map_grass.png");
+PImage mountainImg = loadImage("/assets/map_mountain.png");
+PImage seaImg = loadImage("/assets/map_sea.png");
+PImage ironImg = loadImage("/assets/resource_iron.png");
+PImage goldImg = loadImage("/assets/resource_gold.png");
+PImage animalImg = loadImage("/assets/resource_animal.png");
+PImage cottonImg = loadImage("/assets/resource_cotton.png");
+PImage fishImg = loadImage("/assets/resource_fish.png");
+PImage farmImg = loadImage("/assets/const_farm.png");
+PImage mineImg = loadImage("/assets/const_mine.png");
+PImage weponStudioImg = loadImage("/assets/const_wepon_studio.png");
+PImage armorStudioImg = loadImage("/assets/const_armor_studio.png");
+PImage potionStudioImg = loadImage("/assets/const_potion_studio.png");
+PImage trapStudioImg = loadImage("/assets/const_trap_studio.png");
+PImage tradingPostImg = loadImage("/assets/const_trading_post.png");
+PImage portImg = loadImage("/assets/const_port.png");
+
+char PLAIN = '<%= Consts::MAP_PLAIN_SYMBOL %>';
+char MOUNTAIN = '<%= Consts::MAP_MOUNTAIN_SYMBOL %>';
+char SEA = '<%= Consts::MAP_SEA_SYMBOL %>';
+char IRON = '<%= Consts::RES_IRON_SYMBOL %>';
+char GOLD = '<%= Consts::RES_GOLD_SYMBOL %>';
+char ANIMAL = '<%= Consts::RES_ANIMAL_SYMBOL %>';
+char COTTON = '<%= Consts::RES_COTTON_SYMBOL %>';
+char FISH = '<%= Consts::RES_FISH_SYMBOL %>';
+char FARM = '<%= Consts::CONST_FARM_SYMBOL %>';
+char MINE = '<%= Consts::CONST_MINE_SYMBOL %>';
+char WEPON_STUDIO = '<%= Consts::CONST_WEPON_STUDIO_SYMBOL %>';
+char ARMOR_STUDIO = '<%= Consts::CONST_ARMOR_STUDIO_SYMBOL %>';
+char POTION_STUDIO = '<%= Consts::CONST_POTION_STUDIO_SYMBOL %>';
+char TRAP_STUDIO = '<%= Consts::CONST_TRAP_STUDIO_SYMBOL %>';
+char TRADING_POST = '<%= Consts::CONST_TRADING_POST_SYMBOL %>';
+char PORT = '<%= Consts::CONST_PORT_SYMBOL %>';
+
+void setup() {
+  frameRate(4);
+  size(MAP_WIDTH, MAP_HEIGHT);
+  <% @medium_map_cell.medium_map.medium_map_cells.each do |cell| %>
+    mapCells.add(new MapCell(<%= cell.x %>, <%= cell.y %>, '<%= cell.medium_terrain.symbol %>', '<%= cell.medium_resource.symbol unless cell.medium_resource.nil? %>', '<%= cell.medium_construction.symbol unless cell.medium_construction.nil? %>'))
+  <% end %>
+}
+
+void draw() {
+  background(0);
+  fill(0);
+
+  // Draw map
+  stroke(0);
+  strokeWeight(1);
+  for (int n = 0; n < mapCells.size(); n++) {
+    (MapCell)mapCells.get(n).draw();
+  }
+
+  // Draw map selection
+  if (selectedX != null && selectedY != null) {
+    noFill();
+    stroke(255, 99, 71); // tomato
+    strokeWeight(2);
+    rect(selectedX, selectedY, RECT_SIZE, RECT_SIZE);
+  }
+}
+
+class MapCell {
+  int mapX;
+  int mapY;
+  char terrain;
+  char resource;
+  char construction;
+  MapCell(int x, int y, char t, char r, char c) {
+    mapX = x;
+    mapY = y;
+    terrain = t;
+    resource = r;
+    construction = c;
+  }
+  void draw() {
+    if (terrain == PLAIN) {
+      image(plainImg, RECT_SIZE * mapX, RECT_SIZE * mapY, RECT_SIZE, RECT_SIZE);
+    } else if (terrain == MOUNTAIN) {
+      image(mountainImg, RECT_SIZE * mapX, RECT_SIZE * mapY, RECT_SIZE, RECT_SIZE);
+    } else if (terrain == SEA) {
+      image(seaImg, RECT_SIZE * mapX, RECT_SIZE * mapY, RECT_SIZE, RECT_SIZE);
+    }
+    if (resource == IRON) {
+      image(ironImg, RECT_SIZE * mapX, RECT_SIZE * mapY, RECT_SIZE / 2, RECT_SIZE / 2);
+    } else if (resource == GOLD) {
+      image(goldImg, RECT_SIZE * mapX, RECT_SIZE * mapY, RECT_SIZE / 2, RECT_SIZE / 2);
+    } else if (resource == ANIMAL) {
+      image(animalImg, RECT_SIZE * mapX, RECT_SIZE * mapY, RECT_SIZE / 2, RECT_SIZE / 2);
+    } else if (resource == COTTON) {
+      image(cottonImg, RECT_SIZE * mapX, RECT_SIZE * mapY, RECT_SIZE / 2, RECT_SIZE / 2);
+    } else if (resource == FISH) {
+      image(fishImg, RECT_SIZE * mapX, RECT_SIZE * mapY, RECT_SIZE / 2, RECT_SIZE / 2);
+    }
+    if (construction == FARM) {
+      image(farmImg, RECT_SIZE * mapX + RECT_SIZE / 2, RECT_SIZE * mapY + RECT_SIZE / 2, RECT_SIZE / 2, RECT_SIZE / 2);
+    } else if (construction == MINE) {
+      image(mineImg, RECT_SIZE * mapX + RECT_SIZE / 2, RECT_SIZE * mapY + RECT_SIZE / 2, RECT_SIZE / 2, RECT_SIZE / 2);
+    } else if (construction == WEPON_STUDIO) {
+      image(weponStudioImg, RECT_SIZE * mapX + RECT_SIZE / 2, RECT_SIZE * mapY + RECT_SIZE / 2, RECT_SIZE / 2, RECT_SIZE / 2);
+    } else if (construction == ARMOR_STUDIO) {
+      image(armorStudioImg, RECT_SIZE * mapX + RECT_SIZE / 2, RECT_SIZE * mapY + RECT_SIZE / 2, RECT_SIZE / 2, RECT_SIZE / 2);
+    } else if (construction == POTION_STUDIO) {
+      image(potionStudioImg, RECT_SIZE * mapX + RECT_SIZE / 2, RECT_SIZE * mapY + RECT_SIZE / 2, RECT_SIZE / 2, RECT_SIZE / 2);
+    } else if (construction == TRAP_STUDIO) {
+      image(trapStudioImg, RECT_SIZE * mapX + RECT_SIZE / 2, RECT_SIZE * mapY + RECT_SIZE / 2, RECT_SIZE / 2, RECT_SIZE / 2);
+    } else if (construction == TRADING_POST) {
+      image(tradingPostImg, RECT_SIZE * mapX + RECT_SIZE / 2, RECT_SIZE * mapY + RECT_SIZE / 2, RECT_SIZE / 2, RECT_SIZE / 2);
+    } else if (construction == PORT) {
+      image(portImg, RECT_SIZE * mapX + RECT_SIZE / 2, RECT_SIZE * mapY + RECT_SIZE / 2, RECT_SIZE / 2, RECT_SIZE / 2);
+    }
+  }
+}
+
+void mousePressed() {
+  int mapX = int(mouseX / RECT_SIZE);
+  int mapY = int(mouseY / RECT_SIZE);
+  int nextId = jQuery.get("select_id.js?x=" + mapX + "&y=" + mapY, function(data){
+    window.location = "../" + data + "/edit";
+  });
+}
+</script>
+
+<%= form_for(@medium_map_cell) do |f| %>
+  <% if @medium_map_cell.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medium_map_cell.errors.count, "error") %> prohibited this medium_map_cell from being saved:</h2>
+
+      <ul>
+      <% @medium_map_cell.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :medium_map %> : <%= @medium_map_cell.medium_map.name %><br />
+    <canvas id="medium_map_canvas"></canvas>
+  </div>
+  <div class="field">
+    <%= f.label :x %> : <%= @medium_map_cell.x %> <%= f.label :y %> : <%= @medium_map_cell.y %>
+  </div>
+  <div class="field">
+    <%= f.label :medium_terrain %><br />
+    <%= f.collection_select(:medium_terrain_id, MediumTerrain.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :medium_resource %><br />
+    <%= f.collection_select(:medium_resource_id, MediumResource.find(:all), :id, :name, :include_blank => true) %>
+  </div>
+  <div class="field">
+    <%= f.label :medium_construction %><br />
+    <%= f.collection_select(:medium_construction_id, MediumConstruction.find(:all), :id, :name, :include_blank => true) %>
+  </div>
+  <div class="field">
+    <%= f.label :medium_dungeon %><br />
+    <%= f.collection_select(:medium_dungeon_id, MediumDungeon.find(:all), :id, :name, :include_blank => true) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

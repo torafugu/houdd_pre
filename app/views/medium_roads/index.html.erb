@@ -1,0 +1,29 @@
+<h1>Listing medium_roads</h1>
+
+<table>
+  <tr>
+    <th>Start map</th>
+    <th>End map</th>
+    <th>Distance</th>
+    <th>Level</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medium_roads.each do |medium_road| %>
+  <tr>
+    <td><%= medium_road.start_map_id %></td>
+    <td><%= medium_road.end_map_id %></td>
+    <td><%= medium_road.distance %></td>
+    <td><%= medium_road.level %></td>
+    <td><%= link_to 'Show', medium_road %></td>
+    <td><%= link_to 'Edit', edit_medium_road_path(medium_road) %></td>
+    <td><%= link_to 'Destroy', medium_road, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medium road', new_medium_road_path %>

@@ -1,0 +1,94 @@
+#page {
+  background-color: #f0f0f0;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#sidebar {
+  background-color: #f0f0f0;
+  float: left;
+  width: 140px;
+  height: 500px;
+}
+
+#contents {
+  float: left;
+  margin-left: 15px;
+  width: 660px;
+}
+
+div.resources {
+  margin-left: 15px;
+  width: 210px;
+  height: 50px;
+  display: table;
+}
+
+div.resource {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+img.resource {
+  float: left;
+  width: 40px;
+  height: 40px;
+}
+
+p.resource {
+  font-size: 18px;
+}
+
+div.researches {
+  margin-left: 15px;
+  width: 280px;
+  height: 50px;
+  display: table;
+}
+
+div.research {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+img.research {
+  float: left;
+  width: 40px;
+  height: 40px;
+}
+
+p.research {
+  font-size: 18px;
+}
+
+div.allotments {
+  margin-left: 15px;
+}
+
+p.allotment {
+  font-size: 14px;
+}
+
+h3 {
+  border-top: 1px solid #999999;
+  border-bottom: 1px solid #999999;
+  border-left: 6px solid #191970;
+  line-height: 165%;
+  padding-left: 8px;
+}
+
+div.canvas {
+  float: left;
+  margin-left: 5px;
+}
+
+div.mapcell {
+  float: left;
+  margin-left: 15px;
+  font-size: 15px;
+}
+
+input.percent {
+  width: 40px;
+}

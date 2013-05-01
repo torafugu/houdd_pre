@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Medium map cell:</b>
+  <%= @medium_dungeon.medium_map_cell %>
+</p>
+
+<p>
+  <b>Type sym:</b>
+  <%= @medium_dungeon.type_sym %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @medium_dungeon.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_medium_dungeon_path(@medium_dungeon) %> |
+<%= link_to 'Back', medium_dungeons_path %>

@@ -1,0 +1,29 @@
+<%= form_for(@medium_dungeon) do |f| %>
+  <% if @medium_dungeon.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medium_dungeon.errors.count, "error") %> prohibited this medium_dungeon from being saved:</h2>
+
+      <ul>
+      <% @medium_dungeon.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :medium_map_cell %><br />
+    <%= f.collection_select(:medium_map_cell_id, MediumMapCell.find(:all), :id, :name, :include_blank => true) %>
+  </div>
+  <div class="field">
+    <%= f.label :type_sym %><br />
+    <%= f.text_field :type_sym %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
