@@ -1,0 +1,27 @@
+<h1>Listing medium_specie_job_invs</h1>
+
+<table>
+  <tr>
+    <th>Medium specie</th>
+    <th>Medium job</th>
+    <th>Ratio</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medium_specie_job_invs.each do |medium_specie_job_inv| %>
+  <tr>
+    <td><%= medium_specie_job_inv.medium_specie.name %></td>
+    <td><%= medium_specie_job_inv.medium_job.name %></td>
+    <td><%= medium_specie_job_inv.ratio %></td>
+    <td><%= link_to 'Show', medium_specie_job_inv %></td>
+    <td><%= link_to 'Edit', edit_medium_specie_job_inv_path(medium_specie_job_inv) %></td>
+    <td><%= link_to 'Destroy', medium_specie_job_inv, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medium specie job inv', new_medium_specie_job_inv_path %>

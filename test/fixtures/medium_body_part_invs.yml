@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  medium_specie: 
+  medium_body_part: 
+  num_of_tgt: 1
+  medium_atk_info: 
+
+two:
+  medium_specie: 
+  medium_body_part: 
+  num_of_tgt: 1
+  medium_atk_info: 

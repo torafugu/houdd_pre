@@ -1,0 +1,2 @@
+module MediumFamiliesHelper
+end

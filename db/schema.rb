@@ -11,7 +11,40 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130430070149) do
+ActiveRecord::Schema.define(:version => 20130505104605) do
+
+  create_table "medium_atk_infos", :force => true do |t|
+    t.string   "name"
+    t.integer  "hit_accuracy"
+    t.integer  "d_range"
+    t.integer  "x_range"
+    t.integer  "inst_damage"
+    t.integer  "ovtm_damage"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "medium_body_part_invs", :force => true do |t|
+    t.integer  "medium_specie_id"
+    t.integer  "medium_body_part_id"
+    t.integer  "num_of_tgt"
+    t.integer  "medium_atk_info_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "size"
+  end
+
+  add_index "medium_body_part_invs", ["medium_atk_info_id"], :name => "index_medium_body_part_invs_on_medium_atk_info_id"
+  add_index "medium_body_part_invs", ["medium_body_part_id"], :name => "index_medium_body_part_invs_on_medium_body_part_id"
+  add_index "medium_body_part_invs", ["medium_specie_id"], :name => "index_medium_body_part_invs_on_medium_specie_id"
+
+  create_table "medium_body_parts", :force => true do |t|
+    t.string   "name"
+    t.boolean  "eqp_wepon_flg"
+    t.boolean  "eqp_armor_flg"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "medium_const_nec_res_invs", :force => true do |t|
     t.integer  "medium_construction_id"
@@ -28,9 +61,12 @@ ActiveRecord::Schema.define(:version => 20130430070149) do
     t.integer  "medium_map_cell_id"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
+    t.integer  "nec_point"
+    t.integer  "medium_houdd_user_id"
   end
 
   add_index "medium_construction_ques", ["medium_construction_id"], :name => "index_medium_construction_ques_on_medium_construction_id"
+  add_index "medium_construction_ques", ["medium_houdd_user_id"], :name => "index_medium_construction_ques_on_medium_houdd_user_id"
   add_index "medium_construction_ques", ["medium_map_cell_id"], :name => "index_medium_construction_ques_on_medium_map_cell_id"
 
   create_table "medium_constructions", :force => true do |t|
@@ -72,6 +108,37 @@ ActiveRecord::Schema.define(:version => 20130430070149) do
 
   add_index "medium_dungeons", ["medium_map_cell_id"], :name => "index_medium_dungeons_on_medium_map_cell_id"
 
+  create_table "medium_families", :force => true do |t|
+    t.string   "name"
+    t.string   "ability_sym"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "medium_genes", :force => true do |t|
+    t.string   "name"
+    t.integer  "medium_specie_id"
+    t.boolean  "dominance_flg"
+    t.float    "prolificacy_mod"
+    t.float    "longevity_mod"
+    t.float    "growth_mod"
+    t.float    "cost_mod"
+    t.float    "str_mod"
+    t.float    "dex_mod"
+    t.float    "con_mod"
+    t.float    "int_mod"
+    t.float    "wis_mod"
+    t.float    "cha_mod"
+    t.float    "phys_def_mod"
+    t.float    "skill_def_mod"
+    t.float    "ele_fw_mod"
+    t.float    "ele_ld_mod"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "medium_genes", ["medium_specie_id"], :name => "index_medium_genes_on_medium_specie_id"
+
   create_table "medium_houdd_histories", :force => true do |t|
     t.integer  "days"
     t.datetime "created_at", :null => false
@@ -85,22 +152,64 @@ ActiveRecord::Schema.define(:version => 20130430070149) do
     t.string   "login_pw"
     t.datetime "first_login_at"
     t.datetime "last_login_at"
-    t.integer  "wepon_lvl"
-    t.integer  "armor_lvl"
-    t.integer  "potion_lvl"
-    t.integer  "trap_lvl"
-    t.integer  "skill_lvl"
-    t.integer  "next_item_id"
-    t.integer  "prod_for_item"
-    t.integer  "next_const_id"
-    t.integer  "prod_for_const"
-    t.string   "next_research_sym"
-    t.integer  "prod_for_research"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.integer  "allot_for_item"
     t.integer  "allot_for_const"
     t.integer  "allot_for_research"
+  end
+
+  create_table "medium_item_infos", :force => true do |t|
+    t.string   "item_category_sym"
+    t.integer  "weight_level"
+    t.integer  "medium_body_part_id"
+    t.integer  "size"
+    t.string   "name"
+    t.integer  "max_dp"
+    t.integer  "phys_def"
+    t.integer  "skill_def"
+    t.integer  "medium_atk_info_id"
+    t.integer  "medium_status_mod_id"
+    t.integer  "prod_point"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.integer  "slot_num"
+  end
+
+  add_index "medium_item_infos", ["medium_atk_info_id"], :name => "index_medium_item_infos_on_medium_atk_info_id"
+  add_index "medium_item_infos", ["medium_body_part_id"], :name => "index_medium_item_infos_on_medium_body_part_id"
+  add_index "medium_item_infos", ["medium_status_mod_id"], :name => "index_medium_item_infos_on_medium_status_mod_id"
+
+  create_table "medium_item_manufacture_ques", :force => true do |t|
+    t.integer  "medium_houdd_user_id"
+    t.integer  "medium_item_info_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.integer  "nec_point"
+  end
+
+  add_index "medium_item_manufacture_ques", ["medium_houdd_user_id"], :name => "index_medium_item_manufacture_ques_on_medium_houdd_user_id"
+  add_index "medium_item_manufacture_ques", ["medium_item_info_id"], :name => "index_medium_item_manufacture_ques_on_medium_item_info_id"
+
+  create_table "medium_items", :force => true do |t|
+    t.integer  "medium_item_info_id"
+    t.integer  "medium_houdd_user_id"
+    t.integer  "dp"
+    t.integer  "quality"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "medium_items", ["medium_houdd_user_id"], :name => "index_medium_items_on_medium_houdd_user_id"
+  add_index "medium_items", ["medium_item_info_id"], :name => "index_medium_items_on_medium_item_info_id"
+
+  create_table "medium_jobs", :force => true do |t|
+    t.string   "name"
+    t.float    "growth_penalty"
+    t.integer  "wepon_lvl"
+    t.integer  "armor_lvl"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "medium_map_cells", :force => true do |t|
@@ -131,6 +240,61 @@ ActiveRecord::Schema.define(:version => 20130430070149) do
 
   add_index "medium_maps", ["medium_houdd_user_id"], :name => "index_medium_maps_on_medium_houdd_user_id"
 
+  create_table "medium_mob_dnas", :force => true do |t|
+    t.integer  "medium_mob_id"
+    t.integer  "medium_gene_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "medium_mob_dnas", ["medium_gene_id"], :name => "index_medium_mob_dnas_on_medium_gene_id"
+  add_index "medium_mob_dnas", ["medium_mob_id"], :name => "index_medium_mob_dnas_on_medium_mob_id"
+
+  create_table "medium_mobs", :force => true do |t|
+    t.integer  "medium_houdd_user_id"
+    t.integer  "medium_specie_id"
+    t.integer  "father_id"
+    t.integer  "mother_id"
+    t.integer  "medium_job_id"
+    t.integer  "medium_squad_id"
+    t.integer  "level"
+    t.integer  "exp"
+    t.string   "name"
+    t.string   "gender_sym"
+    t.integer  "age"
+    t.integer  "hp"
+    t.integer  "sp"
+    t.integer  "str"
+    t.integer  "dex"
+    t.integer  "con"
+    t.integer  "int"
+    t.integer  "wis"
+    t.integer  "cha"
+    t.integer  "phys_def"
+    t.integer  "skill_def"
+    t.integer  "ele_fw_mod"
+    t.integer  "ele_ld_mod"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "medium_mobs", ["medium_houdd_user_id"], :name => "index_medium_mobs_on_medium_houdd_user_id"
+  add_index "medium_mobs", ["medium_job_id"], :name => "index_medium_mobs_on_medium_job_id"
+  add_index "medium_mobs", ["medium_specie_id"], :name => "index_medium_mobs_on_medium_specie_id"
+  add_index "medium_mobs", ["medium_squad_id"], :name => "index_medium_mobs_on_medium_squad_id"
+
+  create_table "medium_research_allotments", :force => true do |t|
+    t.integer  "medium_houdd_user_id"
+    t.string   "research_sym"
+    t.integer  "level"
+    t.integer  "research_point"
+    t.integer  "allotment"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "medium_research_allotments", ["medium_houdd_user_id"], :name => "index_medium_research_allotments_on_medium_houdd_user_id"
+
   create_table "medium_resources", :force => true do |t|
     t.string   "symbol"
     t.string   "name"
@@ -149,6 +313,96 @@ ActiveRecord::Schema.define(:version => 20130430070149) do
     t.integer  "level"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "medium_skill_exp_invs", :force => true do |t|
+    t.integer  "medium_mob_id"
+    t.integer  "medium_skill_id"
+    t.integer  "level"
+    t.integer  "exp"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "medium_skill_exp_invs", ["medium_mob_id"], :name => "index_medium_skill_exp_invs_on_medium_mob_id"
+  add_index "medium_skill_exp_invs", ["medium_skill_id"], :name => "index_medium_skill_exp_invs_on_medium_skill_id"
+
+  create_table "medium_skills", :force => true do |t|
+    t.string   "skill_category_sym"
+    t.integer  "medium_job_id"
+    t.string   "element_sym"
+    t.string   "name"
+    t.integer  "sp_cost"
+    t.integer  "num_of_tgt"
+    t.integer  "medium_atk_info_id"
+    t.integer  "medium_status_mod_id"
+    t.integer  "duration"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "medium_skills", ["medium_atk_info_id"], :name => "index_medium_skills_on_medium_atk_info_id"
+  add_index "medium_skills", ["medium_job_id"], :name => "index_medium_skills_on_medium_job_id"
+  add_index "medium_skills", ["medium_status_mod_id"], :name => "index_medium_skills_on_medium_status_mod_id"
+
+  create_table "medium_specie_job_invs", :force => true do |t|
+    t.integer  "medium_specie_id"
+    t.integer  "medium_job_id"
+    t.integer  "ratio"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "medium_specie_job_invs", ["medium_job_id"], :name => "index_medium_specie_job_invs_on_medium_job_id"
+  add_index "medium_specie_job_invs", ["medium_specie_id"], :name => "index_medium_specie_job_invs_on_medium_specie_id"
+
+  create_table "medium_species", :force => true do |t|
+    t.integer  "medium_family_id"
+    t.string   "name"
+    t.float    "prolificacy"
+    t.float    "longevity"
+    t.float    "growth_rate"
+    t.float    "cost"
+    t.integer  "str"
+    t.integer  "dex"
+    t.integer  "con"
+    t.integer  "int"
+    t.integer  "wis"
+    t.integer  "cha"
+    t.integer  "phys_def"
+    t.integer  "skill_def"
+    t.integer  "ele_fw_mod"
+    t.integer  "ele_ld_mod"
+    t.string   "ability_sym"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "medium_species", ["medium_family_id"], :name => "index_medium_species_on_medium_family_id"
+
+  create_table "medium_squads", :force => true do |t|
+    t.integer  "medium_houdd_user_id"
+    t.integer  "medium_map_id"
+    t.string   "name"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "medium_squads", ["medium_houdd_user_id"], :name => "index_medium_squads_on_medium_houdd_user_id"
+  add_index "medium_squads", ["medium_map_id"], :name => "index_medium_squads_on_medium_map_id"
+
+  create_table "medium_status_mods", :force => true do |t|
+    t.string   "name"
+    t.integer  "str_mod"
+    t.integer  "dex_mod"
+    t.integer  "con_mod"
+    t.integer  "int_mod"
+    t.integer  "wis_mod"
+    t.integer  "cha_mod"
+    t.integer  "ele_fw_mod"
+    t.integer  "ele_ld_mod"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "medium_symbol_lists", :force => true do |t|

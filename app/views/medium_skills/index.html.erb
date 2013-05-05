@@ -1,0 +1,39 @@
+<h1>Listing medium_skills</h1>
+
+<table>
+  <tr>
+    <th>Category</th>
+    <th>Job</th>
+    <th>Element</th>
+    <th>Name</th>
+    <th>Sp cost</th>
+    <th>Num of tgt</th>
+    <th>Atk info</th>
+    <th>Status mod</th>
+    <th>Duration</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medium_skills.each do |medium_skill| %>
+  <tr>
+    <td><%= medium_skill.skill_category_sym %></td>
+    <td><%= medium_skill.medium_job.name unless medium_skill.medium_job.blank? %></td>
+    <td><%= medium_skill.element_sym %></td>
+    <td><%= medium_skill.name %></td>
+    <td><%= medium_skill.sp_cost %></td>
+    <td><%= medium_skill.num_of_tgt %></td>
+    <td><%= medium_skill.medium_atk_info.name unless medium_skill.medium_atk_info.blank? %></td>
+    <td><%= medium_skill.medium_status_mod.name unless medium_skill.medium_status_mod.blank? %></td>
+    <td><%= medium_skill.duration %></td>
+    <td><%= link_to 'Show', medium_skill %></td>
+    <td><%= link_to 'Edit', edit_medium_skill_path(medium_skill) %></td>
+    <td><%= link_to 'Destroy', medium_skill, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medium skill', new_medium_skill_path %>

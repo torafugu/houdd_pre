@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  growth_penalty: 1.5
+  wepon_lvl: 1
+  armor_lvl: 1
+
+two:
+  name: MyString
+  growth_penalty: 1.5
+  wepon_lvl: 1
+  armor_lvl: 1

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Medium specie:</b>
+  <%= @medium_body_part_inv.medium_specie.name %>
+</p>
+
+<p>
+  <b>Medium body part:</b>
+  <%= @medium_body_part_inv.medium_body_part.name %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%= @medium_body_part_inv.size %>
+</p>
+
+<p>
+  <b>Num of tgt:</b>
+  <%= @medium_body_part_inv.num_of_tgt %>
+</p>
+
+<p>
+  <b>Medium atk info:</b>
+  <%= @medium_body_part_inv.medium_atk_info.name unless @medium_body_part_inv.medium_atk_info.blank? %>
+</p>
+
+
+<%= link_to 'Edit', edit_medium_body_part_inv_path(@medium_body_part_inv) %> |
+<%= link_to 'Back', medium_body_part_invs_path %>

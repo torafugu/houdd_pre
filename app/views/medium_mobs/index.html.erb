@@ -1,0 +1,67 @@
+<h1>Listing medium_mobs</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Specie</th>
+    <th>Father</th>
+    <th>Mother</th>
+    <th>Job</th>
+    <th>Squad</th>
+    <th>Level</th>
+    <th>Exp</th>
+    <th>Name</th>
+    <th>Genderx</th>
+    <th>Age</th>
+    <th>Hp</th>
+    <th>Sp</th>
+    <th>Str</th>
+    <th>Dex</th>
+    <th>Con</th>
+    <th>Int</th>
+    <th>Wis</th>
+    <th>Cha</th>
+    <th>P-def</th>
+    <th>S-def</th>
+    <th>Ele-fw mod</th>
+    <th>Ele-ld mod</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medium_mobs.each do |medium_mob| %>
+  <tr>
+    <td><%= medium_mob.medium_houdd_user.name unless medium_mob.medium_houdd_user.blank? %></td>
+    <td><%= medium_mob.medium_specie.name unless medium_mob.medium_specie.blank? %></td>
+    <td><%= medium_mob.father_id %></td>
+    <td><%= medium_mob.mother_id %></td>
+    <td><%= medium_mob.medium_job.name unless medium_mob.medium_job.blank? %></td>
+    <td><%= medium_mob.medium_squad.name unless medium_mob.medium_squad.blank? %></td>
+    <td><%= medium_mob.level %></td>
+    <td><%= medium_mob.exp %></td>
+    <td><%= medium_mob.name %></td>
+    <td><%= medium_mob.gender_sym %></td>
+    <td><%= medium_mob.age %></td>
+    <td><%= medium_mob.hp %></td>
+    <td><%= medium_mob.sp %></td>
+    <td><%= medium_mob.str %></td>
+    <td><%= medium_mob.dex %></td>
+    <td><%= medium_mob.con %></td>
+    <td><%= medium_mob.int %></td>
+    <td><%= medium_mob.wis %></td>
+    <td><%= medium_mob.cha %></td>
+    <td><%= medium_mob.phys_def %></td>
+    <td><%= medium_mob.skill_def %></td>
+    <td><%= medium_mob.ele_fw_mod %></td>
+    <td><%= medium_mob.ele_ld_mod %></td>
+    <td><%= link_to 'Show', medium_mob %></td>
+    <td><%= link_to 'Edit', edit_medium_mob_path(medium_mob) %></td>
+    <td><%= link_to 'Destroy', medium_mob, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medium mob', new_medium_mob_path %>

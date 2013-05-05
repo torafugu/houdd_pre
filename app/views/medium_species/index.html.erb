@@ -1,0 +1,55 @@
+<h1>Listing medium_species</h1>
+
+<table>
+  <tr>
+    <th>Family</th>
+    <th>Name</th>
+    <th>Prolificacy</th>
+    <th>Longevity</th>
+    <th>Growth rate</th>
+    <th>Cost</th>
+    <th>Str</th>
+    <th>Dex</th>
+    <th>Con</th>
+    <th>Int</th>
+    <th>Wis</th>
+    <th>Cha</th>
+    <th>Phys def</th>
+    <th>Skill def</th>
+    <th>Ele fw mod</th>
+    <th>Ele ld mod</th>
+    <th>Ability sym</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medium_species.each do |medium_specie| %>
+  <tr>
+    <td><%= medium_specie.medium_family.name unless medium_specie.medium_family.blank? %></td>
+    <td><%= medium_specie.name %></td>
+    <td><%= medium_specie.prolificacy %></td>
+    <td><%= medium_specie.longevity %></td>
+    <td><%= medium_specie.growth_rate %></td>
+    <td><%= medium_specie.cost %></td>
+    <td><%= medium_specie.str %></td>
+    <td><%= medium_specie.dex %></td>
+    <td><%= medium_specie.con %></td>
+    <td><%= medium_specie.int %></td>
+    <td><%= medium_specie.wis %></td>
+    <td><%= medium_specie.cha %></td>
+    <td><%= medium_specie.phys_def %></td>
+    <td><%= medium_specie.skill_def %></td>
+    <td><%= medium_specie.ele_fw_mod %></td>
+    <td><%= medium_specie.ele_ld_mod %></td>
+    <td><%= medium_specie.ability_sym %></td>
+    <td><%= link_to 'Show', medium_specie %></td>
+    <td><%= link_to 'Edit', edit_medium_specy_path(medium_specie) %></td>
+    <td><%= link_to 'Destroy', medium_specie, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medium specie', new_medium_specy_path %>

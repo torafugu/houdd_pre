@@ -1,0 +1,37 @@
+<%= form_for(@medium_research_allotment) do |f| %>
+  <% if @medium_research_allotment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medium_research_allotment.errors.count, "error") %> prohibited this medium_research_allotment from being saved:</h2>
+
+      <ul>
+      <% @medium_research_allotment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :medium_houdd_user %><br />
+    <%= f.collection_select(:medium_houdd_user_id, MediumHouddUser.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :research_sym %><br />
+    <%= f.collection_select(:research_sym, MediumSymbolList.find_all_by_category_sym("RESEARCH"), :symbol, :description) %>
+  </div>
+  <div class="field">
+    <%= f.label :level %><br />
+    <%= f.number_field :level %>
+  </div>
+  <div class="field">
+    <%= f.label :research_point %><br />
+    <%= f.number_field :research_point %>
+  </div>
+  <div class="field">
+    <%= f.label :allotment %><br />
+    <%= f.number_field :allotment %>%
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

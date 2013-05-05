@@ -1,0 +1,2 @@
+module MediumSpeciesHelper
+end

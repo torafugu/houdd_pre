@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  medium_specie: 
+  dominance_flg: false
+  prolificacy_mod: 1.5
+  longevity_mod: 1.5
+  growth_mod: 1.5
+  cost_mod: 1.5
+  str_mod: 1.5
+  dex_mod: 1.5
+  con_mod: 1.5
+  int_mod: 1.5
+  wis_mod: 1.5
+  cha_mod: 1.5
+  phys_def_mod: 1.5
+  skill_def_mod: 1.5
+  ele_fw_mod: 1.5
+  ele_ld_mod: 1.5
+
+two:
+  name: MyString
+  medium_specie: 
+  dominance_flg: false
+  prolificacy_mod: 1.5
+  longevity_mod: 1.5
+  growth_mod: 1.5
+  cost_mod: 1.5
+  str_mod: 1.5
+  dex_mod: 1.5
+  con_mod: 1.5
+  int_mod: 1.5
+  wis_mod: 1.5
+  cha_mod: 1.5
+  phys_def_mod: 1.5
+  skill_def_mod: 1.5
+  ele_fw_mod: 1.5
+  ele_ld_mod: 1.5

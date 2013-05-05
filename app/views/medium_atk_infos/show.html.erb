@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @medium_atk_info.name %>
+</p>
+
+<p>
+  <b>Hit accuracy:</b>
+  <%= @medium_atk_info.hit_accuracy %>
+</p>
+
+<p>
+  <b>D range:</b>
+  <%= @medium_atk_info.d_range %>
+</p>
+
+<p>
+  <b>X range:</b>
+  <%= @medium_atk_info.x_range %>
+</p>
+
+<p>
+  <b>Inst damage:</b>
+  <%= @medium_atk_info.inst_damage %>
+</p>
+
+<p>
+  <b>Ovtm damage:</b>
+  <%= @medium_atk_info.ovtm_damage %>
+</p>
+
+
+<%= link_to 'Edit', edit_medium_atk_info_path(@medium_atk_info) %> |
+<%= link_to 'Back', medium_atk_infos_path %>

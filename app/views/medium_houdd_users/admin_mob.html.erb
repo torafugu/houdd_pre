@@ -1,0 +1,20 @@
+<%= render 'admin_menu' %>
+<div id="contents">
+  <h3>ランダム遺伝子生成</h3>
+  <div class="allotments">
+    種族選択：<%= collection_select(:admin, :specie_id, MediumSpecie.find(:all), :id, :name, :include_blank => true) %>
+    　個数:<%= number_field_tag 'admin_gene_num', '', :class=>'percent' %>
+    　<input id="add_random_gene" type="button" value="生成" /><br />
+    <p><a href="/medium_genes">→遺伝子マスターへ</a></p>
+  </div>
+  <div>
+
+  </div>
+  <h3>ランダムMOB生成</h3>
+  <div class="allotments">
+    種族選択：<%= collection_select(:admin, :mobspecie_id, MediumSpecie.find(:all), :id, :name, :include_blank => true) %>
+    　個体数:<%= number_field_tag 'admin_mob_num', '', :class=>'percent' %>
+    　<input id="add_random_mob" type="button" value="生成" /><br />
+    <p><a href="/medium_mobs">→MOBマスターへ</a></p>
+　　</div>
+</div>

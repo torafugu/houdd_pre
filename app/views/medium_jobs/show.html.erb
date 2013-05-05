@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @medium_job.name %>
+</p>
+
+<p>
+  <b>Growth penalty:</b>
+  <%= @medium_job.growth_penalty %>
+</p>
+
+<p>
+  <b>Wepon lvl:</b>
+  <%= @medium_job.wepon_lvl %>
+</p>
+
+<p>
+  <b>Armor lvl:</b>
+  <%= @medium_job.armor_lvl %>
+</p>
+
+
+<%= link_to 'Edit', edit_medium_job_path(@medium_job) %> |
+<%= link_to 'Back', medium_jobs_path %>

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Medium item info:</b>
+  <%= @medium_item.medium_item_info.name unless @medium_item.medium_item_info.blank? %>
+</p>
+
+<p>
+  <b>Medium houdd user:</b>
+  <%= @medium_item.medium_houdd_user.name unless @medium_item.medium_houdd_user.blank? %>
+</p>
+
+<p>
+  <b>Dp:</b>
+  <%= @medium_item.dp %>
+</p>
+
+<p>
+  <b>Quality:</b>
+  <%= @medium_item.quality %>
+</p>
+
+
+<%= link_to 'Edit', edit_medium_item_path(@medium_item) %> |
+<%= link_to 'Back', medium_items_path %>

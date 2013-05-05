@@ -1,0 +1,17 @@
+
+<%= render 'mypage_menu' %>
+<div id="contents">
+  <h3>アイテム製造</h3>
+  <div class="allotments">
+    アイテム選択：<%= collection_select(:mypage, :iteminfo_id, MediumItemInfo.find(:all), :id, :name, :include_blank => true) %>
+    　個数:<%= number_field_tag 'mypage_item_num', '', :class=>'percent' %>
+    　<input id="add_item_que" type="button" value="製造" /><br />
+    <br />
+    製造中：<br />
+    <div class="allotments">
+      <dl class="item_ques">
+      <%= render 'mypage_item_que_list' %>
+      </dl>
+    </div>
+  </div>
+</div>

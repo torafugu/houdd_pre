@@ -1,0 +1,33 @@
+<%= form_for(@medium_skill_exp_inv) do |f| %>
+  <% if @medium_skill_exp_inv.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medium_skill_exp_inv.errors.count, "error") %> prohibited this medium_skill_exp_inv from being saved:</h2>
+
+      <ul>
+      <% @medium_skill_exp_inv.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :medium_mob %><br />
+    <%= f.text_field :medium_mob %>
+  </div>
+  <div class="field">
+    <%= f.label :medium_skill %><br />
+    <%= f.text_field :medium_skill %>
+  </div>
+  <div class="field">
+    <%= f.label :level %><br />
+    <%= f.number_field :level %>
+  </div>
+  <div class="field">
+    <%= f.label :exp %><br />
+    <%= f.number_field :exp %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

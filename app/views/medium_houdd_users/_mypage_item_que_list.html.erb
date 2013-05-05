@@ -1,0 +1,6 @@
+<% serial = 1 %>
+<% @medium_houdd_user.medium_item_manufacture_ques.each do |item_que| %>
+<dt class="item_que"><%= serial %>. <%= item_que.medium_item_info.name %> (<%= item_que.nec_point %>pt)</dt>
+<dd class="delete_button"><input id="delete_item_que_<%= item_que.id %>" type="button" value="削除" /></dd>
+<% serial += 1 %>
+<% end %>

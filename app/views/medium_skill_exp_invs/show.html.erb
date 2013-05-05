@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Medium mob:</b>
+  <%= @medium_skill_exp_inv.medium_mob %>
+</p>
+
+<p>
+  <b>Medium skill:</b>
+  <%= @medium_skill_exp_inv.medium_skill %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%= @medium_skill_exp_inv.level %>
+</p>
+
+<p>
+  <b>Exp:</b>
+  <%= @medium_skill_exp_inv.exp %>
+</p>
+
+
+<%= link_to 'Edit', edit_medium_skill_exp_inv_path(@medium_skill_exp_inv) %> |
+<%= link_to 'Back', medium_skill_exp_invs_path %>

@@ -1,0 +1,29 @@
+<h1>Listing medium_items</h1>
+
+<table>
+  <tr>
+    <th>Medium item info</th>
+    <th>Medium houdd user</th>
+    <th>Dp</th>
+    <th>Quality</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medium_items.each do |medium_item| %>
+  <tr>
+    <td><%= medium_item.medium_item_info.name unless medium_item.medium_item_info.blank? %></td>
+    <td><%= medium_item.medium_houdd_user.name unless medium_item.medium_houdd_user.blank? %></td>
+    <td><%= medium_item.dp %></td>
+    <td><%= medium_item.quality %></td>
+    <td><%= link_to 'Show', medium_item %></td>
+    <td><%= link_to 'Edit', edit_medium_item_path(medium_item) %></td>
+    <td><%= link_to 'Destroy', medium_item, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medium item', new_medium_item_path %>

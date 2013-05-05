@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  skill_category_sym: MyString
+  medium_job: 
+  element_sym: MyString
+  name: MyString
+  sp_cost: 1
+  num_of_tgt: 1
+  medium_atk_info: 
+  medium_status_mod: 
+  duration: 1
+
+two:
+  skill_category_sym: MyString
+  medium_job: 
+  element_sym: MyString
+  name: MyString
+  sp_cost: 1
+  num_of_tgt: 1
+  medium_atk_info: 
+  medium_status_mod: 
+  duration: 1

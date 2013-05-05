@@ -1,0 +1,120 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Medium houdd user:</b>
+  <%= @medium_mob.medium_houdd_user.name unless @medium_mob.medium_houdd_user.blank? %>
+</p>
+
+<p>
+  <b>Medium specie:</b>
+  <%= @medium_mob.medium_specie.name unless @medium_mob.medium_specie.blank? %>
+</p>
+
+<p>
+  <b>Father:</b>
+  <%= @medium_mob.father_id %>
+</p>
+
+<p>
+  <b>Mother:</b>
+  <%= @medium_mob.mother_id %>
+</p>
+
+<p>
+  <b>Medium job:</b>
+  <%= @medium_mob.medium_job.name unless @medium_mob.medium_job.blank? %>
+</p>
+
+<p>
+  <b>Medium squad:</b>
+  <%= @medium_mob.medium_squad.name unless @medium_mob.medium_squad.blank? %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%= @medium_mob.level %>
+</p>
+
+<p>
+  <b>Exp:</b>
+  <%= @medium_mob.exp %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @medium_mob.name %>
+</p>
+
+<p>
+  <b>Gender sym:</b>
+  <%= @medium_mob.gender_sym %>
+</p>
+
+<p>
+  <b>Age:</b>
+  <%= @medium_mob.age %>
+</p>
+
+<p>
+  <b>Hp:</b>
+  <%= @medium_mob.hp %>
+</p>
+
+<p>
+  <b>Sp:</b>
+  <%= @medium_mob.sp %>
+</p>
+
+<p>
+  <b>Str:</b>
+  <%= @medium_mob.str %>
+</p>
+
+<p>
+  <b>Dex:</b>
+  <%= @medium_mob.dex %>
+</p>
+
+<p>
+  <b>Con:</b>
+  <%= @medium_mob.con %>
+</p>
+
+<p>
+  <b>Int:</b>
+  <%= @medium_mob.int %>
+</p>
+
+<p>
+  <b>Wis:</b>
+  <%= @medium_mob.wis %>
+</p>
+
+<p>
+  <b>Cha:</b>
+  <%= @medium_mob.cha %>
+</p>
+
+<p>
+  <b>Phys def:</b>
+  <%= @medium_mob.phys_def %>
+</p>
+
+<p>
+  <b>Skill def:</b>
+  <%= @medium_mob.skill_def %>
+</p>
+
+<p>
+  <b>Ele fw mod:</b>
+  <%= @medium_mob.ele_fw_mod %>
+</p>
+
+<p>
+  <b>Ele ld mod:</b>
+  <%= @medium_mob.ele_ld_mod %>
+</p>
+
+
+<%= link_to 'Edit', edit_medium_mob_path(@medium_mob) %> |
+<%= link_to 'Back', medium_mobs_path %>

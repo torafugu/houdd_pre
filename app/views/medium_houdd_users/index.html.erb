@@ -6,11 +6,7 @@
     <th>Admin</th>
     <th>Login</th>
     <th>Last login</th>
-    <th>Wepon lvl</th>
-    <th>Armor lvl</th>
-    <th>Potion lvl</th>
-    <th>Trap lvl</th>
-    <th>Skill lvl</th>
+    <th></th>
     <th></th>
     <th></th>
     <th></th>
@@ -23,15 +19,19 @@
     <td><%= medium_houdd_user.admin_flg %></td>
     <td><%= medium_houdd_user.login_id %></td>
     <td><%= medium_houdd_user.last_login_at %></td>
-    <td><%= medium_houdd_user.wepon_lvl %></td>
-    <td><%= medium_houdd_user.armor_lvl %></td>
-    <td><%= medium_houdd_user.potion_lvl %></td>
-    <td><%= medium_houdd_user.trap_lvl %></td>
-    <td><%= medium_houdd_user.skill_lvl %></td>
     <td><%= link_to 'Show', medium_houdd_user %></td>
     <td><%= link_to 'Edit', edit_medium_houdd_user_path(medium_houdd_user) %></td>
     <td><%= link_to 'Destroy', medium_houdd_user, confirm: 'Are you sure?', method: :delete %></td>
-    <td><%= link_to 'MyPage', mypage_top_medium_houdd_user_path(medium_houdd_user) %></td>
+    <td>
+        <% unless medium_houdd_user.admin_flg %>
+        <%= link_to 'MyPage', mypage_top_medium_houdd_user_path(medium_houdd_user) %>
+        <% end %>
+    </td>
+    <td>
+        <% if medium_houdd_user.admin_flg %>
+        <%= link_to 'AdminPage', admin_top_medium_houdd_user_path(medium_houdd_user) %>
+        <% end %>
+    </td>
   </tr>
 <% end %>
 </table>

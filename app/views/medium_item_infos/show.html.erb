@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Item category sym:</b>
+  <%= @medium_item_info.item_category_sym %>
+</p>
+
+<p>
+  <b>Weight level:</b>
+  <%= @medium_item_info.weight_level %>
+</p>
+
+<p>
+  <b>Medium body part:</b>
+  <%= @medium_item_info.medium_body_part.name unless @medium_item_info.medium_body_part.blank? %>
+</p>
+
+<p>
+  <b>Slot num:</b>
+  <%= @medium_item_info.slot_num %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%= @medium_item_info.size %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @medium_item_info.name %>
+</p>
+
+<p>
+  <b>Max dp:</b>
+  <%= @medium_item_info.max_dp %>
+</p>
+
+<p>
+  <b>Phys def:</b>
+  <%= @medium_item_info.phys_def %>
+</p>
+
+<p>
+  <b>Skill def:</b>
+  <%= @medium_item_info.skill_def %>
+</p>
+
+<p>
+  <b>Medium atk info:</b>
+  <%= @medium_item_info.medium_atk_info.name unless @medium_item_info.medium_atk_info.blank? %>
+</p>
+
+<p>
+  <b>Medium status mod:</b>
+  <%= @medium_item_info.medium_status_mod.name unless @medium_item_info.medium_status_mod.blank? %>
+</p>
+
+<p>
+  <b>Prod point:</b>
+  <%= @medium_item_info.prod_point %>
+</p>
+
+
+<%= link_to 'Edit', edit_medium_item_info_path(@medium_item_info) %> |
+<%= link_to 'Back', medium_item_infos_path %>

@@ -1,0 +1,53 @@
+<%= form_for(@medium_skill) do |f| %>
+  <% if @medium_skill.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medium_skill.errors.count, "error") %> prohibited this medium_skill from being saved:</h2>
+
+      <ul>
+      <% @medium_skill.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :skill_category_sym %><br />
+    <%= f.text_field :skill_category_sym %>
+  </div>
+  <div class="field">
+    <%= f.label :medium_job %><br />
+    <%= f.collection_select(:medium_job_id, MediumJob.find(:all), :id, :name, :include_blank => true) %>
+  </div>
+  <div class="field">
+    <%= f.label :element_sym %><br />
+    <%= f.text_field :element_sym %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :sp_cost %><br />
+    <%= f.number_field :sp_cost %>
+  </div>
+  <div class="field">
+    <%= f.label :num_of_tgt %><br />
+    <%= f.number_field :num_of_tgt %>
+  </div>
+  <div class="field">
+    <%= f.label :medium_atk_info %><br />
+    <%= f.collection_select(:medium_atk_info_id, MediumAtkInfo.find(:all), :id, :name, :include_blank => true) %>
+  </div>
+  <div class="field">
+    <%= f.label :medium_status_mod %><br />
+    <%= f.collection_select(:medium_status_mod_id, MediumStatusMod.find(:all), :id, :name, :include_blank => true) %>
+  </div>
+  <div class="field">
+    <%= f.label :duration %><br />
+    <%= f.number_field :duration %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

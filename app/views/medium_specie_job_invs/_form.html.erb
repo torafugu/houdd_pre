@@ -1,0 +1,29 @@
+<%= form_for(@medium_specie_job_inv) do |f| %>
+  <% if @medium_specie_job_inv.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medium_specie_job_inv.errors.count, "error") %> prohibited this medium_specie_job_inv from being saved:</h2>
+
+      <ul>
+      <% @medium_specie_job_inv.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :medium_specie %><br />
+    <%= f.collection_select(:medium_specie_id, MediumSpecie.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :medium_job %><br />
+    <%= f.collection_select(:medium_job_id, MediumJob.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :ratio %><br />
+    <%= f.number_field :ratio %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

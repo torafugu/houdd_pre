@@ -1,0 +1,52 @@
+  <%= render 'mypage_menu' %>
+  <div id="contents">
+    <h3>研究レベル</h3>
+    <div class="research_levels">
+      <div class="research">
+        <img class="research" src="/assets/sword.png" />
+        <p class="research"><%= @research_wepon.level %>(<%= @research_wepon.research_point %>pt)</p>
+      </div>
+      <div class="research">
+        <img class="research" src="/assets/shield.png" />
+        <p class="research"><%= @research_armor.level %>(<%= @research_armor.research_point %>pt)</p>
+      </div>
+      <div class="research">
+        <img class="research" src="/assets/potion.png" />
+        <p class="research"><%= @research_potion.level %>(<%= @research_potion.research_point %>pt)</p>
+      </div>
+      <div class="research">
+        <img class="research" src="/assets/trap.png" />
+        <p class="research"><%= @research_trap.level %>(<%= @research_trap.research_point %>pt)</p>
+      </div>
+    </div>
+    <h3>研究力配分</h3>
+    <div class="research_allotments">
+      <div class="research">
+        <img class="research" src="/assets/sword.png" />
+        <p class="allotment">
+          <%= number_field_tag 'wepon_percent', @research_wepon.allotment, :class=>'percent' %>%
+        </p>
+      </div>
+      <div class="research">
+        <img class="research" src="/assets/shield.png" />
+        <p class="allotment">
+          <%= number_field_tag 'armor_percent', @research_armor.allotment, :class=>'percent' %>%
+        </p>
+      </div>
+      <div class="research">
+        <img class="research" src="/assets/potion.png" />
+        <p class="allotment">
+          <%= number_field_tag 'potion_percent', @research_potion.allotment, :class=>'percent' %>%
+        </p>
+      </div>
+      <div class="research">
+        <img class="research" src="/assets/trap.png" />
+        <p class="allotment">
+          <%= number_field_tag 'trap_percent', @research_trap.allotment, :class=>'percent' %>%
+        </p>
+      </div>
+      <div class="research">
+        <input id="change_research_allotment" type="button" value="配分変更" />
+    </div>
+    </div>
+  </div>

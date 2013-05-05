@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  medium_specie: 
+  medium_job: 
+  ratio: 1
+
+two:
+  medium_specie: 
+  medium_job: 
+  ratio: 1

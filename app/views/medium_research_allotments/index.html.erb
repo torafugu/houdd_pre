@@ -1,0 +1,31 @@
+<h1>Listing medium_research_allotments</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Symbol</th>
+    <th>Level</th>
+    <th>Point</th>
+    <th>Allotment</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medium_research_allotments.each do |medium_research_allotment| %>
+  <tr>
+    <td><%= medium_research_allotment.medium_houdd_user.name %></td>
+    <td><%= medium_research_allotment.research_sym %></td>
+    <td><%= medium_research_allotment.level %></td>
+    <td><%= medium_research_allotment.research_point %></td>
+    <td><%= medium_research_allotment.allotment %></td>
+    <td><%= link_to 'Show', medium_research_allotment %></td>
+    <td><%= link_to 'Edit', edit_medium_research_allotment_path(medium_research_allotment) %></td>
+    <td><%= link_to 'Destroy', medium_research_allotment, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medium research allotment', new_medium_research_allotment_path %>

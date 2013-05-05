@@ -1,0 +1,55 @@
+<h1>Listing medium_genes</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Specie</th>
+    <th>Domi-flg</th>
+    <th>Prolificacy</th>
+    <th>Longevity</th>
+    <th>Growth</th>
+    <th>Cost</th>
+    <th>Str</th>
+    <th>Dex</th>
+    <th>Con</th>
+    <th>Int</th>
+    <th>Wis</th>
+    <th>Cha</th>
+    <th>P-def</th>
+    <th>S-def</th>
+    <th>Ele-fw</th>
+    <th>Ele-ld</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medium_genes.each do |medium_gene| %>
+  <tr>
+    <td><%= medium_gene.name %></td>
+    <td><%= medium_gene.medium_specie.name unless medium_gene.medium_specie.blank? %></td>
+    <td><%= medium_gene.dominance_flg %></td>
+    <td><%= medium_gene.prolificacy_mod %></td>
+    <td><%= medium_gene.longevity_mod %></td>
+    <td><%= medium_gene.growth_mod %></td>
+    <td><%= medium_gene.cost_mod %></td>
+    <td><%= medium_gene.str_mod %></td>
+    <td><%= medium_gene.dex_mod %></td>
+    <td><%= medium_gene.con_mod %></td>
+    <td><%= medium_gene.int_mod %></td>
+    <td><%= medium_gene.wis_mod %></td>
+    <td><%= medium_gene.cha_mod %></td>
+    <td><%= medium_gene.phys_def_mod %></td>
+    <td><%= medium_gene.skill_def_mod %></td>
+    <td><%= medium_gene.ele_fw_mod %></td>
+    <td><%= medium_gene.ele_ld_mod %></td>
+    <td><%= link_to 'Show', medium_gene %></td>
+    <td><%= link_to 'Edit', edit_medium_gene_path(medium_gene) %></td>
+    <td><%= link_to 'Destroy', medium_gene, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medium gene', new_medium_gene_path %>

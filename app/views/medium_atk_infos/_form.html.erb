@@ -1,0 +1,41 @@
+<%= form_for(@medium_atk_info) do |f| %>
+  <% if @medium_atk_info.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medium_atk_info.errors.count, "error") %> prohibited this medium_atk_info from being saved:</h2>
+
+      <ul>
+      <% @medium_atk_info.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :hit_accuracy %><br />
+    <%= f.number_field :hit_accuracy %>
+  </div>
+  <div class="field">
+    <%= f.label :d_range %><br />
+    <%= f.number_field :d_range %>
+  </div>
+  <div class="field">
+    <%= f.label :x_range %><br />
+    <%= f.number_field :x_range %>
+  </div>
+  <div class="field">
+    <%= f.label :inst_damage %><br />
+    <%= f.number_field :inst_damage %>
+  </div>
+  <div class="field">
+    <%= f.label :ovtm_damage %><br />
+    <%= f.number_field :ovtm_damage %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

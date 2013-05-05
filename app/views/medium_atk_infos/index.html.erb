@@ -1,0 +1,33 @@
+<h1>Listing medium_atk_infos</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Hit accuracy</th>
+    <th>D range</th>
+    <th>X range</th>
+    <th>Inst damage</th>
+    <th>Ovtm damage</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medium_atk_infos.each do |medium_atk_info| %>
+  <tr>
+    <td><%= medium_atk_info.name %></td>
+    <td><%= medium_atk_info.hit_accuracy %></td>
+    <td><%= medium_atk_info.d_range %></td>
+    <td><%= medium_atk_info.x_range %></td>
+    <td><%= medium_atk_info.inst_damage %></td>
+    <td><%= medium_atk_info.ovtm_damage %></td>
+    <td><%= link_to 'Show', medium_atk_info %></td>
+    <td><%= link_to 'Edit', edit_medium_atk_info_path(medium_atk_info) %></td>
+    <td><%= link_to 'Destroy', medium_atk_info, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medium atk info', new_medium_atk_info_path %>

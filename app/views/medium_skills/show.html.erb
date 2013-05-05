@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Skill category sym:</b>
+  <%= @medium_skill.skill_category_sym %>
+</p>
+
+<p>
+  <b>Medium job:</b>
+  <%= @medium_skill.medium_job.name unless @medium_skill.medium_job.blank? %>
+</p>
+
+<p>
+  <b>Element sym:</b>
+  <%= @medium_skill.element_sym %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @medium_skill.name %>
+</p>
+
+<p>
+  <b>Sp cost:</b>
+  <%= @medium_skill.sp_cost %>
+</p>
+
+<p>
+  <b>Num of tgt:</b>
+  <%= @medium_skill.num_of_tgt %>
+</p>
+
+<p>
+  <b>Medium atk info:</b>
+  <%= @medium_skill.medium_atk_info.name unless @medium_skill.medium_atk_info.blank? %>
+</p>
+
+<p>
+  <b>Medium status mod:</b>
+  <%= @medium_skill.medium_status_mod.name unless @medium_skill.medium_status_mod.blank? %>
+</p>
+
+<p>
+  <b>Duration:</b>
+  <%= @medium_skill.duration %>
+</p>
+
+
+<%= link_to 'Edit', edit_medium_skill_path(@medium_skill) %> |
+<%= link_to 'Back', medium_skills_path %>

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Medium houdd user:</b>
+  <%= @medium_research_allotment.medium_houdd_user.name %>
+</p>
+
+<p>
+  <b>Research sym:</b>
+  <%= @medium_research_allotment.research_sym %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%= @medium_research_allotment.level %>
+</p>
+
+<p>
+  <b>Research point:</b>
+  <%= @medium_research_allotment.research_point %>
+</p>
+
+<p>
+  <b>Allotment:</b>
+  <%= @medium_research_allotment.allotment %>%
+</p>
+
+
+<%= link_to 'Edit', edit_medium_research_allotment_path(@medium_research_allotment) %> |
+<%= link_to 'Back', medium_research_allotments_path %>

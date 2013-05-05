@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  size: 1
+  eqp_wepon_flg: false
+  eqp_armor_flg: false
+
+two:
+  name: MyString
+  size: 1
+  eqp_wepon_flg: false
+  eqp_armor_flg: false

@@ -1,0 +1,45 @@
+<h1>Listing medium_item_infos</h1>
+
+<table>
+  <tr>
+    <th>Category</th>
+    <th>Level</th>
+    <th>Body part</th>
+    <th>Slot num</th>
+    <th>Size</th>
+    <th>Name</th>
+    <th>Max dp</th>
+    <th>Phys def</th>
+    <th>Skill def</th>
+    <th>Atk info</th>
+    <th>Status mod</th>
+    <th>Point</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medium_item_infos.each do |medium_item_info| %>
+  <tr>
+    <td><%= medium_item_info.item_category_sym %></td>
+    <td><%= medium_item_info.weight_level %></td>
+    <td><%= medium_item_info.medium_body_part.name unless medium_item_info.medium_body_part.blank? %></td>
+    <td><%= medium_item_info.slot_num %></td>
+    <td><%= medium_item_info.size %></td>
+    <td><%= medium_item_info.name %></td>
+    <td><%= medium_item_info.max_dp %></td>
+    <td><%= medium_item_info.phys_def %></td>
+    <td><%= medium_item_info.skill_def %></td>
+    <td><%= medium_item_info.medium_atk_info.name unless medium_item_info.medium_atk_info.blank? %></td>
+    <td><%= medium_item_info.medium_status_mod.name unless medium_item_info.medium_status_mod.blank? %></td>
+    <td><%= medium_item_info.prod_point %></td>
+    <td><%= link_to 'Show', medium_item_info %></td>
+    <td><%= link_to 'Edit', edit_medium_item_info_path(medium_item_info) %></td>
+    <td><%= link_to 'Destroy', medium_item_info, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medium item info', new_medium_item_info_path %>

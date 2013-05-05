@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  medium_item_info: 
+  medium_houdd_user: 
+  dp: 1
+  quality: 1
+
+two:
+  medium_item_info: 
+  medium_houdd_user: 
+  dp: 1
+  quality: 1

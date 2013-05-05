@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @medium_body_part.name %>
+</p>
+
+<p>
+  <b>Eqp wepon flg:</b>
+  <%= @medium_body_part.eqp_wepon_flg %>
+</p>
+
+<p>
+  <b>Eqp armor flg:</b>
+  <%= @medium_body_part.eqp_armor_flg %>
+</p>
+
+
+<%= link_to 'Edit', edit_medium_body_part_path(@medium_body_part) %> |
+<%= link_to 'Back', medium_body_parts_path %>

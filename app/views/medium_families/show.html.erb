@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @medium_family.name %>
+</p>
+
+<p>
+  <b>Ability sym:</b>
+  <%= @medium_family.ability_sym %>
+</p>
+
+
+<%= link_to 'Edit', edit_medium_family_path(@medium_family) %> |
+<%= link_to 'Back', medium_families_path %>

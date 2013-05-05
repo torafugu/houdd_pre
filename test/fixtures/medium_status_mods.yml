@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  str_mod: 1
+  dex_mod: 1
+  con_mod: 1
+  int_mod: 1
+  wis_mod: 1
+  cha_mod: 1
+  ele_fw_mod: 1
+  ele_ld_mod: 1
+  duration: 1
+
+two:
+  name: MyString
+  str_mod: 1
+  dex_mod: 1
+  con_mod: 1
+  int_mod: 1
+  wis_mod: 1
+  cha_mod: 1
+  ele_fw_mod: 1
+  ele_ld_mod: 1
+  duration: 1

@@ -1,0 +1,27 @@
+<h1>Listing medium_body_parts</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Eqp wepon flg</th>
+    <th>Eqp armor flg</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medium_body_parts.each do |medium_body_part| %>
+  <tr>
+    <td><%= medium_body_part.name %></td>
+    <td><%= medium_body_part.eqp_wepon_flg %></td>
+    <td><%= medium_body_part.eqp_armor_flg %></td>
+    <td><%= link_to 'Show', medium_body_part %></td>
+    <td><%= link_to 'Edit', edit_medium_body_part_path(medium_body_part) %></td>
+    <td><%= link_to 'Destroy', medium_body_part, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medium body part', new_medium_body_part_path %>

@@ -1,5 +1,8 @@
 class MediumHouddUser < ActiveRecord::Base
   has_many :medium_maps
+  has_many :medium_research_allotments
+  has_many :medium_item_manufacture_ques
+  has_many :medium_construction_ques
 
   def food_total
     food_total = 0

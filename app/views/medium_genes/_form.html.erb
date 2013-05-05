@@ -1,0 +1,85 @@
+<%= form_for(@medium_gene) do |f| %>
+  <% if @medium_gene.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medium_gene.errors.count, "error") %> prohibited this medium_gene from being saved:</h2>
+
+      <ul>
+      <% @medium_gene.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :medium_specie %><br />
+    <%= f.collection_select(:medium_specie_id, MediumSpecie.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :dominance_flg %><br />
+    <%= f.check_box :dominance_flg %>
+  </div>
+  <div class="field">
+    <%= f.label :prolificacy_mod %><br />
+    <%= f.text_field :prolificacy_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :longevity_mod %><br />
+    <%= f.text_field :longevity_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :growth_mod %><br />
+    <%= f.text_field :growth_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :cost_mod %><br />
+    <%= f.text_field :cost_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :str_mod %><br />
+    <%= f.text_field :str_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :dex_mod %><br />
+    <%= f.text_field :dex_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :con_mod %><br />
+    <%= f.text_field :con_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :int_mod %><br />
+    <%= f.text_field :int_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :wis_mod %><br />
+    <%= f.text_field :wis_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :cha_mod %><br />
+    <%= f.text_field :cha_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :phys_def_mod %><br />
+    <%= f.text_field :phys_def_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :skill_def_mod %><br />
+    <%= f.text_field :skill_def_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :ele_fw_mod %><br />
+    <%= f.text_field :ele_fw_mod %>
+  </div>
+  <div class="field">
+    <%= f.label :ele_ld_mod %><br />
+    <%= f.text_field :ele_ld_mod %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

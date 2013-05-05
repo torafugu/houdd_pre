@@ -3,7 +3,7 @@ jQuery('#mapcell_id').val("<%= @medium_map_cell.id %>")
 jQuery('#mapcell_x').text("<%= @medium_map_cell.x %>")
 jQuery('#mapcell_y').text("<%= @medium_map_cell.y %>")
 jQuery('#mapcell_terrain').text("<%= @medium_map_cell.medium_terrain.name unless @medium_map_cell.medium_terrain.blank? %>")
-<% if not @medium_map_cell.medium_construction.blank? %>
+<% if not @medium_map_cell.medium_resource.blank? %>
 jQuery('#mapcell_resource').text("<%= @medium_map_cell.medium_resource.name %>")
 <% else %>
 jQuery('#mapcell_resource').text("なし")

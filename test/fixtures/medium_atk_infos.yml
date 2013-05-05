@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  hit_accuracy: 1
+  d_range: 1
+  x_range: 1
+  inst_damage: 1
+  ovtm_damage: 1
+
+two:
+  name: MyString
+  hit_accuracy: 1
+  d_range: 1
+  x_range: 1
+  inst_damage: 1
+  ovtm_damage: 1

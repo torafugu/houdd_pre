@@ -1,0 +1,27 @@
+<h1>Listing medium_squads</h1>
+
+<table>
+  <tr>
+    <th>Medium houdd user</th>
+    <th>Medium map</th>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medium_squads.each do |medium_squad| %>
+  <tr>
+    <td><%= medium_squad.medium_houdd_user %></td>
+    <td><%= medium_squad.medium_map %></td>
+    <td><%= medium_squad.name %></td>
+    <td><%= link_to 'Show', medium_squad %></td>
+    <td><%= link_to 'Edit', edit_medium_squad_path(medium_squad) %></td>
+    <td><%= link_to 'Destroy', medium_squad, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medium squad', new_medium_squad_path %>

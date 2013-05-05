@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  item_category_sym: MyString
+  weight_level: 1
+  medium_body_part: 
+  size: 1
+  name: MyString
+  max_dp: 1
+  phys_def: 1
+  skill_def: 1
+  medium_atk_info: 
+  medium_status_mod: 
+  prod_point: 1
+
+two:
+  item_category_sym: MyString
+  weight_level: 1
+  medium_body_part: 
+  size: 1
+  name: MyString
+  max_dp: 1
+  phys_def: 1
+  skill_def: 1
+  medium_atk_info: 
+  medium_status_mod: 
+  prod_point: 1

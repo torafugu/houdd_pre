@@ -1,0 +1,39 @@
+<h1>Listing medium_status_mods</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Str mod</th>
+    <th>Dex mod</th>
+    <th>Con mod</th>
+    <th>Int mod</th>
+    <th>Wis mod</th>
+    <th>Cha mod</th>
+    <th>Ele fw mod</th>
+    <th>Ele ld mod</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medium_status_mods.each do |medium_status_mod| %>
+  <tr>
+    <td><%= medium_status_mod.name %></td>
+    <td><%= medium_status_mod.str_mod %></td>
+    <td><%= medium_status_mod.dex_mod %></td>
+    <td><%= medium_status_mod.con_mod %></td>
+    <td><%= medium_status_mod.int_mod %></td>
+    <td><%= medium_status_mod.wis_mod %></td>
+    <td><%= medium_status_mod.cha_mod %></td>
+    <td><%= medium_status_mod.ele_fw_mod %></td>
+    <td><%= medium_status_mod.ele_ld_mod %></td>
+    <td><%= link_to 'Show', medium_status_mod %></td>
+    <td><%= link_to 'Edit', edit_medium_status_mod_path(medium_status_mod) %></td>
+    <td><%= link_to 'Destroy', medium_status_mod, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medium status mod', new_medium_status_mod_path %>

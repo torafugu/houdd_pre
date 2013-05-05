@@ -1,0 +1,29 @@
+<h1>Listing medium_jobs</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Growth penalty</th>
+    <th>Wepon lvl</th>
+    <th>Armor lvl</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medium_jobs.each do |medium_job| %>
+  <tr>
+    <td><%= medium_job.name %></td>
+    <td><%= medium_job.growth_penalty %></td>
+    <td><%= medium_job.wepon_lvl %></td>
+    <td><%= medium_job.armor_lvl %></td>
+    <td><%= link_to 'Show', medium_job %></td>
+    <td><%= link_to 'Edit', edit_medium_job_path(medium_job) %></td>
+    <td><%= link_to 'Destroy', medium_job, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medium job', new_medium_job_path %>

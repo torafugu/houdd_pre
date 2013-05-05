@@ -1,0 +1,90 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @medium_gene.name %>
+</p>
+
+<p>
+  <b>Medium specie:</b>
+  <%= @medium_gene.medium_specie.name unless @medium_gene.medium_specie.blank? %>
+</p>
+
+<p>
+  <b>Dominance flg:</b>
+  <%= @medium_gene.dominance_flg %>
+</p>
+
+<p>
+  <b>Prolificacy mod:</b>
+  <%= @medium_gene.prolificacy_mod %>
+</p>
+
+<p>
+  <b>Longevity mod:</b>
+  <%= @medium_gene.longevity_mod %>
+</p>
+
+<p>
+  <b>Growth mod:</b>
+  <%= @medium_gene.growth_mod %>
+</p>
+
+<p>
+  <b>Cost mod:</b>
+  <%= @medium_gene.cost_mod %>
+</p>
+
+<p>
+  <b>Str mod:</b>
+  <%= @medium_gene.str_mod %>
+</p>
+
+<p>
+  <b>Dex mod:</b>
+  <%= @medium_gene.dex_mod %>
+</p>
+
+<p>
+  <b>Con mod:</b>
+  <%= @medium_gene.con_mod %>
+</p>
+
+<p>
+  <b>Int mod:</b>
+  <%= @medium_gene.int_mod %>
+</p>
+
+<p>
+  <b>Wis mod:</b>
+  <%= @medium_gene.wis_mod %>
+</p>
+
+<p>
+  <b>Cha mod:</b>
+  <%= @medium_gene.cha_mod %>
+</p>
+
+<p>
+  <b>Phys def mod:</b>
+  <%= @medium_gene.phys_def_mod %>
+</p>
+
+<p>
+  <b>Skill def mod:</b>
+  <%= @medium_gene.skill_def_mod %>
+</p>
+
+<p>
+  <b>Ele fw mod:</b>
+  <%= @medium_gene.ele_fw_mod %>
+</p>
+
+<p>
+  <b>Ele ld mod:</b>
+  <%= @medium_gene.ele_ld_mod %>
+</p>
+
+
+<%= link_to 'Edit', edit_medium_gene_path(@medium_gene) %> |
+<%= link_to 'Back', medium_genes_path %>

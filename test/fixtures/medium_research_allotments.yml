@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  medium_houdd_user: 
+  research_sym: MyString
+  level: 1
+  research_point: 1
+  allotment: 1
+
+two:
+  medium_houdd_user: 
+  research_sym: MyString
+  level: 1
+  research_point: 1
+  allotment: 1
