@@ -1,0 +1,25 @@
+<%= form_for(@medium_mission_inv) do |f| %>
+  <% if @medium_mission_inv.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medium_mission_inv.errors.count, "error") %> prohibited this medium_mission_inv from being saved:</h2>
+
+      <ul>
+      <% @medium_mission_inv.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :medium_mission %><br />
+    <%= f.text_field :medium_mission %>
+  </div>
+  <div class="field">
+    <%= f.label :medium_squad %><br />
+    <%= f.text_field :medium_squad %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

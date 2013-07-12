@@ -1,0 +1,35 @@
+<h1>Listing medium_trials</h1>
+
+<table>
+  <tr>
+    <th>Medium map</th>
+    <th>Map name</th>
+    <th>Def mission</th>
+    <th>Atk mission</th>
+    <th>Occured at</th>
+    <th>Dungeon name</th>
+    <th>Dungeon type sym</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medium_trials.each do |medium_trial| %>
+  <tr>
+    <td><%= medium_trial.medium_map %></td>
+    <td><%= medium_trial.map_name %></td>
+    <td><%= medium_trial.def_mission_id %></td>
+    <td><%= medium_trial.atk_mission_id %></td>
+    <td><%= medium_trial.occured_at %></td>
+    <td><%= medium_trial.dungeon_name %></td>
+    <td><%= medium_trial.dungeon_type_sym %></td>
+    <td><%= link_to 'Show', medium_trial %></td>
+    <td><%= link_to 'Edit', edit_medium_trial_path(medium_trial) %></td>
+    <td><%= link_to 'Destroy', medium_trial, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medium trial', new_medium_trial_path %>

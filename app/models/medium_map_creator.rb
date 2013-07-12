@@ -9,11 +9,11 @@ class MediumMapCreator
     mountain_info = MediumTerrain.find_by_symbol(Consts::MAP_MOUNTAIN_SYMBOL)
     sea_info = MediumTerrain.find_by_symbol(Consts::MAP_SEA_SYMBOL)
 
-    iron_info = MediumResource.find_by_symbol(Consts::MAP_IRON_SYMBOL)
-    gold_info = MediumResource.find_by_symbol(Consts::MAP_GOLD_SYMBOL)
-    animal_info = MediumResource.find_by_symbol(Consts::MAP_ANIMAL_SYMBOL)
-    cotton_info = MediumResource.find_by_symbol(Consts::MAP_COTTON_SYMBOL)
-    fish_info = MediumResource.find_by_symbol(Consts::MAP_FISH_SYMBOL)
+    iron_info = MediumResource.find_by_symbol(Consts::RES_IRON_SYMBOL)
+    gold_info = MediumResource.find_by_symbol(Consts::RES_GOLD_SYMBOL)
+    animal_info = MediumResource.find_by_symbol(Consts::RES_ANIMAL_SYMBOL)
+    cotton_info = MediumResource.find_by_symbol(Consts::RES_COTTON_SYMBOL)
+    fish_info = MediumResource.find_by_symbol(Consts::RES_FISH_SYMBOL)
     terrain = Array.new(map_y_size).map!{Array.new(map_x_size, 0)}
 
     map_y_size.times do |y|

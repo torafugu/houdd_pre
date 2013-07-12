@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  medium_mob: 
+  medium_status_mod: 
+  caused_mob_id: 1
+  rmng_duration: 1
+
+two:
+  medium_mob: 
+  medium_status_mod: 
+  caused_mob_id: 1
+  rmng_duration: 1

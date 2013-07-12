@@ -1,0 +1,29 @@
+<%= form_tag :action => "update_squad" do %>
+<%= hidden_field :mypage, :squad_id, :value=> @squad_id %>
+<h3>部隊編成</h3>
+<div class="allotments">
+  <div class="field">
+    名前：<%= text_field :mypage, :name, :value=> @squad_name %>
+  </div>
+  <div class="field">
+    マップ：<%= collection_select(:mypage, :map_id, MediumMap.all, :id, :name, :selected => @squad_map_id, :include_blank => true) %><br />
+  </div>
+  <div id="freemob_list">
+    配属可能MOB<br />
+    <%= select(:mypage, :free_mobs, @free_mobs, {}, {:multiple => true, :size => @free_mobs.size}) %>
+  </div>
+  <div id="transfer_mob">
+    <div id="transfer_buttons">
+      <input id="btn_move_right" type="button" value="->" /><br />
+      <input id="btn_move_left" type="button" value="<-" />
+    </div>
+  </div>
+  <div id="assigned_mob_list">
+    配属済MOB<br />
+    <%= select(:mypage, :assigned_mobs, @assigned_mobs, {}, {:multiple => true, :size => 5}) %>
+  </div>
+  <div id="organize_submit">
+    <input id="organize_squad" type="button" value="編成" />
+  </div>
+</div>
+<% end %>

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Medium houdd user:</b>
+  <%= @medium_mission_strategy.medium_houdd_user.name unless @medium_mission_strategy.medium_houdd_user.blank? %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @medium_mission_strategy.name %>
+</p>
+
+<p>
+  <b>Script:</b>
+  <%= @medium_mission_strategy.script %>
+</p>
+
+
+<%= link_to 'Edit', edit_medium_mission_strategy_path(@medium_mission_strategy) %> |
+<%= link_to 'Back', medium_mission_strategies_path %>

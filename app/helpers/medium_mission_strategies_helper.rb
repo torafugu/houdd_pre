@@ -1,0 +1,2 @@
+module MediumMissionStrategiesHelper
+end

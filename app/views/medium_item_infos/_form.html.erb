@@ -48,6 +48,10 @@
     <%= f.number_field :skill_def %>
   </div>
   <div class="field">
+    <%= f.label :num_of_tgt %><br />
+    <%= f.number_field :num_of_tgt %>
+  </div>
+  <div class="field">
     <%= f.label :medium_atk_info %><br />
     <%= f.collection_select(:medium_atk_info_id, MediumAtkInfo.find(:all), :id, :name, :include_blank => true) %>
   </div>

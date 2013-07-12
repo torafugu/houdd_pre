@@ -1,5 +1,19 @@
 HouddPre::Application.routes.draw do
 
+  resources :medium_trials
+
+  resources :medium_mission_invs
+
+  resources :medium_missions
+
+  resources :medium_mission_strategies
+
+  match '/medium_item_equip_invs/select_body_parts'
+  match '/medium_item_equip_invs/:id/select_body_parts' => 'medium_item_equip_invs#select_body_parts'
+  match '/medium_item_equip_invs/select_items'
+  match '/medium_item_equip_invs/:id/select_items' => 'medium_item_equip_invs#select_items'
+  resources :medium_item_equip_invs
+
   resources :medium_skill_exp_invs
 
   resources :medium_skills
@@ -61,19 +75,56 @@ HouddPre::Application.routes.draw do
   match '/medium_houdd_users/:id/proceed_construction' => 'medium_houdd_users#proceed_construction'
   match '/medium_houdd_users/:id/select_mapcell_id' => 'medium_houdd_users#select_mapcell_id'
   match '/medium_houdd_users/:id/select_map_id' => 'medium_houdd_users#select_map_id'
+  match '/medium_houdd_users/:id/select_map_id2' => 'medium_houdd_users#select_map_id2'
+  match '/medium_houdd_users/:id/select_dungeon_id' => 'medium_houdd_users#select_dungeon_id'
+  match '/medium_houdd_users/:id/select_dungeoncell/:dungeon_id/:x/:y' => 'medium_houdd_users#select_dungeoncell_id'
+  match '/medium_houdd_users/:id/select_items' => 'medium_houdd_users#select_items'
+  match '/medium_houdd_users/:id/select_mobs' => 'medium_houdd_users#select_mobs'
+  match '/medium_houdd_users/:id/select_mob_status' => 'medium_houdd_users#select_mob_status'
+  match '/medium_houdd_users/:id/select_mob_skills' => 'medium_houdd_users#select_mob_skills'
+  match '/medium_houdd_users/:id/select_mob_equips' => 'medium_houdd_users#select_mob_equips'
+  match '/medium_houdd_users/:id/select_mob_mates' => 'medium_houdd_users#select_mob_mates'
+  match '/medium_houdd_users/:id/select_iteminfo_id' => 'medium_houdd_users#select_iteminfo_id', as: 'select_iteminfo_id_medium_houdd_user', :via => :get
+  match '/medium_houdd_users/:id/add_strategy' => 'medium_houdd_users#add_strategy'
+  match '/medium_houdd_users/:id/edit_strategy' => 'medium_houdd_users#edit_strategy'
+  match '/medium_houdd_users/:id/update_strategy' => 'medium_houdd_users#update_strategy', :via => :post
+  match '/medium_houdd_users/delete_strategy/:strategy_id' => 'medium_houdd_users#delete_strategy', :via => :delete
+  match '/medium_houdd_users/:id/add_mission' => 'medium_houdd_users#add_mission'
+  match '/medium_houdd_users/:id/edit_mission' => 'medium_houdd_users#edit_mission'
+  match '/medium_houdd_users/:id/update_mission' => 'medium_houdd_users#update_mission', :via => :post
+  match '/medium_houdd_users/delete_mission/:mission_id' => 'medium_houdd_users#delete_mission', :via => :delete
+  match '/medium_houdd_users/:id/add_squad' => 'medium_houdd_users#add_squad'
+  match '/medium_houdd_users/:id/edit_squad' => 'medium_houdd_users#edit_squad'
+  match '/medium_houdd_users/:id/update_squad' => 'medium_houdd_users#update_squad', :via => :post
+  match '/medium_houdd_users/:id/update_dungeon_squad/:dungeon_id/:x/:y' => 'medium_houdd_users#update_dungeon_squad', :via => :put
+  match '/medium_houdd_users/:id/update_dungeon_trap/:dungeon_id/:x/:y' => 'medium_houdd_users#update_dungeon_trap', :via => :put
+  match '/medium_houdd_users/delete_squad/:squad_id' => 'medium_houdd_users#delete_squad', :via => :delete
   match '/medium_houdd_users/:id/add_random_mob' => 'medium_houdd_users#add_random_mob'
+  match '/medium_houdd_users/:id/create_random_user_mob' => 'medium_houdd_users#create_random_user_mob', :via => :post
+  match '/medium_houdd_users/:id/create_mated_user_mob' => 'medium_houdd_users#create_mated_user_mob', :via => :post
+  match '/medium_houdd_users/:id/all_mobs_auto_equip' => 'medium_houdd_users#all_mobs_auto_equip', :via => :put
   match '/medium_houdd_users/:id/add_random_gene' => 'medium_houdd_users#add_random_gene'
   match '/medium_houdd_users/:id/add_item_que' => 'medium_houdd_users#add_item_que'
   match '/medium_houdd_users/:id/delete_item_que' => 'medium_houdd_users#delete_item_que'
   match '/medium_houdd_users/:id/update_research' => 'medium_houdd_users#update_research'
+  match '/medium_houdd_users/:id/update_mob_equips' => 'medium_houdd_users#update_mob_equips', :via => :post
   match '/medium_houdd_users/:id/update_construction' => 'medium_houdd_users#update_construction'
   match '/medium_houdd_users/:id/update_allotments' => 'medium_houdd_users#update_allotments', as: 'update_allotments_medium_houdd_user', :via => :put
   match '/medium_houdd_users/:id/admin_mob' => 'medium_houdd_users#admin_mob', as: 'admin_mob_medium_houdd_user', :via => :get
   match '/medium_houdd_users/:id/admin_master' => 'medium_houdd_users#admin_master', as: 'admin_master_medium_houdd_user', :via => :get
   match '/medium_houdd_users/:id/admin_top' => 'medium_houdd_users#admin_top', as: 'admin_top_medium_houdd_user', :via => :get
+  match '/medium_houdd_users/:id/mypage_strategy' => 'medium_houdd_users#mypage_strategy', as: 'mypage_strategy_medium_houdd_user', :via => :get
+  match '/medium_houdd_users/:id/mypage_mission/:mission_id/:trial_turn_index/:battle_turn_index/view_battle_log' => 'medium_houdd_users#view_battle_log'
+  match '/medium_houdd_users/:id/mypage_mission/:mission_id/:trial_turn_index/view_trial_log' => 'medium_houdd_users#view_trial_log'
+  match '/medium_houdd_users/:id/mypage_mission/:mission_id/draw_dungeon_cell' => 'medium_houdd_users#draw_dungeon_cell'
+  match '/medium_houdd_users/:id/mypage_mission/:mission_id/mission_log' => 'medium_houdd_users#mypage_mission_log', as: 'mypage_mission_log_medium_houdd_user', :via => :get
+  match '/medium_houdd_users/:id/mypage_mission' => 'medium_houdd_users#mypage_mission', as: 'mypage_mission_medium_houdd_user', :via => :get
+  match '/medium_houdd_users/:id/mypage_mob' => 'medium_houdd_users#mypage_mob', as: 'mypage_mob_medium_houdd_user', :via => :get
+  match '/medium_houdd_users/:id/mypage_item' => 'medium_houdd_users#mypage_item', as: 'mypage_item_medium_houdd_user', :via => :get
   match '/medium_houdd_users/:id/mypage_manufacture' => 'medium_houdd_users#mypage_manufacture', as: 'mypage_manufacture_medium_houdd_user', :via => :get
   match '/medium_houdd_users/:id/mypage_research' => 'medium_houdd_users#mypage_research', as: 'mypage_research_medium_houdd_user', :via => :get
   match '/medium_houdd_users/:id/mypage_territory' => 'medium_houdd_users#mypage_territory', as: 'mypage_territory_medium_houdd_user', :via => :get
+  match '/medium_houdd_users/:id/mypage_dungeon' => 'medium_houdd_users#mypage_dungeon', as: 'mypage_dungeon_medium_houdd_user', :via => :get
   match '/medium_houdd_users/:id/mypage_top' => 'medium_houdd_users#mypage_top', as: 'mypage_top_medium_houdd_user', :via => :get
   resources :medium_houdd_users
 

@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  medium_trial_turn: 
+  trial_mob_id: 1
+  start_hp: 1
+  end_hp: 1
+  start_sp: 1
+  end_sp: 1
+  start_status: MyString
+  end_status: MyString
+
+two:
+  medium_trial_turn: 
+  trial_mob_id: 1
+  start_hp: 1
+  end_hp: 1
+  start_sp: 1
+  end_sp: 1
+  start_status: MyString
+  end_status: MyString

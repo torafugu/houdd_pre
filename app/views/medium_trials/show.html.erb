@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Medium map:</b>
+  <%= @medium_trial.medium_map %>
+</p>
+
+<p>
+  <b>Map name:</b>
+  <%= @medium_trial.map_name %>
+</p>
+
+<p>
+  <b>Def mission:</b>
+  <%= @medium_trial.def_mission_id %>
+</p>
+
+<p>
+  <b>Atk mission:</b>
+  <%= @medium_trial.atk_mission_id %>
+</p>
+
+<p>
+  <b>Occured at:</b>
+  <%= @medium_trial.occured_at %>
+</p>
+
+<p>
+  <b>Dungeon name:</b>
+  <%= @medium_trial.dungeon_name %>
+</p>
+
+<p>
+  <b>Dungeon type sym:</b>
+  <%= @medium_trial.dungeon_type_sym %>
+</p>
+
+
+<%= link_to 'Edit', edit_medium_trial_path(@medium_trial) %> |
+<%= link_to 'Back', medium_trials_path %>

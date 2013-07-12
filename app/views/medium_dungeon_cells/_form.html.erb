@@ -14,6 +14,7 @@ char BLANK = '<%= Consts::DUNGEON_BLANK_SYMBOL %>';
 char CONCRETE = '<%= Consts::DUNGEON_COCRETE_SYMBOL %>';
 
 void setup() {
+  frameRate(4);
   size(MAP_WIDTH, MAP_HEIGHT);
   <% @medium_dungeon_cell.medium_dungeon.medium_dungeon_cells.each do |cell| %>
     dungeonCells.add(new DungeonCell(<%= cell.x %>, <%= cell.y %>, '<%= cell.symbol %>'))

@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>HP mod</th>
     <th>Str mod</th>
     <th>Dex mod</th>
     <th>Con mod</th>
@@ -19,6 +20,7 @@
 <% @medium_status_mods.each do |medium_status_mod| %>
   <tr>
     <td><%= medium_status_mod.name %></td>
+    <td><%= medium_status_mod.hp_mod %></td>
     <td><%= medium_status_mod.str_mod %></td>
     <td><%= medium_status_mod.dex_mod %></td>
     <td><%= medium_status_mod.con_mod %></td>

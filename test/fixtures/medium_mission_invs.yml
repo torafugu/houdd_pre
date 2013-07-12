@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  medium_mission: 
+  medium_squad: 
+
+two:
+  medium_mission: 
+  medium_squad: 

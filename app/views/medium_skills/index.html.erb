@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>ID</th>
     <th>Category</th>
     <th>Job</th>
     <th>Element</th>
@@ -18,6 +19,7 @@
 
 <% @medium_skills.each do |medium_skill| %>
   <tr>
+    <td><%= medium_skill.id %></td>
     <td><%= medium_skill.skill_category_sym %></td>
     <td><%= medium_skill.medium_job.name unless medium_skill.medium_job.blank? %></td>
     <td><%= medium_skill.element_sym %></td>

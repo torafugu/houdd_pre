@@ -1,0 +1,45 @@
+<%= form_for(@medium_trial) do |f| %>
+  <% if @medium_trial.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medium_trial.errors.count, "error") %> prohibited this medium_trial from being saved:</h2>
+
+      <ul>
+      <% @medium_trial.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :medium_map %><br />
+    <%= f.text_field :medium_map %>
+  </div>
+  <div class="field">
+    <%= f.label :map_name %><br />
+    <%= f.text_field :map_name %>
+  </div>
+  <div class="field">
+    <%= f.label :def_mission_id %><br />
+    <%= f.number_field :def_mission_id %>
+  </div>
+  <div class="field">
+    <%= f.label :atk_mission_id %><br />
+    <%= f.number_field :atk_mission_id %>
+  </div>
+  <div class="field">
+    <%= f.label :occured_at %><br />
+    <%= f.number_field :occured_at %>
+  </div>
+  <div class="field">
+    <%= f.label :dungeon_name %><br />
+    <%= f.text_field :dungeon_name %>
+  </div>
+  <div class="field">
+    <%= f.label :dungeon_type_sym %><br />
+    <%= f.text_field :dungeon_type_sym %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

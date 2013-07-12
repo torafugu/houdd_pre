@@ -1,0 +1,8 @@
+<%= form_tag "update_mob_equips", :id => 'update_mob_equips', :method => :post do %>
+<div id='mob_equips_popup_list'>
+  <% @mob.medium_item_equip_invs.each do |inv| %>
+  <%= inv.medium_body_part.name %>：<%= collection_select(:mypage, inv.id, MediumItem.all(:include => :medium_item_info, :conditions => ["medium_houdd_user_id = ? AND medium_item_infos.medium_body_part_id = ?", @mob.medium_houdd_user_id, inv.medium_body_part_id]), :id, :info_name, :selected => inv.medium_item_id, :include_blank => true) %><br />
+  <% end %>
+</div>
+<% end %>
+<div id="mob_equips_popup_submit">変更</div><div id="mob_equips_popup_close2">キャンセル</div>

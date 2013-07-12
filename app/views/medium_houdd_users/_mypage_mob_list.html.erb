@@ -1,0 +1,12 @@
+<% unless @mobs.blank? %>
+<% serial = 1 %>
+<% @mobs.each do |mob| %>
+<dt class="mob"><%= serial %>. <%= mob.name %>(<%= mob.medium_specie.name %>)　<%= mob.medium_job.name %>　レベル:<%= mob.level %>(<%= mob.exp %>)　部隊：<%= mob.medium_squad.name unless mob.medium_squad.blank? %></dt>
+<dd class="mob_info">
+  　<a href="javascript:void(0)" id="link_to_mob_status_<%= mob.id %>">ステータス</a>
+  　<a href="javascript:void(0)" id="link_to_mob_equips_<%= mob.id %>">装備</a>
+  　<a href="javascript:void(0)" id="link_to_mob_skills_<%= mob.id %>">スキル経験値</a>
+</dd>
+<% serial += 1 %>
+<% end %>
+<% end %>

@@ -2,12 +2,12 @@
 
 <p>
   <b>Medium houdd user:</b>
-  <%= @medium_squad.medium_houdd_user %>
+  <%= @medium_squad.medium_houdd_user.name unless @medium_squad.medium_houdd_user.blank? %>
 </p>
 
 <p>
   <b>Medium map:</b>
-  <%= @medium_squad.medium_map %>
+  <%= @medium_squad.medium_map.name unless @medium_squad.medium_map.blank? %>
 </p>
 
 <p>

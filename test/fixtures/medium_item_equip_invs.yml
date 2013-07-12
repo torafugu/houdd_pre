@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  medium_item: 
+  medium_mob: 
+  medium_body_part_inv: 
+
+two:
+  medium_item: 
+  medium_mob: 
+  medium_body_part_inv: 

@@ -1,0 +1,21 @@
+<div id="item_info_column1">名称：<%= @iteminfo.name %></div>
+<div id="item_info_column2">装備箇所：<%= @iteminfo.medium_body_part.name %></div>
+<div id="item_info_column1">サイズ：<%= @iteminfo.size %></div>
+<div id="item_info_column2">重量レベル：<%= @iteminfo.weight_level %></div>
+<div id="item_info_column1">物理防御力：<%= @iteminfo.phys_def %></div>
+<div id="item_info_column2">スキル防御力：<%= @iteminfo.skill_def %></div>
+<div id="item_info_column1">命中：<%= @iteminfo.medium_atk_info.hit_accuracy unless @iteminfo.medium_atk_info.blank? %></div>
+<div id="item_info_column2">ダメージ：<%= @iteminfo.medium_atk_info.inst_damage unless @iteminfo.medium_atk_info.blank? %></div>
+<div id="item_info_column1">通常射程：<%= @iteminfo.medium_atk_info.d_range unless @iteminfo.medium_atk_info.blank? %></div>
+<div id="item_info_column2">遠距離射程：<%= @iteminfo.medium_atk_info.x_range unless @iteminfo.medium_atk_info.blank? %></div>
+<div id="item_info_column1">持続ダメージ：<%= @iteminfo.medium_atk_info.ovtm_damage unless @iteminfo.medium_atk_info.blank? %></div>
+<div id="item_info_column2">　</div>
+<div id="item_info_column1">STR修正：<%= @iteminfo.medium_status_mod.str_mod unless @iteminfo.medium_status_mod.blank? %></div>
+<div id="item_info_column2">DEX修正：<%= @iteminfo.medium_status_mod.dex_mod unless @iteminfo.medium_status_mod.blank? %></div>
+<div id="item_info_column1">CON修正：<%= @iteminfo.medium_status_mod.con_mod unless @iteminfo.medium_status_mod.blank? %></div>
+<div id="item_info_column2">INT修正：<%= @iteminfo.medium_status_mod.int_mod unless @iteminfo.medium_status_mod.blank? %></div>
+<div id="item_info_column1">WIS修正：<%= @iteminfo.medium_status_mod.wis_mod unless @iteminfo.medium_status_mod.blank? %></div>
+<div id="item_info_column2">CHA修正：<%= @iteminfo.medium_status_mod.cha_mod unless @iteminfo.medium_status_mod.blank? %></div>
+<div id="item_info_column1">属性修正（火⇔水）：<%= @iteminfo.medium_status_mod.ele_fw_mod unless @iteminfo.medium_status_mod.blank? %></div>
+<div id="item_info_column2">属性修正（光⇔闇）：<%= @iteminfo.medium_status_mod.ele_ld_mod unless @iteminfo.medium_status_mod.blank? %></div>
+<div id="iteminfo_popup_close2">OK</div>

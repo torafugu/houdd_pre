@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  medium_trial: 
+  squad_id: 1
+  squad_name: MyString
+
+two:
+  medium_trial: 
+  squad_id: 1
+  squad_name: MyString

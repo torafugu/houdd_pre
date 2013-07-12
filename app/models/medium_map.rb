@@ -40,4 +40,12 @@ class MediumMap < ActiveRecord::Base
     end
     return under_constructions
   end
+
+  def all_dungeons
+    all_dungeons = Array.new
+    medium_map_cells.each do |map_cell|
+      all_dungeons << map_cell.medium_dungeon unless map_cell.medium_dungeon.blank?
+    end
+    return all_dungeons
+  end
 end

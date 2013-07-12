@@ -1,0 +1,16 @@
+<%= form_tag :action => "update_strategy" do %>
+<%= hidden_field :mypage, :strategy_id, :value=> @strategy_id %>
+<h3>戦術設定</h3>
+<div class="allotments">
+  <div class="field">
+    名前：<%= text_field :mypage, :name, :value=> @strategy_name %>
+  </div>
+  <div class="field">
+    内容：<br />
+    <%= text_area :mypage, :script, :value=> @strategy_script %>
+  </div>
+  <div id="organize_submit">
+    <input id="strategy_submit" type="button" value="設定" />
+  </div>
+</div>
+<% end %>

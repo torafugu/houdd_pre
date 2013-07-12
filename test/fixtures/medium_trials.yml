@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  medium_map: 
+  map_name: MyString
+  def_mission_id: 1
+  atk_mission_id: 1
+  occured_at: 1
+  dungeon_name: MyString
+  dungeon_type_sym: MyString
+
+two:
+  medium_map: 
+  map_name: MyString
+  def_mission_id: 1
+  atk_mission_id: 1
+  occured_at: 1
+  dungeon_name: MyString
+  dungeon_type_sym: MyString

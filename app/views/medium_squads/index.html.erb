@@ -2,7 +2,8 @@
 
 <table>
   <tr>
-    <th>Medium houdd user</th>
+    <th>ID</th>
+    <th>User</th>
     <th>Medium map</th>
     <th>Name</th>
     <th></th>
@@ -12,8 +13,9 @@
 
 <% @medium_squads.each do |medium_squad| %>
   <tr>
-    <td><%= medium_squad.medium_houdd_user %></td>
-    <td><%= medium_squad.medium_map %></td>
+    <td><%= medium_squad.id %></td>
+    <td><%= medium_squad.medium_houdd_user.name unless medium_squad.medium_houdd_user.blank? %></td>
+    <td><%= medium_squad.medium_map.name unless medium_squad.medium_map.blank? %></td>
     <td><%= medium_squad.name %></td>
     <td><%= link_to 'Show', medium_squad %></td>
     <td><%= link_to 'Edit', edit_medium_squad_path(medium_squad) %></td>

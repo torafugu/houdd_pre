@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  medium_trial_turn: 
+  battle_set_index: 1
+  atk_trial_squad_id: 1
+  def_trial_squad_id: 1
+  log: MyText
+
+two:
+  medium_trial_turn: 
+  battle_set_index: 1
+  atk_trial_squad_id: 1
+  def_trial_squad_id: 1
+  log: MyText

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  medium_trial: 
+  symbol: MyString
+  x: 1
+  y: 1
+
+two:
+  medium_trial: 
+  symbol: MyString
+  x: 1
+  y: 1

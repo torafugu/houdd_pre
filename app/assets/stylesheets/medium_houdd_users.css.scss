@@ -18,6 +18,12 @@
   width: 660px;
 }
 
+#contents_dungeon {
+  float: left;
+  margin-left: 15px;
+  width: 800px;
+}
+
 div.resources {
   margin-left: 15px;
   width: 210px;
@@ -132,6 +138,313 @@ dd.delete_button {
   line-height: 26px;
 }
 
+dl.item_list {
+  margin: 5px;
+  border-bottom: 1px solid #333;
+  width: 588px;
+}
 
+dt.item {
+  border-top: 1px solid #333;
+  clear: left;
+  float: left;
+  width: 500px;
+  line-height: 26px;
+}
 
+dd.item_info {
+  border-top: 1px solid #333;
+  width: 80px;
+  margin-left: 504px;
+  line-height: 26px;
+}
 
+#iteminfo_popup {
+  padding: 0;
+  background-color: #f0f8ff;
+  border: 1px solid #2f4f4f;
+
+  width: 300px;
+  height: 250px;
+  position: absolute;
+  display: none;
+  z-index: 9999;
+}
+
+#iteminfo_popup_close {
+  cursor: pointer;
+  float: right;
+}
+
+#iteminfo_popup_title {
+  background-color: #b0c4de;
+  cursor: move;
+}
+
+#iteminfo_contents {
+  padding: 10px;
+}
+
+#item_info_column1 {
+  clear: left;
+  float: left;
+  width: 140px;
+}
+
+#item_info_column2 {
+  margin-left: 150px;
+}
+
+#iteminfo_popup_close2 {
+  padding: 3px;
+  border: 1px solid #333;
+  clear: left;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-left: 135px;
+  width: 20px;
+}
+
+dl.mob_list {
+  margin: 5px;
+  border-bottom: 1px solid #333;
+  width: 678px;
+}
+
+dt.mob {
+  border-top: 1px solid #333;
+  clear: left;
+  float: left;
+  width: 440px;
+  line-height: 26px;
+}
+
+dd.mob_info {
+  border-top: 1px solid #333;
+  width: 230px;
+  margin-left: 444px;
+  line-height: 26px;
+}
+
+dl.squad_list {
+  margin: 5px;
+  border-bottom: 1px solid #333;
+  width: 408px;
+}
+
+dt.squad {
+  border-top: 1px solid #333;
+  clear: left;
+  float: left;
+  width: 250px;
+  line-height: 26px;
+}
+
+dd.squad_info {
+  border-top: 1px solid #333;
+  width: 150px;
+  margin-left: 254px;
+  line-height: 26px;
+}
+
+#mob_status_popup {
+  padding: 0;
+  background-color: #f0f8ff;
+  border: 1px solid #2f4f4f;
+
+  width: 300px;
+  height: 200px;
+  position: absolute;
+  display: none;
+  z-index: 9999;
+}
+
+#mob_status_popup_close {
+  cursor: pointer;
+  float: right;
+}
+
+#mob_status_popup_title {
+  background-color: #b0c4de;
+  cursor: move;
+}
+
+#mob_status_popup_contents {
+  padding: 10px;
+}
+
+#mob_status_column1 {
+  clear: left;
+  float: left;
+  width: 140px;
+}
+
+#mob_status_column2 {
+  margin-left: 150px;
+}
+
+#mob_status_popup_close2 {
+  padding: 3px;
+  border: 1px solid #333;
+  clear: left;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-left: 135px;
+  width: 20px;
+}
+
+#mob_skills_popup {
+  padding: 0;
+  background-color: #f0f8ff;
+  border: 1px solid #2f4f4f;
+
+  width: 200px;
+  height: 150px;
+  position: absolute;
+  display: none;
+  z-index: 9999;
+}
+
+#mob_skills_popup_close {
+  cursor: pointer;
+  float: right;
+}
+
+#mob_skills_popup_title {
+  background-color: #b0c4de;
+  cursor: move;
+}
+
+#mob_skills_popup_contents {
+  padding: 10px;
+}
+
+#mob_skills_popup_close2 {
+  padding: 3px;
+  border: 1px solid #333;
+  clear: left;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-left: 80px;
+  width: 20px;
+}
+
+#mob_equips_popup {
+  padding: 0;
+  background-color: #f0f8ff;
+  border: 1px solid #2f4f4f;
+
+  width: 150px;
+  height: 200px;
+  position: absolute;
+  display: none;
+  z-index: 9999;
+}
+
+#mob_equips_popup_close {
+  cursor: pointer;
+  float: right;
+}
+
+#mob_equips_popup_title {
+  background-color: #b0c4de;
+  cursor: move;
+}
+
+#mob_equips_popup_contents {
+  padding: 10px;
+}
+
+#mob_equips_column1 {
+  clear: left;
+  float: left;
+  width: 140px;
+}
+
+#mob_equips_column2 {
+  margin-left: 150px;
+}
+
+#mob_equips_popup_submit {
+  padding: 3px;
+  border: 1px solid #333;
+  float: left;
+  clear: left;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-left: 10px;
+  width: 30px;
+}
+
+#mob_equips_popup_close2 {
+  padding: 3px;
+  border: 1px solid #333;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-left: 55px;
+  width: 60px;
+}
+
+#freemob_list {
+  clear: left;
+  float: left;
+  width: 200px;
+}
+
+#transfer_mob {
+  float: left;
+  width: 80px;
+  margin-top: 30px;
+}
+
+#transfer_buttons {
+  width: 60px;
+  margin-left: auto;
+  margin-top: auto;
+}
+
+#assigned_mob_list {
+  width: 200px;
+  margin-left: 290px;
+}
+
+#organize_submit {
+  clear: left;
+  margin-top: 60px;
+  margin-left: 215px;
+  width: 500px;
+  height: 100px;
+}
+
+#all_squad_list {
+  clear: left;
+  float: left;
+  width: 150px;
+}
+
+#transfer_squad {
+  float: left;
+  width: 80px;
+  margin-top: 30px;
+}
+
+#transfer_buttons {
+  width: 60px;
+  margin-left: auto;
+  margin-top: auto;
+}
+
+#assigned_squad_list {
+  width: 150px;
+  margin-left: 240px;
+}
+
+#organize_submit {
+  clear: left;
+  margin-top: 30px;
+  margin-left: 145px;
+  width: 500px;
+  height: 50px;
+}
+
+hr{ text-align:left;margin-left:2px;}

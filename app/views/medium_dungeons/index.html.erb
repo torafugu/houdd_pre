@@ -12,7 +12,7 @@
 
 <% @medium_dungeons.each do |medium_dungeon| %>
   <tr>
-    <td><%= medium_dungeon.medium_map_cell %></td>
+    <td><%= medium_dungeon.medium_map_cell.name unless medium_dungeon.medium_map_cell.blank? %></td>
     <td><%= medium_dungeon.type_sym %></td>
     <td><%= medium_dungeon.name %></td>
     <td><%= link_to 'Show', medium_dungeon %></td>

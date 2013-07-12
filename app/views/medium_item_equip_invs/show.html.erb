@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Medium item:</b>
+  <%= @medium_item_equip_inv.medium_item.medium_item_info.name unless @medium_item_equip_inv.medium_item.blank? %>
+</p>
+
+<p>
+  <b>Medium mob:</b>
+  <%= @medium_item_equip_inv.medium_mob.name unless @medium_item_equip_inv.medium_mob.blank? %>
+</p>
+
+<p>
+  <b>Medium body part inv:</b>
+  <%= @medium_item_equip_inv.medium_body_part.name unless @medium_item_equip_inv.medium_body_part.blank? %>
+</p>
+
+
+<%= link_to 'Edit', edit_medium_item_equip_inv_path(@medium_item_equip_inv) %> |
+<%= link_to 'Back', medium_item_equip_invs_path %>

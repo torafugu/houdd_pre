@@ -1,8 +1,12 @@
 class MediumHouddUser < ActiveRecord::Base
   has_many :medium_maps
-  has_many :medium_research_allotments
-  has_many :medium_item_manufacture_ques
-  has_many :medium_construction_ques
+  has_many :medium_research_allotments, :dependent => :delete_all
+  has_many :medium_item_manufacture_ques, :dependent => :delete_all
+  has_many :medium_construction_ques, :dependent => :delete_all
+  has_many :medium_squads
+  has_many :medium_mobs
+  has_many :medium_missions, :dependent => :delete_all
+  has_many :medium_mission_strategies, :dependent => :delete_all
 
   def food_total
     food_total = 0

@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>ID</th>
     <th>Name</th>
     <th>Growth penalty</th>
     <th>Wepon lvl</th>
@@ -13,6 +14,7 @@
 
 <% @medium_jobs.each do |medium_job| %>
   <tr>
+    <td><%= medium_job.id %></td>
     <td><%= medium_job.name %></td>
     <td><%= medium_job.growth_penalty %></td>
     <td><%= medium_job.wepon_lvl %></td>

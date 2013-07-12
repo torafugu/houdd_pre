@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  medium_trial_squad: 
+  mob_id: 1
+  job_name: MyString
+  mob_name: MyString
+  max_hp: 1
+  max_sp: 1
+
+two:
+  medium_trial_squad: 
+  mob_id: 1
+  job_name: MyString
+  mob_name: MyString
+  max_hp: 1
+  max_sp: 1

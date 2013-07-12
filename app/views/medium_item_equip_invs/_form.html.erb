@@ -1,0 +1,33 @@
+<%= form_for(@medium_item_equip_inv) do |f| %>
+  <% if @medium_item_equip_inv.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medium_item_equip_inv.errors.count, "error") %> prohibited this medium_item_equip_inv from being saved:</h2>
+
+      <ul>
+      <% @medium_item_equip_inv.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :medium_item %><br />
+    <%= collection_select("item_equip_inv", "medium_houdd_id", MediumHouddUser.find(:all), :id, :name, :include_blank => true) %>
+  </div>
+  <div class="field">
+    <%= f.label :medium_item %><br />
+    <%= render 'select_items', {:f => f} %>
+  </div>
+  <div class="field">
+    <%= f.label :medium_mob %><br />
+    <%= render 'select_mobs', {:f => f} %>
+  </div>
+  <div class="field">
+    <%= f.label :medium_body_part %><br />
+    <%= render 'select_body_parts', {:f => f} %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

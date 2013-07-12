@@ -1,0 +1,1 @@
+jQuery('#iteminfo_contents').html("<%= raw(escape_javascript(render 'mypage_item_info')) %>")

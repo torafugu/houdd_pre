@@ -1,0 +1,118 @@
+<script type="text/processing" data-processing-target="mypage_dungeon_canvas">
+// Parameteres of screen size.
+int RECT_SIZE = 20;
+int MAP_WIDTH = <%= Consts::NORMAL_DUNGEON_X_SIZE %> * RECT_SIZE + 1;
+int MAP_HEIGHT =<%= Consts::NORMAL_DUNGEON_Y_SIZE %> * RECT_SIZE + 1;
+int selectedX = null;
+int selectedY = null;
+ArrayList dungeonCells = new ArrayList();
+
+PImage concreteImg = loadImage("/assets/concrete.png");
+PImage waterImg = loadImage("/assets/water.png");
+PShape GUARDS_ICON_N = loadShape("/assets/guardsicon_n.svg");
+PShape TRAP_ICON_N = loadShape("/assets/trapicon_n.svg");
+
+String BLANK = "<%= Consts::DUNGEON_BLANK_SYMBOL %>";
+String CONCRETE = "<%= Consts::DUNGEON_COCRETE_SYMBOL %>";
+
+void setup() {
+  frameRate(4);
+  size(MAP_WIDTH, MAP_HEIGHT);
+}
+
+void draw() {
+  background(0);
+  fill(0);
+
+  // Draw map
+  stroke(0);
+  strokeWeight(1);
+  for (int n = 0; n < dungeonCells.size(); n++) {
+    (DungeonCell)dungeonCells.get(n).draw();
+  }
+
+  // Draw map selection
+  if (selectedX != null && selectedY != null) {
+    noFill();
+    stroke(255, 99, 71); // tomato
+    strokeWeight(2);
+    rect(selectedX, selectedY, RECT_SIZE, RECT_SIZE);
+  }
+}
+
+class DungeonCell {
+  int dungeonX;
+  int dungeonY;
+  String material;
+  String squadID;
+  String trapID;
+  
+  DungeonCell(int x, int y, String m, String s, String t) {
+    dungeonX = x;
+    dungeonY = y;
+    material = m;
+    squadID = s;
+    trapID = t;
+  }
+
+  void draw() {
+    if (material.equals(CONCRETE) == true) {
+      image(concreteImg, RECT_SIZE * dungeonX, RECT_SIZE * dungeonY, RECT_SIZE, RECT_SIZE);
+    }
+
+    if (trapID.equals("") == false && squadID.equals("") == false) {
+      shape(TRAP_ICON_N, RECT_SIZE * dungeonX, RECT_SIZE * dungeonY, RECT_SIZE / 2, RECT_SIZE / 2);
+      shape(GUARDS_ICON_N, RECT_SIZE * dungeonX + RECT_SIZE / 2, RECT_SIZE * dungeonY + RECT_SIZE / 2, RECT_SIZE / 2, RECT_SIZE / 2);
+    } else if (trapID.equals("") == false) {
+      shape(TRAP_ICON_N, RECT_SIZE * dungeonX, RECT_SIZE * dungeonY, RECT_SIZE, RECT_SIZE);
+    } else if (squadID.equals("") == false) {
+      shape(GUARDS_ICON_N, RECT_SIZE * dungeonX, RECT_SIZE * dungeonY, RECT_SIZE, RECT_SIZE);
+    }
+  }
+}
+
+void mousePressed() {
+  int dungeonX = int(mouseX / RECT_SIZE);
+  int dungeonY = int(mouseY / RECT_SIZE);
+  selectedX = dungeonX * RECT_SIZE;
+  selectedY = dungeonY * RECT_SIZE;
+  jQuery.get("select_dungeoncell/" + jQuery("#mypage_dungeon_id").val() + "/" +  dungeonX + "/" + dungeonY);
+}
+
+void clearDungeonCells() {
+  dungeonCells = new ArrayList();
+}
+
+void setDungeonCell(int x, int y, String symbol, String squadID, String trapID) {
+  dungeonCells.add(new DungeonCell(x, y, symbol, squadID, trapID));
+}
+</script>
+
+  <%= render 'mypage_menu' %>
+  <div id="contents_dungeon">
+    <div>
+      領土選択<%= collection_select(:mypage, :map_id2, MediumMap.find_all_by_medium_houdd_user_id(@medium_houdd_user.id), :id, :name,:selected => @medium_map_id, :include_blank => true) %>　
+      <%= render 'mypage_select_dungeon_list' %>
+    </div>
+    <div class="canvas">
+    <canvas id="mypage_dungeon_canvas"></canvas>
+    </div>
+    <div class="mapcell">
+      <h3>セルの情報</h3>
+      <%= hidden_field :dungeoncell, :id %>
+      <p>X:<span id="dungeoncell_x"></span> Y:<span id="dungeoncell_y"></span></p>
+      <%= form_tag "update_dungeon_trap", :id => "update_dungeon_trap", :method => "put" do %>
+      <p>罠:<br />
+      <%= render 'mypage_select_trap_list' %>
+      　　　<input id="deploy_trap_dungeon_cell" type="button" value="設置" />
+      </p>
+      <% end %>
+      <%= form_tag "update_dungeon_squad", :id => "update_dungeon_squad", :method => "put" do %>
+      <p>部隊:<br />
+      <%= render 'mypage_select_squad_list' %>
+      　<input id="deploy_squad_dungeon_cell" type="button" value="配置" />
+      </p>
+      <% end %>
+    </div>
+    
+  </div>

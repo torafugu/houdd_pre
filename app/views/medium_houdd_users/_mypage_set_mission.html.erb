@@ -1,0 +1,37 @@
+<%= form_tag :action => "update_mission" do %>
+<%= hidden_field :mypage, :mission_id, :value=> @mission_id %>
+<h3>ミッション設定</h3>
+<div class="allotments">
+  <div class="field">
+    優先度：<%= number_field :mypage, :priority, :value=> @mission_priority %>
+  </div>
+  <div class="field">
+    種類：<%= collection_select(:mypage, :category_sym, MediumSymbolList.find_all_by_category_sym("MISSION"), :symbol, :description, :selected => @mission_category_sym) %>
+  </div>
+  <div class="field">
+    目標マップ：<%= collection_select(:mypage, :map_id, MediumMap.all, :id, :name, :selected => @mission_map_id, :include_blank => true) %>
+  </div>
+  <div class="field">
+    戦略：<%= collection_select(:mypage, :strategy_id, MediumMissionStrategy.all, :id, :name, :selected => @mission_strategy_id, :include_blank => true) %>
+  </div>
+
+  <br />
+  <div id="all_squad_list">
+    配属可能部隊<br />
+    <%= select(:mypage, :all_squads, @all_squads, {}, {:multiple => true, :size => @all_squads.size}) %>
+  </div>
+  <div id="transfer_squad">
+    <div id="transfer_squad_buttons">
+      <input id="btn_squad_move_right" type="button" value="->" /><br />
+      <input id="btn_squad_move_left" type="button" value="<-" />
+    </div>
+  </div>
+  <div id="assigned_squad_list">
+    配属済部隊<br />
+    <%= select(:mypage, :assigned_squads, @assigned_squads, {}, {:multiple => true, :size => 4}) %>
+  </div>
+  <div id="organize_submit">
+    <input id="mission_submit" type="button" value="設定" />
+  </div>
+</div>
+<% end %>

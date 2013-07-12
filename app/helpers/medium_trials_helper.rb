@@ -1,0 +1,2 @@
+module MediumTrialsHelper
+end

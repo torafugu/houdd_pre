@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  medium_houdd_user: 
+  medium_map: 
+  category_sym: MyString
+  medium_mission_strategy: 
+  priority: 1
+
+two:
+  medium_houdd_user: 
+  medium_map: 
+  category_sym: MyString
+  medium_mission_strategy: 
+  priority: 1

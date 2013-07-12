@@ -1,0 +1,27 @@
+<h1>Listing medium_mission_strategies</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>User</th>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medium_mission_strategies.each do |medium_mission_strategy| %>
+  <tr>
+    <td><%= medium_mission_strategy.id %></td>
+    <td><%= medium_mission_strategy.medium_houdd_user.name unless medium_mission_strategy.medium_houdd_user.blank? %></td>
+    <td><%= medium_mission_strategy.name %></td>
+    <td><%= link_to 'Show', medium_mission_strategy %></td>
+    <td><%= link_to 'Edit', edit_medium_mission_strategy_path(medium_mission_strategy) %></td>
+    <td><%= link_to 'Destroy', medium_mission_strategy, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medium mission strategy', new_medium_mission_strategy_path %>

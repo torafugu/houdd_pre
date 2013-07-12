@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Medium houdd user:</b>
+  <%= @medium_mission.medium_houdd_user.name unless @medium_mission.medium_houdd_user.blank? %>
+</p>
+
+<p>
+  <b>Medium map:</b>
+  <%= @medium_mission.medium_map.name unless @medium_mission.medium_map.blank? %>
+</p>
+
+<p>
+  <b>Category sym:</b>
+  <%= @medium_mission.category_sym %>
+</p>
+
+<p>
+  <b>Medium mission strategy:</b>
+  <%= @medium_mission.medium_mission_strategy.name unless @medium_mission.medium_mission_strategy.blank? %>
+</p>
+
+<p>
+  <b>Priority:</b>
+  <%= @medium_mission.priority %>
+</p>
+
+<p>
+  <b>Completed_flg:</b>
+  <%= @medium_mission.completed_flg %>
+</p>
+
+<%= link_to 'Edit', edit_medium_mission_path(@medium_mission) %> |
+<%= link_to 'Back', medium_missions_path %>

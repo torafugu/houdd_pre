@@ -1,0 +1,9 @@
+<% unless @items.blank? %>
+<% serial = 1 %>
+<% @items.each do |item| %>
+<dt class="item"><%= serial %>. <%= item.medium_item_info.name %>　DP:<%= item.medium_item_info.max_dp %>/<%= item.dp %>　品質:<%= item.quality_txt %>　<%= "(" + item.medium_item_equip_inv.medium_mob.name + "が装備中)" unless item.medium_item_equip_inv.blank? %></dt>
+<dd class="item_info"><a href="javascript:void(0)" id="link_to_iteminfo_<%= item.medium_item_info.id %>">詳細情報</a>
+</dd>
+<% serial += 1 %>
+<% end %>
+<% end %>

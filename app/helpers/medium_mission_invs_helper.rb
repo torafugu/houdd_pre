@@ -1,0 +1,2 @@
+module MediumMissionInvsHelper
+end

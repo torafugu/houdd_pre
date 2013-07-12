@@ -1,0 +1,27 @@
+<%= render 'mypage_menu' %>
+<div id="contents">
+  <h3>ミッション</h3>
+  <div class="allotments">
+    <input id="add_mission" type="button" value="新規ミッション" />　未完了:<%= radio_button :mypage, :mission_completed, 'false' %>　完了:<%= radio_button :mypage, :mission_completed, 'true' %><br />
+    <br />
+    ミッション一覧：<br />
+    <div class="allotments">
+      <dl class="squad_list">
+        <% unless @medium_houdd_user.medium_missions.blank? %>
+        <% serial = 1 %>
+        <% @medium_houdd_user.medium_missions.each do |mission| %>
+        <dt class="squad">
+          <%= serial %>. <%= mission.name %>　所属部隊数：<%= mission.medium_squads.size unless mission.medium_squads.blank? %>
+        </dt>
+        <dd class="squad_info">
+          <a href="javascript:void(0)" id="link_to_mission_edit_<%= mission.id %>">再設定</a>
+          　<a href="javascript:void(0)" id="link_to_mission_destroy_<%= mission.id %>">削除</a>
+           　<%= link_to '結果', request.path_info + "/" + mission.id.to_s + "/mission_log" %>
+        </dd>
+        <% serial += 1 %>
+        <% end %>
+        <% end %>
+      </dl>
+    </div>
+  </div>
+</div>

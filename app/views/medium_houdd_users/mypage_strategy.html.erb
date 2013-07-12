@@ -1,0 +1,26 @@
+<%= render 'mypage_menu' %>
+<div id="contents">
+  <h3>戦術</h3>
+  <div class="allotments">
+    <input id="add_strategy" type="button" value="新規戦術" /><br />
+    <br />
+    戦術一覧：<br />
+    <div class="allotments">
+      <dl class="squad_list">
+        <% unless @medium_houdd_user.medium_mission_strategies.blank? %>
+        <% serial = 1 %>
+        <% @medium_houdd_user.medium_mission_strategies.each do |strategy| %>
+        <dt class="squad">
+          <%= serial %>. <%= strategy.name %>　採用ミッション数：<%= strategy.medium_missions.size unless strategy.medium_missions.blank? %>
+        </dt>
+        <dd class="squad_info">
+          <a href="javascript:void(0)" id="link_to_strategy_edit_<%= strategy.id %>">再設定</a>
+          　<a href="javascript:void(0)" id="link_to_strategy_destroy_<%= strategy.id %>">削除</a>
+        </dd>
+        <% serial += 1 %>
+        <% end %>
+        <% end %>
+      </dl>
+    </div>
+  </div>
+</div>

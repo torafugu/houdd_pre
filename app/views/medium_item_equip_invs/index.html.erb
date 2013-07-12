@@ -1,0 +1,27 @@
+<h1>Listing medium_item_equip_invs</h1>
+
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Mob</th>
+    <th>Body part</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medium_item_equip_invs.each do |medium_item_equip_inv| %>
+  <tr>
+    <td><%= medium_item_equip_inv.medium_item.medium_item_info.name unless medium_item_equip_inv.medium_item.blank? %></td>
+    <td><%= medium_item_equip_inv.medium_mob.name unless medium_item_equip_inv.medium_mob.blank? %></td>
+    <td><%= medium_item_equip_inv.medium_body_part.name unless medium_item_equip_inv.medium_body_part.blank? %></td>
+    <td><%= link_to 'Show', medium_item_equip_inv %></td>
+    <td><%= link_to 'Edit', edit_medium_item_equip_inv_path(medium_item_equip_inv) %></td>
+    <td><%= link_to 'Destroy', medium_item_equip_inv, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medium item equip inv', new_medium_item_equip_inv_path %>

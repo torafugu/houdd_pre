@@ -1,0 +1,20 @@
+<%= render 'mypage_menu' %>
+<div id="contents">
+  <h3>アイテム</h3>
+  <div class="allotments">
+    アイテム種別選択：<%= collection_select(:mypage, :iteminfosym_id, MediumSymbolList.find_all_by_category_sym("ITEM"), :symbol, :description, :include_blank => true) %><br />
+    <br />
+    保有アイテム：<br />
+    <div class="allotments">
+      <dl class="item_list">
+      <%= render 'mypage_item_list' %>
+      </dl>
+    </div>
+  </div>
+
+  <div id="iteminfo_popup">
+    <div id="iteminfo_popup_close">×</div>
+    <div id="iteminfo_popup_title">アイテム詳細情報</div>
+    <div id="iteminfo_contents"></div>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+jQuery("#medium_item_equip_inv_medium_item_id").empty()
+jQuery("#medium_item_equip_inv_medium_item_id").html("<%= escape_javascript(options_for_select(@items)) %>")
+jQuery("#medium_item_equip_inv_medium_mob_id").empty()
+jQuery("#medium_item_equip_inv_medium_mob_id").html("<%= escape_javascript(options_for_select(@mobs)) %>")
+jQuery("#medium_item_equip_inv_medium_body_part_id").empty()
+jQuery("#medium_item_equip_inv_medium_body_part_id").html("<%= escape_javascript(options_for_select(@body_parts)) %>")

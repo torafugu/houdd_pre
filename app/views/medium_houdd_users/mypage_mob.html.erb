@@ -1,0 +1,67 @@
+<%= render 'mypage_menu' %>
+<div id="contents">
+  <h3>MOB交配</h3>
+  <div class="allotments">
+    <%= form_tag :action => "create_random_user_mob" do %>
+    MOB種族選択：<%= collection_select(:mypage, :specie_id, @medium_species, :id, :name, :include_blank => true) %><br />
+    <input id="random_mob_mating" type="button" value="ランダム交配" /><br />
+    <% end %>
+    <%= form_tag :action => "create_mated_user_mob" do %>
+    <%= render 'mypage_select_mob_mate' %>
+    <% end %>
+  </div>
+  <h3>MOB一覧</h3>
+  <div class="allotments">
+    <%= form_tag "all_mobs_auto_equip", :id => "all_mobs_auto_equip", :method => "put" do %>
+    MOB職業選択：<%= collection_select(:mypage, :mobjob_id, MediumJob.all, :id, :name, :include_blank => true) %>　<input id="auto_equip" type="button" value="全MOB自動装備" /><br />
+    <% end %>
+    <br />
+    在籍MOB：<br />
+    <div class="allotments">
+      <dl class="mob_list">
+      <%= render 'mypage_mob_list' %>
+      </dl>
+    </div>
+  </div>
+  <h3>部隊</h3>
+  <div class="allotments">
+    <input id="add_squad" type="button" value="新規編成" /><br />
+    <br />
+    既存部隊：<br />
+    <div class="allotments">
+      <dl class="squad_list">
+        <% unless @medium_houdd_user.medium_squads.blank? %>
+        <% serial = 1 %>
+        <% @medium_houdd_user.medium_squads.each do |squad| %>
+        <dt class="squad">
+          <%= serial %>. <%= squad.name %>　所属MOB数：<%= squad.medium_mobs.size unless squad.medium_mobs.blank? %>
+        </dt>
+        <dd class="squad_info">
+          <a href="javascript:void(0)" id="link_to_squad_edit_<%= squad.id %>">再編成</a>
+          　<a href="javascript:void(0)" id="link_to_squad_destroy_<%= squad.id %>">解散</a>
+        </dd>
+        <% serial += 1 %>
+        <% end %>
+        <% end %>
+      </dl>
+    </div>
+  </div>
+
+  <div id="mob_status_popup">
+    <div id="mob_status_popup_close">×</div>
+    <div id="mob_status_popup_title">MOBステータス</div>
+    <div id="mob_status_popup_contents"></div>
+  </div>
+
+  <div id="mob_skills_popup">
+    <div id="mob_skills_popup_close">×</div>
+    <div id="mob_skills_popup_title">スキル経験値</div>
+    <div id="mob_skills_popup_contents"></div>
+  </div>
+
+  <div id="mob_equips_popup">
+    <div id="mob_equips_popup_close">×</div>
+    <div id="mob_equips_popup_title">装備</div>
+    <div id="mob_equips_popup_contents"></div>
+  </div>
+</div>

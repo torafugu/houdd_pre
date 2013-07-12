@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= f.label :medium_houdd_user %><br />
-    <%= f.text_field :medium_houdd_user %>
+    <%= f.collection_select(:medium_houdd_user_id, MediumHouddUser.find(:all), :id, :name) %>
   </div>
   <div class="field">
     <%= f.label :medium_map %><br />
-    <%= f.text_field :medium_map %>
+    <%= f.collection_select(:medium_map_id, MediumMap.find(:all), :id, :name) %>
   </div>
   <div class="field">
     <%= f.label :name %><br />

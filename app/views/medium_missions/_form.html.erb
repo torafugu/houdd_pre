@@ -1,0 +1,41 @@
+<%= form_for(@medium_mission) do |f| %>
+  <% if @medium_mission.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medium_mission.errors.count, "error") %> prohibited this medium_mission from being saved:</h2>
+
+      <ul>
+      <% @medium_mission.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :medium_houdd_user %><br />
+    <%= f.collection_select(:medium_houdd_user_id, MediumHouddUser.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :medium_map %><br />
+    <%= f.collection_select(:medium_map_id, MediumMap.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :category_sym %><br />
+    <%= f.text_field :category_sym %>
+  </div>
+  <div class="field">
+    <%= f.label :medium_mission_strategy %><br />
+    <%= f.collection_select(:medium_mission_strategy_id, MediumMissionStrategy.find(:all), :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :priority %><br />
+    <%= f.number_field :priority %>
+  </div>
+  <div class="field">
+    <%= f.label :completed_flg %><br />
+    <%= f.check_box :completed_flg %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

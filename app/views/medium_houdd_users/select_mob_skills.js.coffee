@@ -1,0 +1,1 @@
+jQuery('#mob_skills_popup_contents').html("<%= raw(escape_javascript(render 'mypage_mob_skills')) %>")

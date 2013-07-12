@@ -2,7 +2,7 @@
 
 <p>
   <b>Medium map cell:</b>
-  <%= @medium_dungeon.medium_map_cell %>
+  <%= @medium_dungeon.medium_map_cell.name unless @medium_dungeon.medium_map_cell.blank? %>
 </p>
 
 <p>

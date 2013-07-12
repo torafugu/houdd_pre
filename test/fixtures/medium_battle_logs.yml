@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  medium_battle_turn: 
+  trial_mob_id: 1
+  from_vpos: 1
+  to_vpos: 1
+  tgt_id: 1
+  tgt_dead_flg: false
+  action: MyString
+  damage: 1
+
+two:
+  medium_battle_turn: 
+  trial_mob_id: 1
+  from_vpos: 1
+  to_vpos: 1
+  tgt_id: 1
+  tgt_dead_flg: false
+  action: MyString
+  damage: 1

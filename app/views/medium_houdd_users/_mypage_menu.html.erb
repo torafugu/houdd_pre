@@ -3,9 +3,12 @@
     <ul class="sidebar-items">
       <li><%= link_to 'TOP', mypage_top_medium_houdd_user_path(@medium_houdd_user) %></a></li>
       <li><%= link_to '領土', mypage_territory_medium_houdd_user_path(@medium_houdd_user) %></li>
+      <li><%= link_to 'ダンジョン', mypage_dungeon_medium_houdd_user_path(@medium_houdd_user) %></li>
       <li><%= link_to '研究', mypage_research_medium_houdd_user_path(@medium_houdd_user) %></a></li>
       <li><%= link_to '生産', mypage_manufacture_medium_houdd_user_path(@medium_houdd_user) %></li>
-      <li><a href="http://api.rubyonrails.org/">アイテム</a></li>
-      <li><a href="http://api.rubyonrails.org/">MOB</a></li>
+      <li><%= link_to 'アイテム', mypage_item_medium_houdd_user_path(@medium_houdd_user) %></a></li>
+      <li><%= link_to 'MOB', mypage_mob_medium_houdd_user_path(@medium_houdd_user) %></li>
+      <li><%= link_to 'ミッション', mypage_mission_medium_houdd_user_path(@medium_houdd_user) %></li>
+      <li><%= link_to '戦術', mypage_strategy_medium_houdd_user_path(@medium_houdd_user) %></li>
     </ul>
   </div>

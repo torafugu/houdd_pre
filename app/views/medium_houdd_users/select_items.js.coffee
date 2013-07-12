@@ -1,0 +1,1 @@
+jQuery('.item_list').html("<%= raw(escape_javascript(render 'mypage_item_list')) %>")

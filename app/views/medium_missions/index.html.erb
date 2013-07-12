@@ -1,0 +1,35 @@
+<h1>Listing medium_missions</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>User</th>
+    <th>Map</th>
+    <th>Category sym</th>
+    <th>Strategy</th>
+    <th>Priority</th>
+    <th>Completed_flg</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medium_missions.each do |medium_mission| %>
+  <tr>
+    <td><%= medium_mission.id %></td>
+    <td><%= medium_mission.medium_houdd_user.name unless medium_mission.medium_houdd_user.blank? %></td>
+    <td><%= medium_mission.medium_map.name unless medium_mission.medium_map.blank? %></td>
+    <td><%= medium_mission.category_sym %></td>
+    <td><%= medium_mission.medium_mission_strategy.name unless medium_mission.medium_mission_strategy.blank? %></td>
+    <td><%= medium_mission.priority %></td>
+    <td><%= medium_mission.completed_flg %></td>
+    <td><%= link_to 'Show', medium_mission %></td>
+    <td><%= link_to 'Edit', edit_medium_mission_path(medium_mission) %></td>
+    <td><%= link_to 'Destroy', medium_mission, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medium mission', new_medium_mission_path %>

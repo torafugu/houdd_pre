@@ -1,0 +1,1 @@
+jQuery('#contents').html("<%= raw(escape_javascript(render 'mypage_organize_squad')) %>")

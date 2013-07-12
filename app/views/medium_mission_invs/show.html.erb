@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Medium mission:</b>
+  <%= @medium_mission_inv.medium_mission %>
+</p>
+
+<p>
+  <b>Medium squad:</b>
+  <%= @medium_mission_inv.medium_squad %>
+</p>
+
+
+<%= link_to 'Edit', edit_medium_mission_inv_path(@medium_mission_inv) %> |
+<%= link_to 'Back', medium_mission_invs_path %>

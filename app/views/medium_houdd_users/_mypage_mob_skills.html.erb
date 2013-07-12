@@ -1,0 +1,6 @@
+<div>
+  <% @mob.medium_skill_exp_invs.each do |inv| %>
+  <%= inv.medium_skill.name %>：レベル<%= inv.level %>(<%= inv.exp %>)<br />
+  <% end %>
+</div>
+<div id="mob_skills_popup_close2">OK</div>

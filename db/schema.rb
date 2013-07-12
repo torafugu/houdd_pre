@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130505104605) do
+ActiveRecord::Schema.define(:version => 20130711051821) do
 
   create_table "medium_atk_infos", :force => true do |t|
     t.string   "name"
@@ -23,6 +23,45 @@ ActiveRecord::Schema.define(:version => 20130505104605) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  create_table "medium_battle_effect_invs", :force => true do |t|
+    t.integer  "medium_mob_id"
+    t.integer  "medium_status_mod_id"
+    t.integer  "caused_mob_id"
+    t.integer  "rmng_duration"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "medium_battle_effect_invs", ["medium_mob_id"], :name => "index_medium_battle_effect_invs_on_medium_mob_id"
+  add_index "medium_battle_effect_invs", ["medium_status_mod_id"], :name => "index_medium_battle_effect_invs_on_medium_status_mod_id"
+
+  create_table "medium_battle_logs", :force => true do |t|
+    t.integer  "medium_battle_turn_id"
+    t.integer  "trial_mob_id"
+    t.integer  "from_vpos"
+    t.integer  "to_vpos"
+    t.integer  "tgt_id"
+    t.boolean  "tgt_dead_flg"
+    t.string   "action"
+    t.integer  "damage"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "medium_battle_logs", ["medium_battle_turn_id"], :name => "index_medium_battle_logs_on_medium_battle_turn_id"
+
+  create_table "medium_battle_turns", :force => true do |t|
+    t.integer  "medium_trial_turn_id"
+    t.integer  "battle_set_index"
+    t.integer  "atk_trial_squad_id"
+    t.integer  "def_trial_squad_id"
+    t.text     "log"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "medium_battle_turns", ["medium_trial_turn_id"], :name => "index_medium_battle_turns_on_medium_trial_turn_id"
 
   create_table "medium_body_part_invs", :force => true do |t|
     t.integer  "medium_specie_id"
@@ -159,6 +198,18 @@ ActiveRecord::Schema.define(:version => 20130505104605) do
     t.integer  "allot_for_research"
   end
 
+  create_table "medium_item_equip_invs", :force => true do |t|
+    t.integer  "medium_item_id"
+    t.integer  "medium_mob_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "medium_body_part_id"
+  end
+
+  add_index "medium_item_equip_invs", ["medium_body_part_id"], :name => "index_medium_item_equip_invs_on_medium_body_part_id"
+  add_index "medium_item_equip_invs", ["medium_item_id"], :name => "index_medium_item_equip_invs_on_medium_item_id"
+  add_index "medium_item_equip_invs", ["medium_mob_id"], :name => "index_medium_item_equip_invs_on_medium_mob_id"
+
   create_table "medium_item_infos", :force => true do |t|
     t.string   "item_category_sym"
     t.integer  "weight_level"
@@ -174,6 +225,7 @@ ActiveRecord::Schema.define(:version => 20130505104605) do
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
     t.integer  "slot_num"
+    t.integer  "num_of_tgt"
   end
 
   add_index "medium_item_infos", ["medium_atk_info_id"], :name => "index_medium_item_infos_on_medium_atk_info_id"
@@ -240,6 +292,41 @@ ActiveRecord::Schema.define(:version => 20130505104605) do
 
   add_index "medium_maps", ["medium_houdd_user_id"], :name => "index_medium_maps_on_medium_houdd_user_id"
 
+  create_table "medium_mission_invs", :force => true do |t|
+    t.integer  "medium_mission_id"
+    t.integer  "medium_squad_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "medium_mission_invs", ["medium_mission_id"], :name => "index_medium_mission_invs_on_medium_mission_id"
+  add_index "medium_mission_invs", ["medium_squad_id"], :name => "index_medium_mission_invs_on_medium_squad_id"
+
+  create_table "medium_mission_strategies", :force => true do |t|
+    t.integer  "medium_houdd_user_id"
+    t.string   "name"
+    t.text     "script"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "medium_mission_strategies", ["medium_houdd_user_id"], :name => "index_medium_mission_strategies_on_medium_houdd_user_id"
+
+  create_table "medium_missions", :force => true do |t|
+    t.integer  "medium_houdd_user_id"
+    t.integer  "medium_map_id"
+    t.string   "category_sym"
+    t.integer  "medium_mission_strategy_id"
+    t.integer  "priority"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.boolean  "completed_flg"
+  end
+
+  add_index "medium_missions", ["medium_houdd_user_id"], :name => "index_medium_missions_on_medium_houdd_user_id"
+  add_index "medium_missions", ["medium_map_id"], :name => "index_medium_missions_on_medium_map_id"
+  add_index "medium_missions", ["medium_mission_strategy_id"], :name => "index_medium_missions_on_medium_mission_strategy_id"
+
   create_table "medium_mob_dnas", :force => true do |t|
     t.integer  "medium_mob_id"
     t.integer  "medium_gene_id"
@@ -249,6 +336,21 @@ ActiveRecord::Schema.define(:version => 20130505104605) do
 
   add_index "medium_mob_dnas", ["medium_gene_id"], :name => "index_medium_mob_dnas_on_medium_gene_id"
   add_index "medium_mob_dnas", ["medium_mob_id"], :name => "index_medium_mob_dnas_on_medium_mob_id"
+
+  create_table "medium_mob_statuses", :force => true do |t|
+    t.integer  "medium_trial_turn_id"
+    t.integer  "trial_mob_id"
+    t.integer  "start_hp"
+    t.integer  "end_hp"
+    t.integer  "start_sp"
+    t.integer  "end_sp"
+    t.string   "start_status"
+    t.string   "end_status"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "medium_mob_statuses", ["medium_trial_turn_id"], :name => "index_medium_mob_statuses_on_medium_trial_turn_id"
 
   create_table "medium_mobs", :force => true do |t|
     t.integer  "medium_houdd_user_id"
@@ -276,6 +378,7 @@ ActiveRecord::Schema.define(:version => 20130505104605) do
     t.integer  "ele_ld_mod"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
+    t.boolean  "natural_death_flg"
   end
 
   add_index "medium_mobs", ["medium_houdd_user_id"], :name => "index_medium_mobs_on_medium_houdd_user_id"
@@ -380,6 +483,21 @@ ActiveRecord::Schema.define(:version => 20130505104605) do
 
   add_index "medium_species", ["medium_family_id"], :name => "index_medium_species_on_medium_family_id"
 
+  create_table "medium_squad_trails", :force => true do |t|
+    t.integer  "medium_trial_turn_id"
+    t.integer  "trial_squad_id"
+    t.integer  "from_x"
+    t.integer  "from_y"
+    t.integer  "to_x"
+    t.integer  "to_y"
+    t.text     "trail"
+    t.boolean  "annihilated_flg"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "medium_squad_trails", ["medium_trial_turn_id"], :name => "index_medium_squad_trails_on_medium_trial_turn_id"
+
   create_table "medium_squads", :force => true do |t|
     t.integer  "medium_houdd_user_id"
     t.integer  "medium_map_id"
@@ -403,6 +521,7 @@ ActiveRecord::Schema.define(:version => 20130505104605) do
     t.integer  "ele_ld_mod"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "hp_mod"
   end
 
   create_table "medium_symbol_lists", :force => true do |t|
@@ -434,6 +553,63 @@ ActiveRecord::Schema.define(:version => 20130505104605) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
+
+  create_table "medium_trial_dungeon_cells", :force => true do |t|
+    t.integer  "medium_trial_id"
+    t.string   "symbol"
+    t.integer  "x"
+    t.integer  "y"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "medium_trial_dungeon_cells", ["medium_trial_id"], :name => "index_medium_trial_dungeon_cells_on_medium_trial_id"
+
+  create_table "medium_trial_mobs", :force => true do |t|
+    t.integer  "medium_trial_squad_id"
+    t.integer  "mob_id"
+    t.string   "job_name"
+    t.string   "mob_name"
+    t.integer  "max_hp"
+    t.integer  "max_sp"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "medium_trial_mobs", ["medium_trial_squad_id"], :name => "index_medium_trial_mobs_on_medium_trial_squad_id"
+
+  create_table "medium_trial_squads", :force => true do |t|
+    t.integer  "medium_trial_id"
+    t.integer  "squad_id"
+    t.string   "squad_name"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "medium_trial_squads", ["medium_trial_id"], :name => "index_medium_trial_squads_on_medium_trial_id"
+
+  create_table "medium_trial_turns", :force => true do |t|
+    t.integer  "medium_trial_id"
+    t.text     "log"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "medium_trial_turns", ["medium_trial_id"], :name => "index_medium_trial_turns_on_medium_trial_id"
+
+  create_table "medium_trials", :force => true do |t|
+    t.integer  "medium_map_id"
+    t.string   "map_name"
+    t.integer  "def_mission_id"
+    t.integer  "atk_mission_id"
+    t.integer  "occured_at"
+    t.string   "dungeon_name"
+    t.string   "dungeon_type_sym"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "medium_trials", ["medium_map_id"], :name => "index_medium_trials_on_medium_map_id"
 
   create_table "moresmallarmorinfos", :force => true do |t|
     t.string   "name"
